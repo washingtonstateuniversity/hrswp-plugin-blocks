@@ -24,3 +24,4 @@ Changelog formatting (http://semver.org/):
 
 - :tada: Initial commit with Readme, license, and changelog.
 - VCS config files.
+- :construction_worker: Add build and test tools and configurations.
