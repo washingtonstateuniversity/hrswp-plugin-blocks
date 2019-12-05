@@ -23,3 +23,4 @@ Changelog formatting (http://semver.org/):
 ### Added
 
 - :tada: Initial commit with Readme, license, and changelog.
+- VCS config files.
