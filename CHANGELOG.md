@@ -24,5 +24,7 @@ Changelog formatting (http://semver.org/):
 
 - :tada: Initial commit with Readme, license, and changelog.
 - VCS config files.
+- :construction_worker: Set up Travis CI tests.
+- :heavy_plus_sign: Install NPM and Composer dev dependencies.
 - :construction_worker: Add build and test tools and configurations.
 - Base plugin setup methods.
