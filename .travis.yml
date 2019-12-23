@@ -1,6 +1,6 @@
 # Travis CI configuration
 # @link https://travis-ci.org/
-# HRSWP Plugin Sqlsrv DB
+# HRSWP Plugin Blocks
 # @link https://github.com/washingtonstateuniversity/hrswp-plugin-blocks
 
 language: php
