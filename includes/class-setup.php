@@ -128,6 +128,7 @@ class Setup {
 	private function setup_hooks() {
 		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
 	}
 
 	/**
@@ -201,5 +202,33 @@ class Setup {
 			array(),
 			$plugin['version']
 		);
+	}
+
+	/**
+	 * Enqueues the plugin frontend scripts.
+	 *
+	 * @since 0.2.0
+	 */
+	public function enqueue_scripts() {
+		if ( ! has_block( 'hrswp/search-filter' ) ) {
+			return;
+		}
+
+		$plugin = get_option( self::$slug . '_plugin-status' );
+
+		wp_enqueue_style(
+			self::$slug . '-style',
+			plugins_url( 'build/style.css', self::$basename ),
+			array(),
+			$plugin['version']
+		);
+
+		// wp_enqueue_script(
+		// 	'hrs-filter-script',
+		// 	plugins_url( 'build/filter.js', self::$basename ),
+		// 	array(),
+		// 	$plugin['version'],
+		// 	true
+		// );
 	}
 }
