@@ -18,6 +18,14 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.2.0-alpha.1 (:construction: 2019-12-27)
+
+### Added
+
+- :sparkles: "Search filter" block and supporting "search filter section" and "search filter input" blocks.
+- :heavy_plus_sign: classnames npm dev dependency.
+- :heavy_plus_sign: lodash npm dev dependency.
+
 ## 0.1.0 (2019-12-05)
 
 ### Added
