@@ -1,0 +1,27 @@
+{
+	"name": "hrswp/search-filter-input",
+	"category": "common",
+	"supports": {
+		"inserter": false,
+		"reusable": false,
+		"html": false
+	},
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Search"
+		},
+		"placeholder": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonText": {
+			"type": "string",
+			"default": "Reset"
+		},
+		"elementId": {
+			"type": "int",
+			"default": 0
+		}
+	}
+}

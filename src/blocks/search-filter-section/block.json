@@ -1,0 +1,9 @@
+{
+	"name": "hrswp/search-filter-section",
+	"category": "common",
+	"supports": {
+		"inserter": false,
+		"reusable": false,
+		"html": false
+	}
+}

@@ -127,6 +127,7 @@ class Setup {
 	 */
 	private function setup_hooks() {
 		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ) );
 	}
 
 	/**
@@ -170,5 +171,35 @@ class Setup {
 
 			update_option( self::$slug . '_plugin-status', $status );
 		}
+	}
+
+	/**
+	 * Enqueues the plugin editor scripts.
+	 *
+	 * @since 0.2.0
+	 */
+	public function enqueue_editor_scripts() {
+		$plugin = get_option( self::$slug . '_plugin-status' );
+
+		wp_enqueue_script(
+			self::$slug . '-script',
+			plugins_url( 'build/index.js', self::$basename ),
+			array(
+				'wp-blocks',
+				'wp-block-editor',
+				'wp-components',
+				'wp-i18n',
+				'wp-data',
+				'wp-compose',
+			),
+			$plugin['version']
+		);
+
+		wp_enqueue_style(
+			self::$slug . 'editor-style',
+			plugins_url( 'build/editor.css', self::$basename ),
+			array(),
+			$plugin['version']
+		);
 	}
 }
