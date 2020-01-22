@@ -18,14 +18,19 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.2.0-alpha.2 (:construction: 2019-12-27)
+## 0.2.0-beta.1 (:construction: 2020-01-22)
 
 ### Added
 
+- :sparkles: JavaScript and CSS to handle on-page searching and filtering of arbitrary content.
 - :art: Style the search filter block.
 - :sparkles: "Search filter" block and supporting "search filter section" and "search filter input" blocks.
+- :heavy_plus_sign: mark.js npm dependency to handle search matching and highlighting.
 - :heavy_plus_sign: classnames npm dev dependency.
-- :heavy_plus_sign: lodash npm dev dependency.
+
+### Removed
+
+- :heavy_minus_sign: lodash npm dev dependency.
 
 ## 0.1.0 (2019-12-05)
 
