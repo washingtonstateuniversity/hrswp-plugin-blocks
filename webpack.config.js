@@ -18,6 +18,7 @@ const config = {
 	mode,
 	entry: {
 		index: resolve( process.cwd(), 'src/', 'index.js' ),
+		filter: resolve( process.cwd(), 'src/lib/', 'filter.js' ),
 	},
 	output: {
 		filename: '[name].js',

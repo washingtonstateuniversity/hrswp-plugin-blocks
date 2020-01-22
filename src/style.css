@@ -1,1 +1,27 @@
 @import "./blocks/style.css";
+
+.wp-block-hrswp-search-filter-section.filtering-active :not(.show) {
+	display: none;
+}
+
+.wp-block-hrswp-search-filter-section.filtering-active .show [data-markjs="true"] {
+	display: inline;
+}
+
+/* Special rules to make table filtering a little more graceful. */
+.wp-block-hrswp-search-filter-section.filtering-active table.show thead {
+	display: table-header-group;
+}
+
+.wp-block-hrswp-search-filter-section.filtering-active table.show thead tr {
+	display: table-row;
+}
+
+.wp-block-hrswp-search-filter-section.filtering-active table.show thead th,
+.wp-block-hrswp-search-filter-section.filtering-active tr.show td {
+	display: table-cell;
+}
+
+.wp-block-hrswp-search-filter-section.filtering-active tr.show td * {
+	display: unset;
+}
