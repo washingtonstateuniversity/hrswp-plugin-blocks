@@ -20,7 +20,7 @@ export { name };
 
 export const settings = {
 	title: __( 'HRS Search Filter' ),
-	icon: 'portfolio',
+	icon: 'filter',
 	category,
 	description: __( 'Filter a section of content by heading or full text.' ),
 	keywords: [ __( 'filter search' ) ],
