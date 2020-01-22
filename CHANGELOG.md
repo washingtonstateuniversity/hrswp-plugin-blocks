@@ -18,13 +18,33 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.2.0-beta.1 (:construction: 2020-01-22)
+## 0.2.0-beta.2 (:construction: 2020-01-22)
+
+### Fixed
+
+- :warning: Fix phpcs linter errors following rules update.
+
+### Changed
+
+- :memo: Document the `Filter` class.
+- :wrench: Update php code sniffing rules to better align with WP plugin development and check for more issues.
+- :arrow_up: dealerdirect/phpcodesniffer-composer-installer 0.5.0 => 0.6.0
+- :arrow_up: wp-coding-standards/wpcs 2.1.1 => 2.2.0
+- :arrow_up: @wordpress/babel-preset-default => 4.9.0
+- :arrow_up: @wordpress/babel-preset-default => 4.9.0
+- :arrow_up: stylelint => 13.0.0
+- :arrow_up: stylelint-config-wordpress => 16.0.0
+- :arrow_up: webpack => 4.41.5
 
 ### Added
 
 - :sparkles: JavaScript and CSS to handle on-page searching and filtering of arbitrary content.
 - :art: Style the search filter block.
 - :sparkles: "Search filter" block and supporting "search filter section" and "search filter input" blocks.
+- :heavy_plus_sign: squizlabs/php_codesniffer composer dev dependency
+- :heavy_plus_sign: phpcompatibility/php-compatibility composer dev dependency
+- :heavy_plus_sign: sirbrillig/phpcs-variable-analysis composer dev dependency
+- :heavy_plus_sign: roave/security-advisories composer dev dependency
 - :heavy_plus_sign: mark.js npm dependency to handle search matching and highlighting.
 - :heavy_plus_sign: classnames npm dev dependency.
 
