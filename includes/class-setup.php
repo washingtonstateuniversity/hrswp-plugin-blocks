@@ -216,6 +216,13 @@ class Setup {
 
 		$plugin = get_option( self::$slug . '_plugin-status' );
 
+		wp_register_script(
+			'mark-js',
+			plugins_url( 'build/lib/mark.min.js', self::$basename ),
+			array(),
+			$plugin['version']
+		);
+
 		wp_enqueue_style(
 			self::$slug . '-style',
 			plugins_url( 'build/style.css', self::$basename ),
@@ -223,12 +230,12 @@ class Setup {
 			$plugin['version']
 		);
 
-		// wp_enqueue_script(
-		// 	'hrs-filter-script',
-		// 	plugins_url( 'build/filter.js', self::$basename ),
-		// 	array(),
-		// 	$plugin['version'],
-		// 	true
-		// );
+		wp_enqueue_script(
+			self::$slug . '-filter',
+			plugins_url( 'build/filter.js', self::$basename ),
+			array( 'mark-js' ),
+			$plugin['version'],
+			true
+		);
 	}
 }

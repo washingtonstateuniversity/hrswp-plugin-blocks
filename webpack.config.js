@@ -60,6 +60,12 @@ const config = {
 				to: 'blocks/[1].php',
 			},
 		] ),
+		new CopyWebpackPlugin( [
+			{
+				from: './node_modules/mark.js/dist/mark.min.js',
+				to: 'lib/[name].js',
+			},
+		] ),
 		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
 	].filter( Boolean ),
 	stats: {
