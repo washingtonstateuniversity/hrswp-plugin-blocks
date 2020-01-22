@@ -1,7 +1,7 @@
 /**
- * External dependencies
+ * External dependencies.
  */
-import { dropRight, times, map } from 'lodash';
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies
@@ -9,19 +9,12 @@ import { dropRight, times, map } from 'lodash';
 const { __ } = wp.i18n;
 const {
 	PanelBody,
-	RangeControl,
+	ToggleControl,
 } = wp.components;
 const {
 	InspectorControls,
 	InnerBlocks,
-	RichText,
 } = wp.blockEditor;
-const { createBlock } = wp.blocks;
-const {
-	withDispatch,
-	useDispatch,
-	useSelect,
-} = wp.data;
 
 /**
  * The Allowed Blocks.
@@ -34,115 +27,54 @@ const {
  * @type {string[]}
  */
 const ALLOWED_BLOCKS = [
+	'hrswp/search-filter-input',
 	'hrswp/search-filter-section',
 ];
 
+/**
+ * The block template.
+ *
+ * This is locked so that the search input field is always first, followed
+ * by a search filter section to contain the content to be searched.
+ *
+ * @constant
+ * @type {string[]}
+ */
 const TEMPLATE = [
 	[ 'hrswp/search-filter-input' ],
 	[ 'hrswp/search-filter-section' ],
 ];
 
-function SearchFilterEditContainer( {
+function SearchFilterEdit( {
 	className,
-	clientId,
-	updateSections,
+	attributes,
+	setAttributes,
 } ) {
-	const { count } = useSelect( ( select ) => {
-		return {
-			count: select( 'core/block-editor' ).getBlockCount( clientId ),
-		};
-	}, [ clientId ] );
+	const { retainHeadings } = attributes;
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody>
-					<RangeControl
-						label={ __( 'Sections' ) }
-						value={ count }
-						onChange={ ( value ) => updateSections( count, value ) }
-						min={ 1 }
-						max={ 60 }
+				<PanelBody title={ __( 'Search Filter Settings' ) }>
+					<ToggleControl
+						label={ __( 'Retain Headings' ) }
+						checked={ !! retainHeadings }
+						onChange={ () => setAttributes( { retainHeadings: ! retainHeadings } ) }
+						help={ retainHeadings ?
+							__( 'Headings not matching search term will not be hidden.' ) :
+							__( 'Toggle to always show headings.' )
+						}
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className={ className }>
+			<div className={ classnames( className, { 'has-retain-headings': retainHeadings } ) }>
 				<InnerBlocks
 					templateLock="all"
+					template={ TEMPLATE }
 					allowedBlocks={ ALLOWED_BLOCKS } />
 			</div>
 		</>
 	);
 }
-
-const SearchFilterEditContainerWrapper = withDispatch( ( dispatch, ownProps, registry ) => ( {
-	/**
-	 * Updates the section count, including necessary revisions to child Section
-	 * blocks.
-	 *
-	 * @param {number} previousSections Previous sections count.
-	 * @param {number} newSections      New sections count.
-	 */
-	updateSections( previousSections, newSections ) {
-		const { clientId } = ownProps;
-		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
-		const { getBlocks } = registry.select( 'core/block-editor' );
-
-		let innerBlocks = getBlocks( clientId );
-
-		const isAddingSection = newSections > previousSections;
-
-		if ( isAddingSection ) {
-			innerBlocks = [
-				...innerBlocks,
-				...times( newSections - previousSections, () => {
-					return createBlock( 'hrswp/search-filter-section' );
-				} ),
-			];
-		} else {
-			// The removed section will be the last of the inner blocks.
-			innerBlocks = dropRight( innerBlocks, previousSections - newSections );
-		}
-
-		replaceInnerBlocks( clientId, innerBlocks, false );
-	},
-} ) )( SearchFilterEditContainer );
-
-const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
-	return map(
-		innerBlocksTemplate,
-		( [ name, attributes, innerBlocks = [] ] ) =>
-			createBlock( name, attributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) )
-	);
-};
-
-const SearchFilterEdit = ( props ) => {
-	const { clientId, name, className } = props;
-	const { blockType, hasInnerBlocks } = useSelect( ( select ) => {
-		const {	getBlockType } = select( 'core/blocks' );
-
-		return {
-			blockType: getBlockType( name ),
-			hasInnerBlocks: select( 'core/block-editor' ).getBlocks( clientId ).length > 0,
-		};
-	}, [ clientId, name ] );
-
-	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
-
-	if ( hasInnerBlocks ) {
-		return (
-			<SearchFilterEditContainerWrapper { ...props } />
-		);
-	}
-
-	return (
-		<div className={ className }>
-			<InnerBlocks
-				templateLock="all"
-				template={ TEMPLATE }
-				allowedBlocks={ ALLOWED_BLOCKS } />
-		</div>
-	);
-};
 
 export default SearchFilterEdit;

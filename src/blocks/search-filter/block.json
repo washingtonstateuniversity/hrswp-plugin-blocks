@@ -4,5 +4,11 @@
 	"supports": {
 		"align": true,
 		"html": false
+	},
+	"attributes": {
+		"retainHeadings": {
+			"type": "boolean",
+			"default": false
+		}
 	}
 }

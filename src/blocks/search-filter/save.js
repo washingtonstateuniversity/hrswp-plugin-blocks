@@ -1,17 +1,18 @@
 /**
+ * External dependencies.
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const {
-	InnerBlocks,
-	RichText,
-} = wp.blockEditor;
+const {	InnerBlocks } = wp.blockEditor;
 
 export default function save( { attributes, className } ) {
-	const { label } = attributes;
+	const { retainHeadings } = attributes;
 
 	return (
-		<div className={ className }>
+		<div className={ classnames( className, { 'has-retain-headings': retainHeadings } ) }>
 			<InnerBlocks.Content />
 		</div>
 	);
