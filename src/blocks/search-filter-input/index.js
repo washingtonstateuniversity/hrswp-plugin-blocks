@@ -22,7 +22,7 @@ export { name };
 export const settings = {
 	title: __( 'HRS Search Filter Input' ),
 	parent: [ 'hrswp/search-filter' ],
-	icon: 'portfolio',
+	icon: 'filter',
 	category,
 	description: __( 'A search form for the search filter block.' ),
 	supports,

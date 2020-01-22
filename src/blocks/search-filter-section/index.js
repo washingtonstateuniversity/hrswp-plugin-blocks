@@ -21,7 +21,7 @@ export { name };
 export const settings = {
 	title: __( 'HRS Search Filter Section' ),
 	parent: [ 'hrswp/search-filter' ],
-	icon: 'portfolio',
+	icon: 'filter',
 	category,
 	description: __( 'A single section of content to search within.' ),
 	supports,
