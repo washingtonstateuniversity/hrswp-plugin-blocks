@@ -9,7 +9,7 @@ function SearchFilterSectionEdit( {
 	hasChildBlocks,
 } ) {
 	return (
-		<div className={ className }>
+		<div className={ className } aria-live="off">
 			<InnerBlocks
 				templateLock={ false }
 				renderAppender={ (
