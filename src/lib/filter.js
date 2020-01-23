@@ -25,6 +25,7 @@ class Filter {
 		this.find = this.find.bind( this );
 		this.reset = this.reset.bind( this );
 
+		this._handleURLSearchParams();
 		this._addEventListeners();
 	}
 
@@ -146,25 +147,26 @@ class Filter {
 		this._content.classList.remove( 'filtering-active' );
 	}
 
+	/*
+	* Updates filter results based on a URL parameter.
+	*/
+	_handleURLSearchParams() {
+		// Check for browser support. Should work in all major browsers other than IE.
+		if ( 'URLSearchParams' in window ) {
+			const params = new URLSearchParams( window.location.search );
+			const filterValue = params.get( 'filter' );
+			if ( null !== filterValue ) {
+				this._searchInput.value = encodeURIComponent( filterValue );
+				this.find();
+			}
+		}
+	}
+
 	_addEventListeners() {
 		this._searchInput.addEventListener( 'input', this.find );
 		this._searchReset.addEventListener(	'click', this.reset );
 	}
 }
-
-/*
- * Updates filter results based on a URL parameter.
- */
-// async function handleURLSearchParams() {
-// 	if ( 'URLSearchParams' in window ) {
-// 		const params = new URLSearchParams( window.location.search );
-// 		const filterValue = params.get( 'filter' );
-// 		if ( null !== filterValue ) {
-// 			input.value = sanitize( filterValue );
-// 			await handleInputChange();
-// 		}
-// 	}
-// }
 
 /**
  * Initializes the search highlighter and filter tool.
@@ -177,7 +179,5 @@ function init() {
 	searchForms.forEach( ( searchForm ) => {
 		new Filter( searchForm );
 	} );
-
-	// handleURLSearchParams();
 }
 init();
