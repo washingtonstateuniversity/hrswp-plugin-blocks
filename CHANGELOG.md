@@ -16,9 +16,10 @@ Changelog formatting (http://semver.org/):
 ### Added (for new features)
 ### Deprecated (for once-stable features removed in upcoming releases)
 ### Removed (for deprecated features removed in this release)
+### Experimental (for in-progress features still being refined)
 -->
 
-## 0.2.0-beta.2 (:construction: 2020-01-22)
+## 0.2.0-beta.3 (:construction: 2020-01-22)
 
 ### Fixed
 
@@ -51,6 +52,10 @@ Changelog formatting (http://semver.org/):
 ### Removed
 
 - :heavy_minus_sign: lodash npm dev dependency.
+
+### Experimental
+
+- :construction: Inital CSS-only attempt at retaining headings when filtering content. Not working as intended yet.
 
 ## 0.1.0 (2019-12-05)
 
