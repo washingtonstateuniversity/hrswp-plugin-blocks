@@ -19,7 +19,7 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.2.0-beta.3 (:construction: 2020-01-22)
+## 0.2.0-beta.4 (:construction: 2020-01-23)
 
 ### Fixed
 
@@ -27,6 +27,8 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- :milky_way: Assign an aria-live attribute with "off" value to dynamic search region, fix #2.
+- :milky_way: Match ARIA labels and IDs on search filter input; clean up unneeded labels, fix #2.
 - :memo: Document the `Filter` class.
 - :wrench: Update php code sniffing rules to better align with WP plugin development and check for more issues.
 - :arrow_up: dealerdirect/phpcodesniffer-composer-installer 0.5.0 => 0.6.0
@@ -39,6 +41,7 @@ Changelog formatting (http://semver.org/):
 
 ### Added
 
+- Search filter method to update results from a URL parameter, close #1.
 - :sparkles: JavaScript and CSS to handle on-page searching and filtering of arbitrary content.
 - :art: Style the search filter block.
 - :sparkles: "Search filter" block and supporting "search filter section" and "search filter input" blocks.
