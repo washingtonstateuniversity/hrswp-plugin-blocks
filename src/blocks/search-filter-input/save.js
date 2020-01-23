@@ -1,7 +1,6 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { RichText } = wp.blockEditor;
 
 export default function save( { attributes, className } ) {
@@ -14,14 +13,14 @@ export default function save( { attributes, className } ) {
 				className="wp-block-search__label"
 				value={ label }
 				htmlFor={ elementId }
+				id={ `${ elementId }-label` }
 			/>
 			<input
+				aria-labelledby={ `${ elementId }-label` }
 				className="wp-block-search__input"
-				aria-label={ __( 'Optional placeholder text' ) }
 				type="search"
 				name="search_form_input"
 				id={ elementId }
-				data-search-type=""
 			/>
 			<div className="wp-block-button is-style-small">
 				<RichText.Content

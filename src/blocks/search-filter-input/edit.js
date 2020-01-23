@@ -28,22 +28,22 @@ function SearchFilterInputEdit( {
 				value={ label }
 				onChange={ ( value ) => setAttributes( { label: value } ) }
 				htmlFor={ elementId }
+				id={ `${ elementId }-label` }
 			/>
 			<Disabled>
 				<input
+					aria-labelledby={ `${ elementId }-label` }
 					className="wp-block-search__input"
-					aria-label={ __( 'Optional placeholder text' ) }
 					type="search"
 					name="search_form_input"
 					id={ elementId }
-					data-search-type=""
 				/>
 			</Disabled>
 			<div className="wp-block-button is-style-small">
 				<RichText
 					tagName="button"
 					className={ `wp-block-button__link ${ elementId }-reset` }
-					aria-label={ __( 'Button text' ) }
+					aria-label={ __( 'Reset search results.' ) }
 					placeholder={ __( 'Add button text…' ) }
 					withoutInteractiveFormatting
 					allowedFormats={ [] }
