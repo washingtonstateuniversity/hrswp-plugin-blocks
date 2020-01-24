@@ -19,7 +19,7 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.2.0-rc.1 (:construction: 2020-01-23)
+## 0.2.0 (2020-01-24)
 
 ### Fixed
 
@@ -44,7 +44,7 @@ Changelog formatting (http://semver.org/):
 - Search filter method to update results from a URL parameter, close #1.
 - :sparkles: JavaScript and CSS to handle on-page searching and filtering of arbitrary content.
 - :art: Style the search filter block.
-- :sparkles: "Search filter" block and supporting "search filter section" and "search filter input" blocks.
+- :sparkles: "Search filter" block and supporting "search filter section" and "search filter input" blocks, close #4.
 - :heavy_plus_sign: squizlabs/php_codesniffer composer dev dependency
 - :heavy_plus_sign: phpcompatibility/php-compatibility composer dev dependency
 - :heavy_plus_sign: sirbrillig/phpcs-variable-analysis composer dev dependency
