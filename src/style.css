@@ -8,6 +8,11 @@
 	display: inline;
 }
 
+/* If a figure element isn't hidden then it's child image shouldn't be either. */
+.wp-block-hrswp-search-filter-section.filtering-active figure.show img {
+	display: inline-block;
+}
+
 /* Do not hide headings if 'retainHeadings' attribute is true. */
 .has-retain-headings .wp-block-hrswp-search-filter-section.filtering-active h1,
 .has-retain-headings .wp-block-hrswp-search-filter-section.filtering-active h2,
