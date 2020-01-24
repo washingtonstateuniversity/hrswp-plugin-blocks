@@ -8,7 +8,7 @@
 	display: inline;
 }
 
-/* If a figure element isn't hidden then it's child image shouldn't be either. */
+/* If a figure element is visible then its child image should be too. */
 .wp-block-hrswp-search-filter-section.filtering-active figure.show img {
 	display: inline-block;
 }
