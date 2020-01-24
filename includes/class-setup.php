@@ -5,6 +5,7 @@
  * @package HRSWP_Blocks
  * @since 0.1.0
  */
+
 namespace HRSWP\Blocks;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -38,6 +39,7 @@ class Setup {
 	 *
 	 * @since 0.1.0
 	 *
+	 * @param string $file The __FILE__ value of the main plugin file.
 	 * @return Setup An instance of the HRSWP Blocks Setup class.
 	 */
 	public static function get_instance( $file ) {
@@ -127,6 +129,8 @@ class Setup {
 	 */
 	private function setup_hooks() {
 		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
 	}
 
 	/**
@@ -170,5 +174,70 @@ class Setup {
 
 			update_option( self::$slug . '_plugin-status', $status );
 		}
+	}
+
+	/**
+	 * Enqueues the plugin editor scripts.
+	 *
+	 * @since 0.2.0
+	 */
+	public function enqueue_editor_scripts() {
+		$plugin = get_option( self::$slug . '_plugin-status' );
+
+		wp_enqueue_script(
+			self::$slug . '-script',
+			plugins_url( 'build/index.js', self::$basename ),
+			array(
+				'wp-blocks',
+				'wp-block-editor',
+				'wp-components',
+				'wp-i18n',
+				'wp-data',
+				'wp-compose',
+			),
+			$plugin['version']
+		);
+
+		wp_enqueue_style(
+			self::$slug . 'editor-style',
+			plugins_url( 'build/editor.css', self::$basename ),
+			array(),
+			$plugin['version']
+		);
+	}
+
+	/**
+	 * Enqueues the plugin frontend scripts.
+	 *
+	 * @since 0.2.0
+	 */
+	public function enqueue_scripts() {
+		if ( ! has_block( 'hrswp/search-filter' ) ) {
+			return;
+		}
+
+		$plugin = get_option( self::$slug . '_plugin-status' );
+
+		wp_register_script(
+			'mark-js',
+			plugins_url( 'build/lib/mark.min.js', self::$basename ),
+			array(),
+			$plugin['version']
+		);
+
+		wp_enqueue_style(
+			self::$slug . '-style',
+			plugins_url( 'build/style.css', self::$basename ),
+			array(),
+			$plugin['version']
+		);
+
+		wp_enqueue_script(
+			self::$slug . '-filter',
+			plugins_url( 'build/filter.js', self::$basename ),
+			array( 'mark-js' ),
+			$plugin['version'],
+			true
+		);
 	}
 }

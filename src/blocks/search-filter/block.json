@@ -1,0 +1,14 @@
+{
+	"name": "hrswp/search-filter",
+	"category": "widgets",
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"attributes": {
+		"retainHeadings": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

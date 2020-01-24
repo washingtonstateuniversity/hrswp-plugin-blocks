@@ -1,0 +1,10 @@
+.wp-block-hrswp-search-filter-input {
+	margin: 0;
+	display: flex;
+	align-items: last baseline;
+}
+
+.wp-block-hrswp-search-filter-input input[type="search"] {
+	margin-right: 1em;
+	margin-left: 0.5em;
+}
