@@ -19,6 +19,14 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
+## 0.3.0-beta.1 (:construction: 2020-02-17)
+
+### Added
+
+- :sparkles: Callout module block with associated styles.
+- :bento: Add `env` directory with plugin-wide variables.
+- :zap: Method to only load frontend styles when a 'HRSWP Blocks' block is active on the page.
+
 ## 0.2.0 (2020-01-24)
 
 ### Fixed

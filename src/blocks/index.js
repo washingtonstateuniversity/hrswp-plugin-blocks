@@ -9,6 +9,7 @@ const { registerBlockType } = wp.blocks;
 import * as searchFilter from './search-filter';
 import * as searchFilterSection from './search-filter-section';
 import * as searchFilterInput from './search-filter-input';
+import * as callout from './callout';
 
 /**
  * Function to register plugin blocks.
@@ -25,6 +26,7 @@ export const registerBlocks = () => {
 		searchFilter,
 		searchFilterSection,
 		searchFilterInput,
+		callout,
 	].forEach( ( block ) => {
 		if ( ! block ) {
 			return;
