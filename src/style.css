@@ -1,3 +1,4 @@
+@import "./env/style.css";
 @import "./blocks/style.css";
 
 .wp-block-hrswp-search-filter-section.filtering-active :not(.show) {
