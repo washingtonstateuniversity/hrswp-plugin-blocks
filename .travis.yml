@@ -34,6 +34,7 @@ env:
 branches:
   only:
     - master
+    - 0.x
 
 sudo: false
 
