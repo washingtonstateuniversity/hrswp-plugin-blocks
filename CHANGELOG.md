@@ -19,7 +19,11 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.3.0-beta.1 (:construction: 2020-02-17)
+## 0.3.0-beta.2 (:construction: 2020-02-17)
+
+### Changed
+
+- :construction_worker: Add 0.x branch to Travis CI testing.
 
 ### Added
 
