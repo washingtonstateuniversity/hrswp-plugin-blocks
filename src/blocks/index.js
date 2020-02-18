@@ -10,6 +10,7 @@ import * as searchFilter from './search-filter';
 import * as searchFilterSection from './search-filter-section';
 import * as searchFilterInput from './search-filter-input';
 import * as callout from './callout';
+import * as notification from './notification';
 
 /**
  * Function to register plugin blocks.
@@ -27,6 +28,7 @@ export const registerBlocks = () => {
 		searchFilterSection,
 		searchFilterInput,
 		callout,
+		notification,
 	].forEach( ( block ) => {
 		if ( ! block ) {
 			return;

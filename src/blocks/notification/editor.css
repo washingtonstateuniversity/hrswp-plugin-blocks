@@ -1,0 +1,37 @@
+.wp-block-hrswp-notification {
+	border: 5px solid var(--neutral-dark);
+	border-left-width: 1rem;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+[data-type="hrswp/notification"] .wp-block-hrswp-notification {
+	padding: 0;
+}
+
+.wp-block-hrswp-notification .editor-inner-blocks {
+	width: 100%;
+}
+
+.wp-block-hrswp-notification .editor-inner-blocks > div:first-child {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.wp-block-hrswp-notification .editor-inner-blocks .wp-block-button {
+	text-align: right;
+}
+
+.wp-block-hrswp-notification .editor-inner-blocks .wp-block-button label {
+	text-align: left;
+}
+
+@media (min-width: 43em) {
+
+	.wp-block-hrswp-notification {
+		flex-wrap: nowrap;
+	}
+
+}
