@@ -162,6 +162,7 @@ class Setup {
 		$this->blocks = array(
 			'hrswp/search-filter' => 0,
 			'hrswp/callout'       => 0,
+			'hrswp/notification'  => 0,
 		);
 	}
 
