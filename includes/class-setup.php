@@ -163,6 +163,7 @@ class Setup {
 			'hrswp/search-filter' => 0,
 			'hrswp/callout'       => 0,
 			'hrswp/notification'  => 0,
+			'hrswp/sidebar'       => 0,
 		);
 	}
 
