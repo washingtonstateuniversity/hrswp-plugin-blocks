@@ -65,7 +65,9 @@
 		"lint:styles": "stylelint 'src/**/*.css'",
 		"lint:pkg": "npmPkgJsonLint .",
 		"lint:php": "composer lint-detail",
+		"fix:scripts": "eslint --fix '*.js' 'src/**/*.js'",
 		"start": "run-p 'build:*'",
+		"fix": "run-p 'fix:*'",
 		"test": "run-p 'lint:*'"
 	}
 }
