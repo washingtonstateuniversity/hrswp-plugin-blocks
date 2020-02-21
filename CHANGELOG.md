@@ -19,7 +19,11 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.3.0-beta.3 (:construction: 2020-02-18)
+## 0.3.0-beta.5 (:construction: 2020-02-20)
+
+### Fixed
+
+- Fix #10 add transform to help convert prior-syntax sidebar blocks into the new syntax.
 
 ### Changed
 
@@ -27,6 +31,7 @@ Changelog formatting (http://semver.org/):
 
 ### Added
 
+- :sparkles: Sidebar layout block with associated styles.
 - :sparkles: Notification module block with associated styles.
 - :sparkles: Callout module block with associated styles.
 - :bento: Add `env` directory with plugin-wide variables.
