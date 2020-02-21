@@ -19,7 +19,7 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.3.0-rc.3 (:construction: 2020-02-21)
+## 0.3.0 (2020-02-21)
 
 ### Fixed
 
@@ -30,6 +30,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- :wrench: Ignore the new Prettier config file on export.
 - :construction_worker: Add 0.x branch to Travis CI testing.
 - :arrow_up: @wordpress/babel-preset-default => 4.10.0
 - :arrow_up: @wordpress/dependency-extraction-webpack-plugin => 2.3.0
