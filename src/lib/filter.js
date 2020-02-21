@@ -16,7 +16,9 @@ class Filter {
 	 * @param {Node} content A search form block to search and filter within.
 	 */
 	constructor( content ) {
-		this._content = content.querySelector( '.wp-block-hrswp-search-filter-section' );
+		this._content = content.querySelector(
+			'.wp-block-hrswp-search-filter-section'
+		);
 		this._searchInput = content.querySelector( '.wp-block-search__input' );
 		this._searchReset = content.querySelector( 'button' );
 
@@ -148,8 +150,8 @@ class Filter {
 	}
 
 	/*
-	* Updates filter results based on a URL parameter.
-	*/
+	 * Updates filter results based on a URL parameter.
+	 */
 	_handleURLSearchParams() {
 		// Check for browser support. Should work in all major browsers other than IE.
 		if ( 'URLSearchParams' in window ) {
@@ -164,7 +166,7 @@ class Filter {
 
 	_addEventListeners() {
 		this._searchInput.addEventListener( 'input', this.find );
-		this._searchReset.addEventListener(	'click', this.reset );
+		this._searchReset.addEventListener( 'click', this.reset );
 	}
 }
 
@@ -174,7 +176,9 @@ class Filter {
  * Creates a new search filter instance for each search form block found.
  */
 function init() {
-	const searchForms = /** @type {NodeList} */ document.querySelectorAll( '.wp-block-hrswp-search-filter' );
+	const searchForms = /** @type {NodeList} */ document.querySelectorAll(
+		'.wp-block-hrswp-search-filter'
+	);
 
 	searchForms.forEach( ( searchForm ) => {
 		new Filter( searchForm );

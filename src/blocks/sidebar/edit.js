@@ -31,9 +31,7 @@ const TEMPLATE = [
  */
 const ALLOWED_BLOCKS = [ 'core/column' ];
 
-function SidebarEdit( {
-	className,
-} ) {
+function SidebarEdit( { className } ) {
 	const classes = classnames( className, { 'wp-block-columns': true } );
 
 	return (

@@ -19,15 +19,27 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.3.0-beta.5 (:construction: 2020-02-20)
+## 0.3.0-rc.1 (:construction: 2020-02-21)
 
 ### Fixed
 
+- Fix #12 remove deprecated sudo key from Travis config.
+- Fix #14 update Travis config to set linux as the os.
+- Fix #13 use Prettier to maintain JS codebase and fix issues.
 - Fix #10 add transform to help convert prior-syntax sidebar blocks into the new syntax.
 
 ### Changed
 
 - :construction_worker: Add 0.x branch to Travis CI testing.
+- :arrow_up: @wordpress/babel-preset-default => 4.10.0
+- :arrow_up: @wordpress/dependency-extraction-webpack-plugin => 2.3.0
+- :arrow_up: @wordpress/eslint-plugin => 4.0.0
+- :arrow_up: @wordpress/npm-package-json-lint-config => 2.2.0
+- :arrow_up: npm-package-json-lint => 4.6.0
+- :arrow_up: rimraf => 3.0.2
+- :arrow_up: stylelint => 13.2.0
+- :arrow_up: webpack => 4.41.6
+- :arrow_up: webpack-cli => 3.3.11
 
 ### Added
 
@@ -36,6 +48,14 @@ Changelog formatting (http://semver.org/):
 - :sparkles: Callout module block with associated styles.
 - :bento: Add `env` directory with plugin-wide variables.
 - :zap: Method to only load frontend styles when a 'HRSWP Blocks' block is active on the page.
+- :wrench: npm `fix` script to auto-fix linting issues.
+- :wrench: Configuration file for the Prettier package to handle linting JavaScript files.
+- :heavy_plus_sign: lodash npm-dependency
+- :heavy_plus_sign: wp-prettier npm dev-dependency aliased to prettier
+
+### Removed
+
+- Old Travis CI npm dependency workaround.
 
 ## 0.2.0 (2020-01-24)
 
