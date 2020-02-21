@@ -7,14 +7,8 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const {
-	PanelBody,
-	ToggleControl,
-} = wp.components;
-const {
-	InspectorControls,
-	InnerBlocks,
-} = wp.blockEditor;
+const { PanelBody, ToggleControl } = wp.components;
+const { InspectorControls, InnerBlocks } = wp.blockEditor;
 
 /**
  * The Allowed Blocks.
@@ -45,11 +39,7 @@ const TEMPLATE = [
 	[ 'hrswp/search-filter-section' ],
 ];
 
-function SearchFilterEdit( {
-	className,
-	attributes,
-	setAttributes,
-} ) {
+function SearchFilterEdit( { className, attributes, setAttributes } ) {
 	const { retainHeadings } = attributes;
 
 	return (
@@ -59,19 +49,31 @@ function SearchFilterEdit( {
 					<ToggleControl
 						label={ __( 'Retain Headings' ) }
 						checked={ !! retainHeadings }
-						onChange={ () => setAttributes( { retainHeadings: ! retainHeadings } ) }
-						help={ retainHeadings ?
-							__( 'Headings not matching search term will not be hidden.' ) :
-							__( 'Toggle to always show headings.' )
+						onChange={ () =>
+							setAttributes( {
+								retainHeadings: ! retainHeadings,
+							} )
+						}
+						help={
+							retainHeadings
+								? __(
+										'Headings not matching search term will not be hidden.'
+								  )
+								: __( 'Toggle to always show headings.' )
 						}
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className={ classnames( className, { 'has-retain-headings': retainHeadings } ) }>
+			<div
+				className={ classnames( className, {
+					'has-retain-headings': retainHeadings,
+				} ) }
+			>
 				<InnerBlocks
 					templateLock="all"
 					template={ TEMPLATE }
-					allowedBlocks={ ALLOWED_BLOCKS } />
+					allowedBlocks={ ALLOWED_BLOCKS }
+				/>
 			</div>
 		</>
 	);

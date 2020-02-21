@@ -4,19 +4,16 @@
 const { InnerBlocks } = wp.blockEditor;
 const { withSelect } = wp.data;
 
-function SearchFilterSectionEdit( {
-	className,
-	hasChildBlocks,
-} ) {
+function SearchFilterSectionEdit( { className, hasChildBlocks } ) {
 	return (
 		<div className={ className } aria-live="off">
 			<InnerBlocks
 				templateLock={ false }
-				renderAppender={ (
-					hasChildBlocks ?
-						undefined :
-						() => <InnerBlocks.ButtonBlockAppender />
-				) }
+				renderAppender={
+					hasChildBlocks
+						? undefined
+						: () => <InnerBlocks.ButtonBlockAppender />
+				}
 			/>
 		</div>
 	);
