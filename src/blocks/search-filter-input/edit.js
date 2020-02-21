@@ -48,7 +48,9 @@ function SearchFilterInputEdit( {
 					withoutInteractiveFormatting
 					allowedFormats={ [] }
 					value={ buttonText }
-					onChange={ ( html ) => setAttributes( { buttonText: html } ) }
+					onChange={ ( html ) =>
+						setAttributes( { buttonText: html } )
+					}
 				/>
 			</div>
 		</div>

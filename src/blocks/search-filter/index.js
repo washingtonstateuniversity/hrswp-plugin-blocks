@@ -10,12 +10,7 @@ import edit from './edit';
 import metadata from './block.json';
 import save from './save';
 
-const {
-	name,
-	category,
-	supports,
-	attributes,
-} = metadata;
+const { name, category, supports, attributes } = metadata;
 
 export { name };
 

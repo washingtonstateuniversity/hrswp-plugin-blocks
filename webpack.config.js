@@ -42,8 +42,13 @@ const config = {
 							// Babel uses a directory within local node_modules
 							// by default. Use the environment variable option
 							// to enable more persistent caching.
-							cacheDirectory: process.env.BABEL_CACHE_DIRECTORY || true,
-							presets: [ require.resolve( '@wordpress/babel-preset-default' ) ],
+							cacheDirectory:
+								process.env.BABEL_CACHE_DIRECTORY || true,
+							presets: [
+								require.resolve(
+									'@wordpress/babel-preset-default'
+								),
+							],
 						},
 					},
 				],
@@ -57,7 +62,9 @@ const config = {
 		new CopyWebpackPlugin( [
 			{
 				from: './src/blocks/**/index.php',
-				test: new RegExp( `([\\w-]+)${ escapeRegExp( sep ) }index\\.php$` ),
+				test: new RegExp(
+					`([\\w-]+)${ escapeRegExp( sep ) }index\\.php$`
+				),
 				to: 'blocks/[1].php',
 			},
 		] ),

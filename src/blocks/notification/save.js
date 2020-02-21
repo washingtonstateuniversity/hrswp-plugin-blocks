@@ -9,12 +9,12 @@ import classnames from 'classnames';
 const { InnerBlocks } = wp.blockEditor;
 
 export default function save( { attributes, className } ) {
-	const { retainHeadings } = attributes;
+	const { showActionButton } = attributes;
 
 	return (
 		<div
 			className={ classnames( className, {
-				'has-retain-headings': retainHeadings,
+				'has-action-button': showActionButton,
 			} ) }
 		>
 			<InnerBlocks.Content />

@@ -35,6 +35,14 @@ class Setup {
 	public static $basename;
 
 	/**
+	 * The plugin blocks to register.
+	 *
+	 * @since 0.3.0
+	 * @var array Array of blocks to register in the format 'registered/block-name' => 'render-file.php' or 0.
+	 */
+	public $blocks = array();
+
+	/**
 	 * Instantiates plugin Setup singleton.
 	 *
 	 * @since 0.1.0
@@ -51,6 +59,7 @@ class Setup {
 
 			$instance->setup_hooks();
 			$instance->includes();
+			$instance->define_blocks();
 		}
 
 		return $instance;
@@ -145,6 +154,20 @@ class Setup {
 	}
 
 	/**
+	 * Defines an array of blocks to register.
+	 *
+	 * @since 0.3.0
+	 */
+	private function define_blocks() {
+		$this->blocks = array(
+			'hrswp/search-filter' => 0,
+			'hrswp/callout'       => 0,
+			'hrswp/notification'  => 0,
+			'hrswp/sidebar'       => 0,
+		);
+	}
+
+	/**
 	 * Manages the plugin status.
 	 *
 	 * Checks on the plugin status to watch for updates and activation and calls
@@ -212,18 +235,21 @@ class Setup {
 	 * @since 0.2.0
 	 */
 	public function enqueue_scripts() {
-		if ( ! has_block( 'hrswp/search-filter' ) ) {
+		// Only load frontend scripts if one of the blocks is active on the page.
+		$has_block = false;
+		foreach ( $this->blocks as $name => $file ) {
+			if ( false !== has_block( $name ) ) {
+				$has_block = true;
+				continue;
+			}
+		}
+
+		if ( ! $has_block ) {
 			return;
 		}
 
+		// Get the plugin status option for the version number.
 		$plugin = get_option( self::$slug . '_plugin-status' );
-
-		wp_register_script(
-			'mark-js',
-			plugins_url( 'build/lib/mark.min.js', self::$basename ),
-			array(),
-			$plugin['version']
-		);
 
 		wp_enqueue_style(
 			self::$slug . '-style',
@@ -232,12 +258,22 @@ class Setup {
 			$plugin['version']
 		);
 
-		wp_enqueue_script(
-			self::$slug . '-filter',
-			plugins_url( 'build/filter.js', self::$basename ),
-			array( 'mark-js' ),
-			$plugin['version'],
-			true
-		);
+		// Only load the filter scripts when they are needed.
+		if ( has_block( 'hrswp/search-filter' ) ) {
+			wp_register_script(
+				'mark-js',
+				plugins_url( 'build/lib/mark.min.js', self::$basename ),
+				array(),
+				$plugin['version']
+			);
+
+			wp_enqueue_script(
+				self::$slug . '-filter',
+				plugins_url( 'build/filter.js', self::$basename ),
+				array( 'mark-js' ),
+				$plugin['version'],
+				true
+			);
+		}
 	}
 }

@@ -1,0 +1,13 @@
+{
+	"name": "hrswp/notification",
+	"category": "layout",
+	"supports": {
+		"align": true
+	},
+	"attributes": {
+		"showActionButton": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}
