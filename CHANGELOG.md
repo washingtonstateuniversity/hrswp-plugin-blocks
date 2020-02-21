@@ -19,7 +19,7 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.3.0-rc.1 (:construction: 2020-02-21)
+## 0.3.0-rc.2 (:construction: 2020-02-21)
 
 ### Fixed
 
@@ -40,6 +40,10 @@ Changelog formatting (http://semver.org/):
 - :arrow_up: stylelint => 13.2.0
 - :arrow_up: webpack => 4.41.6
 - :arrow_up: webpack-cli => 3.3.11
+- :arrow_up: squizlabs/php_codesniffer => 3.5.4
+- :arrow_up: dealerdirect/phpcodesniffer-composer-installer => v0.6.2
+- :arrow_up: wp-coding-standards/wpcs => 2.2.1
+- :arrow_up: sirbrillig/phpcs-variable-analysis => v2.8.1
 
 ### Added
 
