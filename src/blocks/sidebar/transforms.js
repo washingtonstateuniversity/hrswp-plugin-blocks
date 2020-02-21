@@ -8,8 +8,8 @@ const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'hrs-wsu-edu/sidebar' ],
-			transform: ( innerBlocks ) => {
-				return createBlock( 'hrswp/sidebar', innerBlocks );
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock( 'hrswp/sidebar', attributes, innerBlocks );
 			},
 		},
 	],
