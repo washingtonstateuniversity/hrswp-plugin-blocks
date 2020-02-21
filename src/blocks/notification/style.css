@@ -26,7 +26,12 @@
 	}
 
 	.wp-block-hrswp-notification p {
+		max-width: 70%;
 		padding: 0;
+	}
+
+	.wp-block-hrswp-notification .wp-block-button {
+		margin-bottom: 0;
 	}
 
 }
