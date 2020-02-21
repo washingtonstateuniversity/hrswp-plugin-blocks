@@ -36,8 +36,6 @@ branches:
     - master
     - 0.x
 
-sudo: false
-
 before_install:
   # Speed up build time by disabling Xdebug.
   - phpenv config-rm xdebug.ini || echo 'No xdebug config.'
