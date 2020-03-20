@@ -19,6 +19,18 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
+## 0.3.1-rc.1 (:construction: 2020-03-20)
+
+### Changed
+
+- :art: Replace default icon for Callout block with custom icon.
+- :art: Replace default icon for Notification block with custom icon.
+- :arrow_up: @wordpress/dependency-extraction-webpack-plugin => 2.4.0
+- :arrow_up: babel-loader => 8.1.0
+- :arrow_up: babel-loader => 8.1.0
+- :arrow_up: webpack => 4.42.0
+- :arrow_up: webpack-bundle-analyzer => 3.6.1
+
 ## 0.3.0 (2020-02-21)
 
 ### Fixed
