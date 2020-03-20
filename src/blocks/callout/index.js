@@ -9,6 +9,7 @@ const { __, _x } = wp.i18n;
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
+import icon from './icon';
 
 const { name, category, supports } = metadata;
 
@@ -16,7 +17,7 @@ export { name };
 
 export const settings = {
 	title: __( 'Callout' ),
-	icon: 'index-card',
+	icon,
 	category,
 	description: __( 'Display content in a callout module.' ),
 	keywords: [ __( 'callout' ), __( 'message' ) ],
