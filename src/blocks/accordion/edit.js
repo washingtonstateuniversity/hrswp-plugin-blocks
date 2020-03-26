@@ -33,15 +33,11 @@ const ALLOWED_BLOCKS = [ 'hrswp/accordion-panel' ];
  */
 const TEMPLATE = [
 	...times( 5, () => {
-		return [ 'hrswp/accordion-panel' ] }
-	)
+		return [ 'hrswp/accordion-panel' ];
+	} ),
 ];
 
-function AccordionEditContainer( {
-	className,
-	clientId,
-	updatePanels,
-} ) {
+function AccordionEditContainer( { className, clientId, updatePanels } ) {
 	const { count } = useSelect(
 		( select ) => {
 			return {
@@ -65,9 +61,7 @@ function AccordionEditContainer( {
 				</PanelBody>
 			</InspectorControls>
 			<div className={ className } data-accordion-block>
-				<InnerBlocks
-					allowedBlocks={ ALLOWED_BLOCKS }
-				/>
+				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 			</div>
 		</>
 	);
@@ -77,6 +71,9 @@ const AccordionEditContainerWrapper = withDispatch(
 	( dispatch, ownProps, registry ) => ( {
 		/**
 		 * Updates the panels count.
+		 *
+		 * @param {number} previousPanels
+		 * @param {number} newPanels
 		 */
 		updatePanels( previousPanels, newPanels ) {
 			const { clientId } = ownProps;
@@ -113,7 +110,9 @@ const AccordionEdit = ( props ) => {
 	const { hasInnerBlocks } = useSelect(
 		( select ) => {
 			return {
-				hasInnerBlocks: select( 'core/block-editor' ).getBlocks( clientId ).length > 0,
+				hasInnerBlocks:
+					select( 'core/block-editor' ).getBlocks( clientId ).length >
+					0,
 			};
 		},
 		[ clientId ]
