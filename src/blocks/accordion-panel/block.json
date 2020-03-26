@@ -1,0 +1,9 @@
+{
+	"name": "hrswp/accordion-panel",
+	"category": "layout",
+	"supports": {
+		"inserter": false,
+		"reusable": false,
+		"html": false
+	}
+}

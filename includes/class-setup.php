@@ -160,6 +160,7 @@ class Setup {
 	 */
 	private function define_blocks() {
 		$this->blocks = array(
+			'hrswp/accordion'     => 0,
 			'hrswp/search-filter' => 0,
 			'hrswp/callout'       => 0,
 			'hrswp/notification'  => 0,
@@ -216,6 +217,7 @@ class Setup {
 				'wp-components',
 				'wp-i18n',
 				'wp-data',
+				'wp-element',
 				'wp-compose',
 			),
 			$plugin['version']
