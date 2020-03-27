@@ -19,7 +19,7 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.4.0-alpha.1 (:construction: 2020-03-26)
+## 0.4.0-alpha.2 (:construction: 2020-03-27)
 
 ## Experimental
 
