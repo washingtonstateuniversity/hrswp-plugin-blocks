@@ -1,8 +1,17 @@
 /**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, RichText } = wp.blockEditor;
 
-export default function save() {
-	return <InnerBlocks.Content />;
+export default function save( { attributes }) {
+	const { panelHeadingContent } = attributes;
+	return (
+		<>
+			<RichText.Content
+				tagName="h2"
+				value={ panelHeadingContent }
+			/>
+			<InnerBlocks.Content />
+		</>
+	);
 }

@@ -1,32 +1,23 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { InnerBlocks } = wp.blockEditor;
+const { __, _x } = wp.i18n;
+const { InnerBlocks, RichText } = wp.blockEditor;
 
-/**
- * The block template.
- *
- * This is locked so that the search input field is always first, followed
- * by a search filter section to contain the content to be searched.
- *
- * @constant
- * @type {string[]}
- */
-const TEMPLATE = [
-	[
-		'core/heading',
-		{ allowedFormats: [], placeholder: __( 'Brief panel heading…' ) },
-	],
-	[ 'core/column', { className: false } ],
-];
+function AccordionPanelEdit( { attributes, setAttributes } ) {
+	const { panelHeadingContent } = attributes;
 
-function AccordionPanelEdit() {
 	return (
 		<>
+			<RichText
+				tagName="h2"
+				value={ panelHeadingContent }
+				formattingControls={ [ 'italic' ] }
+				onChange={ ( content ) => setAttributes( { panelHeadingContent: content } ) }
+				placeholder={ __( 'Brief panel heading…' ) }
+			/>
 			<InnerBlocks
-				templateLock="insert"
-				template={ TEMPLATE }
+				templateLock={ false }
 				renderAppender={ () => <InnerBlocks.ButtonBlockAppender /> }
 			/>
 		</>
