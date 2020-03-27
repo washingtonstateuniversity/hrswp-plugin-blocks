@@ -2,8 +2,13 @@
 	"name": "hrswp/accordion-panel",
 	"category": "layout",
 	"supports": {
-		"inserter": false,
-		"reusable": false,
-		"html": false
+		"reusable": false
+	},
+	"attributes": {
+		"panelHeadingContent": {
+			"type": "string",
+			"source": "html",
+			"selector": "h2"
+		}
 	}
 }
