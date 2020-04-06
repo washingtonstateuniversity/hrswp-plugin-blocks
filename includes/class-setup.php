@@ -238,7 +238,7 @@ class Setup {
 		// Only load frontend scripts if one of the blocks is active on the page.
 		$has_block = false;
 		foreach ( $this->blocks as $name => $file ) {
-			if ( false !== has_block( $name ) ) {
+			if (  ! is_singular() || false !== has_block( $name ) ) {
 				$has_block = true;
 				continue;
 			}
