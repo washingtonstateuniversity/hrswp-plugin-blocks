@@ -29,9 +29,9 @@
 		"Firefox ESR"
 	],
 	"devDependencies": {
-		"@wordpress/babel-preset-default": "^4.10.0",
+		"@wordpress/babel-preset-default": "^4.11.0",
 		"@wordpress/dependency-extraction-webpack-plugin": "^2.4.0",
-		"@wordpress/eslint-plugin": "^4.0.0",
+		"@wordpress/eslint-plugin": "^4.1.0",
 		"@wordpress/npm-package-json-lint-config": "^2.2.0",
 		"babel-loader": "^8.1.0",
 		"classnames": "^2.2.6",
@@ -49,10 +49,10 @@
 		"resolve-bin": "^0.4.0",
 		"rimraf": "^3.0.2",
 		"source-map-loader": "^0.2.4",
-		"stylelint": "^13.2.1",
+		"stylelint": "^13.3.0",
 		"stylelint-config-wordpress": "^16.0.0",
 		"thread-loader": "^2.1.3",
-		"webpack": "^4.42.0",
+		"webpack": "^4.42.1",
 		"webpack-bundle-analyzer": "^3.6.1",
 		"webpack-cli": "^3.3.11"
 	},
