@@ -9,6 +9,10 @@
 			"type": "string",
 			"source": "html",
 			"selector": "h2"
+		},
+		"elementId": {
+			"type": "int",
+			"default": 0
 		}
 	}
 }
