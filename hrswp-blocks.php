@@ -8,7 +8,7 @@
  * Plugin URI: https://github.com/washingtonstateuniversity/hrswp-plugin-blocks
  * Text Domain: hrswp-blocks
  * Requires at least: 5.0
- * Tested up to: 5.3.2
+ * Tested up to: 5.4.0
  * Requires PHP: 7.0
  *
  * @package HRSWP_Blocks

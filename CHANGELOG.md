@@ -25,6 +25,26 @@ Changelog formatting (http://semver.org/):
 
 - Accordion block
 
+## 0.3.1 (2020-04-07)
+
+### Fixed
+
+- :bug: Fix #18 load styles on all archive pages to avoid `has_block()` limitations.
+
+### Changed
+
+- Increment tested up to => 5.4.
+- :art: Replace default icon for Callout block with custom icon.
+- :art: Replace default icon for Notification block with custom icon.
+- :arrow_up: @wordpress/babel-preset-default => 4.11.0
+- :arrow_up: @wordpress/dependency-extraction-webpack-plugin => 2.4.0
+- :arrow_up: @wordpress/eslint-plugin => 4.1.0
+- :arrow_up: babel-loader => 8.1.0
+- :arrow_up: babel-loader => 8.1.0
+- :arrow_up: stylelint => 13.3.0
+- :arrow_up: webpack => 4.42.1
+- :arrow_up: webpack-bundle-analyzer => 3.6.1
+
 ## 0.3.0 (2020-02-21)
 
 ### Fixed
