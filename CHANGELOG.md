@@ -19,11 +19,12 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.4.0-alpha.3 (:construction: 2020-04-07)
+## 0.4.0-alpha.4 (:construction: 2020-04-10)
 
 ## Experimental
 
 - Accordion block
+- Accordion block frontend controls
 
 ## 0.3.1 (2020-04-07)
 
