@@ -277,5 +277,16 @@ class Setup {
 				true
 			);
 		}
+
+		// Only load the accordion scripts when they are needed.
+		if ( has_block( 'hrswp/accordion' ) ) {
+			wp_enqueue_script(
+				self::$slug . '-accordion',
+				plugins_url( 'build/accordion.js', self::$basename ),
+				array(),
+				$plugin['version'],
+				true
+			);
+		}
 	}
 }

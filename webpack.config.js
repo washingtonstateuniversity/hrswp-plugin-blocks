@@ -19,6 +19,7 @@ const config = {
 	entry: {
 		index: resolve( process.cwd(), 'src/', 'index.js' ),
 		filter: resolve( process.cwd(), 'src/lib/', 'filter.js' ),
+		accordion: resolve( process.cwd(), 'src/lib/', 'accordion.js' ),
 	},
 	output: {
 		filename: '[name].js',
