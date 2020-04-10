@@ -8,25 +8,27 @@ const { withInstanceId } = wp.compose;
 function AccordionPanelEdit( { attributes, setAttributes, instanceId } ) {
 	const { panelHeadingContent, elementId } = attributes;
 
-	setAttributes( { elementId: `panel-id-${ instanceId }` } );
+	setAttributes( { elementId: `accordion-panel-id-${ instanceId }` } );
 
 	return (
-		<div data-accordion-panel>
+		<>
 			<RichText
 				tagName="h2"
+				className={ 'accordion-panel-heading' }
 				value={ panelHeadingContent }
 				allowedFormats={ [ 'italic' ] }
 				onChange={ ( content ) =>
 					setAttributes( { panelHeadingContent: content } )
 				}
 				placeholder={ __( 'Brief panel heading…' ) }
-				id={ elementId }
 			/>
-			<InnerBlocks
-				templateLock={ false }
-				renderAppender={ () => <InnerBlocks.ButtonBlockAppender /> }
-			/>
-		</div>
+			<div className={ 'accordion-panel' } id={ elementId }>
+				<InnerBlocks
+					templateLock={ false }
+					renderAppender={ () => <InnerBlocks.ButtonBlockAppender /> }
+				/>
+			</div>
+		</>
 	);
 }
 
