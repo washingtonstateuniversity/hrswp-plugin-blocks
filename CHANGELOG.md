@@ -19,12 +19,21 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.4.0-alpha.4 (:construction: 2020-04-10)
+## 0.4.0-alpha.5 (:construction: 2020-04-14)
 
-## Experimental
+### Changed
+
+- :wrench: Enable `postcss-preset-env` PostCSS plugin nesting rules.
+
+### Added
+
+- :wrench: Source directory build process for frontend icons.
+
+### Experimental
 
 - Accordion block
-- Accordion block frontend controls
+- :milky_way: Accordion block accessible frontend controls
+- :art: Accordion block styles
 
 ## 0.3.1 (2020-04-07)
 
