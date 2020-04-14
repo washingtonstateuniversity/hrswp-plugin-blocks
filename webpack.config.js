@@ -71,6 +71,12 @@ const config = {
 		] ),
 		new CopyWebpackPlugin( [
 			{
+				from: './src/icons/**/*',
+				to: 'icons/[name].[ext]',
+			},
+		] ),
+		new CopyWebpackPlugin( [
+			{
 				from: './node_modules/mark.js/dist/mark.min.js',
 				to: 'lib/[name].js',
 			},
