@@ -1,5 +1,6 @@
+@import "./accordion/editor.css";
+@import "./accordion-panel/editor.css";
 @import "./search-filter/editor.css";
 @import "./callout/editor.css";
 @import "./notification/editor.css";
 @import "./sidebar/editor.css";
-@import "./accordion-panel/editor.css";
