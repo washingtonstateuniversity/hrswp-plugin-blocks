@@ -19,7 +19,7 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.4.0-alpha.8 (:construction: 2020-04-15)
+## 0.4.0-beta.1 (:construction: 2020-04-15)
 
 ### Changed
 
@@ -27,9 +27,9 @@ Changelog formatting (http://semver.org/):
 
 ### Added
 
-- :sparkles: Accordion block with expand/collapse all buttons and heading level selector.
-- :milky_way: Accordion block accessible frontend controls
-- :art: Accordion block styles
+- :sparkles: Accordion block with expand- and collapse-all buttons and heading level selector.
+- :milky_way: Accordion block accessible frontend controls.
+- :art: Accordion block frontend and editor styles.
 - :wrench: Source directory build process for frontend icons.
 
 ## 0.3.1 (2020-04-07)
