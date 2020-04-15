@@ -160,6 +160,7 @@ class Setup {
 	 */
 	private function define_blocks() {
 		$this->blocks = array(
+			'hrswp/accordion'     => 0,
 			'hrswp/search-filter' => 0,
 			'hrswp/callout'       => 0,
 			'hrswp/notification'  => 0,
@@ -216,6 +217,7 @@ class Setup {
 				'wp-components',
 				'wp-i18n',
 				'wp-data',
+				'wp-element',
 				'wp-compose',
 			),
 			$plugin['version']
@@ -271,6 +273,17 @@ class Setup {
 				self::$slug . '-filter',
 				plugins_url( 'build/filter.js', self::$basename ),
 				array( 'mark-js' ),
+				$plugin['version'],
+				true
+			);
+		}
+
+		// Only load the accordion scripts when they are needed.
+		if ( has_block( 'hrswp/accordion' ) ) {
+			wp_enqueue_script(
+				self::$slug . '-accordion',
+				plugins_url( 'build/accordion.js', self::$basename ),
+				array(),
 				$plugin['version'],
 				true
 			);

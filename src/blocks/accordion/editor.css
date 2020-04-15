@@ -1,0 +1,17 @@
+.wp-block-buttons.controls {
+	display: flex;
+	justify-content: flex-end;
+	opacity: 0.5;
+}
+
+/* stylelint-disable selector-class-pattern */
+.wp-block-buttons.controls .wp-block-button__link {
+	font-weight: 400;
+	padding: 0.25em 0.5em;
+	text-transform: none;
+}
+/* stylelint-enable selector-class-pattern */
+
+.wp-block[data-type="hrswp/accordion"][data-align="wide"] .wp-block {
+	max-width: 100%;
+}
