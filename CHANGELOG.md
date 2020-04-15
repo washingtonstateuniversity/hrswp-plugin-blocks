@@ -19,11 +19,18 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.4.0-beta.1 (:construction: 2020-04-15)
+## 0.4.0-beta.2 (:construction: 2020-04-15)
 
 ### Changed
 
 - :wrench: Enable `postcss-preset-env` PostCSS plugin nesting rules.
+- :arrow_up: @wordpress/babel-preset-default => 4.12.1
+- :arrow_up: @wordpress/dependency-extraction-webpack-plugin => 2.5.0
+- :arrow_up: @wordpress/eslint-plugin => 5.0.1
+- :arrow_up: @wordpress/npm-package-json-lint-config => 3.0.0
+- :arrow_up: npm-package-json-lint => 5.0.0
+- :arrow_up: stylelint => 13.3.2
+- :arrow_up: webpack-bundle-analyzer => 3.7.0
 
 ### Added
 
