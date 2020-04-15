@@ -10,7 +10,7 @@ import edit from './edit';
 import metadata from './block.json';
 import save from './save';
 
-const { name, category, supports } = metadata;
+const { name, category, supports, attributes } = metadata;
 
 export { name };
 
@@ -21,6 +21,7 @@ export const settings = {
 	description: __( 'Display content in an accordion.' ),
 	keywords: [ __( 'layout' ), __( 'accordion' ) ],
 	supports,
+	attributes,
 	edit,
 	save,
 };

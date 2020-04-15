@@ -3,5 +3,11 @@
 	"category": "layout",
 	"supports": {
 		"align": true
+	},
+	"attributes": {
+		"level": {
+			"type": "number",
+			"default": 2
+		}
 	}
 }

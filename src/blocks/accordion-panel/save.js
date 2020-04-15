@@ -4,11 +4,13 @@
 const { InnerBlocks, RichText } = wp.blockEditor;
 
 export default function save( { attributes } ) {
-	const { panelHeadingContent, elementId } = attributes;
+	const { panelHeadingContent, elementId, level } = attributes;
+	const tagName = 'h' + level;
+
 	return (
 		<>
 			<RichText.Content
-				tagName="h2"
+				tagName={ tagName }
 				className={ 'accordion-panel-heading' }
 				value={ panelHeadingContent }
 			/>

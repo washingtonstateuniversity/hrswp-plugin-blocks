@@ -6,14 +6,15 @@ const { InnerBlocks, RichText } = wp.blockEditor;
 const { withInstanceId } = wp.compose;
 
 function AccordionPanelEdit( { attributes, setAttributes, instanceId } ) {
-	const { panelHeadingContent, elementId } = attributes;
+	const { panelHeadingContent, elementId, level } = attributes;
+	const tagName = 'h' + level;
 
 	setAttributes( { elementId: `accordion-panel-id-${ instanceId }` } );
 
 	return (
 		<>
 			<RichText
-				tagName="h2"
+				tagName={ tagName }
 				className={ 'accordion-panel-heading' }
 				value={ panelHeadingContent }
 				allowedFormats={ [ 'italic' ] }
