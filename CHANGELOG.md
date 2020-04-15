@@ -19,7 +19,7 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.4.0-alpha.6 (:construction: 2020-04-15)
+## 0.4.0-alpha.7 (:construction: 2020-04-15)
 
 ### Changed
 
@@ -31,7 +31,7 @@ Changelog formatting (http://semver.org/):
 
 ### Experimental
 
-- Accordion block with expand/collapse all buttons.
+- Accordion block with expand/collapse all buttons and heading level selector.
 - :milky_way: Accordion block accessible frontend controls
 - :art: Accordion block styles
 
