@@ -6,7 +6,7 @@
 		margin: 0;
 	}
 
-	& .accordion-panel-heading:not(:first-child) {
+	& .accordion-panel-heading:not(:first-of-type) {
 		border-top: 1px solid rgba(0, 0, 0, 0.25);
 	}
 
@@ -83,6 +83,19 @@
 		padding: 1em 1.5rem 0.5em;
 		overflow: auto;
 		visibility: visible;
+	}
+
+	& .wp-block-buttons.controls {
+		justify-content: flex-end;
+
+		/* stylelint-disable selector-class-pattern */
+		& .wp-block-button__link {
+			font-weight: 400;
+			padding: 0.25em 0.5em;
+			text-transform: none;
+		}
+		/* stylelint-enable selector-class-pattern */
+
 	}
 
 }

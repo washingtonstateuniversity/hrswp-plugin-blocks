@@ -14,9 +14,17 @@ class Accordion {
 		this._headings = this._parent.querySelectorAll(
 			'.accordion-panel-heading'
 		);
+		this._expandAllTrigger = this._parent.querySelector(
+			'#open-all-panels'
+		);
+		this._collapseAllTrigger = this._parent.querySelector(
+			'#close-all-panels'
+		);
 
 		this.expand = this.expand.bind( this );
+		this.expandAll = this.expandAll.bind( this );
 		this.collapse = this.collapse.bind( this );
+		this.collapseAll = this.collapseAll.bind( this );
 		this.toggle = this.toggle.bind( this );
 
 		this._setupPanels();
@@ -34,34 +42,50 @@ class Accordion {
 		this._parent.classList.add( 'accordion-active' );
 	}
 
-	expand( trigger, ...targetPanels ) {
-		targetPanels.forEach( ( targetPanel ) => {
+	expand( trigger, targetPanel ) {
+		this._setAriaExpanded( trigger, 'true' );
+		this._setAriaHidden( targetPanel, 'false' );
+	}
+
+	expandAll() {
+		this._panels.forEach( ( panel ) => {
+			this._setAriaHidden( panel, 'false' );
+		} );
+
+		this._triggers.forEach( ( trigger ) => {
 			this._setAriaExpanded( trigger, 'true' );
-			this._setAriaHidden( targetPanel, 'false' );
 		} );
 	}
 
-	collapse( trigger, ...targetPanels ) {
-		targetPanels.forEach( ( targetPanel ) => {
+	collapse( trigger, targetPanel ) {
+		this._setAriaExpanded( trigger, 'false' );
+		this._setAriaHidden( targetPanel, 'true' );
+	}
+
+	collapseAll() {
+		this._panels.forEach( ( panel ) => {
+			this._setAriaHidden( panel, 'true' );
+		} );
+
+		this._triggers.forEach( ( trigger ) => {
 			this._setAriaExpanded( trigger, 'false' );
-			this._setAriaHidden( targetPanel, 'true' );
 		} );
 	}
 
 	toggle( e ) {
 		const trigger = e.target;
-		const targetPanels = document.getElementById(
+		const targetPanel = document.getElementById(
 			trigger.getAttribute( 'aria-controls' )
 		);
 
 		e.preventDefault();
 
 		if ( this._isExpanded( trigger ) ) {
-			this.collapse( trigger, targetPanels );
+			this.collapse( trigger, targetPanel );
 			return;
 		}
 
-		this.expand( trigger, targetPanels );
+		this.expand( trigger, targetPanel );
 	}
 
 	_setupPanels() {
@@ -92,6 +116,8 @@ class Accordion {
 		this._triggers.forEach( ( trigger ) => {
 			trigger.addEventListener( 'click', this.toggle );
 		} );
+		this._expandAllTrigger.addEventListener( 'click', this.expandAll );
+		this._collapseAllTrigger.addEventListener( 'click', this.collapseAll );
 	}
 
 	_isExpanded( trigger ) {
