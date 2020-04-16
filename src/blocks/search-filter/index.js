@@ -22,6 +22,32 @@ export const settings = {
 	keywords: [ __( 'filter search' ) ],
 	supports,
 	attributes,
+	example: {
+		innerBlocks: [
+			{
+				name: 'hrswp/search-filter-input',
+				attributes: {
+					/* translators: example text. */
+					label: __( 'Search' ),
+					/* translators: example text. */
+					buttonText: __( 'Reset' ),
+				},
+			},
+			{
+				name: 'hrswp/search-filter-section',
+				innerBlocks: [
+					{
+						name: 'core/list',
+						attributes: {
+							values: __(
+								'<li>Alice.</li><li>The White Rabbit.</li><li>The Cheshire Cat.</li>'
+							),
+						},
+					},
+				],
+			},
+		],
+	},
 	edit,
 	save,
 };
