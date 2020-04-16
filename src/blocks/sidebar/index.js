@@ -25,6 +25,62 @@ export const settings = {
 	),
 	keywords: [ __( 'sidebar' ), __( 'columns' ) ],
 	supports,
+	example: {
+		innerBlocks: [
+			{
+				name: 'core/column',
+				innerBlocks: [
+					{
+						name: 'core/paragraph',
+						attributes: {
+							/* translators: example text. */
+							content: __(
+								'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et eros eu felis.'
+							),
+						},
+					},
+					{
+						name: 'core/image',
+						attributes: {
+							url:
+								'https://s.w.org/images/core/5.3/Windbuchencom.jpg',
+						},
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							/* translators: example text. */
+							content: __(
+								'Suspendisse commodo neque lacus, a dictum orci interdum et.'
+							),
+						},
+					},
+				],
+			},
+			{
+				name: 'core/column',
+				innerBlocks: [
+					{
+						name: 'core/paragraph',
+						attributes: {
+							/* translators: example text. */
+							content: __(
+								'Alice in Wonderland Characters'
+							),
+						},
+					},
+					{
+						name: 'core/list',
+						attributes: {
+							values: __(
+								'<li>Alice.</li><li>The White Rabbit.</li><li>The Cheshire Cat.</li>'
+							),
+						},
+					},
+				],
+			},
+		],
+	},
 	styles: [
 		{
 			name: 'sidebar-right',
