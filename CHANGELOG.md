@@ -19,6 +19,35 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
+## 0.4.0-rc.1 (:construction: 2020-04-16)
+
+### Fixed
+
+- :bug: Fix #22 action button on Notification block getting reinserted after removal.
+- :alien: Fix Notification block layout in block editor after WP 5.4 markup changes (@see https://make.wordpress.org/core/2020/03/02/markup-and-style-related-changes/).
+- :bug: Fix #20 restrict Notification block paragraph width only when action button is present.
+
+### Changed
+
+- Add example content for the Sidebar block.
+- Add example content for the Search Filter block.
+- Add example content for the Notification block.
+- Add example content for the Callout block.
+- :wrench: Enable `postcss-preset-env` PostCSS plugin nesting rules.
+- :arrow_up: @wordpress/babel-preset-default => 4.12.1
+- :arrow_up: @wordpress/dependency-extraction-webpack-plugin => 2.5.0
+- :arrow_up: @wordpress/npm-package-json-lint-config => 3.0.0
+- :arrow_up: npm-package-json-lint => 5.0.0
+- :arrow_up: stylelint => 13.3.2
+- :arrow_up: webpack-bundle-analyzer => 3.7.0
+
+### Added
+
+- :sparkles: Accordion block with expand- and collapse-all buttons and heading level selector.
+- :milky_way: Accordion block accessible frontend controls.
+- :art: Accordion block frontend and editor styles.
+- :wrench: Source directory build process for frontend icons.
+
 ## 0.3.1 (2020-04-07)
 
 ### Fixed

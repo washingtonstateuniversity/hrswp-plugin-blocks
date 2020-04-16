@@ -19,6 +19,7 @@ const config = {
 	entry: {
 		index: resolve( process.cwd(), 'src/', 'index.js' ),
 		filter: resolve( process.cwd(), 'src/lib/', 'filter.js' ),
+		accordion: resolve( process.cwd(), 'src/lib/', 'accordion.js' ),
 	},
 	output: {
 		filename: '[name].js',
@@ -66,6 +67,12 @@ const config = {
 					`([\\w-]+)${ escapeRegExp( sep ) }index\\.php$`
 				),
 				to: 'blocks/[1].php',
+			},
+		] ),
+		new CopyWebpackPlugin( [
+			{
+				from: './src/icons/**/*',
+				to: 'icons/[name].[ext]',
 			},
 		] ),
 		new CopyWebpackPlugin( [
