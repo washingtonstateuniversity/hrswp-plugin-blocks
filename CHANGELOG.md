@@ -19,14 +19,23 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
-## 0.4.0-beta.2 (:construction: 2020-04-15)
+## 0.4.0-rc.1 (:construction: 2020-04-16)
+
+### Fixed
+
+- :bug: Fix #22 action button on Notification block getting reinserted after removal.
+- :alien: Fix Notification block layout in block editor after WP 5.4 markup changes (@see https://make.wordpress.org/core/2020/03/02/markup-and-style-related-changes/).
+- :bug: Fix #20 restrict Notification block paragraph width only when action button is present.
 
 ### Changed
 
+- Add example content for the Sidebar block.
+- Add example content for the Search Filter block.
+- Add example content for the Notification block.
+- Add example content for the Callout block.
 - :wrench: Enable `postcss-preset-env` PostCSS plugin nesting rules.
 - :arrow_up: @wordpress/babel-preset-default => 4.12.1
 - :arrow_up: @wordpress/dependency-extraction-webpack-plugin => 2.5.0
-- :arrow_up: @wordpress/eslint-plugin => 5.0.1
 - :arrow_up: @wordpress/npm-package-json-lint-config => 3.0.0
 - :arrow_up: npm-package-json-lint => 5.0.0
 - :arrow_up: stylelint => 13.3.2
