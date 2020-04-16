@@ -59,7 +59,7 @@ function NotificationEditContainer( { className, attributes, updateBlocks } ) {
 			</InspectorControls>
 			<div className={ classes }>
 				<InnerBlocks
-					templateLock="all"
+					templateLock="insert"
 					allowedBlocks={ ALLOWED_BLOCKS }
 					template={ TEMPLATE }
 				/>
