@@ -47,7 +47,7 @@ install:
   # Install PHP_CodeSniffer and WP Coding Standards
   - if [[ "$LINT" == "1" ]]; then composer install --no-suggest; fi
   # NPM install for ci environments @link https://docs.npmjs.com/cli/ci.html
-  - if [[ "$LINT" == "1" ]]; then npm ci; fi
+  - if [[ "$LINT" == "1" ]]; then npm install; fi
 
 before_script:
   # Refresh path following CodeSniffer install.
