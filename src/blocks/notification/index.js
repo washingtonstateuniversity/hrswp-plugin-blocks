@@ -24,6 +24,26 @@ export const settings = {
 	),
 	keywords: [ __( 'callout' ), __( 'message' ), __( 'link' ) ],
 	supports,
+	example: {
+		innerBlocks: [
+			{
+				name: 'core/paragraph',
+				attributes: {
+					/* translators: example text. */
+					content: __(
+						'At length, however, Mrs. Bennet had no more to say; and Lady Lucas … was left to the comforts of cold ham and chicken.'
+					),
+				},
+			},
+			{
+				name: 'core/button',
+				attributes: {
+					/* translators: example text. */
+					text: __( 'Jane Austen' ),
+				},
+			},
+		],
+	},
 	styles: [
 		{
 			name: 'default',
