@@ -64,9 +64,7 @@ export const settings = {
 						name: 'core/paragraph',
 						attributes: {
 							/* translators: example text. */
-							content: __(
-								'Alice in Wonderland Characters'
-							),
+							content: __( 'Alice in Wonderland Characters' ),
 						},
 					},
 					{
