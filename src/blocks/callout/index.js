@@ -28,6 +28,7 @@ export const settings = {
 				name: 'core/paragraph',
 				attributes: {
 					fontSize: 'large',
+					/* translators: example text. */
 					content: __(
 						'Riverside Wren (Cantorchilus semibadius)'
 					),
@@ -36,6 +37,7 @@ export const settings = {
 			{
 				name: 'core/paragraph',
 				attributes: {
+					/* translators: example text. */
 					content: __(
 						'The wren<br>Earns his living<br>Noiselessly.'
 					),
@@ -44,6 +46,7 @@ export const settings = {
 			{
 				name: 'core/paragraph',
 				attributes: {
+					/* translators: example text. */
 					content: __( '— Kobayashi Issa (一茶)'),
 				},
 			},
