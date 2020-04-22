@@ -8,7 +8,7 @@ import { range } from 'lodash';
  */
 const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
-const { ToolbarGroup, Path, SVG } = wp.components;
+const { Toolbar, Path, SVG } = wp.components;
 
 /**
  * Renders the heading level icons in the toolbar.
@@ -70,7 +70,7 @@ class AccordionHeadingToolbar extends Component {
 		} = this.props;
 
 		return (
-			<ToolbarGroup
+			<Toolbar
 				isCollapsed={ isCollapsed }
 				icon={ <HeadingLevelIcon level={ selectedLevel } /> }
 				controls={ range( minLevel, maxLevel ).map( ( index ) =>
