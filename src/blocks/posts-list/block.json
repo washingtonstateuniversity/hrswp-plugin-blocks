@@ -1,0 +1,85 @@
+{
+	"name": "hrswp/posts-list",
+	"category": "widgets",
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"enum": ["left", "center", "right", "wide", "full"]
+		},
+		"className": {
+			"type": "string"
+		},
+		"includeCategories": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			}
+		},
+		"includeUnits": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			}
+		},
+		"postsToShow": {
+			"type": "number",
+			"default": 5
+		},
+		"displayPostContent": {
+			"type": "boolean",
+			"default": false
+		},
+		"displayPostContentRadio": {
+			"type": "string",
+			"default": "excerpt"
+		},
+		"excerptLength": {
+			"type": "number",
+			"default": 55
+		},
+		"displayPostDate": {
+			"type": "boolean",
+			"default": true
+		},
+		"postLayout": {
+			"type": "string",
+			"default": "grid"
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"order": {
+			"type": "string",
+			"default": "desc"
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "date"
+		},
+		"displayFeaturedImage": {
+			"type": "boolean",
+			"default": true
+		},
+		"featuredImageAlign": {
+			"type": "string",
+			"enum": ["left", "center", "right"]
+		},
+		"featuredImageSizeSlug": {
+			"type": "string",
+			"default": "thumbnail"
+		},
+		"featuredImageSizeWidth": {
+			"type": "number",
+			"default": null
+		},
+		"featuredImageSizeHeight": {
+			"type": "number",
+			"default": null
+		}
+	}
+}
