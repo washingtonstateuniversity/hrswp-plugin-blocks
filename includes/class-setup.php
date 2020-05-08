@@ -156,11 +156,14 @@ class Setup {
 	/**
 	 * Defines an array of blocks to register.
 	 *
+	 * @var array Array of blocks to register in the format 'registered/block-name' => 'render-file.php' or 0
+	 *
 	 * @since 0.3.0
 	 */
 	private function define_blocks() {
 		$this->blocks = array(
 			'hrswp/accordion'     => 0,
+			'hrswp/posts-list'    => 'posts-list.php',
 			'hrswp/search-filter' => 0,
 			'hrswp/callout'       => 0,
 			'hrswp/notification'  => 0,
@@ -219,6 +222,10 @@ class Setup {
 				'wp-data',
 				'wp-element',
 				'wp-compose',
+				'wp-api-fetch',
+				'wp-url',
+				'wp-date',
+				'wp-icons',
 			),
 			$plugin['version']
 		);

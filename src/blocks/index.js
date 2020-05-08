@@ -8,6 +8,7 @@ const { registerBlockType } = wp.blocks;
  */
 import * as accordion from './accordion';
 import * as accordionPanel from './accordion-panel';
+import * as postsList from './posts-list';
 import * as searchFilter from './search-filter';
 import * as searchFilterSection from './search-filter-section';
 import * as searchFilterInput from './search-filter-input';
@@ -29,6 +30,7 @@ export const registerBlocks = () => {
 	[
 		accordion,
 		accordionPanel,
+		postsList,
 		searchFilter,
 		searchFilterSection,
 		searchFilterInput,
