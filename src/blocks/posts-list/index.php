@@ -189,6 +189,10 @@ class PostsList {
 						'type'  => 'array',
 						'items' => array( 'type' => 'object' ),
 					),
+					'hrsUnits'                => array(
+						'type'  => 'array',
+						'items' => array( 'type' => 'object' ),
+					),
 					'postsToShow'             => array(
 						'type'    => 'number',
 						'default' => 5,

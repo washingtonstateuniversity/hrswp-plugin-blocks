@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { get, invoke, isUndefined, pickBy } from 'lodash';
+import { get, includes, invoke, isUndefined, pickBy, remove } from 'lodash';
 import classnames from 'classnames';
 
 /**
@@ -10,6 +10,7 @@ import classnames from 'classnames';
 const { Component, RawHTML } = wp.element;
 const {
 	BaseControl,
+	CheckboxControl,
 	PanelBody,
 	Placeholder,
 	QueryControls,
@@ -34,25 +35,20 @@ const { withSelect } = wp.data;
 /**
  * Internal dependencies
  */
+import { pin, list, grid } from './icons';
 import {
 	MIN_EXCERPT_LENGTH,
 	MAX_EXCERPT_LENGTH,
 	MAX_POSTS_COLUMNS,
+	CATEGORIES_LIST_QUERY,
 } from './constants';
-import { pin, list, grid } from './icons';
-
-/**
- * Module Constants
- */
-const CATEGORIES_LIST_QUERY = {
-	per_page: -1,
-};
 
 class PostsListEdit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.state = {
 			categoriesList: [],
+			hrsUnitsList: [],
 		};
 	}
 
@@ -71,10 +67,49 @@ class PostsListEdit extends Component {
 					this.setState( { categoriesList: [] } );
 				}
 			} );
+		this.fetchRequest = apiFetch( {
+			path: addQueryArgs( `/wp/v2/hrs_unit`, CATEGORIES_LIST_QUERY ),
+		} )
+			.then( ( hrsUnitsList ) => {
+				if ( this.isStillMounted ) {
+					this.setState( { hrsUnitsList } );
+				}
+			} )
+			.catch( () => {
+				if ( this.isStillMounted ) {
+					this.setState( { hrsUnitsList: [] } );
+				}
+			} );
 	}
 
 	componentWillUnmount() {
 		this.isStillMounted = false;
+	}
+
+	termsListToIds( terms ) {
+		if ( ! terms ) {
+			return null;
+		}
+
+		return terms.map( ( obj ) => {
+			return obj.id;
+		} );
+	}
+
+	toggleHrsUnits( unit ) {
+		const { attributes, setAttributes } = this.props;
+		const { hrsUnits } = attributes;
+
+		const allUnits = ! isUndefined( hrsUnits ) ? hrsUnits : [];
+		const hasUnit = includes( this.termsListToIds( allUnits ), unit.id );
+
+		const newUnits = hasUnit
+			? remove( allUnits, ( value ) => {
+					return value.id !== unit.id;
+			  } )
+			: [ ...allUnits, unit ];
+
+		setAttributes( { hrsUnits: newUnits } );
 	}
 
 	render() {
@@ -86,7 +121,7 @@ class PostsListEdit extends Component {
 			defaultImageWidth,
 			defaultImageHeight,
 		} = this.props;
-		const { categoriesList } = this.state;
+		const { categoriesList, hrsUnitsList } = this.state;
 		const {
 			displayFeaturedImage,
 			displayPostContentRadio,
@@ -97,6 +132,7 @@ class PostsListEdit extends Component {
 			order,
 			orderBy,
 			categories,
+			hrsUnits,
 			postsToShow,
 			excerptLength,
 			featuredImageAlign,
@@ -214,6 +250,26 @@ class PostsListEdit extends Component {
 				</PanelBody>
 
 				<PanelBody title={ __( 'Sorting and filtering' ) }>
+					<ul className="edit__checklist">
+						{ hrsUnitsList.map( ( hrsUnit ) => (
+							<li
+								key={ hrsUnit.name }
+								className="components-checkbox-control__label"
+							>
+								<CheckboxControl
+									label={ hrsUnit.name }
+									checked={ includes(
+										this.termsListToIds( hrsUnits ),
+										hrsUnit.id
+									) }
+									onChange={ () => {
+										this.toggleHrsUnits( hrsUnit );
+									} }
+								/>
+							</li>
+						) ) }
+					</ul>
+
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
