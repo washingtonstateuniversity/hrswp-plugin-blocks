@@ -61,9 +61,40 @@ class PostsList {
 		$this->excerpt_length = $attributes['excerptLength'];
 		add_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 25 );
 
-		if ( isset( $attributes['categories'] ) ) {
-			$args['category__in'] = array_column( $attributes['categories'], 'id' );
+		// Taxonomy handling.
+		// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+		$has_categories = isset( $attributes['categories'] ) && ! empty( $attributes['categories'] );
+		$has_hrs_units  = isset( $attributes['hrsUnits'] ) && ! empty( $attributes['hrsUnits'] );
+		if ( $has_categories && $has_hrs_units ) {
+			$args['tax_query'] = array(
+				'relation' => 'AND',
+				array(
+					'taxonomy' => 'category',
+					'field'    => 'id',
+					'terms'    => array_column( $attributes['categories'], 'id' ),
+				),
+				array(
+					'taxonomy' => 'hrs_unit',
+					'field'    => 'id',
+					'terms'    => array_column( $attributes['hrsUnits'], 'id' ),
+				),
+			);
+		} else {
+			if ( $has_categories ) {
+				$args['category__in'] = array_column( $attributes['categories'], 'id' );
+			}
+
+			if ( $has_hrs_units ) {
+				$args['tax_query'] = array(
+					array(
+						'taxonomy' => 'hrs_unit',
+						'field'    => 'id',
+						'terms'    => array_column( $attributes['hrsUnits'], 'id' ),
+					),
+				);
+			}
 		}
+		// phpcs:enable WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 
 		$posts = get_posts( $args );
 
