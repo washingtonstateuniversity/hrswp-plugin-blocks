@@ -43,6 +43,18 @@ import {
 	CATEGORIES_LIST_QUERY,
 } from './constants';
 
+/**
+ * Converts an array of taxonomy terms into an array of IDs.
+ *
+ * @param {Object[]} terms An array of taxonomy term objects.
+ */
+function taxonomyListToIds( terms ) {
+	const ids =
+		terms && terms.length > 0 ? terms.map( ( term ) => term.id ) : [];
+
+	return ids;
+}
+
 class PostsListEdit extends Component {
 	constructor() {
 		super( ...arguments );
@@ -86,22 +98,12 @@ class PostsListEdit extends Component {
 		this.isStillMounted = false;
 	}
 
-	termsListToIds( terms ) {
-		if ( ! terms ) {
-			return null;
-		}
-
-		return terms.map( ( obj ) => {
-			return obj.id;
-		} );
-	}
-
 	toggleHrsUnits( unit ) {
 		const { attributes, setAttributes } = this.props;
 		const { hrsUnits } = attributes;
 
 		const allUnits = ! isUndefined( hrsUnits ) ? hrsUnits : [];
-		const hasUnit = includes( this.termsListToIds( allUnits ), unit.id );
+		const hasUnit = includes( taxonomyListToIds( allUnits ), unit.id );
 
 		const newUnits = hasUnit
 			? remove( allUnits, ( value ) => {
@@ -259,7 +261,7 @@ class PostsListEdit extends Component {
 								<CheckboxControl
 									label={ hrsUnit.name }
 									checked={ includes(
-										this.termsListToIds( hrsUnits ),
+										taxonomyListToIds( hrsUnits ),
 										hrsUnit.id
 									) }
 									onChange={ () => {
@@ -484,13 +486,16 @@ export default withSelect( ( select, props ) => {
 		order,
 		orderBy,
 		categories,
+		hrsUnits,
 	} = props.attributes;
 	const { getEntityRecords, getMedia } = select( 'core' );
 	const { getSettings } = select( 'core/block-editor' );
 	const { imageSizes, imageDimensions } = getSettings();
+	const unitIds = taxonomyListToIds( hrsUnits );
 	const latestPostsQuery = pickBy(
 		{
 			categories,
+			hrs_unit: unitIds,
 			order,
 			orderby: orderBy,
 			per_page: postsToShow,
