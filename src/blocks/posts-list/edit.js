@@ -1,7 +1,15 @@
 /**
  * External dependencies
  */
-import { get, includes, invoke, isUndefined, pickBy, remove } from 'lodash';
+import {
+	get,
+	filter,
+	includes,
+	invoke,
+	isUndefined,
+	pickBy,
+	remove,
+} from 'lodash';
 import classnames from 'classnames';
 
 /**
@@ -20,8 +28,6 @@ const {
 	ToggleControl,
 	ToolbarGroup,
 } = wp.components;
-const apiFetch = wp.apiFetch;
-const { addQueryArgs } = wp.url;
 const { __ } = wp.i18n;
 const { dateI18n, format, __experimentalGetSettings } = wp.date;
 const {
@@ -40,90 +46,67 @@ import {
 	MIN_EXCERPT_LENGTH,
 	MAX_EXCERPT_LENGTH,
 	MAX_POSTS_COLUMNS,
-	CATEGORIES_LIST_QUERY,
+	TERMS_LIST_QUERY,
 } from './constants';
 
 /**
  * Converts an array of taxonomy terms into an array of IDs.
  *
  * @param {Object[]} terms An array of taxonomy term objects.
+ * @param {string} taxonomy The name of the taxonomy the terms belong to.
  */
-function taxonomyListToIds( terms ) {
+function taxonomyListToIds( terms, taxonomy ) {
+	if ( ! terms ) {
+		return null;
+	}
+
 	const ids =
-		terms && terms.length > 0 ? terms.map( ( term ) => term.id ) : [];
+		terms[ taxonomy ] && terms[ taxonomy ].length > 0
+			? terms[ taxonomy ].map( ( term ) => term.id )
+			: [];
 
 	return ids;
 }
 
 class PostsListEdit extends Component {
-	constructor() {
-		super( ...arguments );
-		this.state = {
-			categoriesList: [],
-			hrsUnitsList: [],
-		};
-	}
-
-	componentDidMount() {
-		this.isStillMounted = true;
-		this.fetchRequest = apiFetch( {
-			path: addQueryArgs( `/wp/v2/categories`, CATEGORIES_LIST_QUERY ),
-		} )
-			.then( ( categoriesList ) => {
-				if ( this.isStillMounted ) {
-					this.setState( { categoriesList } );
-				}
-			} )
-			.catch( () => {
-				if ( this.isStillMounted ) {
-					this.setState( { categoriesList: [] } );
-				}
-			} );
-		this.fetchRequest = apiFetch( {
-			path: addQueryArgs( `/wp/v2/hrs_unit`, CATEGORIES_LIST_QUERY ),
-		} )
-			.then( ( hrsUnitsList ) => {
-				if ( this.isStillMounted ) {
-					this.setState( { hrsUnitsList } );
-				}
-			} )
-			.catch( () => {
-				if ( this.isStillMounted ) {
-					this.setState( { hrsUnitsList: [] } );
-				}
-			} );
-	}
-
-	componentWillUnmount() {
-		this.isStillMounted = false;
-	}
-
-	toggleHrsUnits( unit ) {
+	toggleSelectedTerms( taxonomy, term ) {
 		const { attributes, setAttributes } = this.props;
-		const { hrsUnits } = attributes;
+		const { selectedTermLists } = attributes;
 
-		const allUnits = ! isUndefined( hrsUnits ) ? hrsUnits : [];
-		const hasUnit = includes( taxonomyListToIds( allUnits ), unit.id );
+		const allTerms = ! isUndefined( selectedTermLists )
+			? selectedTermLists
+			: {};
+		const taxonomyTerms = ! isUndefined( allTerms[ taxonomy ] )
+			? allTerms[ taxonomy ]
+			: ( allTerms[ taxonomy ] = [] );
+		const hasTerm = includes(
+			taxonomyListToIds( allTerms, taxonomy ),
+			term.id
+		);
 
-		const newUnits = hasUnit
-			? remove( allUnits, ( value ) => {
-					return value.id !== unit.id;
+		const newTerms = hasTerm
+			? remove( taxonomyTerms, ( value ) => {
+					return value.id !== term.id;
 			  } )
-			: [ ...allUnits, unit ];
+			: [ ...taxonomyTerms, term ];
 
-		setAttributes( { hrsUnits: newUnits } );
+		allTerms[ taxonomy ] = newTerms;
+
+		setAttributes( { selectedTermLists: allTerms } );
 	}
 
 	render() {
 		const {
 			attributes,
 			setAttributes,
+			className,
 			imageSizeOptions,
 			latestPosts,
+			taxonomies,
+			termLists,
 			defaultImageWidth,
 			defaultImageHeight,
 		} = this.props;
-		const { categoriesList, hrsUnitsList } = this.state;
 		const {
 			displayFeaturedImage,
 			displayPostContentRadio,
@@ -133,8 +116,7 @@ class PostsListEdit extends Component {
 			columns,
 			order,
 			orderBy,
-			categories,
-			hrsUnits,
+			selectedTermLists,
 			postsToShow,
 			excerptLength,
 			featuredImageAlign,
@@ -251,27 +233,54 @@ class PostsListEdit extends Component {
 					) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Sorting and filtering' ) }>
-					<ul className="edit__checklist">
-						{ hrsUnitsList.map( ( hrsUnit ) => (
-							<li
-								key={ hrsUnit.name }
-								className="components-checkbox-control__label"
-							>
-								<CheckboxControl
-									label={ hrsUnit.name }
-									checked={ includes(
-										taxonomyListToIds( hrsUnits ),
-										hrsUnit.id
+				<PanelBody
+					className={ `${ className } taxonomy-filter` }
+					title={ __( 'Filtering' ) }
+					initialOpen={ false }
+				>
+					{ taxonomies.map( ( taxonomy ) => (
+						<PanelBody
+							className={ 'taxonomy-filter--body' }
+							key={ taxonomy.slug }
+							title={ taxonomy.name }
+							initialOpen={ false }
+						>
+							<ul className="edit__checklist">
+								{ termLists[ taxonomy.slug ] &&
+									termLists[ taxonomy.slug ].map(
+										( term ) => (
+											<li
+												key={ term.id }
+												className="components-checkbox-control__label"
+											>
+												<CheckboxControl
+													label={ term.name }
+													checked={ includes(
+														taxonomyListToIds(
+															selectedTermLists,
+															taxonomy.rest_base
+														),
+														term.id
+													) }
+													onChange={ () => {
+														this.toggleSelectedTerms(
+															taxonomy.rest_base,
+															term
+														);
+													} }
+												/>
+											</li>
+										)
 									) }
-									onChange={ () => {
-										this.toggleHrsUnits( hrsUnit );
-									} }
-								/>
-							</li>
-						) ) }
-					</ul>
+							</ul>
+						</PanelBody>
+					) ) }
+				</PanelBody>
 
+				<PanelBody
+					title={ __( 'Order and number' ) }
+					initialOpen={ false }
+				>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -284,11 +293,6 @@ class PostsListEdit extends Component {
 						onNumberOfItemsChange={ ( value ) =>
 							setAttributes( { postsToShow: value } )
 						}
-						categoriesList={ categoriesList }
-						onCategoryChange={ ( value ) =>
-							setAttributes( { categories: value } )
-						}
-						selectedCategoryId={ categories }
 					/>
 
 					{ postLayout === 'grid' && (
@@ -360,7 +364,7 @@ class PostsListEdit extends Component {
 					<ToolbarGroup controls={ layoutControls } />
 				</BlockControls>
 				<ul
-					className={ classnames( this.props.className, {
+					className={ classnames( className, {
 						'wp-block-latest-posts__list': true,
 						'is-grid': postLayout === 'grid',
 						'has-dates': displayPostDate,
@@ -485,25 +489,38 @@ export default withSelect( ( select, props ) => {
 		postsToShow,
 		order,
 		orderBy,
-		categories,
-		hrsUnits,
+		selectedTermLists,
 	} = props.attributes;
-	const { getEntityRecords, getMedia } = select( 'core' );
+	const { getEntityRecords, getMedia, getTaxonomies } = select( 'core' );
 	const { getSettings } = select( 'core/block-editor' );
 	const { imageSizes, imageDimensions } = getSettings();
-	const unitIds = taxonomyListToIds( hrsUnits );
+
 	const latestPostsQuery = pickBy(
 		{
-			categories,
-			hrs_unit: unitIds,
 			order,
 			orderby: orderBy,
 			per_page: postsToShow,
 		},
 		( value ) => ! isUndefined( value )
 	);
-
+	if ( ! isUndefined( selectedTermLists ) ) {
+		Object.entries( selectedTermLists ).forEach( ( [ slug, terms ] ) => {
+			latestPostsQuery[ slug ] = terms.map( ( term ) => term.id );
+		} );
+	}
 	const posts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+
+	const allTaxonomies = getTaxonomies( TERMS_LIST_QUERY );
+	const taxonomies = filter( allTaxonomies, ( taxonomy ) =>
+		includes( taxonomy.types, 'post' )
+	);
+	const termLists = {};
+	taxonomies.forEach( ( { slug } ) => {
+		Object.defineProperty( termLists, slug, {
+			value: getEntityRecords( 'taxonomy', slug, TERMS_LIST_QUERY ),
+		} );
+	} );
+
 	const imageSizeOptions = imageSizes
 		.filter( ( { slug } ) => slug !== 'full' )
 		.map( ( { name, slug } ) => ( { value: slug, label: name } ) );
@@ -520,6 +537,8 @@ export default withSelect( ( select, props ) => {
 			0
 		),
 		imageSizeOptions,
+		taxonomies,
+		termLists,
 		latestPosts: ! Array.isArray( posts )
 			? posts
 			: posts.map( ( post ) => {

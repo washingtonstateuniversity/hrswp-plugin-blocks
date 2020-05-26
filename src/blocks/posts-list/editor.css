@@ -1,0 +1,9 @@
+/* stylelint-disable selector-class-pattern */
+.components-panel__body.wp-block-hrswp-posts-list.taxonomy-filter {
+
+	& .taxonomy-filter--body {
+		border-top: none;
+	}
+
+}
+/* stylelint-enable selector-class-pattern */
