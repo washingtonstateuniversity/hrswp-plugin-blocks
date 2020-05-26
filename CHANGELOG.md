@@ -19,7 +19,7 @@ Changelog formatting (http://semver.org/):
 ### Project management
 -->
 
-## 0.5.0-alpha.2 (:construction: 2020-05-13)
+## 0.5.0-alpha.3 (:construction: 2020-05-26)
 
 ### Code Quality
 
@@ -29,7 +29,7 @@ Changelog formatting (http://semver.org/):
 
 ### Experimental
 
-- Posts List block.
+- Posts List block with multiple taxonomy filtering.
 
 ## 0.4.1 (2020-04-22)
 
