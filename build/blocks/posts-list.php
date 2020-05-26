@@ -61,9 +61,32 @@ class PostsList {
 		$this->excerpt_length = $attributes['excerptLength'];
 		add_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 25 );
 
-		if ( isset( $attributes['categories'] ) ) {
-			$args['category__in'] = array_column( $attributes['categories'], 'id' );
+		// Taxonomy handling.
+		// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+		if ( isset( $attributes['selectedTermLists'] ) && ! empty( $attributes['selectedTermLists'] ) ) {
+			// Begin the query.
+			$args['tax_query'] = array( 'relation' => 'AND' );
+
+			// Build each query array.
+			foreach ( $attributes['selectedTermLists'] as $slug => $terms ) {
+				// WP_Query uses some different props than the Rest API \(°-°)/.
+				if ( 'categories' === $slug ) {
+					$slug = 'category';
+				}
+				if ( 'tags' === $slug ) {
+					$slug = 'post_tag';
+				}
+
+				if ( ! empty( $terms ) ) {
+					$args['tax_query'][] = array(
+						'taxonomy' => $slug,
+						'field'    => 'id',
+						'terms'    => array_column( $terms, 'id' ),
+					);
+				}
+			}
 		}
+		// phpcs:enable WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 
 		$posts = get_posts( $args );
 
@@ -185,9 +208,8 @@ class PostsList {
 					'className'               => array(
 						'type' => 'string',
 					),
-					'categories'              => array(
-						'type'  => 'array',
-						'items' => array( 'type' => 'object' ),
+					'selectedTermLists'       => array(
+						'type' => 'object',
 					),
 					'postsToShow'             => array(
 						'type'    => 'number',
