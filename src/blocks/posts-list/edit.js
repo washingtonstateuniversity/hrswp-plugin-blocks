@@ -101,7 +101,7 @@ class PostsListEdit extends Component {
 			setAttributes,
 			className,
 			imageSizeOptions,
-			latestPosts,
+			postsList,
 			taxonomies,
 			termLists,
 			defaultImageWidth,
@@ -308,7 +308,7 @@ class PostsListEdit extends Component {
 									? MAX_POSTS_COLUMNS
 									: Math.min(
 											MAX_POSTS_COLUMNS,
-											latestPosts.length
+											postsList.length
 									  )
 							}
 							required
@@ -318,13 +318,13 @@ class PostsListEdit extends Component {
 			</InspectorControls>
 		);
 
-		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+		const hasPosts = Array.isArray( postsList ) && postsList.length;
 		if ( ! hasPosts ) {
 			return (
 				<>
 					{ inspectorControls }
-					<Placeholder icon={ pin } label={ __( 'Latest Posts' ) }>
-						{ ! Array.isArray( latestPosts ) ? (
+					<Placeholder icon={ pin } label={ __( 'Posts' ) }>
+						{ ! Array.isArray( postsList ) ? (
 							<Spinner />
 						) : (
 							__( 'No posts found.' )
@@ -336,9 +336,9 @@ class PostsListEdit extends Component {
 
 		// Removing posts from display should be instant.
 		const displayPosts =
-			latestPosts.length > postsToShow
-				? latestPosts.slice( 0, postsToShow )
-				: latestPosts;
+			postsList.length > postsToShow
+				? postsList.slice( 0, postsToShow )
+				: postsList;
 
 		const layoutControls = [
 			{
@@ -363,11 +363,17 @@ class PostsListEdit extends Component {
 				<BlockControls>
 					<ToolbarGroup controls={ layoutControls } />
 				</BlockControls>
-				<ul
+				<div
 					className={ classnames( className, {
-						'wp-block-latest-posts__list': true,
 						'is-grid': postLayout === 'grid',
+						'has-feature-image': displayFeaturedImage,
 						'has-dates': displayPostDate,
+						'has-full-content':
+							displayPostContent &&
+							displayPostContentRadio === 'full_post',
+						'has-excerpt':
+							displayPostContent &&
+							displayPostContentRadio === 'excerpt',
 						[ `columns-${ columns }` ]: postLayout === 'grid',
 					} ) }
 				>
@@ -390,7 +396,8 @@ class PostsListEdit extends Component {
 						const imageSourceUrl = post.featuredImageSourceUrl;
 
 						const imageClasses = classnames( {
-							'wp-block-latest-posts__featured-image': true,
+							'wp-block-hrswp-posts-list--featured-image': true,
+							[ `size-${ featuredImageSizeSlug }` ]: !! featuredImageSizeSlug,
 							[ `align${ featuredImageAlign }` ]: !! featuredImageAlign,
 						} );
 
@@ -407,22 +414,18 @@ class PostsListEdit extends Component {
 									.join( ' ' ) }
 								{ /* translators: excerpt truncation character, default …  */ }
 								{ __( ' … ' ) }
-								<a
-									href={ post.link }
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									{ __( 'Read more' ) }
-								</a>
 							</>
 						) : (
 							excerpt
 						);
 
 						return (
-							<li key={ i }>
+							<div
+								className="wp-block-hrswp-posts-list--list-item"
+								key={ i }
+							>
 								{ displayFeaturedImage && (
-									<div className={ imageClasses }>
+									<figure className={ imageClasses }>
 										{ imageSourceUrl && (
 											<img
 												src={ imageSourceUrl }
@@ -433,51 +436,60 @@ class PostsListEdit extends Component {
 												} }
 											/>
 										) }
-									</div>
+									</figure>
 								) }
-								<a
-									href={ post.link }
-									target="_blank"
-									rel="noreferrer noopener"
-								>
-									{ titleTrimmed ? (
-										<RawHTML>{ titleTrimmed }</RawHTML>
-									) : (
-										__( '(no title)' )
+
+								<div className="wp-block-hrswp-posts-list--body">
+									<h3 className="wp-block-hrswp-posts-list--heading">
+										<a
+											href={ post.link }
+											target="_blank"
+											rel="noreferrer noopener"
+										>
+											{ titleTrimmed ? (
+												<RawHTML>
+													{ titleTrimmed }
+												</RawHTML>
+											) : (
+												__( '(no title)' )
+											) }
+										</a>
+									</h3>
+									{ displayPostDate && post.date_gmt && (
+										<time
+											dateTime={ format(
+												'c',
+												post.date_gmt
+											) }
+											className="wp-block-hrswp-posts-list--post-date"
+										>
+											{ dateI18n(
+												dateFormat,
+												post.date_gmt
+											) }
+										</time>
 									) }
-								</a>
-								{ displayPostDate && post.date_gmt && (
-									<time
-										dateTime={ format(
-											'c',
-											post.date_gmt
+									{ displayPostContent &&
+										displayPostContentRadio ===
+											'excerpt' && (
+											<p className="wp-block-hrswp-posts-list--post-excerpt">
+												{ postExcerpt }
+											</p>
 										) }
-										className="wp-block-latest-posts__post-date"
-									>
-										{ dateI18n(
-											dateFormat,
-											post.date_gmt
+									{ displayPostContent &&
+										displayPostContentRadio ===
+											'full_post' && (
+											<div className="wp-block-hrswp-posts-list--post-full-content">
+												<RawHTML key="html">
+													{ post.content.raw.trim() }
+												</RawHTML>
+											</div>
 										) }
-									</time>
-								) }
-								{ displayPostContent &&
-									displayPostContentRadio === 'excerpt' && (
-										<div className="wp-block-latest-posts__post-excerpt">
-											{ postExcerpt }
-										</div>
-									) }
-								{ displayPostContent &&
-									displayPostContentRadio === 'full_post' && (
-										<div className="wp-block-latest-posts__post-full-content">
-											<RawHTML key="html">
-												{ post.content.raw.trim() }
-											</RawHTML>
-										</div>
-									) }
-							</li>
+								</div>
+							</div>
 						);
 					} ) }
-				</ul>
+				</div>
 			</>
 		);
 	}
@@ -495,7 +507,7 @@ export default withSelect( ( select, props ) => {
 	const { getSettings } = select( 'core/block-editor' );
 	const { imageSizes, imageDimensions } = getSettings();
 
-	const latestPostsQuery = pickBy(
+	const postsListQuery = pickBy(
 		{
 			order,
 			orderby: orderBy,
@@ -505,10 +517,10 @@ export default withSelect( ( select, props ) => {
 	);
 	if ( ! isUndefined( selectedTermLists ) ) {
 		Object.entries( selectedTermLists ).forEach( ( [ slug, terms ] ) => {
-			latestPostsQuery[ slug ] = terms.map( ( term ) => term.id );
+			postsListQuery[ slug ] = terms.map( ( term ) => term.id );
 		} );
 	}
-	const posts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+	const posts = getEntityRecords( 'postType', 'post', postsListQuery );
 
 	const allTaxonomies = getTaxonomies( TERMS_LIST_QUERY );
 	const taxonomies = filter( allTaxonomies, ( taxonomy ) =>
@@ -539,7 +551,7 @@ export default withSelect( ( select, props ) => {
 		imageSizeOptions,
 		taxonomies,
 		termLists,
-		latestPosts: ! Array.isArray( posts )
+		postsList: ! Array.isArray( posts )
 			? posts
 			: posts.map( ( post ) => {
 					if ( post.featured_media ) {
