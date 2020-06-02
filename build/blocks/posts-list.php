@@ -94,7 +94,7 @@ class PostsList {
 
 		foreach ( $posts as $post ) {
 
-			$list_items_markup .= '<li>';
+			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--list-item">';
 
 			if ( $attributes['displayFeaturedImage'] && has_post_thumbnail( $post ) ) {
 				$image_style = '';
@@ -105,13 +105,16 @@ class PostsList {
 					$image_style .= sprintf( 'max-height:%spx;', $attributes['featuredImageSizeHeight'] );
 				}
 
-				$image_classes = 'wp-block-latest-posts__featured-image';
+				$image_classes = 'wp-block-hrswp-posts-list--featured-image';
+				if ( isset( $attributes['featuredImageSizeSlug'] ) ) {
+					$image_classes .= ' size-' . $attributes['featuredImageSizeSlug'];
+				}
 				if ( isset( $attributes['featuredImageAlign'] ) ) {
 					$image_classes .= ' align' . $attributes['featuredImageAlign'];
 				}
 
 				$list_items_markup .= sprintf(
-					'<div class="%1$s">%2$s</div>',
+					'<figure class="%1$s">%2$s</figure>',
 					$image_classes,
 					get_the_post_thumbnail(
 						$post,
@@ -123,19 +126,21 @@ class PostsList {
 				);
 			}
 
+			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--body">';
+
 			$title = get_the_title( $post );
 			if ( ! $title ) {
 				$title = __( '(no title)', 'hrswp-blocks' );
 			}
 			$list_items_markup .= sprintf(
-				'<a href="%1$s">%2$s</a>',
+				'<h3 class="wp-block-hrswp-posts-list--heading"><a href="%1$s">%2$s</a></h3>',
 				esc_url( get_permalink( $post ) ),
 				$title
 			);
 
 			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 				$list_items_markup .= sprintf(
-					'<time datetime="%1$s" class="wp-block-latest-posts__post-date">%2$s</time>',
+					'<time datetime="%1$s" class="wp-block-hrswp-posts-list--post-date">%2$s</time>',
 					esc_attr( get_the_date( 'c', $post ) ),
 					esc_html( get_the_date( '', $post ) )
 				);
@@ -147,7 +152,7 @@ class PostsList {
 				$trimmed_excerpt = get_the_excerpt( $post );
 
 				$list_items_markup .= sprintf(
-					'<div class="wp-block-latest-posts__post-excerpt">%1$s</div>',
+					'<p class="wp-block-hrswp-posts-list--post-excerpt">%1$s</p>',
 					$trimmed_excerpt
 				);
 			}
@@ -155,40 +160,57 @@ class PostsList {
 			if ( isset( $attributes['displayPostContent'] ) && $attributes['displayPostContent']
 				&& isset( $attributes['displayPostContentRadio'] ) && 'full_post' === $attributes['displayPostContentRadio'] ) {
 				$list_items_markup .= sprintf(
-					'<div class="wp-block-latest-posts__post-full-content">%1$s</div>',
+					'<div class="wp-block-hrswp-posts-list--post-full-content">%1$s</div>',
 					wp_kses_post( html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) ) )
 				);
 			}
 
-			$list_items_markup .= "</li>\n";
+			$list_items_markup .= "</div></div>\n";
 		}
 
 		remove_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 20 );
 
-		$class = 'wp-block-latest-posts wp-block-latest-posts__list';
+		$class = array( 'wp-block-hrswp-posts-list' );
+
+		if ( isset( $attributes['displayFeaturedImage'] ) && $attributes['displayFeaturedImage'] ) {
+			$class[] = 'has-feature-image';
+		}
+
 		if ( isset( $attributes['align'] ) ) {
-			$class .= ' align' . $attributes['align'];
+			$class[] = 'align' . $attributes['align'];
 		}
 
 		if ( isset( $attributes['postLayout'] ) && 'grid' === $attributes['postLayout'] ) {
-			$class .= ' is-grid';
+			$class[] = 'is-grid';
 		}
 
 		if ( isset( $attributes['columns'] ) && 'grid' === $attributes['postLayout'] ) {
-			$class .= ' columns-' . $attributes['columns'];
+			$class[] = 'columns-' . $attributes['columns'];
 		}
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-			$class .= ' has-dates';
+			$class[] = 'has-dates';
+		}
+
+		if (
+			isset( $attributes['displayPostContent'] )
+			&& $attributes['displayPostContent']
+			&& isset( $attributes['displayPostContentRadio'] )
+		) {
+			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
+				$class[] = 'has-full-content';
+			} elseif ( 'excerpt' === $attributes['displayPostContentRadio'] ) {
+				$class[] = 'has-excerpt';
+			}
 		}
 
 		if ( isset( $attributes['className'] ) ) {
-			$class .= ' ' . $attributes['className'];
+			$class[] = $attributes['className'];
 		}
 
 		return sprintf(
-			'<ul class="%1$s">%2$s</ul>',
-			esc_attr( $class ),
+			'<div class="%1$s">%2$s</div>',
+			esc_attr( implode( ' ', $class ) ),
 			$list_items_markup
 		);
 	}
