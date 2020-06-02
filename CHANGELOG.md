@@ -19,7 +19,11 @@ Changelog formatting (http://semver.org/):
 ### Project management
 -->
 
-## 0.5.0-alpha.3 (:construction: 2020-05-26)
+## 0.5.0-alpha.4 (:construction: 2020-06-01)
+
+### Enchancements
+
+- Add more font size variables. (adc2168)
 
 ### Code Quality
 
@@ -29,7 +33,7 @@ Changelog formatting (http://semver.org/):
 
 ### Experimental
 
-- Posts List block with multiple taxonomy filtering.
+- Posts List block with multiple taxonomy filtering and list or grid style options.
 
 ## 0.4.1 (2020-04-22)
 
