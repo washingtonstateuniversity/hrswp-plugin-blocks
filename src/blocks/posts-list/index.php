@@ -219,6 +219,12 @@ class PostsList {
 	 * Registers the `hrswp/posts-list` block on the server.
 	 */
 	public function register() {
+		/* translators: Maximum number of words in a post excerpt. */
+		$excerpt_length = intval( _x( '55', 'excerpt_length', 'hrswp-blocks' ) );
+		$excerpt_length = (int) apply_filters( 'excerpt_length', $excerpt_length );
+
+		$post_to_show = (int) get_option( 'posts_per_page', 5 );
+
 		register_block_type(
 			'hrswp/posts-list',
 			array(
@@ -235,7 +241,7 @@ class PostsList {
 					),
 					'postsToShow'             => array(
 						'type'    => 'number',
-						'default' => 5,
+						'default' => $post_to_show,
 					),
 					'displayPostContent'      => array(
 						'type'    => 'boolean',
@@ -247,7 +253,7 @@ class PostsList {
 					),
 					'excerptLength'           => array(
 						'type'    => 'number',
-						'default' => 55,
+						'default' => $excerpt_length,
 					),
 					'displayPostDate'         => array(
 						'type'    => 'boolean',
