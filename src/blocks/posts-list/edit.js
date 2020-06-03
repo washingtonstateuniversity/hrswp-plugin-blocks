@@ -383,7 +383,7 @@ class PostsListEdit extends Component {
 							'rendered',
 							'trim',
 						] );
-						let excerpt = post.excerpt.rendered;
+						let excerpt = post.content.rendered;
 
 						const excerptElement = document.createElement( 'div' );
 						excerptElement.innerHTML = excerpt;
@@ -405,6 +405,7 @@ class PostsListEdit extends Component {
 							excerptLength <
 								excerpt.trim().split( ' ' ).length &&
 							post.excerpt.raw === '';
+
 
 						const postExcerpt = needsReadMore ? (
 							<>
