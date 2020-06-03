@@ -406,7 +406,6 @@ class PostsListEdit extends Component {
 								excerpt.trim().split( ' ' ).length &&
 							post.excerpt.raw === '';
 
-
 						const postExcerpt = needsReadMore ? (
 							<>
 								{ excerpt
@@ -425,21 +424,20 @@ class PostsListEdit extends Component {
 								className="wp-block-hrswp-posts-list--list-item"
 								key={ i }
 							>
-								{ displayFeaturedImage &&
-									imageSourceUrl && (
-										<figure className={ imageClasses }>
-											{ imageSourceUrl && (
-												<img
-													src={ imageSourceUrl }
-													alt=""
-													style={ {
-														maxWidth: featuredImageSizeWidth,
-														maxHeight: featuredImageSizeHeight,
-													} }
-												/>
-											) }
-										</figure>
-									) }
+								{ displayFeaturedImage && imageSourceUrl && (
+									<figure className={ imageClasses }>
+										{ imageSourceUrl && (
+											<img
+												src={ imageSourceUrl }
+												alt=""
+												style={ {
+													maxWidth: featuredImageSizeWidth,
+													maxHeight: featuredImageSizeHeight,
+												} }
+											/>
+										) }
+									</figure>
+								) }
 
 								<div className="wp-block-hrswp-posts-list--body">
 									<h3 className="wp-block-hrswp-posts-list--heading">
