@@ -6,4 +6,35 @@
 	}
 
 }
+
+.wp-block[data-type="hrswp/posts-list"] {
+
+	& .wp-block-hrswp-posts-list--heading div {
+		display: inline-block;
+	}
+
+	& .wp-block-hrswp-posts-list--heading {
+		font-size: var(--font-size-3);
+		font-weight: 600;
+		margin: 0;
+
+		& a {
+			font-weight: inherit;
+		}
+	}
+
+	& .wp-block-hrswp-posts-list--post-excerpt {
+		line-height: 1.35;
+		margin: 0;
+	}
+
+	& .wp-block-hrswp-posts-list.has-feature-image:not(.has-full-content) .wp-block-hrswp-posts-list--featured-image {
+		margin: 0 1rem 0 0;
+	}
+
+	& .wp-block-hrswp-posts-list.is-grid.has-feature-image .wp-block-hrswp-posts-list--featured-image {
+		margin: 0;
+	}
+
+}
 /* stylelint-enable selector-class-pattern */
