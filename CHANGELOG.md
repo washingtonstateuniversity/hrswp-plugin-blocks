@@ -19,6 +19,12 @@ Changelog formatting (http://semver.org/):
 ### Experimental (for in-progress features still being refined)
 -->
 
+## 0.4.2 (2020-06-10)
+
+### Changed
+
+- Rename "stable" branch to "stable." See the Internet Engineering Task Force (IEFT), [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1).
+
 ## 0.4.1 (2020-04-22)
 
 ### Fixed
