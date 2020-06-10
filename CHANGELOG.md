@@ -19,7 +19,7 @@ Changelog formatting (http://semver.org/):
 ### Project management
 -->
 
-## 0.5.0-beta.1 (:construction: 2020-06-03)
+## 0.5.0-beta.2 (:construction: 2020-06-10)
 
 ### Enchancements
 
@@ -36,7 +36,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
-- Rename "stable" branch to "stable." See the Internet Engineering Task Force (IEFT), [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1).
+- Rename "stable" branch to "stable." See the Internet Engineering Task Force (IEFT), [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1). (ee09b76)
 
 ## 0.4.1 (2020-04-22)
 
