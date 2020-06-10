@@ -15,7 +15,7 @@
 		"editor",
 		"blocks"
 	],
-	"homepage": "https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/master/README.md",
+	"homepage": "https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/stable/README.md",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/washingtonstateuniversity/hrswp-plugin-blocks"

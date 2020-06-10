@@ -32,6 +32,12 @@ Changelog formatting (http://semver.org/):
 - Consolidate block includes into preexisting `Setup` class includes method. (35f720a)
 - Update `phpcs.xml.dist` to ignore WordPress's 'InvalidClassFileName' rule. (ca74371)
 
+## 0.4.2 (2020-06-10)
+
+### Changed
+
+- Rename "stable" branch to "stable." See the Internet Engineering Task Force (IEFT), [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1).
+
 ## 0.4.1 (2020-04-22)
 
 ### Fixed
