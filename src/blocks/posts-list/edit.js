@@ -42,6 +42,7 @@ const { withSelect } = wp.data;
  * Internal dependencies
  */
 import { pin, list, grid } from './icons';
+import { ListTerms } from './list-terms';
 import {
 	MIN_EXCERPT_LENGTH,
 	MAX_EXCERPT_LENGTH,
@@ -112,6 +113,9 @@ class PostsListEdit extends Component {
 			displayPostContentRadio,
 			displayPostContent,
 			displayPostDate,
+			displayPostCategory,
+			displayPostTag,
+			displayPostTaxonomy,
 			postLayout,
 			columns,
 			order,
@@ -173,6 +177,27 @@ class PostsListEdit extends Component {
 						checked={ displayPostDate }
 						onChange={ ( value ) =>
 							setAttributes( { displayPostDate: value } )
+						}
+					/>
+					<ToggleControl
+						label={ __( 'Display post category' ) }
+						checked={ displayPostCategory }
+						onChange={ ( value ) =>
+							setAttributes( { displayPostCategory: value } )
+						}
+					/>
+					<ToggleControl
+						label={ __( 'Display post tag' ) }
+						checked={ displayPostTag }
+						onChange={ ( value ) =>
+							setAttributes( { displayPostTag: value } )
+						}
+					/>
+					<ToggleControl
+						label={ __( 'Display post taxonomy' ) }
+						checked={ displayPostTaxonomy }
+						onChange={ ( value ) =>
+							setAttributes( { displayPostTaxonomy: value } )
 						}
 					/>
 				</PanelBody>
@@ -367,7 +392,6 @@ class PostsListEdit extends Component {
 					className={ classnames( className, {
 						'is-grid': postLayout === 'grid',
 						'has-feature-image': displayFeaturedImage,
-						'has-dates': displayPostDate,
 						'has-full-content':
 							displayPostContent &&
 							displayPostContentRadio === 'full_post',
@@ -383,23 +407,32 @@ class PostsListEdit extends Component {
 							'rendered',
 							'trim',
 						] );
-						let excerpt = post.content.rendered;
 
+						let excerpt = post.content.rendered;
 						const excerptElement = document.createElement( 'div' );
 						excerptElement.innerHTML = excerpt;
-
 						excerpt =
 							excerptElement.textContent ||
 							excerptElement.innerText ||
 							'';
 
 						const imageSourceUrl = post.featuredImageSourceUrl;
-
 						const imageClasses = classnames( {
 							'wp-block-hrswp-posts-list--featured-image': true,
 							[ `size-${ featuredImageSizeSlug }` ]: !! featuredImageSizeSlug,
 							[ `align${ featuredImageAlign }` ]: !! featuredImageAlign,
 						} );
+
+						const hasPostMeta =
+							displayPostDate ||
+							displayPostCategory ||
+							displayPostTag ||
+							displayPostTaxonomy;
+
+						const hasPostTerms =
+							displayPostCategory ||
+							displayPostTag ||
+							displayPostTaxonomy;
 
 						const needsReadMore =
 							excerptLength <
@@ -455,20 +488,6 @@ class PostsListEdit extends Component {
 											) }
 										</a>
 									</h3>
-									{ displayPostDate && post.date_gmt && (
-										<time
-											dateTime={ format(
-												'c',
-												post.date_gmt
-											) }
-											className="wp-block-hrswp-posts-list--post-date"
-										>
-											{ dateI18n(
-												dateFormat,
-												post.date_gmt
-											) }
-										</time>
-									) }
 									{ displayPostContent &&
 										displayPostContentRadio ===
 											'excerpt' && (
@@ -485,6 +504,84 @@ class PostsListEdit extends Component {
 												</RawHTML>
 											</div>
 										) }
+
+									{ hasPostMeta && (
+										<div className="wp-block-hrswp-posts-list--meta">
+											{ displayPostDate &&
+												post.date_gmt && (
+													<p className="wp-block-hrswp-posts-list--post-date">
+														{ __( 'Published on' ) }
+														<time
+															dateTime={ format(
+																'c',
+																post.date_gmt
+															) }
+														>
+															{ dateI18n(
+																dateFormat,
+																post.date_gmt
+															) }
+														</time>
+													</p>
+												) }
+											{ hasPostTerms &&
+												taxonomies.map(
+													( taxonomy ) => {
+														let prefix;
+														if (
+															'category' ===
+															taxonomy.slug
+														) {
+															if (
+																! displayPostCategory
+															) {
+																return null;
+															}
+															prefix = __(
+																'More on: '
+															);
+														} else if (
+															'post_tag' ===
+															taxonomy.slug
+														) {
+															if (
+																! displayPostTag
+															) {
+																return null;
+															}
+															prefix = __(
+																'In: '
+															);
+														} else {
+															if (
+																! displayPostTaxonomy
+															) {
+																return null;
+															}
+															prefix = `${ taxonomy.labels.singular_name }: `;
+														}
+
+														return (
+															<ListTerms
+																key={
+																	taxonomy.slug
+																}
+																post={ post }
+																terms={
+																	termLists
+																}
+																taxonomySlug={
+																	taxonomy.slug
+																}
+																prefix={
+																	prefix
+																}
+															/>
+														);
+													}
+												) }
+										</div>
+									) }
 								</div>
 							</div>
 						);
