@@ -19,11 +19,11 @@ Changelog formatting (http://semver.org/):
 ### Project management
 -->
 
-## 0.5.0-beta.2 (:construction: 2020-06-10)
+## 0.5.0-beta.3 (:construction: 2020-06-16)
 
 ### Enchancements
 
-- Posts List block with multiple-taxonomy filtering and list or grid style options. (e3ae834, 35f720a, 848a407, e05cfaf, 34fe5bd, 0322383, bd09976, 6f464f0, 5f5a647, 9a2a40a, 1c427ec, 20fb2fc, 767e34e, and 2f83829)
+- Posts List block with multiple-taxonomy filtering and list or grid style options. (e3ae834, 35f720a, 848a407, e05cfaf, 34fe5bd, 0322383, bd09976, 6f464f0, 5f5a647, 9a2a40a, 1c427ec, 20fb2fc, 767e34e, 2f83829, and 3c4e378)
 - Add more font size variables. (adc2168)
 
 ### Code Quality
