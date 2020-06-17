@@ -48,26 +48,8 @@ import {
 	MAX_EXCERPT_LENGTH,
 	MAX_POSTS_COLUMNS,
 	TERMS_LIST_QUERY,
-} from './constants';
-
-/**
- * Converts an array of taxonomy terms into an array of IDs.
- *
- * @param {Object[]} terms An array of taxonomy term objects.
- * @param {string} taxonomy The name of the taxonomy the terms belong to.
- */
-function taxonomyListToIds( terms, taxonomy ) {
-	if ( ! terms ) {
-		return null;
-	}
-
-	const ids =
-		terms[ taxonomy ] && terms[ taxonomy ].length > 0
-			? terms[ taxonomy ].map( ( term ) => term.id )
-			: [];
-
-	return ids;
-}
+	taxonomyListToIds,
+} from './shared';
 
 class PostsListEdit extends Component {
 	toggleSelectedTerms( taxonomy, term ) {
