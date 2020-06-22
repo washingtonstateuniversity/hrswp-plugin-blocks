@@ -25,16 +25,18 @@ export const PostMeta = ( props ) => {
 	const hasPostTerms =
 		displayPostCategory || displayPostTag || displayPostTaxonomy;
 
+	// Move `post_tags` to the end.
+	if ( hasPostTerms && taxonomies ) {
+		taxonomies.push(
+			taxonomies.splice(
+				taxonomies.findIndex( ( i ) => i.slug === 'post_tag' ),
+				1
+			)[ 0 ]
+		);
+	}
+
 	return (
 		<div className="wp-block-hrswp-posts-list--meta">
-			{ displayPostDate && post.date_gmt && (
-				<p className="wp-block-hrswp-posts-list--post-date">
-					{ __( 'Published on' ) }
-					<time dateTime={ format( 'c', post.date_gmt ) }>
-						{ dateI18n( dateFormat, post.date_gmt ) }
-					</time>
-				</p>
-			) }
 			{ hasPostTerms &&
 				taxonomies.map( ( taxonomy ) => {
 					let prefix;
@@ -47,7 +49,7 @@ export const PostMeta = ( props ) => {
 						if ( ! displayPostTag ) {
 							return null;
 						}
-						prefix = __( 'In: ' );
+						prefix = 'Tagged: ';
 					} else {
 						if ( ! displayPostTaxonomy ) {
 							return null;
@@ -65,6 +67,14 @@ export const PostMeta = ( props ) => {
 						/>
 					);
 				} ) }
+			{ displayPostDate && post.date_gmt && (
+				<p className="wp-block-hrswp-posts-list--post-date">
+					{ __( 'Published on ' ) }
+					<time dateTime={ format( 'c', post.date_gmt ) }>
+						{ dateI18n( dateFormat, post.date_gmt ) }
+					</time>
+				</p>
+			) }
 		</div>
 	);
-}
+};

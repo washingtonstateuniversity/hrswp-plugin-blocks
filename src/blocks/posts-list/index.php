@@ -158,21 +158,20 @@ class PostsList {
 			}
 
 			$post_meta_markup = '';
-			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-				$post_meta_markup .= sprintf(
-					'<p class="wp-block-hrswp-posts-list--post-date">%1$s <time datetime="%2$s">%3$s</time></p>',
-					__( 'Published on', 'hrswp-blocks' ),
-					esc_attr( get_the_date( 'c', $post ) ),
-					esc_html( get_the_date( '', $post ) )
-				);
-			}
-
 			if (
 				isset( $attributes['displayPostCategory'] ) ||
 				isset( $attributes['displayPostTag'] ) ||
 				isset( $attributes['displayPostTaxonomy'] )
 			) {
 				$taxonomy_names = get_object_taxonomies( $post->post_type );
+
+				// Move `post_tags` to the end.
+				$taxonomy_names[] = array_splice(
+					$taxonomy_names,
+					array_search( 'post_tag', $taxonomy_names, true ),
+					1
+				)[0];
+
 				foreach ( $taxonomy_names as $taxonomy_name ) {
 					if (
 						'category' === $taxonomy_name &&
@@ -180,7 +179,7 @@ class PostsList {
 						$attributes['displayPostCategory']
 					) {
 						$prefix = sprintf(
-							'<p class="wp-block-hrswp-posts-list--%1$s-list">%2$s: ',
+							'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
 							esc_attr( $taxonomy_name ),
 							__( 'More on', 'hrswp-blocks' )
 						);
@@ -192,9 +191,9 @@ class PostsList {
 						$attributes['displayPostTag']
 					) {
 						$prefix = sprintf(
-							'<p class="wp-block-hrswp-posts-list--%1$s-list">%2$s: ',
+							'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
 							esc_attr( $taxonomy_name ),
-							__( 'In', 'hrswp-blocks' )
+							__( 'Tagged', 'hrswp-blocks' )
 						);
 
 						$post_meta_markup .= get_the_term_list( $post->ID, $taxonomy_name, $prefix, ', ', '</p>' );
@@ -207,7 +206,7 @@ class PostsList {
 						) {
 							$taxonomy_object = get_taxonomy( $taxonomy_name );
 							$prefix          = sprintf(
-								'<p class="wp-block-hrswp-posts-list--%1$s-list">%2$s: ',
+								'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
 								esc_attr( $taxonomy_name ),
 								esc_html( $taxonomy_object->labels->singular_name )
 							);
@@ -216,6 +215,14 @@ class PostsList {
 						}
 					}
 				}
+			}
+			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+				$post_meta_markup .= sprintf(
+					'<p class="wp-block-hrswp-posts-list--post-date">%1$s <time datetime="%2$s">%3$s</time></p>',
+					__( 'Published on', 'hrswp-blocks' ),
+					esc_attr( get_the_date( 'c', $post ) ),
+					esc_html( get_the_date( '', $post ) )
+				);
 			}
 
 			if ( '' !== $post_meta_markup ) {
@@ -234,6 +241,10 @@ class PostsList {
 
 		if ( isset( $attributes['displayFeaturedImage'] ) && $attributes['displayFeaturedImage'] ) {
 			$class[] = 'has-feature-image';
+		}
+
+		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+			$class[] = 'has-date';
 		}
 
 		if ( isset( $attributes['align'] ) ) {

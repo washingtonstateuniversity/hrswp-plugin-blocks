@@ -309,7 +309,7 @@ class PostsListEdit extends Component {
 
 					{ postLayout === 'grid' && (
 						<RangeControl
-							label={ __( 'Columns' ) }
+							label={ __( 'Maximum columns' ) }
 							value={ columns }
 							onChange={ ( value ) =>
 								setAttributes( { columns: value } )
@@ -377,6 +377,7 @@ class PostsListEdit extends Component {
 					className={ classnames( className, {
 						'is-grid': postLayout === 'grid',
 						'has-feature-image': displayFeaturedImage,
+						'has-date': displayPostDate,
 						'has-full-content':
 							displayPostContent &&
 							displayPostContentRadio === 'full_post',
