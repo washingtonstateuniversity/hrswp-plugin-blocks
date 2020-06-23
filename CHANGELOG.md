@@ -24,24 +24,25 @@ Changelog formatting (http://semver.org/):
 
 ### Enchancements
 
-- Add decorative icons for post meta display. (039bce6)
-- Posts List block with multiple-taxonomy filtering and list or grid style options. (e3ae834, 35f720a, 848a407, e05cfaf, 34fe5bd, 0322383, bd09976, 6f464f0, 5f5a647, 9a2a40a, 1c427ec, 20fb2fc, 767e34e, 2f83829, 3c4e378, 30284bf, e46c98c, 14244e6, cb405a8)
-- Add more font size variables. (adc2168)
+- Add decorative icons for post meta display. (6d153e1)
+- Posts List block with multiple-taxonomy filtering and list or grid style options. (6d153e1)
+- Add more font size variables. (6d153e1)
 
 ### Code Quality
 
-- Fix `class-setup.php` phpcs issues. (35f720a)
-- Consolidate block includes into preexisting `Setup` class includes method. (35f720a)
-- Update `phpcs.xml.dist` to ignore WordPress's 'InvalidClassFileName' rule. (ca74371)
+- Fix `class-setup.php` phpcs issues. (6d153e1)
+- Consolidate block includes into preexisting `Setup` class includes method. (6d153e1)
+- Update `phpcs.xml.dist` to ignore WordPress's 'InvalidClassFileName' rule. (6d153e1)
 
 ### Build Tooling
 
-- WordPress Babel preset: update to latest version.
-- WordPress dependency extraction Webpack plugin: update to latest version.
-- NPM package linter: update to latest version.
-- PostCSS CLI: update to the latest version.
-- Stylelint: update to the latest version.
-- Webpack, Webpack Bundle Analyzer plugin, and Webpack CLI: update to the latest versions. 
+- Update non-breaking NPM dependencies (6d153e1):
+    - WordPress Babel preset: update to latest version.
+    - WordPress dependency extraction Webpack plugin: update to latest version.
+    - NPM package linter: update to latest version.
+    - PostCSS CLI: update to the latest version.
+    - Stylelint: update to the latest version.
+    - Webpack, Webpack Bundle Analyzer plugin, and Webpack CLI: update to the latest versions.
 
 ## 0.4.2 (2020-06-10)
 
