@@ -9,21 +9,45 @@ Changelog formatting (http://semver.org/):
 
 ## Major.MinorAddorDeprec.Bugfix YYYY-MM-DD
 
-### To Do (for upcoming changes)
-### Security (in case of fixed vulnerabilities)
-### Fixed (for any bug fixes)
-### Changed (for changes in existing functionality)
-### Added (for new features)
-### Deprecated (for once-stable features removed in upcoming releases)
-### Removed (for deprecated features removed in this release)
-### Experimental (for in-progress features still being refined)
+### Features
+### Enhancements
+### Bug Fixes
+### Experiments
+### Deprecations
+### Code quality
+### Documentation
+### Build Tooling
+### Project Management
 -->
+
+## 0.5.0-rc.1 (:construction: 2020-06-23)
+
+### Enchancements
+
+- Add decorative icons for post meta display. (039bce6)
+- Posts List block with multiple-taxonomy filtering and list or grid style options. (e3ae834, 35f720a, 848a407, e05cfaf, 34fe5bd, 0322383, bd09976, 6f464f0, 5f5a647, 9a2a40a, 1c427ec, 20fb2fc, 767e34e, 2f83829, 3c4e378, 30284bf, e46c98c, 14244e6, cb405a8)
+- Add more font size variables. (adc2168)
+
+### Code Quality
+
+- Fix `class-setup.php` phpcs issues. (35f720a)
+- Consolidate block includes into preexisting `Setup` class includes method. (35f720a)
+- Update `phpcs.xml.dist` to ignore WordPress's 'InvalidClassFileName' rule. (ca74371)
+
+### Build Tooling
+
+- WordPress Babel preset: update to latest version.
+- WordPress dependency extraction Webpack plugin: update to latest version.
+- NPM package linter: update to latest version.
+- PostCSS CLI: update to the latest version.
+- Stylelint: update to the latest version.
+- Webpack, Webpack Bundle Analyzer plugin, and Webpack CLI: update to the latest versions. 
 
 ## 0.4.2 (2020-06-10)
 
 ### Changed
 
-- Rename "stable" branch to "stable." See the Internet Engineering Task Force (IEFT), [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1).
+- Rename "master" branch to "stable." See the Internet Engineering Task Force (IEFT), [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1). (ee09b76)
 
 ## 0.4.1 (2020-04-22)
 
