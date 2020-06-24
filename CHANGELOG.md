@@ -20,7 +20,7 @@ Changelog formatting (http://semver.org/):
 ### Project Management
 -->
 
-## 0.5.0-rc.1 (:construction: 2020-06-23)
+## 0.5.0-rc.1 (:construction: 2020-06-24)
 
 ### Enchancements
 
@@ -30,7 +30,7 @@ Changelog formatting (http://semver.org/):
 
 ### Code Quality
 
-- Fix `class-setup.php` phpcs issues. (6d153e1)
+- Fix `class-setup.php` phpcs issues. (6d153e1, ca62c14)
 - Consolidate block includes into preexisting `Setup` class includes method. (6d153e1)
 - Update `phpcs.xml.dist` to ignore WordPress's 'InvalidClassFileName' rule. (6d153e1)
 
