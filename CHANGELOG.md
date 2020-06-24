@@ -22,10 +22,13 @@ Changelog formatting (http://semver.org/):
 
 ## 0.5.0-rc.1 (:construction: 2020-06-24)
 
+### Features
+
+- Posts List block with multiple-taxonomy filtering and list or grid style options. (6d153e1)
+
 ### Enchancements
 
 - Add decorative icons for post meta display. (6d153e1)
-- Posts List block with multiple-taxonomy filtering and list or grid style options. (6d153e1)
 - Add more font size variables. (6d153e1)
 
 ### Code Quality
