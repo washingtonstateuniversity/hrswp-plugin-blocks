@@ -154,7 +154,7 @@ class Setup {
 		 * Retrieves the block registration file for each dynamic block.
 		 */
 		$blocks_dir = dirname( __DIR__ ) . '/build/blocks/';
-		foreach ( $this->blocks as $name => $file ) {
+		foreach ( $this->blocks as $file ) {
 			if ( 0 === $file || ! file_exists( $blocks_dir . $file ) ) {
 				continue;
 			}
