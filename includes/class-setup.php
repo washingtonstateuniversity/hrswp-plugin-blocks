@@ -54,12 +54,12 @@ class Setup {
 		static $instance;
 
 		if ( ! isset( $instance ) ) {
-			$instance        = new Setup();
-			Setup::$basename = $file;
+			$instance       = new Setup();
+			self::$basename = $file;
 
 			$instance->setup_hooks();
-			$instance->includes();
 			$instance->define_blocks();
+			$instance->includes();
 		}
 
 		return $instance;
@@ -150,7 +150,17 @@ class Setup {
 	 * @access private
 	 */
 	private function includes() {
-		// Nothing yet.
+		/**
+		 * Retrieves the block registration file for each dynamic block.
+		 */
+		$blocks_dir = dirname( __DIR__ ) . '/build/blocks/';
+		foreach ( $this->blocks as $file ) {
+			if ( 0 === $file || ! file_exists( $blocks_dir . $file ) ) {
+				continue;
+			}
+
+			require $blocks_dir . $file;
+		}
 	}
 
 	/**
@@ -161,6 +171,7 @@ class Setup {
 	private function define_blocks() {
 		$this->blocks = array(
 			'hrswp/accordion'     => 0,
+			'hrswp/posts-list'    => 'posts-list.php',
 			'hrswp/search-filter' => 0,
 			'hrswp/callout'       => 0,
 			'hrswp/notification'  => 0,
@@ -219,8 +230,12 @@ class Setup {
 				'wp-data',
 				'wp-element',
 				'wp-compose',
+				'wp-api-fetch',
+				'wp-url',
+				'wp-date',
 			),
-			$plugin['version']
+			$plugin['version'],
+			true
 		);
 
 		wp_enqueue_style(
@@ -266,7 +281,8 @@ class Setup {
 				'mark-js',
 				plugins_url( 'build/lib/mark.min.js', self::$basename ),
 				array(),
-				$plugin['version']
+				$plugin['version'],
+				true
 			);
 
 			wp_enqueue_script(

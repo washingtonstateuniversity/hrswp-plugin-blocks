@@ -9,21 +9,53 @@ Changelog formatting (http://semver.org/):
 
 ## Major.MinorAddorDeprec.Bugfix YYYY-MM-DD
 
-### To Do (for upcoming changes)
-### Security (in case of fixed vulnerabilities)
-### Fixed (for any bug fixes)
-### Changed (for changes in existing functionality)
-### Added (for new features)
-### Deprecated (for once-stable features removed in upcoming releases)
-### Removed (for deprecated features removed in this release)
-### Experimental (for in-progress features still being refined)
+### Features
+### Enhancements
+### Bug Fixes
+### Experiments
+### Deprecations
+### Code quality
+### Documentation
+### Build Tooling
+### Project Management
 -->
+
+## 0.5.0-rc.1 (:construction: 2020-06-24)
+
+### Features
+
+- Posts List block with multiple-taxonomy filtering and list or grid style options. (6d153e1)
+
+### Enchancements
+
+- Add decorative icons for post meta display. (6d153e1)
+- Add more font size variables. (6d153e1)
+
+### Code Quality
+
+- Fix `class-setup.php` phpcs issues. (6d153e1, ca62c14)
+- Consolidate block includes into preexisting `Setup` class includes method. (6d153e1)
+- Update `phpcs.xml.dist` to ignore WordPress's 'InvalidClassFileName' rule. (6d153e1)
+
+### Build Tooling
+
+- PHP coding standards linter updates: PHP Codesniffer, WPCS coding standards, and PHPCS Variable Analysis. (bb34e38)
+- Update WordPress Stylelint config plugin to 17.0.0. (e4fabc4)
+- Update Webpack build plugins Copy Webpack Plugin and Source Map Loader. (7ad650a)
+- Update ESLint and associated plugins, WP ESLint plugin and WP Prettier. (15c37e5)
+- Update non-breaking NPM dependencies (6d153e1):
+    - WordPress Babel preset: update to latest version.
+    - WordPress dependency extraction Webpack plugin: update to latest version.
+    - NPM package linter: update to latest version.
+    - PostCSS CLI: update to the latest version.
+    - Stylelint: update to the latest version.
+    - Webpack, Webpack Bundle Analyzer plugin, and Webpack CLI: update to the latest versions.
 
 ## 0.4.2 (2020-06-10)
 
 ### Changed
 
-- Rename "stable" branch to "stable." See the Internet Engineering Task Force (IEFT), [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1).
+- Rename "master" branch to "stable." See the Internet Engineering Task Force (IEFT), [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1). (ee09b76)
 
 ## 0.4.1 (2020-04-22)
 

@@ -1,0 +1,8 @@
+{
+	"name": "hrswp/posts-list",
+	"category": "widgets",
+	"supports": {
+		"align": true,
+		"html": false
+	}
+}
