@@ -36,6 +36,10 @@ Changelog formatting (http://semver.org/):
 
 ### Build Tooling
 
+- PHP coding standards linter updates: PHP Codesniffer, WPCS coding standards, and PHPCS Variable Analysis. (bb34e38)
+- Update WordPress Stylelint config plugin to 17.0.0. (e4fabc4)
+- Update Webpack build plugins Copy Webpack Plugin and Source Map Loader. (7ad650a)
+- Update ESLint and associated plugins, WP ESLint plugin and WP Prettier. (15c37e5)
 - Update non-breaking NPM dependencies (6d153e1):
     - WordPress Babel preset: update to latest version.
     - WordPress dependency extraction Webpack plugin: update to latest version.
