@@ -39,6 +39,8 @@ Changelog formatting (http://semver.org/):
 
 ### Build Tooling
 
+- Fix Copy Webpack Plugin patterns syntax for v6.0 changes. (354a8e7)
+- Refactor Travis CI config to use jobs and separate test steps. (f472fb6)
 - PHP coding standards linter updates: PHP Codesniffer, WPCS coding standards, and PHPCS Variable Analysis. (bb34e38)
 - Update WordPress Stylelint config plugin to 17.0.0. (e4fabc4)
 - Update Webpack build plugins Copy Webpack Plugin and Source Map Loader. (7ad650a)
