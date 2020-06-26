@@ -20,7 +20,7 @@ Changelog formatting (http://semver.org/):
 ### Project Management
 -->
 
-## 0.5.0-rc.1 (:construction: 2020-06-24)
+## 0.5.0 (2020-06-26)
 
 ### Features
 
