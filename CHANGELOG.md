@@ -20,6 +20,16 @@ Changelog formatting (http://semver.org/):
 ### Project Management
 -->
 
+## 0.6.0-rc.1 (:construction: 2020-09-14)
+
+### Bug Fixes
+
+- Fix #41 WP core Columns styles override Sidebar column widths. (6f4c1f4)
+
+### Build Tooling
+
+- ⬆️ Update build tool dependencies. (7864b6c)
+
 ## 0.5.0 (2020-06-26)
 
 ### Features
