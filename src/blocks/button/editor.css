@@ -1,31 +1,31 @@
-.wp-block[data-align="center"] > .wp-block-button {
+.wp-block[data-align="center"] > .wp-block-hrswp-button {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.wp-block[data-align="right"] > .wp-block-button {
+.wp-block[data-align="right"] > .wp-block-hrswp-button {
 
 	/*!rtl:ignore*/
 	text-align: right;
 }
 
-.wp-block-button {
+.wp-block-hrswp-button {
 	position: relative;
 	cursor: text;
 }
 
-.wp-block-button:not(.has-text-color):not(.is-style-outline) [data-rich-text-placeholder]::after {
+.wp-block-hrswp-button:not(.has-text-color):not(.is-style-outline) [data-rich-text-placeholder]::after {
 	color: #fff;
 }
 
-.wp-block-button:focus {
+.wp-block-hrswp-button:focus {
 	box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--wp-admin-theme-color);
 	outline: 2px solid transparent;
 	outline-offset: -2px;
 }
 
-.wp-block-button[data-rich-text-placeholder]::after {
+.wp-block-hrswp-button[data-rich-text-placeholder]::after {
 	opacity: 0.8;
 }
 

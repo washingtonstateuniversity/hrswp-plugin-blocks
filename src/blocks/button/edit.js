@@ -29,13 +29,13 @@ const {
 	__experimentalUseEditorFeature,
 } = wp.blockEditor;
 const { rawShortcut, displayShortcut } = wp.keycodes;
-const { link, linkOff } = wp.icons;
 const { createBlock } = wp.blocks;
 
 /**
  * Internal dependencies
  */
 import getColorAndStyleProps from './color-props';
+import { link, linkOff } from './icons';
 
 const NEW_TAB_REL = 'noreferrer noopener';
 const MIN_BORDER_RADIUS_VALUE = 0;
