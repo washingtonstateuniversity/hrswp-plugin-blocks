@@ -6,7 +6,9 @@ const { createBlock } = wp.blocks;
 /**
  * Internal dependencies
  */
-import { name } from './block.json';
+import metadata from './block.json';
+
+const { name } = metadata;
 
 const transforms = {
 	from: [
