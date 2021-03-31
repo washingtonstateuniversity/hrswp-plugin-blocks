@@ -14,6 +14,13 @@ const transforms = {
 	from: [
 		{
 			type: 'block',
+			blocks: [ 'core/buttons' ],
+			transform: ( attributes, innerBlocks ) =>
+				// Creates the buttons block
+				createBlock( name, attributes, innerBlocks ),
+		},
+		{
+			type: 'block',
 			isMultiBlock: true,
 			blocks: [ 'core/button' ],
 			transform: ( buttons ) =>
