@@ -7,6 +7,7 @@
  */
 
 namespace HRSWP\Blocks\Blocks;
+
 use HRSWP\Blocks\Setup;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,12 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 0.7.0
  *
- * @param bool|array $allowed_block_types Array of block type slugs, or boolean to enable/disable all.
  * @return bool|array Array of allowed block type slugs, or boolean to enable/disable all.
  */
-function allowed_block_types_filter( $allowed_block_types ) {
+function allowed_block_types_filter() {
 	// Get all registered blocks and the HRSWP blocks.
-	$blocks = \WP_Block_Type_Registry::get_instance()->get_all_registered();
+	$blocks     = \WP_Block_Type_Registry::get_instance()->get_all_registered();
 	$hrs_blocks = Setup\Setup::get_all_registered();
 
 	// The blocks to hide.

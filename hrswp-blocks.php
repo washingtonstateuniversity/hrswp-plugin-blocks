@@ -16,6 +16,7 @@
  */
 
 namespace HRSWP\Blocks;
+
 use HRSWP\Blocks\Setup;
 
 // If this file is called directly, abort.
