@@ -16,6 +16,7 @@
  */
 
 namespace HRSWP\Blocks;
+use HRSWP\Blocks\Setup;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -44,7 +45,7 @@ register_uninstall_hook( __FILE__, array( __NAMESPACE__ . '\Setup', 'uninstall' 
  * @return Setup An instance of the Setup class.
  */
 function load() {
-	$hrswp_blocks = Setup::get_instance( __FILE__ );
+	$hrswp_blocks = Setup\Setup::get_instance( __FILE__ );
 
 	return $hrswp_blocks;
 }
