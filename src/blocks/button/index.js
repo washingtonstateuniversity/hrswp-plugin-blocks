@@ -32,6 +32,8 @@ export const settings = {
 	styles: [
 		{ name: 'fill', label: __( 'Fill' ), isDefault: true },
 		{ name: 'outline', label: __( 'Outline' ) },
+		{ name: 'text', label: __( 'Text' ) },
+		{ name: 'small', label: __( 'Small' ) },
 	],
 	edit,
 	save,
