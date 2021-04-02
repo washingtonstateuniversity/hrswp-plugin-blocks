@@ -19,7 +19,7 @@ const { name } = metadata;
 export { metadata, name };
 
 export const settings = {
-	title: _x( 'Buttonsy', 'block title' ),
+	title: _x( 'Buttons', 'block title' ),
 	description: __(
 		'Prompt visitors to take action with a group of button-style links.'
 	),
