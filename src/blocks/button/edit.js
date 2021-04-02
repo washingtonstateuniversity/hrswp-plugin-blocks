@@ -13,7 +13,6 @@ const {
 	ButtonGroup,
 	KeyboardShortcuts,
 	PanelBody,
-	RangeControl,
 	TextControl,
 	ToolbarButton,
 	ToolbarGroup,
@@ -26,7 +25,6 @@ const {
 	RichText,
 	useBlockProps,
 	__experimentalLinkControl,
-	__experimentalUseEditorFeature,
 } = wp.blockEditor;
 const { rawShortcut, displayShortcut } = wp.keycodes;
 const { createBlock } = wp.blocks;
@@ -34,42 +32,9 @@ const { createBlock } = wp.blocks;
 /**
  * Internal dependencies
  */
-import getColorAndStyleProps from './color-props';
 import { link, linkOff } from './icons';
 
 const NEW_TAB_REL = 'noreferrer noopener';
-const MIN_BORDER_RADIUS_VALUE = 0;
-const MAX_BORDER_RADIUS_VALUE = 50;
-const INITIAL_BORDER_RADIUS_POSITION = 5;
-
-const EMPTY_ARRAY = [];
-
-function BorderPanel( { borderRadius = '', setAttributes } ) {
-	const initialBorderRadius = borderRadius;
-	const setBorderRadius = useCallback(
-		( newBorderRadius ) => {
-			if ( newBorderRadius === undefined )
-				setAttributes( {
-					borderRadius: initialBorderRadius,
-				} );
-			else setAttributes( { borderRadius: newBorderRadius } );
-		},
-		[ setAttributes ]
-	);
-	return (
-		<PanelBody title={ __( 'Border settings' ) }>
-			<RangeControl
-				value={ borderRadius }
-				label={ __( 'Border radius' ) }
-				min={ MIN_BORDER_RADIUS_VALUE }
-				max={ MAX_BORDER_RADIUS_VALUE }
-				initialPosition={ INITIAL_BORDER_RADIUS_POSITION }
-				allowReset
-				onChange={ setBorderRadius }
-			/>
-		</PanelBody>
-	);
-}
 
 function WidthPanel( { selectedWidth, setAttributes } ) {
 	function handleChange( newWidth ) {
@@ -193,23 +158,13 @@ function ButtonEdit( props ) {
 		onReplace,
 		mergeBlocks,
 	} = props;
-	const {
-		borderRadius,
-		linkTarget,
-		placeholder,
-		rel,
-		text,
-		url,
-		width,
-	} = attributes;
+	const { linkTarget, placeholder, rel, text, url, width } = attributes;
 	const onSetLinkRel = useCallback(
 		( value ) => {
 			setAttributes( { rel: value } );
 		},
 		[ setAttributes ]
 	);
-	const colors =
-		__experimentalUseEditorFeature( 'color.palette' ) || EMPTY_ARRAY;
 
 	const onToggleOpenInNewTab = useCallback(
 		( value ) => {
@@ -235,7 +190,6 @@ function ButtonEdit( props ) {
 		setAttributes( { text: newText.replace( /<\/?a[^>]*>/g, '' ) } );
 	};
 
-	const colorProps = getColorAndStyleProps( attributes, colors, true );
 	const ref = useRef();
 	const blockProps = useBlockProps( { ref } );
 
@@ -255,18 +209,8 @@ function ButtonEdit( props ) {
 					withoutInteractiveFormatting
 					className={ classnames(
 						className,
-						'wp-block-button__link',
-						colorProps.className,
-						{
-							'no-border-radius': borderRadius === 0,
-						}
+						'wp-block-button__link'
 					) }
-					style={ {
-						borderRadius: borderRadius
-							? borderRadius + 'px'
-							: undefined,
-						...colorProps.style,
-					} }
 					onSplit={ ( value ) =>
 						createBlock( 'hrswp/button', {
 							...attributes,
@@ -287,10 +231,6 @@ function ButtonEdit( props ) {
 				anchorRef={ ref }
 			/>
 			<InspectorControls>
-				<BorderPanel
-					borderRadius={ borderRadius }
-					setAttributes={ setAttributes }
-				/>
 				<WidthPanel
 					selectedWidth={ width }
 					setAttributes={ setAttributes }

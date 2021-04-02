@@ -38,20 +38,8 @@
 		"placeholder": {
 			"type": "string"
 		},
-		"borderRadius": {
-			"type": "number"
-		},
 		"style": {
 			"type": "object"
-		},
-		"backgroundColor": {
-			"type": "string"
-		},
-		"textColor": {
-			"type": "string"
-		},
-		"gradient": {
-			"type": "string"
 		},
 		"width": {
 			"type": "number"
@@ -61,9 +49,6 @@
 		"anchor": true,
 		"align": true,
 		"alignWide": false,
-		"color": {
-			"__experimentalSkipSerialization": true
-		},
 		"reusable": false,
 		"__experimentalSelector": ".wp-block-button__link"
 	},
