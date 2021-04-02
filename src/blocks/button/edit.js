@@ -11,7 +11,9 @@ const { useCallback, useState, useRef } = wp.element;
 const {
 	Button,
 	ButtonGroup,
+	ExternalLink,
 	KeyboardShortcuts,
+	Notice,
 	PanelBody,
 	TextControl,
 	ToolbarButton,
@@ -88,6 +90,9 @@ function URLPicker( {
 		} );
 		setIsURLPickerOpen( false );
 	};
+	const msg = __(
+		'Avoid opening links in new windows/tabs. It can be disorienting and presents accessibility issues (see WCAG 2.0 G200).'
+	);
 	const linkControl = ( isURLPickerOpen || urlIsSetandSelected ) && (
 		<Popover
 			position="bottom center"
@@ -108,6 +113,26 @@ function URLPicker( {
 					}
 				} }
 			/>
+			{ opensInNewTab && (
+				<div className="block-editor-new-tab-checker">
+					<Notice
+						spokenMessage={ msg }
+						status="warning"
+						isDismissible={ false }
+					>
+						<>
+							{ msg }
+							<ExternalLink
+								href={
+									'https://hrscms.hrs.wsu.edu/accessibility-guide/link-text/#opening-links-in-browsers-new-tabs'
+								}
+							>
+								{ 'Refer to the HRS Style Guide' }
+							</ExternalLink>
+						</>
+					</Notice>
+				</div>
+			) }
 		</Popover>
 	);
 	return (

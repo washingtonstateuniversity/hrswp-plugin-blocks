@@ -79,6 +79,15 @@
 	margin-bottom: 12px;
 }
 
+.block-editor-new-tab-checker {
+	margin-bottom: 1rem;
+
+	& .components-external-link {
+		display: block;
+		margin-top: 1em;
+	}
+}
+
 div[data-type="hrswp/button"] {
 	display: table;
 }
