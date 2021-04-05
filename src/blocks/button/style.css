@@ -1,4 +1,8 @@
 /* stylelint-disable selector-class-pattern */
+.wp-block-hrswp-button {
+	box-sizing: border-box;
+}
+
 main button,
 main .button,
 main input[type="button"],
@@ -11,6 +15,7 @@ main input[type="submit"],
 	border: 1px solid var(--brand-crimson);
 	border-radius: 3px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
 	color: #fff;
 	cursor: pointer;
 	display: inline-block;
