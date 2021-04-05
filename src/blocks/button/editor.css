@@ -15,16 +15,6 @@
 	cursor: text;
 }
 
-.wp-block-hrswp-button:not(.has-text-color):not(.is-style-outline) [data-rich-text-placeholder]::after {
-	color: #fff;
-}
-
-.wp-block-hrswp-button:focus {
-	box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--wp-admin-theme-color);
-	outline: 2px solid transparent;
-	outline-offset: -2px;
-}
-
 .wp-block-hrswp-button[data-rich-text-placeholder]::after {
 	opacity: 0.8;
 }
