@@ -17,7 +17,14 @@ const transforms = {
 			blocks: [ 'core/buttons' ],
 			transform: ( attributes, innerBlocks ) =>
 				// Creates the buttons block
-				createBlock( name, attributes, innerBlocks ),
+				createBlock(
+					name,
+					attributes,
+					// Convert the inner buttons as well
+					innerBlocks.map( ( block ) =>
+						createBlock( 'hrswp/button', block.attributes )
+					)
+				),
 		},
 		{
 			type: 'block',
