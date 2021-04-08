@@ -59,16 +59,18 @@ const config = {
 		new CopyPlugin( {
 			patterns: [
 				{
-					from: './src/blocks/**/index.php',
-					to: 'blocks/',
-					transformPath( targetPath ) {
-						const dir = basename( dirname( targetPath ) );
-						return `blocks/${ dir }.php`;
+					from: './src/*/**/index.php',
+					to( { absoluteFilename } ) {
+						const dir = basename( dirname( absoluteFilename ) );
+						const parent = basename(
+							dirname( dirname( absoluteFilename ) )
+						);
+						return `${ parent }/${ dir }[ext]`;
 					},
 				},
 				{
 					from: './src/icons/**/*',
-					to: 'icons/[name].[ext]',
+					to: 'icons/[name][ext]',
 				},
 				{
 					from: './node_modules/mark.js/dist/mark.min.js',
