@@ -6,7 +6,7 @@
  * @since 0.1.0
  */
 
-namespace HRSWP\Blocks;
+namespace HRSWP\Blocks\Setup;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -40,7 +40,7 @@ class Setup {
 	 * @since 0.3.0
 	 * @var array Array of blocks to register in the format 'registered/block-name' => 'render-file.php' or 0.
 	 */
-	public $blocks = array();
+	public static $blocks = array();
 
 	/**
 	 * Instantiates plugin Setup singleton.
@@ -72,6 +72,17 @@ class Setup {
 	 */
 	public function __construct() {
 		/* Nothing doing. */
+	}
+
+	/**
+	 * Returns a list of all HRSWP registered blocks.
+	 *
+	 * @since 0.7.0
+	 *
+	 * @return string[] An array of all HRSWP registered block names.
+	 */
+	public static function get_all_registered() {
+		return array_keys( self::$blocks );
 	}
 
 	/**
@@ -154,13 +165,18 @@ class Setup {
 		 * Retrieves the block registration file for each dynamic block.
 		 */
 		$blocks_dir = dirname( __DIR__ ) . '/build/blocks/';
-		foreach ( $this->blocks as $file ) {
+		foreach ( self::$blocks as $file ) {
 			if ( 0 === $file || ! file_exists( $blocks_dir . $file ) ) {
 				continue;
 			}
 
 			require $blocks_dir . $file;
 		}
+
+		/**
+		 * The block modifications file.
+		 */
+		require dirname( __FILE__ ) . '/blocks.php';
 	}
 
 	/**
@@ -169,8 +185,10 @@ class Setup {
 	 * @since 0.3.0
 	 */
 	private function define_blocks() {
-		$this->blocks = array(
+		self::$blocks = array(
 			'hrswp/accordion'     => 0,
+			'hrswp/button'        => 0,
+			'hrswp/buttons'       => 0,
 			'hrswp/posts-list'    => 'posts-list.php',
 			'hrswp/search-filter' => 0,
 			'hrswp/callout'       => 0,
@@ -254,7 +272,7 @@ class Setup {
 	public function enqueue_scripts() {
 		// Only load frontend scripts if one of the blocks is active on the page.
 		$has_block = false;
-		foreach ( $this->blocks as $name => $file ) {
+		foreach ( self::$blocks as $name => $file ) {
 			if ( ! is_singular() || false !== has_block( $name ) ) {
 				$has_block = true;
 				continue;
