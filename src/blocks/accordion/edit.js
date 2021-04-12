@@ -98,12 +98,12 @@ const AccordionEdit = withDispatch( ( dispatch, ownProps, registry ) => ( {
 	 * @param {number} newLevel the heading level setting
 	 */
 	updateHeadingLevel( newLevel ) {
-	const { clientId, setAttributes } = ownProps;
+		const { clientId, setAttributes } = ownProps;
 		const { updateBlockAttributes } = dispatch( 'core/block-editor' );
 		const { getBlockOrder } = registry.select( 'core/block-editor' );
 
 		// Update own level setting.
-setAttributes( { level: newLevel } );
+		setAttributes( { level: newLevel } );
 
 		// Update child block to match own level setting.
 		const innerBlockClientIds = getBlockOrder( clientId );
@@ -113,6 +113,6 @@ setAttributes( { level: newLevel } );
 			} );
 		} );
 	},
-} ) )( AccordionEditContent )
+} ) )( AccordionEditContent );
 
 export default AccordionEdit;
