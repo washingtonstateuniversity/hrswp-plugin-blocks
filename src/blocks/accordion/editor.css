@@ -1,9 +1,8 @@
 .wp-block-buttons.controls {
-	display: flex;
+display: flex;
 	justify-content: flex-end;
-	opacity: 0.5;
+	opacity: .5;
 }
-
 /* stylelint-disable selector-class-pattern */
 .wp-block-buttons.controls .wp-block-button__link {
 	font-weight: 400;
