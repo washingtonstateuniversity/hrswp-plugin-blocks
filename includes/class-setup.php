@@ -5,6 +5,7 @@
  * @package HRSWP_Blocks
  * @since 0.1.0
  */
+
 namespace HRSWP\Blocks\Setup;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -49,7 +50,7 @@ class Setup {
 	 * @param string $file The __FILE__ value of the main plugin file.
 	 * @return Setup An instance of the HRSWP Blocks Setup class.
 	 */
-	public static function get_instance($file) {
+	public static function get_instance( $file ) {
 		static $instance;
 
 		if ( ! isset( $instance ) ) {
