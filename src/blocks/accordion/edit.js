@@ -1,15 +1,14 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { InnerBlocks, InspectorControls } = wp.blockEditor;
-const { Disabled, PanelBody } = wp.components;
+const { BlockControls, InnerBlocks } = wp.blockEditor;
+const { Disabled, ToolbarGroup } = wp.components;
 const { withDispatch } = wp.data;
 
 /**
  * Internal dependencies
  */
-import AccordionHeadingToolbar from './heading-toolbar';
+import HeadingLevelDropdown from './heading-level-dropdown';
 
 /**
  * Allowed blocks constant is passed to InnerBlocks precisely as specified here.
@@ -43,19 +42,16 @@ function AccordionEditContent( { attributes, className, updateHeadingLevel } ) {
 	const { level } = attributes;
 	return (
 		<>
-			<InspectorControls>
-				<PanelBody title={ __( 'Heading level' ) }>
-					<AccordionHeadingToolbar
-						isCollapsed={ false }
-						minLevel={ 1 }
-						maxLevel={ 7 }
+			<BlockControls>
+				<ToolbarGroup>
+					<HeadingLevelDropdown
 						selectedLevel={ level }
 						onChange={ ( newLevel ) =>
 							updateHeadingLevel( newLevel )
 						}
 					/>
-				</PanelBody>
-			</InspectorControls>
+				</ToolbarGroup>
+			</BlockControls>
 			<div className={ className } data-accordion-block>
 				<Disabled>
 					<div className="wp-block-buttons controls">
