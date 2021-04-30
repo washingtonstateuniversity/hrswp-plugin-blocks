@@ -1,3 +1,19 @@
+.editor-styles-wrapper .wp-block-hrswp-accordion .accordion-panel-heading {
+	font-size: 18px;
+	line-height: 1.4;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.wp-block-hrswp-accordion .accordion-panel {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	padding-bottom: 1.5em;
+}
+
+div[data-type="hrswp/accordion-panel"]:first-of-type > .accordion-panel-heading {
+	border-top: none;
+}
+
 .wp-block-buttons.controls {
 	display: flex;
 	justify-content: flex-end;
