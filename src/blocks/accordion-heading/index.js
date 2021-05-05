@@ -28,7 +28,7 @@ export const settings = {
 	icon,
 	example: {
 		attributes: {
-			content: __( 'Code is Poetry' ),
+			content: __( 'Panel Heading' ),
 			level: 2,
 		},
 	},
