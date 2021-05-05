@@ -8,18 +8,7 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const {
-	AlignmentToolbar,
-	BlockControls,
-	RichText,
-	useBlockProps,
-} = wp.blockEditor;
-const { ToolbarGroup } = wp.components;
-
-/**
- * Internal dependencies
- */
-import HeadingLevelDropdown from './heading-level-dropdown';
+const { RichText, useBlockProps } = wp.blockEditor;
 
 function HeadingEdit( {
 	attributes,
@@ -37,16 +26,6 @@ function HeadingEdit( {
 
 	return (
 		<>
-			{ /* <BlockControls>
-				<ToolbarGroup>
-					<HeadingLevelDropdown
-						selectedLevel={ level }
-						onChange={ ( newLevel ) =>
-							setAttributes( { level: newLevel } )
-						}
-					/>
-				</ToolbarGroup>
-			</BlockControls> */ }
 			<RichText
 				identifier="content"
 				allowedFormats={ [] }

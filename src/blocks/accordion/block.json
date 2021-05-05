@@ -15,7 +15,7 @@
 			"type": "int",
 			"default": 0
 		},
-		"headingLevel": {
+		"level": {
 			"type": "number",
 			"default": 2
 		},

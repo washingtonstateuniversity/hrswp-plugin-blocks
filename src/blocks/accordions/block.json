@@ -5,7 +5,7 @@
 	"category": "layout",
 	"description": "Display content in an accordion.",
 	"attributes": {
-		"headingLevel": {
+		"level": {
 			"type": "number",
 			"default": 2
 		}

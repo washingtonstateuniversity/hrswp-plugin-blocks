@@ -8,12 +8,11 @@ import { dropRight, get, times } from 'lodash';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { PanelBody, RangeControl, Notice } = wp.components;
+const { PanelBody, RangeControl, Notice, ToolbarGroup } = wp.components;
 const {
 	InspectorControls,
 	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
 	BlockControls,
-	BlockVerticalAlignmentToolbar,
 	__experimentalBlockVariationPicker,
 	useBlockProps,
 	store: blockEditorStore,
@@ -28,7 +27,7 @@ const {
 /**
  * Internal dependencies
  */
-import { name as accordionName } from '../accordion';
+import HeadingLevelDropdown from './heading-level-dropdown';
 
 const ALLOWED_BLOCKS = [ 'hrswp/accordion' ];
 
@@ -40,7 +39,7 @@ function AccordionsEditContainer( {
 	updateAccordions,
 	clientId,
 } ) {
-	const { headingLevel } = attributes;
+	const { level } = attributes;
 
 	const { count } = useSelect(
 		( select ) => {
@@ -64,13 +63,22 @@ function AccordionsEditContainer( {
 
 	return (
 		<>
-			<BlockControls></BlockControls>
+			<BlockControls>
+				<ToolbarGroup>
+					<HeadingLevelDropdown
+						selectedLevel={ level }
+						onChange={ updateHeadingLevel }
+					/>
+				</ToolbarGroup>
+			</BlockControls>
 			<InspectorControls>
 				<PanelBody>
 					<RangeControl
 						label={ __( 'Panels' ) }
 						value={ count }
-						onChange={ ( value ) => updateAccordions( count, value ) }
+						onChange={ ( value ) =>
+							updateAccordions( count, value )
+						}
 						min={ 3 }
 						max={ Math.max( 75, count ) }
 					/>
@@ -85,31 +93,51 @@ const AccordionsEditContainerWrapper = withDispatch(
 	( dispatch, ownProps, registry ) => ( {
 		/**
 		 * Update all child Accordion blocks with...
+		 *
+		 * @param level
 		 */
-		updateHeadingLevel( headingLevel ) {
+		updateHeadingLevel( level ) {
 			const { clientId, setAttributes } = ownProps;
 			const { updateBlockAttributes } = dispatch( blockEditorStore );
-			const { getBlockOrder } = registry.select( blockEditorStore );
+			const { getBlockOrder, getBlockName } = registry.select( blockEditorStore );
 
 			// Update own heading level.
-			setAttributes( { headingLevel } );
+			setAttributes( { level } );
 
-			// Update all child blocks.
-			const innerBlockClientIds = getBlockOrder( clientId );
-			innerBlockClientIds.forEach( ( innerBlockClientId ) => {
-				updateBlockAttributes( innerBlockClientId, {
-					headingLevel,
+			// Drill down to update accordion heading child blocks.
+			const accordionBlockClientIds = getBlockOrder( clientId );
+			accordionBlockClientIds.forEach( ( accordionBlockClientId ) => {
+				// Update accordion block heading level for future headings.
+				updateBlockAttributes( accordionBlockClientId, {
+					level,
+				} );
+
+				const innerBlockClientIds = getBlockOrder(
+					accordionBlockClientId
+				);
+				innerBlockClientIds.forEach( ( innerBlockClientId ) => {
+					const innerBlockName = getBlockName( innerBlockClientId );
+					if ( 'hrswp/accordion-heading' === innerBlockName ) {
+						// Update existing accordion headings levels.
+						updateBlockAttributes( innerBlockClientId, {
+							level,
+						} );
+					}
 				} );
 			} );
 		},
 
 		/**
 		 * Updates the accordion panels count.
+		 *
+		 * @param previousPanels
+		 * @param newPanels
 		 */
 		updateAccordions( previousPanels, newPanels ) {
-			const { clientId } = ownProps;
+			const { clientId, attributes } = ownProps;
 			const { replaceInnerBlocks } = dispatch( blockEditorStore );
 			const { getBlocks } = registry.select( blockEditorStore );
+			const { level } = attributes;
 
 			let innerBlocks = getBlocks( clientId );
 
@@ -119,7 +147,7 @@ const AccordionsEditContainerWrapper = withDispatch(
 				innerBlocks = [
 					...innerBlocks,
 					...times( newPanels - previousPanels, () => {
-						return createBlock( 'hrswp/accordion' );
+						return createBlock( 'hrswp/accordion', { level } );
 					} ),
 				];
 			} else {
@@ -186,7 +214,7 @@ const AccordionsEdit = ( props ) => {
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			select( blockEditorStore ).getBlocks( clientId ).length > 0,
-			[ clientId ]
+		[ clientId ]
 	);
 
 	const Component = hasInnerBlocks

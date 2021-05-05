@@ -9,7 +9,7 @@ import classnames from 'classnames';
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 export default function save( { attributes } ) {
-	const { headingLevel } = attributes;
+	const { level } = attributes;
 
 	const className = 'hrswp-block-accordions-wrapper';
 

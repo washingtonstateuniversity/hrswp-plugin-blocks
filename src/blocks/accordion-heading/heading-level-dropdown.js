@@ -1,12 +1,7 @@
 /**
  * WordPress dependencies
  */
-const {
-	Dropdown,
-	Toolbar,
-	ToolbarButton,
-	ToolbarGroup,
-} = wp.components;
+const { Dropdown, Toolbar, ToolbarButton, ToolbarGroup } = wp.components;
 const { __, sprintf } = wp.i18n;
 const { DOWN } = wp.keycodes;
 

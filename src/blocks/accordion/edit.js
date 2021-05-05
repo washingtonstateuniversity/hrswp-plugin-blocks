@@ -22,7 +22,7 @@ const { useSelect, useDispatch } = wp.data;
 const { createBlock } = wp.blocks;
 
 function AccordionEdit( {
-	attributes: { headingContent, elementId, headingLevel, placeholder },
+	attributes: { headingContent, elementId, level, placeholder },
 	setAttributes,
 	clientId,
 } ) {
@@ -61,7 +61,7 @@ function AccordionEdit( {
 	const innerBlocksProps = useInnerBlocksProps(
 		{ ...blockProps, 'aria-label': label },
 		{
-			template: [	[ 'hrswp/accordion-heading', {}	] ],
+			template: [ [ 'hrswp/accordion-heading', { level } ] ],
 			templateLock: false,
 			renderAppender: hasChildBlocks
 				? undefined
@@ -76,11 +76,9 @@ function AccordionEdit( {
 		// } );
 	};
 
-	const tagName = 'h' + headingLevel;
-
 	return (
 		<>
-			{/* <RichText
+			{ /* <RichText
 				aria-label={ __( 'Accordion panel text' ) }
 				placeholder={  }
 				value={ headingContent }
@@ -88,7 +86,7 @@ function AccordionEdit( {
 				allowedFormats={ [ 'italic' ] }
 				className={ 'accordion-panel-heading' }
 				tagName={ tagName }
-			/> */}
+			/> */ }
 			<div { ...innerBlocksProps } />
 		</>
 	);

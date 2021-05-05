@@ -9,11 +9,7 @@ import classnames from 'classnames';
 const { InnerBlocks, RichText, useBlockProps } = wp.blockEditor;
 
 export default function save( { attributes } ) {
-	const {
-		headingContent,
-		elementId,
-		headingLevel,
-	} = attributes;
+	const { headingContent, elementId, headingLevel } = attributes;
 
 	const tagName = 'h' + headingLevel;
 
@@ -25,11 +21,11 @@ export default function save( { attributes } ) {
 
 	return (
 		<>
-			{/* <RichText.Content
+			{ /* <RichText.Content
 				tagName={ tagName }
 				className={ 'accordion-panel-heading' }
 				value={ headingContent }
-			/> */}
+			/> */ }
 			<div { ...useBlockProps.save( { className: wrapperClasses } ) }>
 				<InnerBlocks.Content />
 			</div>
