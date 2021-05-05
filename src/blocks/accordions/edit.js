@@ -1,14 +1,13 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames';
 import { dropRight, get, times } from 'lodash';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { PanelBody, RangeControl, Notice, ToolbarGroup } = wp.components;
+const { PanelBody, RangeControl, ToolbarGroup } = wp.components;
 const {
 	InspectorControls,
 	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
@@ -30,8 +29,6 @@ const {
 import HeadingLevelDropdown from './heading-level-dropdown';
 
 const ALLOWED_BLOCKS = [ 'hrswp/accordion' ];
-
-// const ACCORDION_TEMPLATE = [ [ 'hrswp/accordion' ], [ 'hrswp/accordion' ] ];
 
 function AccordionsEditContainer( {
 	attributes,
@@ -92,22 +89,24 @@ function AccordionsEditContainer( {
 const AccordionsEditContainerWrapper = withDispatch(
 	( dispatch, ownProps, registry ) => ( {
 		/**
-		 * Update all child Accordion blocks with...
+		 * Update all child Accordion blocks with selected heading level.
 		 *
-		 * @param level
+		 * @param {number} level the heading level as an integer from 1 to 6
 		 */
 		updateHeadingLevel( level ) {
 			const { clientId, setAttributes } = ownProps;
 			const { updateBlockAttributes } = dispatch( blockEditorStore );
-			const { getBlockOrder, getBlockName } = registry.select( blockEditorStore );
+			const { getBlockOrder, getBlockName } = registry.select(
+				blockEditorStore
+			);
 
 			// Update own heading level.
 			setAttributes( { level } );
 
 			// Drill down to update accordion heading child blocks.
 			const accordionBlockClientIds = getBlockOrder( clientId );
+
 			accordionBlockClientIds.forEach( ( accordionBlockClientId ) => {
-				// Update accordion block heading level for future headings.
 				updateBlockAttributes( accordionBlockClientId, {
 					level,
 				} );
@@ -115,10 +114,11 @@ const AccordionsEditContainerWrapper = withDispatch(
 				const innerBlockClientIds = getBlockOrder(
 					accordionBlockClientId
 				);
+
 				innerBlockClientIds.forEach( ( innerBlockClientId ) => {
 					const innerBlockName = getBlockName( innerBlockClientId );
+
 					if ( 'hrswp/accordion-heading' === innerBlockName ) {
-						// Update existing accordion headings levels.
 						updateBlockAttributes( innerBlockClientId, {
 							level,
 						} );
@@ -128,10 +128,10 @@ const AccordionsEditContainerWrapper = withDispatch(
 		},
 
 		/**
-		 * Updates the accordion panels count.
+		 * Updates the panel count.
 		 *
-		 * @param previousPanels
-		 * @param newPanels
+		 * @param {number} previousPanels Previous column count.
+		 * @param {number} newPanels      New column count.
 		 */
 		updateAccordions( previousPanels, newPanels ) {
 			const { clientId, attributes } = ownProps;

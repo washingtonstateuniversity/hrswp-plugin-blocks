@@ -1,23 +1,10 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
 const { RichText, useBlockProps } = wp.blockEditor;
 
-function HeadingEdit( {
-	attributes,
-	setAttributes,
-	mergeBlocks,
-	onReplace,
-	mergedStyle,
-	clientId,
-} ) {
+function HeadingEdit( { attributes, setAttributes, onReplace, mergedStyle } ) {
 	const { content, level, placeholder } = attributes;
 	const tagName = 'h' + level;
 	const blockProps = useBlockProps( {

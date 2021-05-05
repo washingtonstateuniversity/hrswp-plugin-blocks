@@ -1,16 +1,9 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
-export default function save( { attributes } ) {
-	const { level } = attributes;
-
+export default function save() {
 	const className = 'hrswp-block-accordions-wrapper';
 
 	return (
