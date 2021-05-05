@@ -1,3 +1,7 @@
+div[data-type="hrswp/accordion"]:first-of-type > .accordion-panel-heading {
+	border-top: none;
+}
+
 .editor-styles-wrapper .wp-block-hrswp-accordion .accordion-panel-heading {
 	font-size: 18px;
 	line-height: 1.4;
@@ -7,27 +11,6 @@
 
 .wp-block-hrswp-accordion .accordion-panel {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-	padding-bottom: 1.5em;
-}
-
-div[data-type="hrswp/accordion-panel"]:first-of-type > .accordion-panel-heading {
-	border-top: none;
-}
-
-.wp-block-buttons.controls {
-	display: flex;
-	justify-content: flex-end;
-	opacity: 0.5;
-}
-
-/* stylelint-disable selector-class-pattern */
-.wp-block-buttons.controls .wp-block-button__link {
-	font-weight: 400;
-	padding: 0.25em 0.5em;
-	text-transform: none;
-}
-/* stylelint-enable selector-class-pattern */
-
-.wp-block[data-type="hrswp/accordion"][data-align="wide"] .wp-block {
-	max-width: 100%;
+	padding-right: 1.5em;
+	padding-left: 1.5em;
 }

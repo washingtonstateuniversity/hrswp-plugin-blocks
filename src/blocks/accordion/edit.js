@@ -1,114 +1,97 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
-const { BlockControls, InnerBlocks } = wp.blockEditor;
-const { Disabled, ToolbarGroup } = wp.components;
-const { withDispatch } = wp.data;
+const { sprintf, __ } = wp.i18n;
+const { useCallback, useState, useRef } = wp.element;
+const {
+	BlockControls,
+	InnerBlocks,
+	InspectorControls,
+	InspectorAdvancedControls,
+	RichText,
+	useBlockProps,
+	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
+	store: blockEditorStore,
+} = wp.blockEditor;
+const { useSelect, useDispatch } = wp.data;
+const { createBlock } = wp.blocks;
 
-/**
- * Internal dependencies
- */
-import HeadingLevelDropdown from './heading-level-dropdown';
+function AccordionEdit( {
+	attributes: { headingContent, elementId, headingLevel, placeholder },
+	setAttributes,
+	clientId,
+} ) {
+	const classes = 'hrswp-block-accordion';
 
-/**
- * Allowed blocks constant is passed to InnerBlocks precisely as specified here.
- * The contents of the array should never change.
- * The array should contain the name of each block that is allowed.
- * In accordion block, the only block we allow is 'hrswp/accordion-panel'.
- *
- * @constant
- * @type {string[]}
- */
-const ALLOWED_BLOCKS = [ 'hrswp/accordion-panel' ];
+	const { accordionsIds, hasChildBlocks, rootClientId } = useSelect(
+		( select ) => {
+			const { getBlockOrder, getBlockRootClientId } = select(
+				blockEditorStore
+			);
 
-/**
- * The block template.
- *
- * By default the block is populated with five accordion panels.
- *
- * @constant
- * @type {string[]}
- */
-const TEMPLATE = [
-	[ 'hrswp/accordion-panel' ],
-	[ 'hrswp/accordion-panel' ],
-	[ 'hrswp/accordion-panel' ],
-	[ 'hrswp/accordion-panel' ],
-	[ 'hrswp/accordion-panel' ],
-	[ 'hrswp/accordion-panel' ],
-];
+			const rootId = getBlockRootClientId( clientId );
 
-function AccordionEditContent( { attributes, className, updateHeadingLevel } ) {
-	const { level } = attributes;
+			return {
+				hasChildBlocks: getBlockOrder( clientId ).length > 1,
+				rootClientId: rootId,
+				accordionsIds: getBlockOrder( rootId ),
+			};
+		},
+		[ clientId ]
+	);
+
+	const blockProps = useBlockProps( { className: classes } );
+
+	const panelsCount = accordionsIds.length;
+	const currentPanelPosition = accordionsIds.indexOf( clientId ) + 1;
+
+	const label = sprintf(
+		/* */
+		__( '%1$s (%2$s of %3$s)' ),
+		blockProps[ 'aria-label' ],
+		currentPanelPosition,
+		panelsCount
+	);
+
+	const innerBlocksProps = useInnerBlocksProps(
+		{ ...blockProps, 'aria-label': label },
+		{
+			template: [	[ 'hrswp/accordion-heading', {}	] ],
+			templateLock: false,
+			renderAppender: hasChildBlocks
+				? undefined
+				: InnerBlocks.ButtonBlockAppender,
+		}
+	);
+
+	const setPanelContent = ( newContent ) => {
+		setAttributes( { headingContent: newContent } );
+		// setAttributes( {
+		// 	elementId: `accordion-panel-id-${ instanceId }`,
+		// } );
+	};
+
+	const tagName = 'h' + headingLevel;
+
 	return (
 		<>
-			<BlockControls>
-				<ToolbarGroup>
-					<HeadingLevelDropdown
-						selectedLevel={ level }
-						onChange={ ( newLevel ) =>
-							updateHeadingLevel( newLevel )
-						}
-					/>
-				</ToolbarGroup>
-			</BlockControls>
-			<div className={ className } data-accordion-block>
-				<Disabled>
-					<div className="wp-block-buttons controls">
-						<div className="wp-block-button is-style-outline">
-							<button
-								id="open-all-panels"
-								className="wp-block-button__link"
-							>
-								Open all
-							</button>
-						</div>
-						<div className="wp-block-button is-style-outline">
-							<button
-								id="close-all-panels"
-								className="wp-block-button__link"
-							>
-								Close All
-							</button>
-						</div>
-					</div>
-				</Disabled>
-				<InnerBlocks
-					allowedBlocks={ ALLOWED_BLOCKS }
-					templateLock={ false }
-					template={ TEMPLATE }
-				/>
-			</div>
+			{/* <RichText
+				aria-label={ __( 'Accordion panel text' ) }
+				placeholder={  }
+				value={ headingContent }
+				onChange={ ( value ) => setPanelContent( value ) }
+				allowedFormats={ [ 'italic' ] }
+				className={ 'accordion-panel-heading' }
+				tagName={ tagName }
+			/> */}
+			<div { ...innerBlocksProps } />
 		</>
 	);
 }
-
-const AccordionEdit = withDispatch( ( dispatch, ownProps, registry ) => ( {
-	/**
-	 * Update all child Accordion Panel blocks with a new heading
-	 * level setting based on whatever heading level is passed in.
-	 * This allows a change to the parent to propogate to all
-	 * child blocks and override anything set on an individual
-	 * panel.
-	 *
-	 * @param {number} newLevel the heading level setting
-	 */
-	updateHeadingLevel( newLevel ) {
-		const { clientId, setAttributes } = ownProps;
-		const { updateBlockAttributes } = dispatch( 'core/block-editor' );
-		const { getBlockOrder } = registry.select( 'core/block-editor' );
-
-		// Update own level setting.
-		setAttributes( { level: newLevel } );
-
-		// Update child block to match own level setting.
-		const innerBlockClientIds = getBlockOrder( clientId );
-		innerBlockClientIds.forEach( ( innerBlockClientId ) => {
-			updateBlockAttributes( innerBlockClientId, {
-				level: newLevel,
-			} );
-		} );
-	},
-} ) )( AccordionEditContent );
 
 export default AccordionEdit;

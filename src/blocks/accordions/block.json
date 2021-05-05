@@ -1,0 +1,19 @@
+{
+	"apiVersion": 2,
+	"name": "hrswp/accordions",
+	"title": "Accordion",
+	"category": "layout",
+	"description": "Display content in an accordion.",
+	"attributes": {
+		"headingLevel": {
+			"type": "number",
+			"default": 2
+		}
+	},
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"editorStyle": "hrswp-block-accordion-editor",
+	"style": "hrswp-block-accordion"
+}

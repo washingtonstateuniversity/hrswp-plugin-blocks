@@ -1,30 +1,38 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, RichText, useBlockProps } = wp.blockEditor;
 
-export default function save( { className } ) {
+export default function save( { attributes } ) {
+	const {
+		headingContent,
+		elementId,
+		headingLevel,
+	} = attributes;
+
+	const tagName = 'h' + headingLevel;
+
+	// const panelClasses = classnames( className, {
+	// 	'accordion-panel-heading': true,
+	// } );
+
+	const wrapperClasses = 'hrswp-block-accordion';
+
 	return (
-		<div className={ className } data-accordion-block>
-			<div className="wp-block-buttons controls">
-				<div className="wp-block-button is-style-outline">
-					<button
-						id="open-all-panels"
-						className="wp-block-button__link"
-					>
-						Open all
-					</button>
-				</div>
-				<div className="wp-block-button is-style-outline">
-					<button
-						id="close-all-panels"
-						className="wp-block-button__link"
-					>
-						Close All
-					</button>
-				</div>
+		<>
+			{/* <RichText.Content
+				tagName={ tagName }
+				className={ 'accordion-panel-heading' }
+				value={ headingContent }
+			/> */}
+			<div { ...useBlockProps.save( { className: wrapperClasses } ) }>
+				<InnerBlocks.Content />
 			</div>
-			<InnerBlocks.Content />
-		</div>
+		</>
 	);
 }
