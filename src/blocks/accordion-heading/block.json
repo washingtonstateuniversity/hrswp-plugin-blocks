@@ -67,6 +67,6 @@
 		},
 		"__unstablePasteTextInline": true
 	},
-	"editorStyle": "hrswp-accordion-panel-heading-editor",
-	"style": "hrswp-accordion-panel-heading"
+	"editorStyle": "hrswp-accordion-heading-editor",
+	"style": "hrswp-accordion-heading"
 }

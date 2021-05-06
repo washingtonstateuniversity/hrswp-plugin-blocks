@@ -11,8 +11,6 @@ const {
 } = wp.blockEditor;
 
 function AccordionEdit( { attributes: { level }, clientId } ) {
-	const classes = 'hrswp-block-accordion';
-
 	const { accordionsIds, hasChildBlocks } = useSelect(
 		( select ) => {
 			const { getBlockOrder, getBlockRootClientId } = select(
@@ -29,7 +27,7 @@ function AccordionEdit( { attributes: { level }, clientId } ) {
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps( { className: classes } );
+	const blockProps = useBlockProps();
 
 	const panelsCount = accordionsIds.length;
 	const currentPanelPosition = accordionsIds.indexOf( clientId ) + 1;

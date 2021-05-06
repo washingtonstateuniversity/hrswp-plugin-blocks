@@ -4,10 +4,8 @@
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 export default function save() {
-	const className = 'hrswp-block-accordions-wrapper';
-
 	return (
-		<div { ...useBlockProps.save( { className } ) }>
+		<div { ...useBlockProps.save() }>
 			<InnerBlocks.Content />
 		</div>
 	);

@@ -47,11 +47,7 @@ function AccordionsEditContainer( {
 		[ clientId ]
 	);
 
-	const classes = 'hrswp-block-accordions-wrapper';
-
-	const blockProps = useBlockProps( {
-		className: classes,
-	} );
+	const blockProps = useBlockProps();
 	const innerBlockProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		orientation: 'vertical',
