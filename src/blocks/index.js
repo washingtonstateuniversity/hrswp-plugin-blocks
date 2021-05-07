@@ -19,7 +19,15 @@ import * as callout from './callout';
 import * as notification from './notification';
 import * as sidebar from './sidebar';
 
+/**
+ * Deprecated dependencies
+ */
+import * as accordion from './accordion';
+import * as accordionPanel from './accordion-panel';
+
 const hrsBlocks = [
+	accordion,
+	accordionPanel,
 	accordionHeading,
 	accordionSection,
 	accordions,

@@ -324,5 +324,20 @@ class Setup {
 				true
 			);
 		}
+
+		/**
+		 * Load the deprecated accordion block.
+		 *
+		 * @deprecated 1.0.0
+		 */
+		if ( has_block( 'hrswp/accordion' ) ) {
+			wp_enqueue_script(
+				self::$slug . '-accordion-dep',
+				plugins_url( 'build/accordionDep.js', self::$basename ),
+				array(),
+				$plugin['version'],
+				true
+			);
+		}
 	}
 }

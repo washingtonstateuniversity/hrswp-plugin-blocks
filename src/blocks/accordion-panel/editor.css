@@ -1,0 +1,9 @@
+.wp-block[data-type="hrswp/accordion-panel"] .block-list-appender > .block-editor-inserter {
+	display: inline-block;
+}
+
+.wp-block[data-type="hrswp/accordion-panel"] .block-editor-button-block-appender {
+	background: none;
+	padding: 8px;
+	outline: none;
+}
