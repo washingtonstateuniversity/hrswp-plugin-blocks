@@ -7,7 +7,7 @@
 	& .wp-block-hrswp-accordion-section {
 		border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 
-		& > *:not( [data-type="hrswp/accordion-heading"] ) {
+		& > *:not([data-type="hrswp/accordion-heading"]) {
 			padding-left: 1em;
 		}
 	}
