@@ -1,5 +1,6 @@
 .wp-block-hrswp-accordions.accordion-active {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	margin-bottom: 1.5em;
 
 	& .hrswp-accordion-heading {
 		font-size: inherit;
