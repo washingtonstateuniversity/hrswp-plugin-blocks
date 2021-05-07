@@ -1,16 +1,16 @@
-div[data-type="hrswp/accordion"]:first-of-type > .accordion-panel-heading {
+/* div[data-type="hrswp/accordion"]:first-of-type > .hrswp-accordion-heading {
 	border-top: none;
 }
 
-.editor-styles-wrapper .wp-block-hrswp-accordion .accordion-panel-heading {
+.editor-styles-wrapper .wp-block-hrswp-accordions .hrswp-accordion-heading {
 	font-size: 18px;
 	line-height: 1.4;
 	margin-top: 1.5em;
 	margin-bottom: 1.5em;
 }
 
-.wp-block-hrswp-accordion .accordion-panel {
+.wp-block-hrswp-accordions .hrswp-accordion-heading {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 	padding-right: 1.5em;
 	padding-left: 1.5em;
-}
+} */

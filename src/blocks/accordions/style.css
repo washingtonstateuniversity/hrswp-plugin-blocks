@@ -1,12 +1,12 @@
-.wp-block-hrswp-accordion.accordion-active {
+.wp-block-hrswp-accordions.accordion-active {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 
-	& .accordion-panel-heading {
+	& .hrswp-accordion-heading {
 		font-size: inherit;
 		margin: 0;
 	}
 
-	& .accordion-panel-heading:not(:first-of-type) {
+	& .hrswp-accordion-heading:not(:first-of-type) {
 		border-top: 1px solid rgba(0, 0, 0, 0.25);
 	}
 
@@ -70,7 +70,7 @@
 		}
 	}
 
-	& .accordion-panel {
+	& .wp-block-hrswp-accordion {
 		max-height: 0;
 		overflow: hidden;
 		padding: 0 1.5rem 0;
@@ -78,33 +78,20 @@
 		visibility: hidden;
 	}
 
-	& .accordion-panel[aria-hidden="false"] {
+	& .wp-block-hrswp-accordion[aria-hidden="false"] {
 		max-height: 100vh;
 		padding: 1em 1.5rem 0.5em;
 		overflow: auto;
 		visibility: visible;
 	}
 
-	& .wp-block-buttons.controls {
-		justify-content: flex-end;
-
-		/* stylelint-disable selector-class-pattern */
-		& .wp-block-button__link {
-			font-weight: 400;
-			padding: 0.25em 0.5em;
-			text-transform: none;
-		}
-		/* stylelint-enable selector-class-pattern */
-
-	}
-
 }
 
 @media (prefers-reduced-motion: reduce) {
 
-	.wp-block-hrswp-accordion.accordion-active {
+	.wp-block-hrswp-accordions.accordion-active {
 
-		& .accordion-panel,
+		& .wp-block-hrswp-accordion,
 		& .accordion-panel-trigger::after {
 			transition: none;
 		}
