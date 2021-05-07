@@ -10,15 +10,11 @@ class Accordion {
 	 */
 	constructor( accordionBlock ) {
 		this._parent = accordionBlock;
-		this._panels = this._parent.querySelectorAll( '.accordion-panel' );
+		this._panels = this._parent.querySelectorAll(
+			'.wp-block-hrswp-accordion'
+		);
 		this._headings = this._parent.querySelectorAll(
-			'.accordion-panel-heading'
-		);
-		this._expandAllTrigger = this._parent.querySelector(
-			'#open-all-panels'
-		);
-		this._collapseAllTrigger = this._parent.querySelector(
-			'#close-all-panels'
+			'.hrswp-accordion-heading'
 		);
 
 		this.expand = this.expand.bind( this );
@@ -28,11 +24,19 @@ class Accordion {
 		this.toggle = this.toggle.bind( this );
 
 		this._setupPanels();
+		this._setupControls();
 		this._setupHeadingButtons();
 
+		this._expandAllTrigger = this._parent.querySelector(
+			'#open-all-panels'
+		);
+		this._collapseAllTrigger = this._parent.querySelector(
+			'#close-all-panels'
+		);
 		this._triggers = this._parent.querySelectorAll(
 			'.accordion-panel-trigger'
 		);
+
 		this._addEventListeners();
 
 		this.activate();
@@ -89,9 +93,41 @@ class Accordion {
 	}
 
 	_setupPanels() {
+		let i = 0;
+
+		this._headings.forEach( ( heading ) => {
+			const headingParent = heading.parentNode;
+
+			headingParent.setAttribute( 'id', `accordion-panel-${ i }` );
+			headingParent.before( heading );
+
+			i++;
+		} );
+
 		this._panels.forEach( ( panel ) => {
 			panel.setAttribute( 'aria-hidden', true );
 		} );
+	}
+
+	_setupControls() {
+		const ToggleAllWrapper = document.createElement( 'div' );
+		const OpenAllButton = document.createElement( 'button' );
+		const CloseAllButton = document.createElement( 'button' );
+
+		ToggleAllWrapper.classList.add( 'controls' );
+
+		this._parent.insertBefore( ToggleAllWrapper, this._parent.firstChild );
+
+		ToggleAllWrapper.appendChild( OpenAllButton );
+		ToggleAllWrapper.appendChild( CloseAllButton );
+
+		OpenAllButton.setAttribute( 'type', 'button' );
+		OpenAllButton.setAttribute( 'id', 'open-all-panels' );
+		OpenAllButton.appendChild( document.createTextNode( 'Open All' ) );
+
+		CloseAllButton.setAttribute( 'type', 'button' );
+		CloseAllButton.setAttribute( 'id', 'close-all-panels' );
+		CloseAllButton.appendChild( document.createTextNode( 'Close All' ) );
 	}
 
 	_setupHeadingButtons() {
@@ -138,7 +174,7 @@ class Accordion {
  */
 function init() {
 	const accordionBlocks = /** @type {NodeList} */ document.querySelectorAll(
-		'.wp-block-hrswp-accordion'
+		'.wp-block-hrswp-accordions'
 	);
 
 	accordionBlocks.forEach( ( accordionBlock ) => {
