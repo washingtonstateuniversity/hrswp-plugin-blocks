@@ -1,7 +1,7 @@
 {
 	"apiVersion": 2,
 	"name": "hrswp/accordion-heading",
-	"parent": [ "hrswp/accordion" ],
+	"parent": [ "hrswp/accordion-section" ],
 	"category": "text",
 	"attributes": {
 		"content": {

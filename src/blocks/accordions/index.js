@@ -23,7 +23,7 @@ export const settings = {
 	example: {
 		innerBlocks: [
 			{
-				name: 'hrswp/accordion',
+				name: 'hrswp/accordion-section',
 				attributes: {
 					/* translators: example text. */
 					panelHeadingContent: __( 'An accordion panel title' ),
@@ -42,7 +42,7 @@ export const settings = {
 				],
 			},
 			{
-				name: 'hrswp/accordion',
+				name: 'hrswp/accordion-section',
 				attributes: {
 					/* translators: example text. */
 					panelHeadingContent: __( 'Another accordion panel title' ),

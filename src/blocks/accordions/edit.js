@@ -28,7 +28,7 @@ const {
  */
 import HeadingLevelDropdown from './heading-level-dropdown';
 
-const ALLOWED_BLOCKS = [ 'hrswp/accordion' ];
+const ALLOWED_BLOCKS = [ 'hrswp/accordion-section' ];
 
 function AccordionsEditContainer( {
 	attributes,
@@ -143,7 +143,9 @@ const AccordionsEditContainerWrapper = withDispatch(
 				innerBlocks = [
 					...innerBlocks,
 					...times( newPanels - previousPanels, () => {
-						return createBlock( 'hrswp/accordion', { level } );
+						return createBlock( 'hrswp/accordion-section', {
+							level,
+						} );
 					} ),
 				];
 			} else {

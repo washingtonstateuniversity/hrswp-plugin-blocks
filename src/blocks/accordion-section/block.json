@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "hrswp/accordion",
+	"name": "hrswp/accordion-section",
 	"title": "Accordion Panel",
 	"category": "layout",
 	"parent": [ "hrswp/accordions" ],

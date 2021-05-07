@@ -11,7 +11,7 @@ class Accordion {
 	constructor( accordionBlock ) {
 		this._parent = accordionBlock;
 		this._panels = this._parent.querySelectorAll(
-			'.wp-block-hrswp-accordion'
+			'.wp-block-hrswp-accordion-section'
 		);
 		this._headings = this._parent.querySelectorAll(
 			'.hrswp-accordion-heading'

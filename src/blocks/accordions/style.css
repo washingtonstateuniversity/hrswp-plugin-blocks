@@ -71,7 +71,7 @@
 		}
 	}
 
-	& .wp-block-hrswp-accordion {
+	& .wp-block-hrswp-accordion-section {
 		max-height: 0;
 		overflow: hidden;
 		padding: 0 1.5rem 0;
@@ -79,7 +79,7 @@
 		visibility: hidden;
 	}
 
-	& .wp-block-hrswp-accordion[aria-hidden="false"] {
+	& .wp-block-hrswp-accordion-section[aria-hidden="false"] {
 		max-height: 100vh;
 		padding: 1em 1.5rem 0.5em;
 		overflow: auto;
@@ -116,7 +116,7 @@
 
 	.wp-block-hrswp-accordions.accordion-active {
 
-		& .wp-block-hrswp-accordion,
+		& .wp-block-hrswp-accordion-section,
 		& .accordion-panel-trigger::after {
 			transition: none;
 		}

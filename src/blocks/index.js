@@ -6,9 +6,9 @@ const { registerBlockType } = wp.blocks;
 /**
  * Internal dependencies
  */
-import * as accordion from './accordion';
-import * as accordions from './accordions';
 import * as accordionHeading from './accordion-heading';
+import * as accordionSection from './accordion-section';
+import * as accordions from './accordions';
 import * as button from './button';
 import * as buttons from './buttons';
 import * as postsList from './posts-list';
@@ -20,9 +20,9 @@ import * as notification from './notification';
 import * as sidebar from './sidebar';
 
 const hrsBlocks = [
-	accordion,
-	accordions,
 	accordionHeading,
+	accordionSection,
+	accordions,
 	button,
 	buttons,
 	postsList,
