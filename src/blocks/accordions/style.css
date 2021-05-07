@@ -85,6 +85,30 @@
 		visibility: visible;
 	}
 
+	& .controls {
+		display: flex;
+		justify-content: flex-end;
+
+		& button {
+			background: transparent;
+			color: var(--nav-color);
+			border: 1px solid transparent;
+			box-shadow: none;
+			font-weight: 400;
+			margin-bottom: 0.25em;
+			margin-left: 0.25em;
+			padding: 0.25em 0.5em;
+			text-transform: none;
+
+			&:hover,
+			&:focus {
+				background: var(--nav-color-hover);
+				color: #fff;
+			}
+		}
+
+	}
+
 }
 
 @media (prefers-reduced-motion: reduce) {
