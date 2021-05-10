@@ -75,6 +75,11 @@ function AccordionsEditContainer( {
 						min={ 1 }
 						max={ Math.max( 75, count ) }
 					/>
+					<p className={ 'components-panels-control__help' }>
+						{ __(
+							'Reducing the number of panels will remove them starting at the end. Any existing content in removed panels will be deleted.'
+						) }
+					</p>
 				</PanelBody>
 			</InspectorControls>
 			<div { ...innerBlockProps } />
