@@ -72,7 +72,7 @@ function AccordionsEditContainer( {
 						onChange={ ( value ) =>
 							updateAccordions( count, value )
 						}
-						min={ 3 }
+						min={ 1 }
 						max={ Math.max( 75, count ) }
 					/>
 				</PanelBody>
