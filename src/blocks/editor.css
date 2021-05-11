@@ -1,5 +1,6 @@
-@import "./accordion/editor.css";
-@import "./accordion-panel/editor.css";
+@import "./accordion/editor.css"; /* @deprecated 1.0.0 */
+@import "./accordion-panel/editor.css"; /* @deprecated 1.0.0 */
+@import "./accordions/editor.css";
 @import "./button/editor.css";
 @import "./buttons/editor.css";
 @import "./search-filter/editor.css";

@@ -1,4 +1,5 @@
-@import "./accordion/style.css";
+@import "./accordion/style.css"; /* @deprecated 1.0.0 */
+@import "./accordions/style.css";
 @import "./button/style.css";
 @import "./buttons/style.css";
 @import "./search-filter-input/style.css";

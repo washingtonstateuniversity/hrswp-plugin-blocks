@@ -1,0 +1,31 @@
+{
+	"apiVersion": 2,
+	"name": "hrswp/accordion-section",
+	"title": "Accordion Panel",
+	"category": "layout",
+	"parent": [ "hrswp/accordions" ],
+	"attributes": {
+		"headingContent": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1,h2,h3,h4,h5,h6",
+			"default": ""
+		},
+		"elementId": {
+			"type": "int",
+			"default": 0
+		},
+		"level": {
+			"type": "number",
+			"default": 2
+		},
+		"placeholder": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"reusable": false
+	},
+	"editorStyle": "hrswp-block-accordion-panel-editor",
+	"style": "hrswp-block-accordion-panel"
+}

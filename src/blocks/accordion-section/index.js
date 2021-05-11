@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Internal dependencies
@@ -9,20 +9,23 @@ const { __ } = wp.i18n;
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
+import icon from '../accordion-section/icon';
 
-const { name, category, supports, attributes } = metadata;
+const { name } = metadata;
 
-export { name };
+export { metadata, name };
 
 export const settings = {
-	title: __( 'Accordion Panel (Deprecated)' ),
-	parent: [ 'hrswp/accordion' ],
-	icon: 'index-card',
-	category,
+	title: _x( 'Accordion Panel', 'block title' ),
 	description: __( 'A single panel of accordion content.' ),
+	icon,
 	keywords: [ __( 'layout' ), __( 'accordion' ) ],
-	supports,
-	attributes,
+	example: {
+		attributes: {
+			level: 2,
+			panelHeadingContent: __( 'Accordion Panel Heading' ),
+		},
+	},
 	edit,
 	save,
 };

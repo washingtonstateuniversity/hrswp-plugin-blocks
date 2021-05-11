@@ -9,24 +9,21 @@ const { __ } = wp.i18n;
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
-import icon from './icon';
+import variations from './variations';
+import { icon } from './icons';
 
-const { name, category, supports, attributes } = metadata;
+const { name } = metadata;
 
-export { name };
+export { metadata, name };
 
 export const settings = {
-	title: __( 'Accordion (Deprecated)' ),
 	icon,
-	category,
-	description: __( 'Display content in an accordion.' ),
 	keywords: [ __( 'layout' ), __( 'accordion' ) ],
-	supports,
-	attributes,
+	variations,
 	example: {
 		innerBlocks: [
 			{
-				name: 'hrswp/accordion-panel',
+				name: 'hrswp/accordion-section',
 				attributes: {
 					/* translators: example text. */
 					panelHeadingContent: __( 'An accordion panel title' ),
@@ -45,7 +42,7 @@ export const settings = {
 				],
 			},
 			{
-				name: 'hrswp/accordion-panel',
+				name: 'hrswp/accordion-section',
 				attributes: {
 					/* translators: example text. */
 					panelHeadingContent: __( 'Another accordion panel title' ),
