@@ -7,9 +7,11 @@ class Accordion {
 	 * Instantiates an accordion on a given accordion block.
 	 *
 	 * @param {Node} accordionBlock An accordion block to make interactive.
+	 * @param {number} ref A unique numeric reference for each accordion.
 	 */
-	constructor( accordionBlock ) {
+	constructor( accordionBlock, ref ) {
 		this._parent = accordionBlock;
+		this._ref = ref;
 		this._panels = this._parent.querySelectorAll(
 			'.wp-block-hrswp-accordion-section'
 		);
@@ -98,7 +100,10 @@ class Accordion {
 		this._headings.forEach( ( heading ) => {
 			const headingParent = heading.parentNode;
 
-			headingParent.setAttribute( 'id', `accordion-panel-${ i }` );
+			headingParent.setAttribute(
+				'id',
+				`accordion-${ this._ref }-panel-${ i }`
+			);
 			headingParent.before( heading );
 
 			i++;
@@ -177,8 +182,10 @@ function init() {
 		'.wp-block-hrswp-accordions'
 	);
 
+	let i = 0;
 	accordionBlocks.forEach( ( accordionBlock ) => {
-		new Accordion( accordionBlock );
+		new Accordion( accordionBlock, i );
+		i++;
 	} );
 }
 init();
