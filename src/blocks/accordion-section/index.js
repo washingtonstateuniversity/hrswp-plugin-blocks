@@ -9,6 +9,7 @@ const { __, _x } = wp.i18n;
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
+import icon from '../accordion-section/icon';
 
 const { name } = metadata;
 
@@ -17,7 +18,7 @@ export { metadata, name };
 export const settings = {
 	title: _x( 'Accordion Panel', 'block title' ),
 	description: __( 'A single panel of accordion content.' ),
-	icon: 'index-card',
+	icon,
 	keywords: [ __( 'layout' ), __( 'accordion' ) ],
 	example: {
 		attributes: {
