@@ -1,30 +1,40 @@
 /**
+ * External dependencies
+ */
+import { times } from 'lodash';
+
+/**
  * WordPress dependencies
  */
-const { Path, SVG } = wp.components;
 const { __ } = wp.i18n;
+
+/**
+ * Internal dependencies
+ */
+import { three, five, many } from './icons';
 
 const variations = [
 	{
 		name: 'three-panels',
 		title: __( 'Three' ),
-		description: __( 'Three panels' ),
-		icon: (
-			<SVG
-				width="48"
-				height="48"
-				viewBox="0 0 48 48"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<Path
-					fillRule="evenodd"
-					clipRule="evenodd"
-					d="m39.0625 14h-30.0625v20.0938h30.0625zm-30.0625-2c-1.10457 0-2 .8954-2 2v20.0938c0 1.1045.89543 2 2 2h30.0625c1.1046 0 2-.8955 2-2v-20.0938c0-1.1046-.8954-2-2-2z"
-				/>
-			</SVG>
-		),
+		description: __( 'Three accordion panels' ),
+		icon: three,
+		innerBlocks: [
+			[ 'hrswp/accordion-section' ],
+			[ 'hrswp/accordion-section' ],
+			[ 'hrswp/accordion-section' ],
+		],
+		scope: [ 'block' ],
+	},
+	{
+		name: 'five-panels',
+		title: __( 'Five' ),
+		description: __( 'Five accordion panels' ),
+		icon: five,
 		isDefault: true,
 		innerBlocks: [
+			[ 'hrswp/accordion-section' ],
+			[ 'hrswp/accordion-section' ],
 			[ 'hrswp/accordion-section' ],
 			[ 'hrswp/accordion-section' ],
 			[ 'hrswp/accordion-section' ],
@@ -34,33 +44,33 @@ const variations = [
 	{
 		name: 'ten-panels',
 		title: __( 'Ten' ),
-		description: __( 'Ten panels' ),
-		icon: (
-			<SVG
-				width="48"
-				height="48"
-				viewBox="0 0 48 48"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<Path
-					fillRule="evenodd"
-					clipRule="evenodd"
-					d="m39.0625 14h-30.0625v20.0938h30.0625zm-30.0625-2c-1.10457 0-2 .8954-2 2v20.0938c0 1.1045.89543 2 2 2h30.0625c1.1046 0 2-.8955 2-2v-20.0938c0-1.1046-.8954-2-2-2z"
-				/>
-			</SVG>
-		),
-		innerBlocks: [
-			[ 'hrswp/accordion-section' ],
-			[ 'hrswp/accordion-section' ],
-			[ 'hrswp/accordion-section' ],
-			[ 'hrswp/accordion-section' ],
-			[ 'hrswp/accordion-section' ],
-			[ 'hrswp/accordion-section' ],
-			[ 'hrswp/accordion-section' ],
-			[ 'hrswp/accordion-section' ],
-			[ 'hrswp/accordion-section' ],
-			[ 'hrswp/accordion-section' ],
-		],
+		description: __( 'Ten accordion panels' ),
+		icon: many,
+		innerBlocks: times( 10, () => [ 'hrswp/accordion-section' ] ),
+		scope: [ 'block' ],
+	},
+	{
+		name: 'fifteen-panels',
+		title: __( 'Fifteen' ),
+		description: __( 'Fifteen accordion panels' ),
+		icon: many,
+		innerBlocks: times( 15, () => [ 'hrswp/accordion-section' ] ),
+		scope: [ 'block' ],
+	},
+	{
+		name: 'twenty-panels',
+		title: __( 'Twenty' ),
+		description: __( 'Twenty accordion panels' ),
+		icon: many,
+		innerBlocks: times( 20, () => [ 'hrswp/accordion-section' ] ),
+		scope: [ 'block' ],
+	},
+	{
+		name: 'twenty-five-panels',
+		title: __( 'Twenty-five' ),
+		description: __( 'Twenty-five accordion panels' ),
+		icon: many,
+		innerBlocks: times( 25, () => [ 'hrswp/accordion-section' ] ),
 		scope: [ 'block' ],
 	},
 ];
