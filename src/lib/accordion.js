@@ -111,6 +111,7 @@ class Accordion {
 
 		this._panels.forEach( ( panel ) => {
 			panel.setAttribute( 'aria-hidden', true );
+			panel.setAttribute( 'aria-labelledby', `${ panel.id }-trigger` );
 		} );
 	}
 
