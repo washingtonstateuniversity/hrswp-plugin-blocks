@@ -1,6 +1,20 @@
+/* stylelint-disable selector-class-pattern */
+.wp-block-hrswp-sidebar .wp-block {
+	max-width: none;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* Individual columns do not have top and bottom margins on the frontend.
+ * Needs specificity.
+ */
+.block-editor-block-list__block.wp-block-hrswp-sidebar.wp-block-column {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 @media (min-width: 600px) {
 
-	/* stylelint-disable selector-class-pattern */
 	.wp-block-hrswp-sidebar.wp-block-columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		display: flex;
 	}
@@ -20,6 +34,6 @@
 	.wp-block-hrswp-sidebar.wp-block-columns.is-style-sidebar-left > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="core/column"]:last-child {
 		flex-basis: calc(70% - (16px + 28px));
 	}
-	/* stylelint-enable selector-class-pattern */
 
 }
+/* stylelint-enable selector-class-pattern */
