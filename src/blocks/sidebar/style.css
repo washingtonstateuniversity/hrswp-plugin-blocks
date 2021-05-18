@@ -1,4 +1,32 @@
+.wp-block-hrswp-sidebar {
+	display: flex;
+	margin-bottom: 1.75em;
+
+	/* Responsiveness: Allow wrapping on mobile. */
+	flex-wrap: wrap;
+
+
+	/**
+	 * All Columns Alignment
+	 */
+	&.are-vertically-aligned-top {
+		align-items: flex-start;
+	}
+
+	&.are-vertically-aligned-center {
+		align-items: center;
+	}
+
+	&.are-vertically-aligned-bottom {
+		align-items: flex-end;
+	}
+}
+
 @media (min-width: 900px) {
+
+	.wp-block-hrswp-sidebar {
+		flex-wrap: nowrap;
+	}
 
 	/* Have to use !important to override Core columns inline styles. */
 	.wp-block-hrswp-sidebar:not(.is-style-sidebar-left) > .wp-block-column:first-child {

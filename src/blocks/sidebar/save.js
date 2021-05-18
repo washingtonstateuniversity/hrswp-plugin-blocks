@@ -1,18 +1,11 @@
 /**
- * External dependencies.
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
-export default function save( { className } ) {
-	const classes = classnames( className, { 'wp-block-columns': true } );
-
+export default function save() {
 	return (
-		<div className={ classes }>
+		<div { ...useBlockProps.save() }>
 			<InnerBlocks.Content />
 		</div>
 	);

@@ -12,19 +12,17 @@ import save from './save';
 import icon from './icon';
 import transforms from './transforms';
 
-const { name, category, supports } = metadata;
+const { name } = metadata;
 
-export { name };
+export { metadata, name };
 
 export const settings = {
-	title: __( 'Sidebar' ),
+	title: _x( 'Sidebar', 'block title' ),
 	icon,
-	category,
 	description: __(
 		'Display content in a sidebar-style layout (two-thirds and one-third).'
 	),
 	keywords: [ __( 'sidebar' ), __( 'columns' ) ],
-	supports,
 	example: {
 		innerBlocks: [
 			{
@@ -85,7 +83,10 @@ export const settings = {
 			label: _x( 'Sidebar on right', 'block style' ),
 			isDefault: true,
 		},
-		{ name: 'sidebar-left', label: _x( 'Sidebar on left', 'block style' ) },
+		{
+			name: 'sidebar-left',
+			label: _x( 'Sidebar on left', 'block style' ),
+		},
 	],
 	transforms,
 	edit,
