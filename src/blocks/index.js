@@ -14,7 +14,6 @@ import * as buttons from './buttons';
 import * as postsList from './posts-list';
 import * as searchFilter from './search-filter';
 import * as searchFilterSection from './search-filter-section';
-import * as searchFilterInput from './search-filter-input';
 import * as callout from './callout';
 import * as notification from './notification';
 import * as sidebar from './sidebar';
@@ -36,7 +35,6 @@ const hrsBlocks = [
 	postsList,
 	searchFilter,
 	searchFilterSection,
-	searchFilterInput,
 	callout,
 	notification,
 	sidebar,

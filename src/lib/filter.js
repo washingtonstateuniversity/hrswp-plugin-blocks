@@ -16,9 +16,13 @@ class Filter {
 	 * @param {Node} content A search form block to search and filter within.
 	 */
 	constructor( content ) {
+		this._parent = content;
 		this._content = content.querySelector(
 			'.wp-block-hrswp-search-filter-section'
 		);
+
+		this._setupSearchField();
+
 		this._searchInput = content.querySelector( '.wp-block-search__input' );
 		this._searchReset = content.querySelector( 'button' );
 
@@ -29,6 +33,18 @@ class Filter {
 
 		this._handleURLSearchParams();
 		this._addEventListeners();
+	}
+
+	_setupSearchField() {
+		const searchFieldInputHtml = `<div class="wp-block-hrswp-search-filter-input">
+			<label class="wp-block-search__label" for="search-form-3" id="search-form-3-label">Search</label>
+			<input aria-labelledby="search-form-3-label" class="wp-block-search__input" type="search" name="search_form_input" id="search-form-3">
+			<div class="wp-block-button is-style-small">
+				<button class="wp-block-button__link search-form-3-reset">Reset</button>
+			</div>
+		</div>`;
+
+		this._parent.insertAdjacentHTML( 'afterbegin', searchFieldInputHtml );
 	}
 
 	/**
