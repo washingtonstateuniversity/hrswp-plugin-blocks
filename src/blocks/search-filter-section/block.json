@@ -1,9 +1,11 @@
 {
+	"apiVersion": 2,
 	"name": "hrswp/search-filter-section",
-	"category": "common",
+	"category": "widgets",
+	"parent": [ "hrswp/search-filter" ],
 	"supports": {
-		"inserter": false,
-		"reusable": false,
-		"html": false
-	}
+		"reusable": false
+	},
+	"editorStyle": "hrswp-block-search-filter-section-editor",
+	"style": "hrswp-block-search-filter-section"
 }

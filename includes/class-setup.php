@@ -186,16 +186,17 @@ class Setup {
 	 */
 	private function define_blocks() {
 		self::$blocks = array(
-			'hrswp/accordion-heading' => 0,
-			'hrswp/accordion-section' => 0,
-			'hrswp/accordions'        => 0,
-			'hrswp/button'            => 0,
-			'hrswp/buttons'           => 0,
-			'hrswp/posts-list'        => 'posts-list.php',
-			'hrswp/search-filter'     => 0,
-			'hrswp/callout'           => 0,
-			'hrswp/notification'      => 0,
-			'hrswp/sidebar'           => 0,
+			'hrswp/accordion-heading'     => 0,
+			'hrswp/accordion-section'     => 0,
+			'hrswp/accordions'            => 0,
+			'hrswp/button'                => 0,
+			'hrswp/buttons'               => 0,
+			'hrswp/posts-list'            => 'posts-list.php',
+			'hrswp/search-filter'         => 0,
+			'hrswp/search-filter-section' => 0,
+			'hrswp/callout'               => 0,
+			'hrswp/notification'          => 0,
+			'hrswp/sidebar'               => 0,
 		);
 	}
 

@@ -1,22 +1,11 @@
 /**
- * External dependencies.
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
-export default function save( { attributes, className } ) {
-	const { retainHeadings } = attributes;
-
+export default function save() {
 	return (
-		<div
-			className={ classnames( className, {
-				'has-retain-headings': retainHeadings,
-			} ) }
-		>
+		<div { ...useBlockProps.save() }>
 			<InnerBlocks.Content />
 		</div>
 	);

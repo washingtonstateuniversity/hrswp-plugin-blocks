@@ -1,12 +1,14 @@
 /**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
-export default function save( { className } ) {
+export default function save() {
 	return (
-		<div className={ className } aria-live="off">
-			<InnerBlocks.Content />
-		</div>
+		<>
+			<div { ...useBlockProps.save() }>
+				<InnerBlocks.Content />
+			</div>
+		</>
 	);
 }

@@ -1,14 +1,13 @@
 /**
- * External dependencies.
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls, InnerBlocks } = wp.blockEditor;
+const {
+	InspectorControls,
+	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
+	useBlockProps,
+} = wp.blockEditor;
 
 /**
  * The Allowed Blocks.
@@ -20,27 +19,26 @@ const { InspectorControls, InnerBlocks } = wp.blockEditor;
  * @constant
  * @type {string[]}
  */
-const ALLOWED_BLOCKS = [
-	'hrswp/search-filter-input',
-	'hrswp/search-filter-section',
-];
+const ALLOWED_BLOCKS = [ 'hrswp/search-filter-section' ];
 
 /**
  * The block template.
  *
- * This is locked so that the search input field is always first, followed
- * by a search filter section to contain the content to be searched.
- *
  * @constant
  * @type {string[]}
  */
-const TEMPLATE = [
-	[ 'hrswp/search-filter-input' ],
-	[ 'hrswp/search-filter-section' ],
-];
+const TEMPLATE = [ [ 'hrswp/search-filter-section' ] ];
 
-function SearchFilterEdit( { className, attributes, setAttributes } ) {
+function SearchFilterEdit( { attributes, setAttributes } ) {
 	const { retainHeadings } = attributes;
+	const blockProps = useBlockProps();
+	const innerBlockProps = useInnerBlocksProps( blockProps, {
+		allowedBlocks: ALLOWED_BLOCKS,
+		template: TEMPLATE,
+		templateLock: 'all',
+		orientation: 'vertical',
+		renderAppender: false,
+	} );
 
 	return (
 		<>
@@ -64,17 +62,7 @@ function SearchFilterEdit( { className, attributes, setAttributes } ) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div
-				className={ classnames( className, {
-					'has-retain-headings': retainHeadings,
-				} ) }
-			>
-				<InnerBlocks
-					templateLock="all"
-					template={ TEMPLATE }
-					allowedBlocks={ ALLOWED_BLOCKS }
-				/>
-			</div>
+			<div { ...innerBlockProps } />
 		</>
 	);
 }

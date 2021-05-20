@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Internal dependencies
@@ -9,18 +9,16 @@ const { __ } = wp.i18n;
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
+import icon from './icon';
 
-const { name, category, supports } = metadata;
+const { name } = metadata;
 
-export { name };
+export { metadata, name };
 
 export const settings = {
-	title: __( 'HRS Search Filter Section' ),
-	parent: [ 'hrswp/search-filter' ],
-	icon: 'filter',
-	category,
+	title: _x( 'HRS Search Filter Section', 'block title' ),
 	description: __( 'A single section of content to search within.' ),
-	supports,
+	icon,
 	edit,
 	save,
 };

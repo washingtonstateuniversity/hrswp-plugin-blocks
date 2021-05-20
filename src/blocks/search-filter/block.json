@@ -1,14 +1,17 @@
 {
+	"apiVersion": 2,
 	"name": "hrswp/search-filter",
 	"category": "widgets",
-	"supports": {
-		"align": true,
-		"html": false
-	},
 	"attributes": {
 		"retainHeadings": {
 			"type": "boolean",
 			"default": false
 		}
-	}
+	},
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"editorStyle": "hrswp-block-search-filter-editor",
+	"style": "hrswp-block-search-filter"
 }
