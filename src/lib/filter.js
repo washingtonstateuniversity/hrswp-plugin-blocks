@@ -36,11 +36,11 @@ class Filter {
 	}
 
 	_setupSearchField() {
-		const searchFieldInputHtml = `<div class="wp-block-hrswp-search-filter-input">
-			<label class="wp-block-search__label" for="search-form-3" id="search-form-3-label">Search</label>
-			<input aria-labelledby="search-form-3-label" class="wp-block-search__input" type="search" name="search_form_input" id="search-form-3">
-			<div class="wp-block-button is-style-small">
-				<button class="wp-block-button__link search-form-3-reset">Reset</button>
+		const searchFieldInputHtml = `<div class="wp-block-search">
+			<label class="wp-block-search__label screen-reader-text" hrswp-block-search-filter__input-1>Search</label>
+			<div class="wp-block-search__inside-wrapper">
+				<input id="hrswp-block-search-filter__input-1" class="wp-block-search__input" type="search" name="hrswp-search-filter-search" value="" placeholder="Search …">
+				<button class="wp-block-search__button" id="hrswp-block-search-filter__reset-1">Reset</button>
 			</div>
 		</div>`;
 
