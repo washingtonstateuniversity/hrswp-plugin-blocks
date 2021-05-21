@@ -1,0 +1,16 @@
+.wp-block-hrswp-filter.is-selected,
+.wp-block-hrswp-filter.has-child-selected {
+	border-top: 2px dashed var(--brand-gray);
+	border-bottom: 2px dashed var(--brand-gray);
+}
+
+.wp-block-hrswp-filter::before {
+	background: url(icons/search.svg);
+	background-position: left 100%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	content: "";
+	display: block;
+	height: 50px;
+	width: 100%;
+}
