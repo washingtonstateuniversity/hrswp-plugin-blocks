@@ -15,17 +15,14 @@ const { name } = metadata;
 export { metadata, name };
 
 export const settings = {
-	title: _x( 'HRS Search Filter', 'block title' ),
+	title: _x( 'Filter', 'block title' ),
 	icon: 'filter',
 	description: __( 'Search and filter a section of content by full text.' ),
 	keywords: [ __( 'filter search' ) ],
 	example: {
 		innerBlocks: [
 			{
-				name: 'hrswp/search-filter-input',
-			},
-			{
-				name: 'hrswp/search-filter-section',
+				name: 'hrswp/filter-section',
 				innerBlocks: [
 					{
 						name: 'core/list',

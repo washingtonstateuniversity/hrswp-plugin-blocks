@@ -20,7 +20,7 @@ class Filter {
 		this._parent = content;
 		this._ref = ref;
 		this._content = content.querySelector(
-			'.wp-block-hrswp-search-filter-section'
+			'.wp-block-hrswp-filter-section'
 		);
 
 		this._setupSearchField();
@@ -41,7 +41,7 @@ class Filter {
 		const searchFieldInputHtml = `<div class="wp-block-search">
 			<label class="wp-block-search__label screen-reader-text" hrswp-block-search-filter__input-${ this._ref }>Search</label>
 			<div class="wp-block-search__inside-wrapper">
-				<input id="hrswp-block-search-filter__input-${ this._ref }" class="wp-block-search__input" type="search" name="hrswp-search-filter-search" value="" placeholder="Search …">
+				<input id="hrswp-block-search-filter__input-${ this._ref }" class="wp-block-search__input" type="search" name="hrswp-filter-search" value="" placeholder="Search …">
 				<button class="wp-block-search__button" id="hrswp-block-search-filter__reset-${ this._ref }">Reset</button>
 			</div>
 		</div>`;
@@ -195,7 +195,7 @@ class Filter {
  */
 function init() {
 	const searchForms = /** @type {NodeList} */ document.querySelectorAll(
-		'.wp-block-hrswp-search-filter'
+		'.wp-block-hrswp-filter'
 	);
 
 	let i = 0;

@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "hrswp/search-filter",
+	"name": "hrswp/filter",
 	"category": "widgets",
 	"attributes": {
 		"retainHeadings": {
@@ -12,6 +12,6 @@
 		"align": true,
 		"html": false
 	},
-	"editorStyle": "hrswp-block-search-filter-editor",
-	"style": "hrswp-block-search-filter"
+	"editorStyle": "hrswp-block-filter-editor",
+	"style": "hrswp-block-filter"
 }

@@ -186,17 +186,17 @@ class Setup {
 	 */
 	private function define_blocks() {
 		self::$blocks = array(
-			'hrswp/accordion-heading'     => 0,
-			'hrswp/accordion-section'     => 0,
-			'hrswp/accordions'            => 0,
-			'hrswp/button'                => 0,
-			'hrswp/buttons'               => 0,
-			'hrswp/posts-list'            => 'posts-list.php',
-			'hrswp/search-filter'         => 0,
-			'hrswp/search-filter-section' => 0,
-			'hrswp/callout'               => 0,
-			'hrswp/notification'          => 0,
-			'hrswp/sidebar'               => 0,
+			'hrswp/accordion-heading' => 0,
+			'hrswp/accordion-section' => 0,
+			'hrswp/accordions'        => 0,
+			'hrswp/button'            => 0,
+			'hrswp/buttons'           => 0,
+			'hrswp/posts-list'        => 'posts-list.php',
+			'hrswp/filter'            => 0,
+			'hrswp/filter-section'    => 0,
+			'hrswp/callout'           => 0,
+			'hrswp/notification'      => 0,
+			'hrswp/sidebar'           => 0,
 		);
 	}
 
@@ -297,7 +297,7 @@ class Setup {
 		);
 
 		// Only load the filter scripts when they are needed.
-		if ( has_block( 'hrswp/search-filter' ) ) {
+		if ( has_block( 'hrswp/filter' ) ) {
 			wp_register_script(
 				'mark-js',
 				plugins_url( 'build/lib/mark.min.js', self::$basename ),

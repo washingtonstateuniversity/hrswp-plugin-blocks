@@ -14,12 +14,12 @@ const {
  *
  * The allowed blocks constant is passed to InnerBlocks as specified here.
  * The only block allowed in the Search Filter block is the Search Filter
- * Section block (hrswp/search-filter-section).
+ * Section block (hrswp/filter-section).
  *
  * @constant
  * @type {string[]}
  */
-const ALLOWED_BLOCKS = [ 'hrswp/search-filter-section' ];
+const ALLOWED_BLOCKS = [ 'hrswp/filter-section' ];
 
 /**
  * The block template.
@@ -27,7 +27,7 @@ const ALLOWED_BLOCKS = [ 'hrswp/search-filter-section' ];
  * @constant
  * @type {string[]}
  */
-const TEMPLATE = [ [ 'hrswp/search-filter-section' ] ];
+const TEMPLATE = [ [ 'hrswp/filter-section' ] ];
 
 function SearchFilterEdit( { attributes, setAttributes } ) {
 	const { retainHeadings } = attributes;
@@ -43,7 +43,7 @@ function SearchFilterEdit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Search Filter Settings' ) }>
+				<PanelBody title={ __( 'Filter Settings' ) }>
 					<ToggleControl
 						label={ __( 'Retain Headings' ) }
 						checked={ !! retainHeadings }
