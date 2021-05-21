@@ -1,0 +1,40 @@
+.wp-block-hrswp-search-filter-section.filtering-active :not(.show) {
+	display: none;
+}
+
+.wp-block-hrswp-search-filter-section.filtering-active .show [data-markjs="true"] {
+	display: inline;
+}
+
+/* If a figure element is visible then its child image should be too. */
+.wp-block-hrswp-search-filter-section.filtering-active figure.show img {
+	display: inline-block;
+}
+
+/* Do not hide headings if 'retainHeadings' attribute is true. */
+.has-retain-headings .wp-block-hrswp-search-filter-section.filtering-active h1,
+.has-retain-headings .wp-block-hrswp-search-filter-section.filtering-active h2,
+.has-retain-headings .wp-block-hrswp-search-filter-section.filtering-active h3,
+.has-retain-headings .wp-block-hrswp-search-filter-section.filtering-active h4,
+.has-retain-headings .wp-block-hrswp-search-filter-section.filtering-active h5,
+.has-retain-headings .wp-block-hrswp-search-filter-section.filtering-active h6 {
+	display: block;
+}
+
+/* Special rules to make table filtering a little more graceful. */
+.wp-block-hrswp-search-filter-section.filtering-active table.show thead {
+	display: table-header-group;
+}
+
+.wp-block-hrswp-search-filter-section.filtering-active table.show thead tr {
+	display: table-row;
+}
+
+.wp-block-hrswp-search-filter-section.filtering-active table.show thead th,
+.wp-block-hrswp-search-filter-section.filtering-active tr.show td {
+	display: table-cell;
+}
+
+.wp-block-hrswp-search-filter-section.filtering-active tr.show td * {
+	display: unset;
+}

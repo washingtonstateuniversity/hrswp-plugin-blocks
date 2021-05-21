@@ -7,4 +7,5 @@
 @import "./callout/editor.css";
 @import "./notification/editor.css";
 @import "./posts-list/editor.css";
+@import "./search-filter/editor.css"; /* @deprecated 1.0.0 */
 @import "./sidebar/editor.css";
