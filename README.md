@@ -1,13 +1,28 @@
 # HRSWP Blocks
 
-[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions/workflows/coding-standards.yml/badge.svg?branch=stable)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest) ![WordPress tested up to version 5.7.2](https://img.shields.io/badge/WordPress-v5.7.2%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/stable/LICENSE.md)
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest) ![WordPress tested up to version 5.7.2](https://img.shields.io/badge/WordPress-v5.7.2%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/LICENSE.md)
 
 ## Overview
 
-A WSU HRS WordPress plugin to provide custom blocks and WP block editor adjustments.
+The WSU HRS WordPress plugin provides custom blocks tailored for the [WSU Human Resource Services Theme](https://github.com/washingtonstateuniversity/hrs.wsu.edu). It also replaces some WP Core blocks, such as the Buttons block, that offer options that are not appropriate under the HRS style guide.
 
 ## Description
 
+This plugin adds several custom blocks. Some provide relatively simple layout blocks and others provide more complex blocks that include front-end JavaScript. It adds the following blocks:
+
+- Accordion
+- Callout
+- Filter
+- Notification
+- Posts List
+- Sidebar
+
+The Accordion and Filter blocks both include frontend JavaScript that is loaded when one of those blocks is active on a page.
+
+The plugin also replaces the following WP Core blocks:
+
+- Button
+- Buttons
 
 ## Installation
 
@@ -21,14 +36,15 @@ This plugin is not in the WordPress plugins directory. You have to install it ma
 
 ### Updates
 
-Please note that this plugin will not update automatically and will not notify of new available updates. It is your responsibility to make sure you stay up to date with the latest version.
+Please note that this plugin will not update automatically and will not notify of available updates. It is your responsibility to make sure you stay up to date with the latest version.
 
 ### Deactivating and Deleting: Plugin Data
 
+This plugin does not store any user information. The only data it saves is an option in the database to track the plugin status (activation status, version, etc.). Deactivating the plugin through the WordPress plugins screen UI will retain the option. Uninstalling through the WP interface will delete the option entirely. Deleting it directly from the server (not through the plugins screen UI) will circumvent this cleanup action and *will not* delete the plugin data.
 
 ## For Developers
 
-The HRSWP Blocks plugin development environment relies primarily on NPM and Composer. The `package.json` and `composer.json` configuration files manage necessary dependencies for testing and building the production version of the theme. The NPM scripts in `package.json` do most of the heavy lifting.
+The HRSWP Blocks plugin development environment relies on NPM and Composer. The `package.json` and `composer.json` configuration files manage dependencies for testing and building the production version of the theme. The NPM scripts in `package.json` do most of the heavy lifting. Please follow the development workflow outlined in the [Contributing guide](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/CONTRIBUTING.md).
 
 ### Initial Setup
 
@@ -43,7 +59,8 @@ In a terminal:
 ~~~bash
 git clone https://github.com/washingtonstateuniversity/hrswp-plugin-blocks.git hrswp-plugin-blocks
 cd hrswp-plugin-blocks
-npm install; composer install
+npm install
+composer install
 npm test -s
 git checkout -b new-branch-name
 ~~~
@@ -63,8 +80,10 @@ See the scripts section of `package.json` for additional available commands.
 
 **Active:** WSU HRS actively works on this plugin. We plant to continue work for the foreseeable future, adding new features, enhancing existing ones, and maintaining compatability with the latest version of WordPress. Bug reports, feature requests, questions, and pull requests are welcome.
 
-## HRSWP Blocks Issues
+## Changelog
 
-Please submit bugs, fixes, and feature requests through [GitHub Issues](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/issues). Please read (and adhere to) the guidelines for contributions detailed in the issue templates.
+All notable changes are documented in the [CHANGELOG.md](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/CHANGELOG.md), with dates and version numbers.
 
-Read the [CHANGELOG.md](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/stable/CHANGELOG.md) to review release and update notes.
+## Contributing
+
+Please submit bugs and feature requests through [GitHub Issues](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/issues). Refer to [CONTRIBUTING.md](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/CONTRIBUTING.md) for the development workflow and details for submitting pull requests.
