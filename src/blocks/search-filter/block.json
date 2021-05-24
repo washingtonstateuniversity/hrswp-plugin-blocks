@@ -3,7 +3,8 @@
 	"category": "widgets",
 	"supports": {
 		"align": true,
-		"html": false
+		"html": false,
+		"inserter": false
 	},
 	"attributes": {
 		"retainHeadings": {

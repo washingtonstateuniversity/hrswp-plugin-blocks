@@ -12,9 +12,8 @@ import * as accordions from './accordions';
 import * as button from './button';
 import * as buttons from './buttons';
 import * as postsList from './posts-list';
-import * as searchFilter from './search-filter';
-import * as searchFilterSection from './search-filter-section';
-import * as searchFilterInput from './search-filter-input';
+import * as filter from './filter';
+import * as filterSection from './filter-section';
 import * as callout from './callout';
 import * as notification from './notification';
 import * as sidebar from './sidebar';
@@ -24,21 +23,26 @@ import * as sidebar from './sidebar';
  */
 import * as accordion from './accordion';
 import * as accordionPanel from './accordion-panel';
+import * as searchFilter from './search-filter';
+import * as searchFilterSection from './search-filter-section';
+import * as searchFilterInput from './search-filter-input';
 
 const hrsBlocks = [
-	accordion,
-	accordionPanel,
+	accordion, // deprecated @1.0.0
+	accordionPanel, // deprecated @1.0.0
 	accordionHeading,
 	accordionSection,
 	accordions,
 	button,
 	buttons,
 	postsList,
-	searchFilter,
-	searchFilterSection,
-	searchFilterInput,
+	filter,
+	filterSection,
 	callout,
 	notification,
+	searchFilter, // deprecated @1.0.0
+	searchFilterSection, // deprecated @1.0.0
+	searchFilterInput, // deprecated @1.0.0
 	sidebar,
 ];
 

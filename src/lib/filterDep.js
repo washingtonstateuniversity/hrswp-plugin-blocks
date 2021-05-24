@@ -14,17 +14,11 @@ class Filter {
 	 * Instantiates a filter on the given search form block.
 	 *
 	 * @param {Node} content A search form block to search and filter within.
-	 * @param {number} ref A unique numeric reference for each accordion.
 	 */
-	constructor( content, ref ) {
-		this._parent = content;
-		this._ref = ref;
+	constructor( content ) {
 		this._content = content.querySelector(
-			'.wp-block-hrswp-filter-section'
+			'.wp-block-hrswp-search-filter-section'
 		);
-
-		this._setupSearchField();
-
 		this._searchInput = content.querySelector( '.wp-block-search__input' );
 		this._searchReset = content.querySelector( 'button' );
 
@@ -35,18 +29,6 @@ class Filter {
 
 		this._handleURLSearchParams();
 		this._addEventListeners();
-	}
-
-	_setupSearchField() {
-		const searchFieldInputHtml = `<div class="wp-block-search">
-			<label class="wp-block-search__label screen-reader-text" hrswp-block-search-filter__input-${ this._ref }>Search</label>
-			<div class="wp-block-search__inside-wrapper">
-				<input id="hrswp-block-search-filter__input-${ this._ref }" class="wp-block-search__input" type="search" name="hrswp-filter-search" value="" placeholder="Search …">
-				<button class="wp-block-search__button" id="hrswp-block-search-filter__reset-${ this._ref }">Reset</button>
-			</div>
-		</div>`;
-
-		this._parent.insertAdjacentHTML( 'afterbegin', searchFieldInputHtml );
 	}
 
 	/**
@@ -195,13 +177,11 @@ class Filter {
  */
 function init() {
 	const searchForms = /** @type {NodeList} */ document.querySelectorAll(
-		'.wp-block-hrswp-filter'
+		'.wp-block-hrswp-search-filter'
 	);
 
-	let i = 0;
 	searchForms.forEach( ( searchForm ) => {
-		new Filter( searchForm, i );
-		i++;
+		new Filter( searchForm );
 	} );
 }
 init();

@@ -1,0 +1,5 @@
+/* stylelint-disable selector-class-pattern */
+.wp-block-hrswp-filter .wp-block-search__inside-wrapper {
+	max-width: 24em;
+}
+/* stylelint-enable selector-class-pattern */

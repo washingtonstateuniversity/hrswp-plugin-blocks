@@ -29,6 +29,9 @@ function allowed_block_types_filter() {
 	// The blocks to hide.
 	$blocked_blocks = array(
 		'hrswp/accordion', // @deprecated in 1.0.0
+		'hrswp/search-filter', // @deprecated in 1.0.0
+		'hrswp/search-filter-input', // @deprecated in 1.0.0
+		'hrswp/search-filter-section', // @deprecated in 1.0.0
 		'core/button',
 		'core/buttons',
 	);

@@ -192,7 +192,9 @@ class Setup {
 			'hrswp/button'            => 0,
 			'hrswp/buttons'           => 0,
 			'hrswp/posts-list'        => 'posts-list.php',
-			'hrswp/search-filter'     => 0,
+			'hrswp/filter'            => 0,
+			'hrswp/filter-section'    => 0,
+			'hrswp/search-filter'     => 0, // @deprecated 1.0.0
 			'hrswp/callout'           => 0,
 			'hrswp/notification'      => 0,
 			'hrswp/sidebar'           => 0,
@@ -296,7 +298,7 @@ class Setup {
 		);
 
 		// Only load the filter scripts when they are needed.
-		if ( has_block( 'hrswp/search-filter' ) ) {
+		if ( has_block( 'hrswp/filter' ) ) {
 			wp_register_script(
 				'mark-js',
 				plugins_url( 'build/lib/mark.min.js', self::$basename ),
@@ -308,6 +310,29 @@ class Setup {
 			wp_enqueue_script(
 				self::$slug . '-filter',
 				plugins_url( 'build/filter.js', self::$basename ),
+				array( 'mark-js' ),
+				$plugin['version'],
+				true
+			);
+		}
+
+		/**
+		 * Load the deprecated search filter block.
+		 *
+		 * @deprecated 1.0.0
+		 */
+		if ( has_block( 'hrswp/search-filter' ) ) {
+			wp_register_script(
+				'mark-js',
+				plugins_url( 'build/lib/mark.min.js', self::$basename ),
+				array(),
+				$plugin['version'],
+				true
+			);
+
+			wp_enqueue_script(
+				self::$slug . '-filter-dep',
+				plugins_url( 'build/filterDep.js', self::$basename ),
 				array( 'mark-js' ),
 				$plugin['version'],
 				true
