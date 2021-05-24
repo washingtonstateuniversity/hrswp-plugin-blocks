@@ -1,7 +1,7 @@
 .wp-block-hrswp-filter.is-selected,
 .wp-block-hrswp-filter.has-child-selected {
-	border-top: 2px dashed var(--brand-gray);
-	border-bottom: 2px dashed var(--brand-gray);
+	border-top: 1px dashed var(--wp-admin-theme-color);
+	border-bottom: 1px dashed var(--wp-admin-theme-color);
 }
 
 .wp-block-hrswp-filter::before {
