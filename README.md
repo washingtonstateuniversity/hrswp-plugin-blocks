@@ -1,6 +1,6 @@
 # HRSWP Blocks
 
-[![Build Status](https://travis-ci.org/washingtonstateuniversity/hrswp-plugin-blocks.svg?branch=stable)](https://travis-ci.org/washingtonstateuniversity/hrswp-plugin-blocks) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions/workflows/coding-standards.yml/badge.svg?branch=stable)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest) ![WordPress tested up to version 5.7.2](https://img.shields.io/badge/WordPress-v5.7.2%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/stable/LICENSE.md)
 
 ## Overview
 
@@ -58,6 +58,10 @@ The following commands will handle basic build functions. (Remove the `-s` flag 
 - `npm run build:styles -s`: Compile CSS.
 
 See the scripts section of `package.json` for additional available commands.
+
+## Support Level
+
+**Active:** WSU HRS actively works on this plugin. We plant to continue work for the foreseeable future, adding new features, enhancing existing ones, and maintaining compatability with the latest version of WordPress. Bug reports, feature requests, questions, and pull requests are welcome.
 
 ## HRSWP Blocks Issues
 
