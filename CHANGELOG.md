@@ -9,16 +9,75 @@ Changelog formatting (http://semver.org/):
 
 ## Major.MinorAddorDeprec.Bugfix YYYY-MM-DD
 
-### Features
-### Enhancements
-### Bug Fixes
-### Experiments
-### Deprecations
-### Code quality
-### Documentation
-### Build Tooling
-### Project Management
+### Added (for new features.)
+### Changed (for changes in existing functionality.)
+### Deprecated (for soon-to-be removed features.)
+### Removed (for now removed features.)
+### Fixed (for any bug fixes.)
+### Security (in case of vulnerabilities.)
+
 -->
+
+## 1.0.0 (2021-06-01)
+
+### Added
+
+- Create a guide for making contributions in CONTRIBUTING.md. (2741912)
+- Filter block (`filter` and `filter-section`) to replace the now-deprecated Search Filter block (`search-filter`, `search-filter-input`, and `search-filter-section`). This refactored version uses Block API 2, moves the UI controls to frontend JS, matches markup to core Search block, and resolves issues #7, #56, and #57. (9471cdc)
+- New Accordions block (`accordions`, `accordion-heading`, and `accordion-section`) to replace the now-deprecated Accordion block (`accordion` and `accordion-panel`). This refactored version uses Block API 2 and resolves issues #24, #25, #51, #52, and #53. (8f33744)
+- Button and Buttons blocks to replace WP Core versions, close #54. Custom versions mostly replicate the core versions of those blocks but remove features we do not want users to use, like radius controls. (887bc64)
+- Filter to manage blocks allowed in editor inserter. (32370ba)
+- Add postcss as a dev dependency (required by PostCSS CLI and PostCSS Import). (5a86ebe)
+
+### Changed
+
+- Bump WordPress tested-to to 5.7.2 and minimum supported version to 5.7.
+- Expand on the bug report and pull request templates, close #50. (2741912)
+- Complete README including list of HRSWP blocks provided, close #6. (92ed6de)
+- Replace GPL 2.0 license with a GPL 3.0 license. (9ba18d7 and 2e335b8)
+- Update block registration method to use metadata from `block.json` directly. (f1058fb)
+- Simplify Composer coding standards scripts. (742aaee)
+- Replace Travis CI with GitHub Actions, close #60. (2817e66)
+- Replace deprecated WP Stylelint config dependency with new version. (ca4da08) 
+- Bump @wordpress/stylelint-config from 19.0.2 to 19.0.4 and stylelint from 13.7.1 to 13.13.1. (00c76bb)
+- Bump postcss from 8.2.8 to 8.3.0. (00c76bb)
+- Bump classnames from 2.2.6 to 2.3.1. (00c76bb)
+- Bump @wordpress/dependency-extraction-webpack-plugin from 3.1.0 to 3.1.3. (00c76bb)
+- Bump @babel/core from 7.13.14 to 7.14.3 and @babel/runtime from 7.13.10 to 7.14.0. (00c76bb)
+- Bump eslint from 7.9.0 to 7.27.0. (b833f80 and 00c76bb)
+- Bump squizlabs/php_codesniffer from 3.5.6 to 3.6.0. (00c76bb)
+- Bump dealerdirect/phpcodesniffer-composer-installer from 0.7.0 to 0.7.1. (00c76bb)
+- Bump sirbrillig/phpcs-variable-analysis from 2.8.3 to 2.11.0. (00c76bb)
+- Upgrade cssnano from 4.1.10 to 5.0.4. (00c76bb)
+- Upgrade @wordpress/babel-preset-default from 5.1.0 to 6.1.0. (00c76bb)
+- Upgrade to Webpack 5: webpack from 4.44.2 to 5.37.1; webpack-bundle-analyzer from 3.9.0 to 4.4.2; webpack-cli from 3.3.12 to 4.7.0; source-map-loader from 1.1.0 to 3.0.0; and copy-webpack-plugin from 6.1.1 to 9.0.0. (346f8f6 and 00c76bb)
+- Upgrade PostCSS build tools: postcss-cli from 8.0.0 to 8.3.0 and postcss-import from 12.0.1 to 14.0.2. (5a86ebe)
+- Upgrade JS linters: @wordpress/eslint-plugin from 7.2.1 to 9.0.5; @wordpress/npm-package-json-lint-config from 3.1.0 to 4.0.4; and WP prettier from 2.0.5 to 2.2.1-beta-1. (b833f80 and 00c76bb)
+
+### Deprecated
+
+- HRSWP `searchFilter`, `searchFilterSection`, and `searchFilterInput` blocks. (9471cdc)
+- HRSWP `accordion`, `accordion-panel`, and `accordion-input` blocks. (bcf2e9a)
+- WP Core `button` and `buttons` blocks. (887bc64)
+
+### Removed
+
+- Remove Thread Loader dependency and script from Webpack config until it works with Webpack 5. (346f8f6)
+
+### Fixed
+
+- Fix #55 Sidebar block layout like Columns block to prevent collapse when empty. (3517d17)
+- Fix #58 update Notifcation block to use `hrswp/button`. (757bfc4)
+- Fix copy webpack plugin pattern syntax: no longer need `.[ext]` after copy-webpack-plugin version 8.0.0. (d33c4f2)
+- Fix eslint "no-unresolved" error from missing import. (1c73230)
+
+### Security
+
+- Bump browserslist from 4.16.4 to 4.16.6. (b9b1008)
+- Bump y18n from 4.0.0 to 4.0.1. (d64059b)
+- Bump elliptic from 6.5.3 to 6.5.4. (40289ab)
+- Bump dot-prop from 4.2.0 to 4.2.1. (f335f90)
+- Bump ini from 1.3.5 to 1.3.8. (1bc8c67)
 
 ## 0.6.0 (2020-09-14)
 
