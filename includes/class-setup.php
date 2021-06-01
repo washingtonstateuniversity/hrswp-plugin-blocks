@@ -186,6 +186,7 @@ class Setup {
 	 */
 	private function define_blocks() {
 		self::$blocks = array(
+			'hrswp/accordion'         => 0, // @deprecated 1.0.0
 			'hrswp/accordion-heading' => 0,
 			'hrswp/accordion-section' => 0,
 			'hrswp/accordions'        => 0,
