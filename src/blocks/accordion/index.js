@@ -16,7 +16,7 @@ const { name, category, supports, attributes } = metadata;
 export { name };
 
 export const settings = {
-	title: __( 'Accordion' ),
+	title: __( 'Accordion (Deprecated)' ),
 	icon,
 	category,
 	description: __( 'Display content in an accordion.' ),

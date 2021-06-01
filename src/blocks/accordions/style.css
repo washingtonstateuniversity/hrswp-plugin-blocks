@@ -1,0 +1,126 @@
+.wp-block-hrswp-accordions.accordion-active {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	margin-bottom: 1.5em;
+
+	& .hrswp-accordion-heading {
+		font-size: inherit;
+		margin: 0;
+	}
+
+	& .hrswp-accordion-heading:not(:first-of-type) {
+		border-top: 1px solid rgba(0, 0, 0, 0.25);
+	}
+
+	& .accordion-panel-trigger {
+		appearance: none;
+		align-items: center;
+		background: none;
+		border: none;
+		border-left: 5px solid transparent;
+		border-radius: 0;
+		box-shadow: none;
+		color: inherit;
+		cursor: pointer;
+		display: flex;
+		font-size: inherit;
+		font-weight: 600;
+		justify-content: space-between;
+		margin: 0;
+		padding: 0.5em 0.75em;
+		text-align: left;
+		text-transform: none;
+		width: 100%;
+
+		&::after {
+			background: url(icons/expand_more-dark-48dp.svg);
+			background-position: center 100%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			content: "";
+			flex: 0 0 auto;
+			height: 48px;
+			margin-left: 2em;
+			transition: transform 0.2s ease-in-out;
+			transform-origin: center center;
+			transform: rotate(0deg);
+			width: 48px;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: #f2f2f2;
+			border-color: #b3b3b3;
+			outline: none;
+		}
+
+		&:focus {
+			box-shadow: inset 0 0 0 2px #ca1237;
+		}
+	}
+
+	& .accordion-panel-trigger[aria-expanded="true"] {
+		background-color: #f7f7f7;
+		border-color: #ca1237;
+
+		&:hover {
+			background-color: #f2f2f2;
+		}
+
+		&::after {
+			transform: rotate(180deg);
+		}
+	}
+
+	& .wp-block-hrswp-accordion-section {
+		max-height: 0;
+		overflow: hidden;
+		padding: 0 1.5rem 0;
+		transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+		visibility: hidden;
+	}
+
+	& .wp-block-hrswp-accordion-section[aria-hidden="false"] {
+		max-height: 100vh;
+		padding: 1em 1.5rem 0.5em;
+		overflow: auto;
+		visibility: visible;
+	}
+
+	& .controls {
+		display: flex;
+		justify-content: flex-end;
+
+		& button {
+			background: transparent;
+			color: var(--nav-color);
+			border: 1px solid transparent;
+			box-shadow: none;
+			font-weight: 400;
+			margin-bottom: 0.25em;
+			margin-left: 0.25em;
+			padding: 0.25em 0.5em;
+			text-transform: none;
+
+			&:hover,
+			&:focus {
+				background: var(--nav-color-hover);
+				color: #fff;
+			}
+		}
+
+	}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.wp-block-hrswp-accordions.accordion-active {
+
+		& .wp-block-hrswp-accordion-section,
+		& .accordion-panel-trigger::after {
+			transition: none;
+		}
+
+	}
+
+}

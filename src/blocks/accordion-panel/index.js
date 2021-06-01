@@ -15,7 +15,7 @@ const { name, category, supports, attributes } = metadata;
 export { name };
 
 export const settings = {
-	title: __( 'Accordion Panel' ),
+	title: __( 'Accordion Panel (Deprecated)' ),
 	parent: [ 'hrswp/accordion' ],
 	icon: 'index-card',
 	category,

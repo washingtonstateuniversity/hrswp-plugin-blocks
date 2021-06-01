@@ -1,19 +1,14 @@
 /**
- * External dependencies.
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { InnerBlocks } = wp.blockEditor;
+const {
+	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
+	useBlockProps,
+} = wp.blockEditor;
 
 /**
  * The block template.
- *
- * This is locked so that the search input field is always first, followed
- * by a search filter section to contain the content to be searched.
  *
  * @constant
  * @type {string[]}
@@ -31,18 +26,19 @@ const TEMPLATE = [
  */
 const ALLOWED_BLOCKS = [ 'core/column' ];
 
-function SidebarEdit( { className } ) {
-	const classes = classnames( className, { 'wp-block-columns': true } );
+function SidebarEdit() {
+	const blockProps = useBlockProps();
+	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		allowedBlocks: ALLOWED_BLOCKS,
+		template: TEMPLATE,
+		templateLock: 'all',
+		orientation: 'horizontal',
+		renderAppender: false,
+	} );
 
 	return (
 		<>
-			<div className={ classes }>
-				<InnerBlocks
-					template={ TEMPLATE }
-					templateLock="all"
-					allowedBlocks={ ALLOWED_BLOCKS }
-				/>
-			</div>
+			<div { ...innerBlocksProps } />
 		</>
 	);
 }

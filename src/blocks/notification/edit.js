@@ -19,7 +19,7 @@ const { InspectorControls, InnerBlocks } = wp.blockEditor;
  * @constant
  * @type {string[]}
  */
-const ALLOWED_BLOCKS = [ 'core/paragraph', 'core/button' ];
+const ALLOWED_BLOCKS = [ 'core/paragraph', 'hrswp/button' ];
 
 /**
  * The block template.
@@ -29,7 +29,7 @@ const ALLOWED_BLOCKS = [ 'core/paragraph', 'core/button' ];
  */
 const TEMPLATE = [
 	[ 'core/paragraph', { placeholder: __( 'Write message…' ) } ],
-	[ 'core/button' ],
+	[ 'hrswp/button' ],
 ];
 
 function NotificationEditContainer( { className, attributes, updateBlocks } ) {
@@ -84,7 +84,7 @@ const NotificationEdit = withDispatch( ( dispatch, ownProps, registry ) => ( {
 			innerBlocks = [
 				...innerBlocks,
 				...times( 1, () => {
-					return createBlock( 'core/button' );
+					return createBlock( 'hrswp/button' );
 				} ),
 			];
 		} else {

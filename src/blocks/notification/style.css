@@ -34,7 +34,8 @@
 		max-width: 70%;
 	}
 
-	.wp-block-hrswp-notification .wp-block-button {
+	.wp-block-hrswp-notification .wp-block-button,
+	.wp-block-hrswp-notification .wp-block-hrswp-button {
 		margin: 0 0 0 1em;
 	}
 

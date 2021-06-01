@@ -1,7 +1,10 @@
 {
+	"apiVersion": 2,
 	"name": "hrswp/sidebar",
 	"category": "layout",
 	"supports": {
 		"align": true
-	}
+	},
+	"editorStyle": "hrswp-block-sidebar-editor",
+	"style": "hrswp-block-sidebar"
 }

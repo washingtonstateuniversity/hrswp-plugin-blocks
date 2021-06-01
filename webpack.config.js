@@ -18,7 +18,9 @@ const config = {
 	entry: {
 		index: resolve( process.cwd(), 'src/', 'index.js' ),
 		filter: resolve( process.cwd(), 'src/lib/', 'filter.js' ),
+		filterDep: resolve( process.cwd(), 'src/lib/', 'filterDep.js' ), // @deprecated 1.0.0
 		accordion: resolve( process.cwd(), 'src/lib/', 'accordion.js' ),
+		accordionDep: resolve( process.cwd(), 'src/lib/', 'accordionDep.js' ), // @deprecated 1.0.0
 	},
 	output: {
 		filename: '[name].js',
@@ -34,24 +36,21 @@ const config = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				use: [
-					require.resolve( 'thread-loader' ),
-					{
-						loader: require.resolve( 'babel-loader' ),
-						options: {
-							// Babel uses a directory within local node_modules
-							// by default. Use the environment variable option
-							// to enable more persistent caching.
-							cacheDirectory:
-								process.env.BABEL_CACHE_DIRECTORY || true,
-							presets: [
-								require.resolve(
-									'@wordpress/babel-preset-default'
-								),
-							],
-						},
+				use: {
+					loader: require.resolve( 'babel-loader' ),
+					options: {
+						// Babel uses a directory within local node_modules
+						// by default. Use the environment variable option
+						// to enable more persistent caching.
+						cacheDirectory:
+							process.env.BABEL_CACHE_DIRECTORY || true,
+						presets: [
+							require.resolve(
+								'@wordpress/babel-preset-default'
+							),
+						],
 					},
-				],
+				},
 			},
 		],
 	},
@@ -62,16 +61,18 @@ const config = {
 		new CopyPlugin( {
 			patterns: [
 				{
-					from: './src/blocks/**/index.php',
-					to: 'blocks/',
-					transformPath( targetPath ) {
-						const dir = basename( dirname( targetPath ) );
-						return `blocks/${ dir }.php`;
+					from: './src/*/**/index.php',
+					to( { absoluteFilename } ) {
+						const dir = basename( dirname( absoluteFilename ) );
+						const parent = basename(
+							dirname( dirname( absoluteFilename ) )
+						);
+						return `${ parent }/${ dir }[ext]`;
 					},
 				},
 				{
 					from: './src/icons/**/*',
-					to: 'icons/[name].[ext]',
+					to: 'icons/[name][ext]',
 				},
 				{
 					from: './node_modules/mark.js/dist/mark.min.js',

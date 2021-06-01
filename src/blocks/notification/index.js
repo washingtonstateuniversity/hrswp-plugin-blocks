@@ -36,7 +36,7 @@ export const settings = {
 				},
 			},
 			{
-				name: 'core/button',
+				name: 'hrswp/button',
 				attributes: {
 					/* translators: example text. */
 					text: __( 'Jane Austen' ),
