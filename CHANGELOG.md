@@ -31,6 +31,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump WordPress tested-to to 5.7.2 and minimum supported version to 5.7.
 - Expand on the bug report and pull request templates, close #50. (2741912)
 - Complete README including list of HRSWP blocks provided, close #6. (92ed6de)
 - Replace GPL 2.0 license with a GPL 3.0 license. (9ba18d7 and 2e335b8)
