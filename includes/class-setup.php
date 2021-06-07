@@ -75,17 +75,6 @@ class Setup {
 	}
 
 	/**
-	 * Returns a list of all HRSWP registered blocks.
-	 *
-	 * @since 0.7.0
-	 *
-	 * @return string[] An array of all HRSWP registered block names.
-	 */
-	public static function get_all_registered() {
-		return array_keys( self::$blocks );
-	}
-
-	/**
 	 * Activates the plugin.
 	 *
 	 * @since 0.1.0
@@ -172,11 +161,6 @@ class Setup {
 
 			require $blocks_dir . $file;
 		}
-
-		/**
-		 * The block modifications file.
-		 */
-		require dirname( __FILE__ ) . '/blocks.php';
 	}
 
 	/**

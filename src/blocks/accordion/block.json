@@ -2,7 +2,8 @@
 	"name": "hrswp/accordion",
 	"category": "layout",
 	"supports": {
-		"align": true
+		"align": true,
+		"inserter": false
 	},
 	"attributes": {
 		"level": {

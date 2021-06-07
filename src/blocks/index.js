@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 const { registerBlockType } = wp.blocks;
+const { dispatch } = wp.data;
 
 /**
  * Internal dependencies
@@ -46,6 +47,8 @@ const hrsBlocks = [
 	sidebar,
 ];
 
+const hiddenBlocks = [ 'core/button', 'core/buttons' ];
+
 /**
  * Function to register an individual block.
  *
@@ -75,4 +78,8 @@ const registerBlock = ( block ) => {
  */
 export const registerBlocks = () => {
 	hrsBlocks.forEach( registerBlock );
+};
+
+export const hideBlocks = () => {
+	dispatch( 'core/edit-post' ).hideBlockTypes( hiddenBlocks );
 };

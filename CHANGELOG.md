@@ -18,6 +18,13 @@ Changelog formatting (http://semver.org/):
 
 -->
 
+## 1.0.1 (2021-06-07)
+
+### Fixed
+
+- Fix hiding deprecated accordion block from block inserter.
+- Fix #67 use client-side `wp.data.dispatch` method to hide blocks instead of server-side `allowed_blocks` filter.
+
 ## 1.0.0 (2021-06-01)
 
 ### Added
