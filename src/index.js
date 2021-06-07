@@ -1,6 +1,7 @@
 /**
  * Internal dependencies
  */
-import { registerBlocks } from './blocks';
+import { hideBlocks, registerBlocks } from './blocks';
 
 registerBlocks();
+hideBlocks();
