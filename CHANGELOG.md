@@ -18,6 +18,12 @@ Changelog formatting (http://semver.org/):
 
 -->
 
+## 1.0.2-beta.1 (Future release)
+
+### Fixed
+
+- Fix #69 outline style buttons need background. (4023822)
+
 ## 1.0.1 (2021-06-07)
 
 ### Fixed
