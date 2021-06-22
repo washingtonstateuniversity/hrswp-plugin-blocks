@@ -31,6 +31,20 @@
 	max-width: 290px;
 }
 
+.is-style-outline > .wp-block-button__link,
+.wp-block-button__link.is-style-outline {
+
+	/* Overselected to override WP Core styles. */
+	&.has-text-color,
+	&.has-background,
+	&:not(.has-text-color),
+	&:not(.has-background) {
+		background-color: #fff;
+		color: var(--brand-crimson);
+	}
+
+}
+
 @media (min-width: 782px) {
 
 	.wp-block-button__inline-link {
