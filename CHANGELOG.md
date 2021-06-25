@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 
 -->
 
-## 1.0.2-beta.1 (Future release)
+## 1.0.2-rc.1 (:construction: Future)
 
 ### Fixed
 
