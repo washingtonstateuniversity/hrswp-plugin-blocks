@@ -18,11 +18,31 @@ Changelog formatting (http://semver.org/):
 
 -->
 
-## 1.0.2-beta.1 (Future release)
+## 1.0.2 (2021-06-28)
+
+### Changed
+
+- Update eslint from 7.27.0 to 7.29.0. (62a6aab)
+- Update webpack from 5.37.1 to 5.40.0. (62a6aab)
+- Update @wordpress/babel-preset-default from 6.1.0 to 6.2.0. (62a6aab)
 
 ### Fixed
 
 - Fix #69 outline style buttons need background. (4023822)
+
+### Security
+
+- Bump trim-newlines from 3.0.0 to 3.0.1. (3d07281)
+- Bump sirbrillig/phpcs-variable-analysis from 2.11.0 to 2.11.1. (8f453a5)
+- Bump @wordpress/eslint-plugin from 9.0.5 to 9.0.6. (62a6aab)
+- Bump @wordpress/npm-package-json-lint-config from 4.0.4 to 4.0.5. (62a6aab)
+- Bump @wordpress/stylelint-config from 19.0.4 to 19.0.5. (62a6aab)
+- Bump postcss from 8.3.0 to 8.3.5. (62a6aab)
+- Bump cssnano from 5.0.4 to 5.0.6. (62a6aab)
+- Bump webpack-cli from 4.7.0 to 4.7.2. (62a6aab)
+- Bump copy-webpack-plugin from 9.0.0 to 9.0.1. (62a6aab)
+- Bump @wordpress/dependency-extraction-webpack-plugin from 3.1.3 to 3.1.4. (62a6aab)
+- Bump @babel/core and @babel/runtime from 7.14.3 to 7.14.6. (62a6aab)
 
 ## 1.0.1 (2021-06-07)
 
