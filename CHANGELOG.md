@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 
 -->
 
-## 1.0.2-rc.1 (:construction: Future)
+## 1.0.2 (2021-06-28)
 
 ### Changed
 
@@ -32,6 +32,7 @@ Changelog formatting (http://semver.org/):
 
 ### Security
 
+- Bump trim-newlines from 3.0.0 to 3.0.1. (3d07281)
 - Bump sirbrillig/phpcs-variable-analysis from 2.11.0 to 2.11.1. (8f453a5)
 - Bump @wordpress/eslint-plugin from 9.0.5 to 9.0.6. (62a6aab)
 - Bump @wordpress/npm-package-json-lint-config from 4.0.4 to 4.0.5. (62a6aab)
