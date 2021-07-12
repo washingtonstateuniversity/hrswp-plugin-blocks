@@ -1,6 +1,6 @@
 {
 	"name": "@washingtonstateuniversity/hrswp-plugin-blocks",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A WSU HRS WordPress plugin to provide custom blocks and WP block editor adjustments.",
 	"author": "Adam Turner",
 	"contributors": [
@@ -40,7 +40,7 @@
 		"classnames": "^2.3.1",
 		"copy-webpack-plugin": "^9.0.1",
 		"cssnano": "^5.0.6",
-		"eslint": "^7.29.0",
+		"eslint": "^7.30.0",
 		"lodash": "^4.17.20",
 		"mark.js": "^8.11.1",
 		"npm-package-json-lint": "^5.1.0",
@@ -50,11 +50,11 @@
 		"postcss-import": "^14.0.2",
 		"postcss-preset-env": "^6.7.0",
 		"prettier": "npm:wp-prettier@^2.2.1-beta-1",
-		"resolve-bin": "^0.4.0",
+		"resolve-bin": "^0.4.1",
 		"rimraf": "^3.0.2",
 		"source-map-loader": "^3.0.0",
 		"stylelint": "^13.13.1",
-		"webpack": "^5.40.0",
+		"webpack": "^5.44.0",
 		"webpack-bundle-analyzer": "^4.4.2",
 		"webpack-cli": "^4.7.2"
 	},
