@@ -18,6 +18,19 @@ Changelog formatting (http://semver.org/):
 
 -->
 
+## 1.0.3 (2021-07-12)
+
+### Changed
+
+- Bump WP tested-to to 5.8.0. (0d210eb)
+- Update webpack from 5.40.0 to 5.44.0. (c26ace5)
+
+### Security
+
+- Bump sirbrillig/phpcs-variable-analysis from 2.11.1 to 2.11.2. (c26ace5)
+- Bump resolve-bin from 0.4.0 to 4.4.1. (c26ace5)
+- Bump eslint from 7.29.0 to 7.30.0. (c26ace5)
+
 ## 1.0.2 (2021-06-28)
 
 ### Changed
