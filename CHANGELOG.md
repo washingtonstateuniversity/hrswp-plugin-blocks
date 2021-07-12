@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 
 -->
 
-## 1.0.3-rc.1 (:construction: Future)
+## 1.0.3 (2021-07-12)
 
 ### Changed
 
