@@ -22,6 +22,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump WP tested-to to 5.8.0. (0d210eb)
 - Update webpack from 5.40.0 to 5.44.0. (c26ace5)
 
 ### Security
