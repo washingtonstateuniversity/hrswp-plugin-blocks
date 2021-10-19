@@ -1,13 +1,13 @@
 .wp-block-hrswp-callout {
-	border: 8px solid var(--neutral-dark);
+	border: 8px solid var(--wp--preset--color--dark);
 	margin-top: 1.5em;
 	margin-bottom: 1.5em;
 	padding: 1.5rem 2rem;
 }
 
 .wp-block-hrswp-callout .has-large-font-size:first-of-type {
-	border-bottom: 4px solid var(--neutral-light);
-	color: var(--neutral-dark);
+	border-bottom: 4px solid var(--wp--preset--color--light);
+	color: var(--wp--preset--color--dark);
 	font-weight: 900;
 	margin: 0 0 0.5em;
 	padding: 0 0 0.25em;
@@ -26,13 +26,13 @@
 }
 
 .is-style-positive {
-	border-color: var(--accent-green);
+	border-color: var(--wp--custom--wsu-color-accent--vineyard);
 }
 
 .is-style-caution {
-	border-color: var(--accent-yellow);
+	border-color: var(--wp--custom--wsu-color-accent--goldfinch);
 }
 
 .is-style-warning {
-	border-color: var(--accent-orange);
+	border-color: var(--wp--custom--wsu-color-accent--autumn);
 }

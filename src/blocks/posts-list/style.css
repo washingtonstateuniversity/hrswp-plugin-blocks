@@ -204,7 +204,7 @@
 .wp-block-hrswp-posts-list:not(.has-feature-image):not(.is-grid) {
 
 	& .wp-block-hrswp-posts-list--heading::before {
-		border-left: 0.8rem solid var(--brand-crimson);
+		border-left: 0.8rem solid var(--wp--preset--color--primary-crimson);
 		content: "";
 		display: inline-block;
 		height: 0.8rem;

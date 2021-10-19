@@ -1,6 +1,6 @@
 .wp-block-hrswp-notification {
 	align-items: center;
-	border: 5px solid var(--neutral-dark);
+	border: 5px solid var(--wp--preset--color--dark);
 	border-left-width: 1rem;
 	display: flex;
 	flex-wrap: wrap;
@@ -42,13 +42,13 @@
 }
 
 .is-style-positive {
-	border-color: var(--accent-green);
+	border-color: var(--wp--custom--wsu-color-accent--vineyard);
 }
 
 .is-style-caution {
-	border-color: var(--accent-yellow);
+	border-color: var(--wp--custom--wsu-color-accent--goldfinch);
 }
 
 .is-style-warning {
-	border-color: var(--accent-orange);
+	border-color: var(--wp--custom--wsu-color-accent--autumn);
 }

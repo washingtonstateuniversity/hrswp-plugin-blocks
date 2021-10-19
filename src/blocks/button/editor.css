@@ -40,7 +40,7 @@
 	&:not(.has-text-color),
 	&:not(.has-background) {
 		background-color: #fff;
-		color: var(--brand-crimson);
+		color: var(--wp--preset--color--primary-crimson);
 	}
 
 }
