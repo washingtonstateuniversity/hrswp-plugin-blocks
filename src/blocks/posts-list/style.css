@@ -27,7 +27,7 @@
 }
 
 .wp-block-hrswp-posts-list--heading {
-	font-size: var(--font-size-3);
+	font-size: var(--wp--preset--font-size--medium);
 	font-weight: 600;
 	line-height: 1.2;
 	margin: 0 0 0.25rem;
@@ -52,12 +52,12 @@
 }
 
 .wp-block-hrswp-posts-list--post-excerpt {
-	font-size: var(--font-size-base);
+	font-size: var(--wp--preset--font-size--normal);
 	line-height: 1.35;
 }
 
 .wp-block-hrswp-posts-list--meta {
-	font-size: var(--font-size-1);
+	font-size: var(--wp--preset--font-size--small);
 	font-weight: 600;
 	line-height: 1.35;
 	margin-top: auto;
