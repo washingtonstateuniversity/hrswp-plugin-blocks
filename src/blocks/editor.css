@@ -1,5 +1,3 @@
-@import "./accordion/editor.css"; /* @deprecated 1.0.0 */
-@import "./accordion-panel/editor.css"; /* @deprecated 1.0.0 */
 @import "./accordions/editor.css";
 @import "./button/editor.css";
 @import "./buttons/editor.css";
@@ -7,5 +5,4 @@
 @import "./callout/editor.css";
 @import "./notification/editor.css";
 @import "./posts-list/editor.css";
-@import "./search-filter/editor.css"; /* @deprecated 1.0.0 */
 @import "./sidebar/editor.css";
