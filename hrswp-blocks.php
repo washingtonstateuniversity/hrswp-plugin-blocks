@@ -6,6 +6,7 @@
  * Author: Adam Turner, washingtonstateuniversity
  * Author URI: https://hrs.wsu.edu/
  * Plugin URI: https://github.com/washingtonstateuniversity/hrswp-plugin-blocks
+ * Update URI: https://api.github.com/repos/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest
  * Text Domain: hrswp-blocks
  * Requires at least: 5.7
  * Tested up to: 5.8.0
