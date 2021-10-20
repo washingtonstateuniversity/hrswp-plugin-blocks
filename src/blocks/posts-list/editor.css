@@ -8,14 +8,14 @@
 }
 
 .wp-block[data-type="hrswp/posts-list"] {
-	font-size: 16px;
+	font-size: var(--wp--preset--font-size--normal);
 
 	& .wp-block-hrswp-posts-list--heading div {
 		display: inline-block;
 	}
 
 	& .wp-block-hrswp-posts-list--heading {
-		font-size: var(--font-size-3);
+		font-size: var(--wp--preset--font-size--medium);
 		font-weight: 600;
 		margin: 0 0 0.25rem;
 

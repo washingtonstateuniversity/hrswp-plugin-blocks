@@ -1,5 +1,5 @@
 .wp-block-hrswp-notification {
-	border: 5px solid var(--neutral-dark);
+	border: 5px solid var(--wp--preset--color--dark);
 	border-left-width: 1rem;
 	margin-top: 1.5em;
 	margin-bottom: 1.5em;
