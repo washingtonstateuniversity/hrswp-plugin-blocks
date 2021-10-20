@@ -6,7 +6,7 @@
 }
 
 .wp-block-hrswp-callout .has-large-font-size:first-of-type {
-	border-bottom: 4px solid var(--wp--preset--color--light);
+	border-bottom: 4px solid currentColor;
 	color: var(--wp--preset--color--dark);
 	font-weight: 900;
 	margin: 0 0 0.5em;
@@ -14,15 +14,15 @@
 }
 
 .wp-block-hrswp-callout.is-style-positive .has-large-font-size:first-of-type {
-	border-bottom-color: rgba(173, 164, 0, 0.4);
+	border-bottom-color: var(--wp--custom--wsu-color-accent--vineyard);
 }
 
 .wp-block-hrswp-callout.is-style-caution .has-large-font-size:first-of-type {
-	border-bottom-color: rgba(255, 184, 28, 0.4);
+	border-bottom-color: var(--wp--custom--wsu-color-accent--goldfinch);
 }
 
 .wp-block-hrswp-callout.is-style-warning .has-large-font-size:first-of-type {
-	border-bottom-color: rgba(246, 134, 31, 0.4);
+	border-bottom-color: var(--wp--custom--wsu-color-accent--autumn);
 }
 
 .is-style-positive {

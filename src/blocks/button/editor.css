@@ -39,7 +39,7 @@
 	&.has-background,
 	&:not(.has-text-color),
 	&:not(.has-background) {
-		background-color: #fff;
+		background-color: var(--wp--preset--color--white);
 		color: var(--wp--preset--color--primary-crimson);
 	}
 
