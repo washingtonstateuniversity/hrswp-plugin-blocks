@@ -106,8 +106,6 @@ main input[type="reset"] {
 	}
 }
 
-.button.style-small,
-.is-style-small > .wp-block-button__link,
 .wp-block-file .wp-block-file__button {
 	border-radius: 6px;
 	padding: 0.25em 0.75em;
