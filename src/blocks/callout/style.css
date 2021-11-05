@@ -17,10 +17,10 @@
 		width: 8vw;
 	}
 
-	& p,
-	& h2,
-	& h3,
-	& h4 {
+	& > p,
+	& > h2,
+	& > h3,
+	& > h4 {
 
 		&:first-of-type {
 			border-bottom: 4px solid var(--wp--custom--wsu-color-black--20);
