@@ -1,14 +1,3 @@
-.wp-block-hrswp-notification {
-	border: 5px solid var(--wp--preset--color--dark);
-	border-left-width: 1rem;
-	margin-top: 1.5em;
-	margin-bottom: 1.5em;
-}
-
-/* [data-type="hrswp/notification"] .wp-block-hrswp-notification {
-	padding: 0;
-} */
-
 .wp-block-hrswp-notification .block-editor-inner-blocks {
 	width: 100%;
 }
