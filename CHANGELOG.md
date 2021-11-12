@@ -18,6 +18,8 @@ Changelog formatting (http://semver.org/):
 
 -->
 
+## 1.1.0-rc.1 (:construction: TBD)
+
 ## 1.0.3 (2021-07-12)
 
 ### Changed

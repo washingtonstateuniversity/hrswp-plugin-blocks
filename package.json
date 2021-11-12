@@ -1,6 +1,6 @@
 {
 	"name": "@washingtonstateuniversity/hrswp-plugin-blocks",
-	"version": "1.0.3",
+	"version": "1.1.0-rc.1",
 	"description": "A WSU HRS WordPress plugin to provide custom blocks and WP block editor adjustments.",
 	"author": "Adam Turner",
 	"contributors": [
