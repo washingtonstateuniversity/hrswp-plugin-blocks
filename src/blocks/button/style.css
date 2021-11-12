@@ -16,7 +16,7 @@ main input[type="submit"],
 	border-radius: 3px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.1);
 	box-sizing: border-box;
-	color: #fff;
+	color: var(--wp--preset--color--white);
 	cursor: pointer;
 	display: inline-block;
 	font-family: inherit;
@@ -32,7 +32,7 @@ main input[type="submit"],
 
 	&:hover,
 	&:focus {
-		background-color: #fff;
+		background-color: var(--wp--preset--color--white);
 		border-color: var(--wp--preset--color--secondary-crimson);
 		border-width: 1px;
 		color: var(--wp--preset--color--secondary-crimson);
@@ -106,8 +106,6 @@ main input[type="reset"] {
 	}
 }
 
-.button.style-small,
-.is-style-small > .wp-block-button__link,
 .wp-block-file .wp-block-file__button {
 	border-radius: 6px;
 	padding: 0.25em 0.75em;
@@ -129,7 +127,7 @@ main input[type="reset"] {
 	&:hover,
 	&:focus {
 		background-color: var(--wp--preset--color--secondary-crimson);
-		color: #fff;
+		color: var(--wp--preset--color--white);
 	}
 
 	&:active {

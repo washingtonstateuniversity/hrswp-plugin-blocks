@@ -4,22 +4,6 @@
 	position: relative;
 }
 
-.wp-block-hrswp-posts-list.is-grid .wp-block-hrswp-posts-list--list-item::after {
-	background: url(icons/link.svg);
-	background-position: center 100%;
-	background-repeat: no-repeat;
-	background-size: contain;
-	bottom: 1.5rem;
-	content: "";
-	height: 1em;
-	margin: 0.05em 0 -0.05em 0.3em;
-	opacity: 0.5;
-	position: absolute;
-	transition: opacity 0.3s ease;
-	right: 1.5rem;
-	width: 1em;
-}
-
 .wp-block-hrswp-posts-list.has-full-content .wp-block-hrswp-posts-list--list-item {
 	border-bottom: 2px solid var(--wp--custom--wsu-color-black--10);
 	margin-bottom: 2em;
@@ -28,12 +12,19 @@
 
 .wp-block-hrswp-posts-list--heading {
 	font-size: var(--wp--preset--font-size--medium);
-	font-weight: 600;
 	line-height: 1.2;
 	margin: 0 0 0.25rem;
+}
 
-	& a {
-		font-weight: inherit;
+/* Highly selected to override theme styles. */
+#wsuwp-main .wp-block-hrswp-posts-list .wp-block-hrswp-posts-list--heading a {
+	color: var(--wp--custom--wsu-color-black--90);
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		color: var(--wp--preset--color--secondary-crimson);
+		text-decoration: underline;
 	}
 }
 
@@ -58,7 +49,7 @@
 
 .wp-block-hrswp-posts-list--meta {
 	font-size: var(--wp--preset--font-size--small);
-	font-weight: 600;
+	font-weight: 500;
 	line-height: 1.35;
 	margin-top: auto;
 
@@ -78,9 +69,19 @@
 		width: 1px;
 		word-wrap: normal !important;
 	}
+}
 
-	& a {
-		font-weight: 400;
+/* Highly selected to override theme styles. */
+#wsuwp-main .wp-block-hrswp-posts-list--body .wp-block-hrswp-posts-list--meta a:not(.wp-block-button__link) {
+	color: var(--wp--custom--wsu-color-black--70);
+	font-weight: 400;
+	text-decoration-color: var(--wp--custom--wsu-color-black--50);
+	text-decoration-thickness: 0.1em;
+	transition: all 0.2s ease;
+
+	&:hover,
+	&:focus {
+		text-decoration-thickness: 0.2em;
 	}
 }
 
@@ -122,26 +123,8 @@
 }
 
 .wp-block-hrswp-posts-list.is-grid .wp-block-hrswp-posts-list--meta .wp-block-hrswp-posts-list--post-date {
-	background-color: transparent;
-	margin: 1rem -1.5rem 0;
-	padding: 1.5rem 1rem 1.5rem 1.5rem;
-	transition: background-color 0.3s ease;
-}
-
-.wp-block-hrswp-posts-list.is-grid .wp-block-hrswp-posts-list--meta p:last-child {
-	padding-right: 2.75rem;
-}
-
-.wp-block-hrswp-posts-list.is-grid .wp-block-hrswp-posts-list--list-item:hover {
-
-	&::after {
-		opacity: 1;
-	}
-
-	& .wp-block-hrswp-posts-list--post-date {
-		background-color: var(--wp--custom--wsu-color-black--5);
-	}
-
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
 }
 
 .wp-block-hrswp-posts-list.has-excerpt .wp-block-hrswp-posts-list--list-item:not(:first-of-type) {
