@@ -13,8 +13,8 @@ class Filter {
 	/**
 	 * Instantiates a filter on the given search form block.
 	 *
-	 * @param {Node} content A search form block to search and filter within.
-	 * @param {number} ref A unique numeric reference for each accordion.
+	 * @param {Node}   content A search form block to search and filter within.
+	 * @param {number} ref     A unique numeric reference for each accordion.
 	 */
 	constructor( content, ref ) {
 		this._parent = content;
@@ -77,7 +77,7 @@ class Filter {
 			 * This is called for each match. It must return true for the
 			 * mark to be added. Return false to stop the mark.
 			 *
-			 * @param {Node} node The text node that includes the match.
+			 * @param {Node}   node The text node that includes the match.
 			 * @param {string} term The term that has been found.
 			 */
 			filter: ( node, term ) => {

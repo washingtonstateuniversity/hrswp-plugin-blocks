@@ -6,8 +6,8 @@ export const TERMS_LIST_QUERY = { per_page: -1 };
 /**
  * Converts an array of taxonomy terms into an array of IDs.
  *
- * @param {Object[]} terms An array of taxonomy term objects.
- * @param {string} taxonomy The name of the taxonomy the terms belong to.
+ * @param {Object[]} terms    An array of taxonomy term objects.
+ * @param {string}   taxonomy The name of the taxonomy the terms belong to.
  */
 export function taxonomyListToIds( terms, taxonomy ) {
 	if ( ! terms ) {

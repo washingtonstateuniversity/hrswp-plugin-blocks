@@ -34,7 +34,7 @@ const DEFAULT_ICON = CONTROLS.left.icon;
  * @param {Object}   props                 Component props.
  * @param {string[]} [props.allowedValues] List of options to include. Default:
  *                                         ['left', 'center', 'right'].
- * @param {void} props.onChange        Callback to run when an option is
+ * @param {void}     props.onChange        Callback to run when an option is
  *                                         selected in the dropdown.
  * @param {Object}   props.toggleProps     Props to pass to the dropdown toggle.
  * @param {string}   props.value           The current content justification
