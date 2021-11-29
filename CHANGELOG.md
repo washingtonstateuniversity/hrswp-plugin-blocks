@@ -15,10 +15,59 @@ Changelog formatting (http://semver.org/):
 ### Removed (for now removed features.)
 ### Fixed (for any bug fixes.)
 ### Security (in case of vulnerabilities.)
-
 -->
 
 ## 2.0.0-rc.1 (:construction: TBD)
+
+### Added
+
+- Add GitHub releases API URL as Update URI. (d33ce8b)
+
+### Changed
+
+- Add Babel parser options to eslint config. (7cd80ef)
+- Update notification block for brand updates. (dc7e0fe)
+- Update callout block for brand changes. (dc7e0fe)
+- Update posts list block styles for brand updates. (dc7e0fe)
+- Update colors to use HRS theme variables, close #76. (d4c137d)
+- Replace color variables with updated versions. (d4c137d, dc7e0fe)
+- Replace typography with HRS theme variables, close #77. (d4c137d)
+- Upgrade postcss-cli from 8.3.1 to 9.0.2. (cf35749)
+- Upgrade postcss-preset-env from 6.7.0 to 7.0.1. (cf35749)
+- Upgrade copy-webpack-plugin from 9.0.1 to 10.0.0. (759471e)
+- Upgrade resolve-bin from 0.4.1 to 1.0.0. (2033189)
+- Upgrade eslint from 7.30.0 to 8.3.0. (7cd80ef)
+- Update @wordpress/eslint-plugin from 9.0.6 to 9.3.0. (7cd80ef)
+- Update @wordpress/stylelint-config from 19.0.5 to 19.1.0. (f2c922e)
+- Update npm-package-json-lint from 5.1.0 to 5.4.2. (5074100)
+- Update @wordpress/npm-package-json-lint-config from 4.0.5 to 4.1.0. (5074100)
+- Update @babel/core from 7.14.6 to 7.16.0. (3169ee5)
+- Update @babel/runtime from 7.14.6 to 7.16.3. (3169ee5)
+- Update babel-loader from 8.1.0 to 8.2.3. (3169ee5)
+- Update @wordpress/babel-preset-default from 6.2.0 to 6.4.1. (3169ee5)
+- Update webpack from 5.44.0 to 5.64.2. (a944670)
+- Update webpack-cli from 4.7.2 to 4.9.1. (a944670)
+- Update webpack-bundle-analyzer from 4.4.2 to 4.5.0. (a944670)
+- Update @wordpress/dependency-extraction-webpack-plugin from 3.1.4 to 3.2.1. (a944670)
+
+### Removed
+
+- Remove small button style. (dc7e0fe)
+- Remove deprecated blocks and scripts, close #79. (10404e0)
+
+### Fixed
+
+- Fix secondary button selector specificity. (af5b32c)
+- Fix overeager callout block title styles. (dc7e0fe)
+
+### Security
+
+- Bump squizlabs/php_codesniffer from 3.6.0 to 3.6.1. (683f6a3)
+- Bump cssnano from 5.0.6 to 5.0.11. (af5b32c)
+- Bump postcss from 8.3.5 to 8.3.11. (c6c2c49)
+- Bump ansi-regex from 5.0.0 to 5.0.1. (3f123da)
+- Bump nth-check from 2.0.0 to 2.0.1. (aabb672)
+- Bump path-parse from 1.0.6 to 1.0.7. (2fdcc57)
 
 ## 1.0.3 (2021-07-12)
 
