@@ -1,14 +1,15 @@
 <?php
 /**
  * Plugin Name: HRSWP Blocks
- * Version: 1.0.3
+ * Version: 2.0.0
  * Description: A WSU HRS WordPress plugin to provide custom blocks and WP block editor adjustments.
  * Author: Adam Turner, washingtonstateuniversity
  * Author URI: https://hrs.wsu.edu/
  * Plugin URI: https://github.com/washingtonstateuniversity/hrswp-plugin-blocks
+ * Update URI: https://api.github.com/repos/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest
  * Text Domain: hrswp-blocks
  * Requires at least: 5.7
- * Tested up to: 5.8.0
+ * Tested up to: 5.8.2
  * Requires PHP: 7.0
  *
  * @package HRSWP_Blocks

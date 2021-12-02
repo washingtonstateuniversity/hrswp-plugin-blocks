@@ -1,4 +1,3 @@
-@import "./accordion/style.css"; /* @deprecated 1.0.0 */
 @import "./accordions/style.css";
 @import "./button/style.css";
 @import "./buttons/style.css";
@@ -7,6 +6,4 @@
 @import "./filter-section/style.css";
 @import "./notification/style.css";
 @import "./posts-list/style.css";
-@import "./search-filter-input/style.css"; /* deprecated 1.0.0 */
-@import "./search-filter-section/style.css"; /* deprecated 1.0.0 */
 @import "./sidebar/style.css";

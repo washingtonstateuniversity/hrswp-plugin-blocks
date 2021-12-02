@@ -55,7 +55,7 @@ class PostsListEdit extends Component {
 	 * Adds or removes a taxonomy term from the selected terms attribute.
 	 *
 	 * @param {string} taxonomy A WP taxonomy `rest_base` value.
-	 * @param {Object} term The selected term to add or remove.
+	 * @param {Object} term     The selected term to add or remove.
 	 */
 	toggleSelectedTerms( taxonomy, term ) {
 		const { attributes, setAttributes } = this.props;

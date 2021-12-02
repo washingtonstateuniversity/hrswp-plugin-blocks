@@ -1,13 +1,38 @@
 .wp-block-hrswp-notification {
 	align-items: center;
-	border: 5px solid var(--neutral-dark);
-	border-left-width: 1rem;
+	background-color: var(--wp--custom--wsu-color-black--5);
+	border-radius: 8px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	margin-top: 1.5em;
 	margin-bottom: 1.5em;
-	padding: 0.75em 1em;
+	overflow: hidden;
+	padding: 2rem 2rem 2rem 2.5rem;
+	position: relative;
+
+	&::before {
+		background-color: var(--wp--preset--color--primary-crimson);
+		border-radius: 1000px;
+		content: "";
+		height: 10px;
+		left: 12px;
+		position: absolute;
+		top: 12px;
+		width: 10px;
+	}
+
+	&.is-style-positive::before {
+		background-color: var(--wp--custom--wsu-color-accent--vineyard);
+	}
+
+	&.is-style-caution::before {
+		background-color: var(--wp--custom--wsu-color-accent--goldfinch);
+	}
+
+	&.is-style-warning::before {
+		background-color: var(--wp--custom--wsu-color-accent--autumn);
+	}
 }
 
 .wp-block-hrswp-notification p {
@@ -39,16 +64,4 @@
 		margin: 0 0 0 1em;
 	}
 
-}
-
-.is-style-positive {
-	border-color: var(--accent-green);
-}
-
-.is-style-caution {
-	border-color: var(--accent-yellow);
-}
-
-.is-style-warning {
-	border-color: var(--accent-orange);
 }
