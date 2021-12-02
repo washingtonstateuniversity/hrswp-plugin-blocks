@@ -83,7 +83,7 @@ main input[type="submit"],
 
 .button.style-outline,
 .is-style-outline .button,
-.is-style-outline > .wp-block-button__link,
+.wp-block-hrswp-buttons .is-style-outline > .wp-block-button__link,
 .wp-block-button__link.is-style-outline,
 main input[type="reset"] {
 	background-color: var(--wp--preset--color--white);

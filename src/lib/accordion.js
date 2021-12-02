@@ -6,8 +6,8 @@ class Accordion {
 	/**
 	 * Instantiates an accordion on a given accordion block.
 	 *
-	 * @param {Node} accordionBlock An accordion block to make interactive.
-	 * @param {number} ref A unique numeric reference for each accordion.
+	 * @param {Node}   accordionBlock An accordion block to make interactive.
+	 * @param {number} ref            A unique numeric reference for each accordion.
 	 */
 	constructor( accordionBlock, ref ) {
 		this._parent = accordionBlock;
