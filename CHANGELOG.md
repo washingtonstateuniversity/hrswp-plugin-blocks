@@ -32,6 +32,7 @@ Changelog formatting (http://semver.org/):
 - Update colors to use HRS theme variables, close #76. (d4c137d)
 - Replace color variables with updated versions. (d4c137d, dc7e0fe)
 - Replace typography with HRS theme variables, close #77. (d4c137d)
+- Update postcss from 8.3.5 to 8.4.4. (c6c2c49, 6cb75e0)
 - Upgrade postcss-cli from 8.3.1 to 9.0.2. (cf35749)
 - Upgrade postcss-preset-env from 6.7.0 to 7.0.1. (cf35749)
 - Upgrade copy-webpack-plugin from 9.0.1 to 10.0.0. (759471e)
@@ -45,7 +46,7 @@ Changelog formatting (http://semver.org/):
 - Update @babel/runtime from 7.14.6 to 7.16.3. (3169ee5)
 - Update babel-loader from 8.1.0 to 8.2.3. (3169ee5)
 - Update @wordpress/babel-preset-default from 6.2.0 to 6.4.1. (3169ee5)
-- Update webpack from 5.44.0 to 5.64.2. (a944670)
+- Update webpack from 5.44.0 to 5.64.4. (a944670, 950ed8b)
 - Update webpack-cli from 4.7.2 to 4.9.1. (a944670)
 - Update webpack-bundle-analyzer from 4.4.2 to 4.5.0. (a944670)
 - Update @wordpress/dependency-extraction-webpack-plugin from 3.1.4 to 3.2.1. (a944670)
@@ -63,8 +64,7 @@ Changelog formatting (http://semver.org/):
 ### Security
 
 - Bump squizlabs/php_codesniffer from 3.6.0 to 3.6.1. (683f6a3)
-- Bump cssnano from 5.0.6 to 5.0.11. (af5b32c)
-- Bump postcss from 8.3.5 to 8.3.11. (c6c2c49)
+- Bump cssnano from 5.0.6 to 5.0.12. (af5b32c, bd70932)
 - Bump ansi-regex from 5.0.0 to 5.0.1. (3f123da)
 - Bump nth-check from 2.0.0 to 2.0.1. (aabb672)
 - Bump path-parse from 1.0.6 to 1.0.7. (2fdcc57)
