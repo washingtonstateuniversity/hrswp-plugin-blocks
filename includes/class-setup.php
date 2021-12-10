@@ -75,61 +75,6 @@ class Setup {
 	}
 
 	/**
-	 * Activates the plugin.
-	 *
-	 * @since 0.1.0
-	 */
-	public static function activate() {
-		/**
-		 * Track activation with an option because the activation hook fires
-		 * before the plugin is actually set up, which prevents taking certain
-		 * actions in this method.
-		 *
-		 * @link https://stackoverflow.com/questions/7738953/is-there-a-way-to-determine-if-a-wordpress-plugin-is-just-installed/13927297#13927297
-		 */
-		$options = get_option( self::$slug . '_plugin-status' );
-		if ( ! $options ) {
-			add_option(
-				self::$slug . '_plugin-status',
-				array(
-					'status'  => 'activated',
-					'version' => '0.0.0',
-				)
-			);
-		} else {
-			$options['status'] = 'activated';
-			update_option( self::$slug . '_plugin-status', $options );
-		}
-	}
-
-	/**
-	 * Deactivates the plugin.
-	 *
-	 * @since 0.1.0
-	 */
-	public static function deactivate() {
-		// Set plugin status to 'deactivated'.
-		$options           = get_option( self::$slug . '_plugin-status' );
-		$options['status'] = 'deactivated';
-
-		update_option( self::$slug . '_plugin-status', $options );
-	}
-
-	/**
-	 * Uninstalls the plugin.
-	 *
-	 * @since 0.1.0
-	 */
-	public static function uninstall() {
-		if ( ! current_user_can( 'activate_plugins' ) ) {
-			return;
-		}
-
-		// Delete plugin options.
-		delete_option( self::$slug . '_plugin-status' );
-	}
-
-	/**
 	 * Loads the WP API actions and hooks.
 	 *
 	 * @since 0.1.0
