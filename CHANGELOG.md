@@ -17,6 +17,8 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 2.0.1-rc.1 (:construction: TBD)
+
 ## 2.0.0 (2021-12-02)
 
 ### Added
