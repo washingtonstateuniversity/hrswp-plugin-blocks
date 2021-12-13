@@ -17,6 +17,10 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 2.0.1 (2021-12-13)
+
+- Fix #81 move lifecycle methods out of class. (b304393)
+
 ## 2.0.0 (2021-12-02)
 
 ### Added
