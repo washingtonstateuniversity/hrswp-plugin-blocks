@@ -62,7 +62,8 @@
 		background-color: var(--wp--custom--wsu-color-black--5);
 		border-color: var(--wp--custom--wsu-color-core--crimson-light);
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background-color: var(--wp--custom--wsu-color-black--5);
 		}
 
