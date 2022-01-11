@@ -2,119 +2,62 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-}
 
-.wp-block-hrswp-buttons.is-vertical {
-	flex-direction: column;
-}
+	&.is-vertical {
+		flex-direction: column;
 
-.wp-block-hrswp-buttons.is-vertical > .wp-block-hrswp-button {
+		& > .wp-block-hrswp-button:last-child {
+			margin-bottom: 0;
+		}
+	}
 
-	/*rtl:ignore*/
-	margin-right: 0;
-}
+	& > .wp-block-hrswp-button {
+		display: inline-block;
+		margin: 0;
+	}
 
-.wp-block-hrswp-buttons.is-vertical > .wp-block-hrswp-button:last-child {
-	margin-bottom: 0;
-}
+	&.is-content-justification-left {
+		justify-content: flex-start;
 
-.wp-block-hrswp-buttons > .wp-block-hrswp-button {
-	display: inline-block;
+		&.is-vertical {
+			align-items: flex-start;
+		}
+	}
 
-	/*rtl:ignore*/
-	margin-left: 0;
+	&.is-content-justification-center {
+		justify-content: center;
 
-	/*rtl:ignore*/
-	margin-right: 0.5em;
-	margin-bottom: 0.5em;
-}
+		&.is-vertical {
+			align-items: center;
+		}
+	}
 
-.wp-block-hrswp-buttons > .wp-block-hrswp-button:last-child {
+	&.is-content-justification-right {
+		justify-content: flex-end;
 
-	/*rtl:ignore*/
-	margin-right: 0;
-}
+		&.is-vertical {
+			align-items: flex-end;
+		}
+	}
 
-.wp-block-hrswp-buttons.is-content-justification-left {
-	justify-content: flex-start;
-}
+	&.is-content-justification-space-between {
+		justify-content: space-between;
+	}
 
-.wp-block-hrswp-buttons.is-content-justification-left.is-vertical {
-	align-items: flex-start;
-}
+	/* Kept for backward compatibility. */
+	&.aligncenter {
+		text-align: center;
+	}
 
-.wp-block-hrswp-buttons.is-content-justification-center {
-	justify-content: center;
-}
-
-.wp-block-hrswp-buttons.is-content-justification-center.is-vertical {
-	align-items: center;
-}
-
-.wp-block-hrswp-buttons.is-content-justification-right {
-	justify-content: flex-end;
-}
-
-.wp-block-hrswp-buttons.is-content-justification-right > .wp-block-hrswp-button {
-
-	/*rtl:ignore*/
-	margin-left: 0.5em;
-
-	/*rtl:ignore*/
-	margin-right: 0;
-}
-
-.wp-block-hrswp-buttons.is-content-justification-right > .wp-block-hrswp-button:first-child {
-
-	/*rtl:ignore*/
-	margin-left: 0;
-}
-
-.wp-block-hrswp-buttons.is-content-justification-right.is-vertical {
-	align-items: flex-end;
-}
-
-.wp-block-hrswp-buttons.is-content-justification-space-between {
-	justify-content: space-between;
-}
-
-.wp-block-hrswp-buttons.aligncenter {
-	text-align: center;
-}
-
-.wp-block-hrswp-buttons.alignleft .wp-block-hrswp-button {
-
-	/*rtl:ignore*/
-	margin-left: 0;
-
-	/*rtl:ignore*/
-	margin-right: 0.5em;
-}
-
-.wp-block-hrswp-buttons.alignleft .wp-block-hrswp-button:last-child {
-
-	/*rtl:ignore*/
-	margin-right: 0;
-}
-
-.wp-block-hrswp-buttons.alignright .wp-block-hrswp-button {
-
-	/*rtl:ignore*/
-	margin-right: 0;
-
-	/*rtl:ignore*/
-	margin-left: 0.5em;
-}
-
-.wp-block-hrswp-buttons.alignright .wp-block-hrswp-button:first-child {
-
-	/*rtl:ignore*/
-	margin-left: 0;
 }
 
 .wp-block-hrswp-buttons:not(.is-content-justification-space-between, .is-content-justification-right, .is-content-justification-left, .is-content-justification-center) .wp-block-hrswp-button.aligncenter {
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 0.5em;
 	width: 100%;
+}
+
+/* Legacy buttons that did not come in a wrapping container. */
+.wp-block-hrswp-button.aligncenter {
+	text-align: center;
 }

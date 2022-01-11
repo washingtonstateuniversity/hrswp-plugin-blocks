@@ -1,10 +1,12 @@
 {
 	"apiVersion": 2,
 	"name": "hrswp/button",
+	"title": "Button",
 	"category": "design",
-	"parent": [
-		"hrswp/buttons"
-	],
+	"parent": [ "hrswp/buttons" ],
+	"description": "Prompt visitors to take action.",
+	"keywords": [ "link" ],
+	"textdomain": "default",
 	"attributes": {
 		"url": {
 			"type": "string",
@@ -38,8 +40,14 @@
 		"placeholder": {
 			"type": "string"
 		},
-		"style": {
-			"type": "object"
+		"backgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"gradient": {
+			"type": "string"
 		},
 		"width": {
 			"type": "number"
@@ -49,9 +57,20 @@
 		"anchor": true,
 		"align": true,
 		"alignWide": false,
+		"color": {
+			"gradients": false
+		},
+		"typography": {
+			"font-size": false
+		},
 		"reusable": false,
 		"__experimentalSelector": ".wp-block-button__link"
 	},
-	"editorStyle": "wp-block-button-editor",
-	"style": "wp-block-button"
+	"styles": [
+		{ "name": "fill", "label": "Fill", "isDefault": true },
+		{ "name": "outline", "label": "Outline" },
+		{ "name": "text", "label": "Text" }
+	],
+	"editorStyle": "hrswp-block-button-editor",
+	"style": "hrswp-block-button"
 }

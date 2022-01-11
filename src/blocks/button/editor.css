@@ -13,15 +13,27 @@
 .wp-block-hrswp-button {
 	position: relative;
 	cursor: text;
+
+	/* Make placeholder text white unless custom colors or outline versions are chosen. */
+	&:not(.has-text-color):not(.is-style-outline) [data-rich-text-placeholder]::after {
+		color: var(--wp--preset--color--white);
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color);
+
+		/* Windows' High Contrast mode will show this outline, but not the box-shadow. */
+		outline: 2px solid transparent;
+		outline-offset: -2px;
+	}
+
+	&[data-rich-text-placeholder]::after {
+		opacity: 0.8;
+	}
 }
 
-.wp-block-hrswp-button[data-rich-text-placeholder]::after {
-	opacity: 0.8;
-}
-
-/* stylelint-disable selector-class-pattern */
 .wp-block-button__inline-link {
-	color: #757575;
+	color: var(--wp--custom--wsu-color-black--70);
 	height: 0;
 	overflow: hidden;
 	max-width: 290px;
@@ -72,7 +84,6 @@
 .is-selected .wp-block-button__inline-link {
 	height: auto;
 	overflow: visible;
-	margin-top: 16px;
 }
 
 .wp-button-label__width .components-button-group {
@@ -95,4 +106,3 @@
 div[data-type="hrswp/button"] {
 	display: table;
 }
-/* stylelint-enable selector-class-pattern */
