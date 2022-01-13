@@ -31,7 +31,6 @@
 	}
 }
 
-.is-selected.wp-block-hrswp-button,
 .is-selected.wp-block-hrswp-button {
 
 	&:not(.has-text-color):not(.is-style-outline) [data-rich-text-placeholder]::after {
