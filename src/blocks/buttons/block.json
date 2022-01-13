@@ -25,6 +25,6 @@
 			}
 		}
 	},
-	"editorStyle": "hrswp-block-buttons-editor",
-	"style": "hrswp-block-buttons"
+	"editorStyle": "wp-block-hrswp-buttons-editor",
+	"style": "wp-block-hrswp-buttons"
 }

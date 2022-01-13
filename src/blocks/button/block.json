@@ -57,13 +57,11 @@
 		"anchor": true,
 		"align": true,
 		"alignWide": false,
-		"color": {
-			"gradients": false
-		},
-		"typography": {
-			"font-size": false
-		},
+		"color": false,
+		"typography": false,
 		"reusable": false,
+		"spacing": false,
+		"__experimentalBorder": false,
 		"__experimentalSelector": ".wp-block-button__link"
 	},
 	"styles": [
@@ -71,6 +69,6 @@
 		{ "name": "outline", "label": "Outline" },
 		{ "name": "text", "label": "Text" }
 	],
-	"editorStyle": "hrswp-block-button-editor",
-	"style": "hrswp-block-button"
+	"editorStyle": "wp-block-hrswp-button-editor",
+	"style": "wp-block-hrswp-button"
 }
