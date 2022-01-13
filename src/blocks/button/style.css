@@ -81,6 +81,10 @@ main input[type="submit"],
 	width: 100%;
 }
 
+.wp-block-button__link.no-border-radius {
+	border-radius: 0 !important;
+}
+
 .button.style-outline,
 .is-style-outline .button,
 .wp-block-hrswp-buttons .is-style-outline > .wp-block-button__link,
