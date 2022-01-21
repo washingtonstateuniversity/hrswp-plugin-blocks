@@ -29,7 +29,7 @@ function ButtonsEdit( props ) {
 
 	const wrapperClasses = classnames( className, {
 		[ `is-content-justification-${ justifyContent }` ]: justifyContent,
-		[ `is-vertical` ]: orientation,
+		[ `is-${ orientation }` ]: orientation,
 	} );
 
 	const blockProps = useBlockProps( { className: wrapperClasses } );
