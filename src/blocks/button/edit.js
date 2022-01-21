@@ -170,7 +170,7 @@ function ButtonEdit( props ) {
 					placeholder={ placeholder || __( 'Add text…' ) }
 					value={ text }
 					onChange={ ( value ) => setButtonText( value ) }
-					withoutInteractiveFormatting
+					allowedFormats={ [] }
 					className={ classnames(
 						className,
 						'wp-block-button__link',
