@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 const { PanelBody, RangeControl, ToolbarGroup } = wp.components;
 const {
 	InspectorControls,
-	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
+	useInnerBlocksProps,
 	BlockControls,
 	__experimentalBlockVariationPicker,
 	useBlockProps,

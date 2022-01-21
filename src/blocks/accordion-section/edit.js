@@ -6,7 +6,7 @@ const { useSelect } = wp.data;
 const {
 	InnerBlocks,
 	useBlockProps,
-	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
+	useInnerBlocksProps,
 	store: blockEditorStore,
 } = wp.blockEditor;
 

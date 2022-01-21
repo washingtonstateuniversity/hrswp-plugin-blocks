@@ -50,6 +50,7 @@
 		&:focus {
 			background-color: var(--wp--custom--wsu-color-black--5);
 			border-color: var(--wp--custom--wsu-color-black--60);
+			border-width: 5px;
 			outline: none;
 		}
 
