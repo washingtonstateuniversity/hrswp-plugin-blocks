@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 const {
@@ -15,8 +20,20 @@ import { name as buttonBlockName } from '../button';
 
 const ALLOWED_BLOCKS = [ buttonBlockName ];
 
-function ButtonsEdit( { attributes: { layout = {} } } ) {
-	const blockProps = useBlockProps();
+function ButtonsEdit( props ) {
+	const {
+		attributes: { layout = {} },
+		className,
+	} = props;
+	const { orientation, justifyContent } = layout;
+
+	const wrapperClasses = classnames( className, {
+		[ `is-content-justification-${ justifyContent }` ]: justifyContent,
+		[ `is-vertical` ]: orientation,
+	} );
+
+	const blockProps = useBlockProps( { className: wrapperClasses } );
+
 	const preferredStyle = useSelect( ( select ) => {
 		const preferredStyleVariations = select(
 			blockEditorStore
