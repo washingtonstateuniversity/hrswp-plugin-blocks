@@ -1,5 +1,7 @@
 .wp-block-hrswp-buttons {
+	align-items: center;
 	display: flex;
+	gap: 0.5em;
 	flex-direction: row;
 	flex-wrap: wrap;
 
