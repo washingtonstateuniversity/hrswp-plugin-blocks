@@ -2,10 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const {
-	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
-	useBlockProps,
-} = wp.blockEditor;
+const { useInnerBlocksProps, useBlockProps } = wp.blockEditor;
 
 /**
  * The block template.
@@ -36,11 +33,7 @@ function SidebarEdit() {
 		renderAppender: false,
 	} );
 
-	return (
-		<>
-			<div { ...innerBlocksProps } />
-		</>
-	);
+	return <div { ...innerBlocksProps } />;
 }
 
 export default SidebarEdit;
