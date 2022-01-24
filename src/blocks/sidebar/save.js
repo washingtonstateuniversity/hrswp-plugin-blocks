@@ -5,7 +5,7 @@ const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 
 export default function save() {
 	const blockProps = useBlockProps.save();
-	const innerBLocksProps = useInnerBlocksProps.save( blockProps );
+	const innerBlocksProps = useInnerBlocksProps.save( blockProps );
 
-	return <div { ...innerBLocksProps } />;
+	return <div { ...innerBlocksProps } />;
 }
