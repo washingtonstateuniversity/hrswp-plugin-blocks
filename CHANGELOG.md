@@ -17,7 +17,7 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 2.1.0-rc.1 (:construction: TBD)
+## 2.1.0 (2022-01-25)
 
 ### Added
 
@@ -25,6 +25,8 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump WP tested-to to 5.9.0.
+- Bump WP required version to 5.9.
 - Update Stylelint to use a11y rules and ignore selector class pattern. (d04f200)
 - Refactor Button and Buttons blocks and remove unused parts to account for WP 5.9 changes. (28a1472)
 - Restore class-based layout styles for the buttons block. (c55b3a3)
