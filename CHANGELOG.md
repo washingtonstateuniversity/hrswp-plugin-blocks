@@ -17,6 +17,49 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 2.1.0 (2022-01-25)
+
+### Added
+
+- Add `stylelint-a11y` package. (d04f200)
+
+### Changed
+
+- Bump WP tested-to to 5.9.0.
+- Bump WP required version to 5.9.
+- Update Stylelint to use a11y rules and ignore selector class pattern. (d04f200)
+- Refactor Button and Buttons blocks and remove unused parts to account for WP 5.9 changes. (28a1472)
+- Restore class-based layout styles for the buttons block. (c55b3a3)
+
+### Removed
+
+- Remove formatting options from button text. (c55b3a3)
+
+### Fixed
+
+- Fix #83 update `useInnerBlockProps` for WP 5.9. (e8860a2)
+- Fix #86 update `useInnerBlockProps` for WP 5.9. (c4f632b)
+- Fix #85 `useInnerBlocksProps` no longer experimental in 5.9. (38bec12)
+- Fix #84 accordion panel border value change on hover. (38bec12)
+- Fix sticky vertical layout class. (2d38131)
+- Update copy-webpack-plugin from 10.0.0 to 10.2.1. (a6a7879)
+- Update webpack from 5.64.4 to 5.67.0. (1104804)
+- Update postcss-cli from 9.0.2 to 9.1.0. (2822059)
+- Update postcss-preset-env from 7.0.1 to 7.2.3. (2822059)
+- Update eslint from 8.3.0 to 8.7.0. (cceb3c6)
+- Upgrade roave/security-advisories from dev-master 88c4d97 to dev-master 341bf2d. (f6d3276)
+
+### Security
+
+- Bump squizlabs/php_codesniffer from 3.6.1 to 3.6.2. (b421658)
+- Bump postcss from 8.4.4 to 8.4.5. (2822059)
+- Bump webpack-cli from 4.9.1 to 4.9.2. (1104804)
+- Bump source-map-loader from 3.0.0 to 3.0.1. (9431522)
+- Bump cssnano from 5.0.12 to 5.0.16. (fe7b326)
+- Bump @babel/core from 7.16.0 to 7.16.12. (9b97dbd)
+- Bump @babel/runtime from 7.16.3 to 7.16.7. (9b97dbd)
+- Bump nanoid from 3.1.30 to 3.2.0. (f5d89a1)
+
 ## 2.0.1 (2021-12-13)
 
 - Fix #81 move lifecycle methods out of class. (b304393)

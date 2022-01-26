@@ -6,7 +6,7 @@ const { useSelect } = wp.data;
 const {
 	InnerBlocks,
 	useBlockProps,
-	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
+	useInnerBlocksProps,
 	store: blockEditorStore,
 } = wp.blockEditor;
 
@@ -50,11 +50,7 @@ function SearchFilterSectionEdit( { clientId } ) {
 		}
 	);
 
-	return (
-		<>
-			<div { ...innerBlocksProps } />
-		</>
-	);
+	return <div { ...innerBlocksProps } />;
 }
 
 export default SearchFilterSectionEdit;

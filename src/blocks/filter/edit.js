@@ -5,7 +5,7 @@ const { __ } = wp.i18n;
 const { PanelBody, ToggleControl } = wp.components;
 const {
 	InspectorControls,
-	__experimentalUseInnerBlocksProps: useInnerBlocksProps,
+	useInnerBlocksProps,
 	useBlockProps,
 } = wp.blockEditor;
 

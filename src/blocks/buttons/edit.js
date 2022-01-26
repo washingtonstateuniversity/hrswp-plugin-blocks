@@ -7,61 +7,54 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const {
-	BlockControls,
 	useBlockProps,
-	__experimentalUseInnerBlocksProps,
+	useInnerBlocksProps,
+	store: blockEditorStore,
 } = wp.blockEditor;
-const { ToolbarGroup, ToolbarItem } = wp.components;
+const { useSelect } = wp.data;
 
 /**
  * Internal dependencies
  */
 import { name as buttonBlockName } from '../button';
-import ContentJustificationDropdown from './content-justification-dropdown';
 
 const ALLOWED_BLOCKS = [ buttonBlockName ];
-const BUTTONS_TEMPLATE = [ [ 'hrswp/button' ] ];
 
-function ButtonsEdit( {
-	attributes: { contentJustification, orientation },
-	setAttributes,
-} ) {
-	const blockProps = useBlockProps( {
-		className: classnames( {
-			[ `is-content-justification-${ contentJustification }` ]: contentJustification,
-			'is-vertical': orientation === 'vertical',
-		} ),
+function ButtonsEdit( props ) {
+	const {
+		attributes: { layout = {} },
+		className,
+	} = props;
+	const { orientation, justifyContent } = layout;
+
+	const wrapperClasses = classnames( className, {
+		[ `is-content-justification-${ justifyContent }` ]: justifyContent,
+		[ `is-${ orientation }` ]: orientation,
 	} );
-	const innerBlocksProps = __experimentalUseInnerBlocksProps( blockProps, {
+
+	const blockProps = useBlockProps( { className: wrapperClasses } );
+
+	const preferredStyle = useSelect( ( select ) => {
+		const preferredStyleVariations = select(
+			blockEditorStore
+		).getSettings().__experimentalPreferredStyleVariations;
+		return preferredStyleVariations?.value?.[ buttonBlockName ];
+	}, [] );
+
+	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
-		template: BUTTONS_TEMPLATE,
-		orientation,
-		__experimentalLayout: {
-			type: 'default',
-			alignments: [],
-		},
+		template: [
+			[
+				buttonBlockName,
+				{ className: preferredStyle && `is-style-${ preferredStyle }` },
+			],
+		],
+		__experimentalLayout: layout,
 		templateInsertUpdatesSelection: true,
 	} );
 
 	return (
 		<>
-			<BlockControls>
-				<ToolbarGroup>
-					<ToolbarItem>
-						{ ( toggleProps ) => (
-							<ContentJustificationDropdown
-								toggleProps={ toggleProps }
-								value={ contentJustification }
-								onChange={ ( updatedValue ) => {
-									setAttributes( {
-										contentJustification: updatedValue,
-									} );
-								} }
-							/>
-						) }
-					</ToolbarItem>
-				</ToolbarGroup>
-			</BlockControls>
 			<div { ...innerBlocksProps } />
 		</>
 	);
