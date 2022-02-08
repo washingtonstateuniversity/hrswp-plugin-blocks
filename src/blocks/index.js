@@ -18,6 +18,7 @@ import * as filterSection from './filter-section';
 import * as callout from './callout';
 import * as notification from './notification';
 import * as sidebar from './sidebar';
+import * as spacer from './spacer';
 
 const hrsBlocks = [
 	accordionHeading,
@@ -31,9 +32,10 @@ const hrsBlocks = [
 	callout,
 	notification,
 	sidebar,
+	spacer,
 ];
 
-const hiddenBlocks = [ 'core/button', 'core/buttons' ];
+const hiddenBlocks = [ 'core/button', 'core/buttons', 'core/spacer' ];
 
 /**
  * Function to register an individual block.
