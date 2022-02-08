@@ -1,0 +1,23 @@
+{
+	"apiVersion": 2,
+	"name": "hrswp/spacer",
+	"title": "Spacer",
+	"category": "design",
+	"description": "Add white space between blocks and customize its height in increments.",
+	"textdomain": "default",
+	"attributes": {
+		"height": {
+			"type": "number",
+			"default": 36
+		},
+		"width": {
+			"type": "number"
+		}
+	},
+	"usesContext": [ "orientation" ],
+	"supports": {
+		"anchor": true
+	},
+	"editorStyle": "wp-block-spacer-editor",
+	"style": "wp-block-spacer"
+}
