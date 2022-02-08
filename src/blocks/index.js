@@ -35,7 +35,14 @@ const hrsBlocks = [
 	spacer,
 ];
 
-const hiddenBlocks = [ 'core/button', 'core/buttons', 'core/spacer' ];
+const hiddenBlocks = [
+	'core/button',
+	'core/buttons',
+	'core/code',
+	'core/preformatted',
+	'core/spacer',
+	'core/verse',
+];
 
 /**
  * Function to register an individual block.
