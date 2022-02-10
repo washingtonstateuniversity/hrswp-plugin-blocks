@@ -25,6 +25,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump PHP required version from 7.0 to 7.3.
 - Hide some lesser-used blocks from the inserter. (ed9bab9)
 - Upgrade stylelint from 13.13.1 to 14.5.0. (50b2471, d57cc26)
 - Upgrade @wordpress/stylelint-config from 19.1.0 to 20.0.1. (50b2471, d57cc26)
