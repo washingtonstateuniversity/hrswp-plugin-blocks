@@ -45,7 +45,7 @@
 		"mark.js": "^8.11.1",
 		"npm-package-json-lint": "^5.4.2",
 		"npm-run-all": "^4.1.5",
-		"postcss": "^8.4.5",
+		"postcss": "^8.4.6",
 		"postcss-cli": "^9.1.0",
 		"postcss-import": "^14.0.2",
 		"postcss-preset-env": "^7.2.3",
