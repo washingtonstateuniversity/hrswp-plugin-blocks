@@ -10,7 +10,7 @@
  * Text Domain: hrswp-blocks
  * Requires at least: 5.9
  * Tested up to: 5.9.0
- * Requires PHP: 7.0
+ * Requires PHP: 7.3
  *
  * @package HRSWP_Blocks
  * @since 0.1.0
