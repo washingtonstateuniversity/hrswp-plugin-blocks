@@ -19,6 +19,34 @@ Changelog formatting (http://semver.org/):
 
 ## 2.2.0-rc.1 (:construction: TBD)
 
+### Added
+
+- Create HRS version of core spacer block with height increments. (15e6316)
+
+### Changed
+
+- Hide some lesser-used blocks from the inserter. (ed9bab9)
+
+- Upgrade stylelint from 13.13.1 to 14.5.0. (50b2471, d57cc26)
+- Upgrade @wordpress/stylelint-config from 19.1.0 to 20.0.1. (50b2471, d57cc26)
+- Upgrade @wordpress/eslint-plugin from 9.3.0 to 10.0.1. (b7a817b)
+- Update eslint from 8.7.0 to 8.8.0. (b7a817b)
+- Update webpack from 5.67.0 to 5.68.0. (149b978)
+- Update @babel/core from 7.16.12 to 7.17.2. (03c147f)
+- Update @babel/runtime from 7.16.7 to 7.17.2. (03c147f)
+- Update @wordpress/babel-preset-default from 6.4.1 to 6.5.1. (03c147f)
+- Update postcss-preset-env from 7.2.3 to 7.3.1. (ed285b5)
+- Update @wordpress/dependency-extraction-webpack-plugin from 3.2.1 to 3.3.1. (e36767c)
+- Update roave/security-advisories dev-master 341bf2d to 2ec9ad6. (0635bb5)
+
+### Security
+
+- Bump dealerdirect/phpcodesniffer-composer-installer from 0.7.1 to 0.7.2. (ac9ba3e)
+- Bump @wordpress/npm-package-json-lint-config from 4.1.0 to 4.1.1. (b208569)
+- Bump cssnano from 5.0.16 to 5.0.17. (fd730b9)
+- Bump postcss from 8.4.5 to 8.4.6. (ed285b5)
+- Bump copy-webpack-plugin from 10.2.1 to 10.2.4. (486d39e)
+
 ## 2.1.0 (2022-01-25)
 
 ### Added
