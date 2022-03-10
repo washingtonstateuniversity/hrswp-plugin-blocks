@@ -9,7 +9,7 @@
  * Update URI: https://api.github.com/repos/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest
  * Text Domain: hrswp-blocks
  * Requires at least: 5.9
- * Tested up to: 5.9.0
+ * Tested up to: 5.9.1
  * Requires PHP: 7.3
  *
  * @package HRSWP_Blocks
