@@ -17,7 +17,7 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 2.2.0-rc.1 (:construction: TBD)
+## 2.2.0 (2022-03-10)
 
 ### Added
 
@@ -25,6 +25,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump WP tested-to to 5.9.1.
 - Bump PHP required version from 7.0 to 7.3.
 - Hide some lesser-used blocks from the inserter. (ed9bab9)
 - Upgrade stylelint from 13.13.1 to 14.5.0. (50b2471, d57cc26)
