@@ -19,6 +19,10 @@ Changelog formatting (http://semver.org/):
 
 ## 2.2.1-rc.1 (:construction: TBD)
 
+### Changed
+
+- Bump WP tested-to to 5.9.2. (5ef5bff)
+
 ## 2.2.0 (2022-03-10)
 
 ### Added
