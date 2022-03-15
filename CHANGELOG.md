@@ -17,6 +17,12 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 2.2.1 (2022-03-15)
+
+### Changed
+
+- Bump WP tested-to to 5.9.2.
+
 ## 2.2.0 (2022-03-10)
 
 ### Added
