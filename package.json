@@ -23,11 +23,7 @@
 	"bugs": {
 		"url": "https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/issues"
 	},
-	"browserslist": [
-		"> 1%",
-		"ie 8-11",
-		"Firefox ESR"
-	],
+	"main": "build/index.js",
 	"devDependencies": {
 		"@babel/core": "^7.17.2",
 		"@babel/runtime": "^7.17.2",
