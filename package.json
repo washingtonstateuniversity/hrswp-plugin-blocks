@@ -35,18 +35,17 @@
 		"postcss-preset-env": "^7.3.1"
 	},
 	"scripts": {
-		"build": "NODE_ENV=production run-s clean test 'build:*'",
-		"build:scripts": "webpack",
-		"build:styles": "postcss 'src/*.css' --dir build/",
-		"clean": "rimraf build/",
-		"lint:scripts": "eslint '*.js' 'src/**/*.js'",
-		"lint:styles": "stylelint 'src/**/*.css'",
-		"lint:pkg": "npmPkgJsonLint .",
+		"build": "wp-scripts build",
+		"format": "run-p 'format:*'",
+		"format:wp": "wp-scripts format",
+		"format:php": "composer format",
+		"lint": "run-p 'lint:*'",
+		"lint:script": "wp-scripts lint-js",
+		"lint:style": "wp-scripts lint-style",
 		"lint:php": "composer lint",
-		"fix:scripts": "eslint --fix '*.js' 'src/**/*.js'",
-		"fix:php": "composer format",
-		"start": "run-p 'build:*'",
-		"fix": "run-p 'fix:*'",
-		"test": "run-p 'lint:*'"
+		"lint:pkg": "wp-scripts lint-pkg-json",
+		"lint:docs": "wp-scripts lint-md-docs",
+		"export": "wp-scripts plugin-zip",
+		"start": "wp-scripts start"
 	}
 }
