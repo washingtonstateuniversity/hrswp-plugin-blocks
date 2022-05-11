@@ -14,10 +14,10 @@
 			"type": "number"
 		}
 	},
-	"usesContext": [ "orientation" ],
+	"usesContext": ["orientation"],
 	"supports": {
 		"anchor": true
 	},
-	"editorStyle": "wp-block-spacer-editor",
-	"style": "wp-block-spacer"
+	"editorScript": "hrswp_blocks_script",
+	"editorStyle": "hrswp_blocks_editor_style"
 }

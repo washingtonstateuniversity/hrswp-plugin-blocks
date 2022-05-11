@@ -5,6 +5,6 @@
 	"supports": {
 		"align": true
 	},
-	"editorStyle": "hrswp-block-sidebar-editor",
-	"style": "hrswp-block-sidebar"
+	"editorScript": "hrswp_blocks_script",
+	"editorStyle": "hrswp_blocks_editor_style"
 }

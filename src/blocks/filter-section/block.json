@@ -5,7 +5,5 @@
 	"parent": [ "hrswp/filter" ],
 	"supports": {
 		"reusable": false
-	},
-	"editorStyle": "hrswp-block-filter-section-editor",
-	"style": "hrswp-block-filter-section"
+	}
 }

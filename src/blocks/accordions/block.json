@@ -14,6 +14,6 @@
 		"align": true,
 		"html": false
 	},
-	"editorStyle": "hrswp-block-accordions-editor",
-	"style": "hrswp-block-accordions"
+	"editorScript": "hrswp_blocks_script",
+	"editorStyle": "hrswp_blocks_editor_style"
 }

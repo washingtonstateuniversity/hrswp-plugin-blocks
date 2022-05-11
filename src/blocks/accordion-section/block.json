@@ -25,7 +25,5 @@
 	},
 	"supports": {
 		"reusable": false
-	},
-	"editorStyle": "hrswp-block-accordion-panel-editor",
-	"style": "hrswp-block-accordion-panel"
+	}
 }
