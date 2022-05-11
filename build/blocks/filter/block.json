@@ -1,0 +1,17 @@
+{
+	"apiVersion": 2,
+	"name": "hrswp/filter",
+	"category": "widgets",
+	"attributes": {
+		"retainHeadings": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"editorScript": "hrswp_blocks_script",
+	"editorStyle": "hrswp_blocks_editor_style"
+}

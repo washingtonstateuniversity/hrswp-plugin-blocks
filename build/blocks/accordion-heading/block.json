@@ -1,0 +1,70 @@
+{
+	"apiVersion": 2,
+	"name": "hrswp/accordion-heading",
+	"parent": [ "hrswp/accordion-section" ],
+	"category": "text",
+	"attributes": {
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1,h2,h3,h4,h5,h6",
+			"default": ""
+		},
+		"level": {
+			"type": "number",
+			"default": 2
+		},
+		"placeholder": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"reusable": false,
+		"className": false,
+		"__experimentalSelector": {
+			"hrswp/accordion-heading/h1": {
+				"selector": "h1",
+				"title": "h1",
+				"attributes": {
+					"level": 1
+				}
+			},
+			"hrswp/accordion-heading/h2": {
+				"selector": "h2",
+				"title": "h2",
+				"attributes": {
+					"level": 2
+				}
+			},
+			"hrswp/accordion-heading/h3": {
+				"selector": "h3",
+				"title": "h3",
+				"attributes": {
+					"level": 3
+				}
+			},
+			"hrswp/accordion-heading/h4": {
+				"selector": "h4",
+				"title": "h4",
+				"attributes": {
+					"level": 4
+				}
+			},
+			"hrswp/accordion-heading/h5": {
+				"selector": "h5",
+				"title": "h5",
+				"attributes": {
+					"level": 5
+				}
+			},
+			"hrswp/accordion-heading/h6": {
+				"selector": "h6",
+				"title": "h6",
+				"attributes": {
+					"level": 6
+				}
+			}
+		},
+		"__unstablePasteTextInline": true
+	}
+}
