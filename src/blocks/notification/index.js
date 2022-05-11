@@ -16,13 +16,13 @@ const { name, category, supports, attributes } = metadata;
 export { name };
 
 export const settings = {
-	title: __( 'Notification' ),
+	title: __('Notification'),
 	icon,
 	category,
 	description: __(
 		'Show a brief notification message with optional action button.'
 	),
-	keywords: [ __( 'callout' ), __( 'message' ), __( 'link' ) ],
+	keywords: [__('callout'), __('message'), __('link')],
 	supports,
 	example: {
 		innerBlocks: [
@@ -39,7 +39,7 @@ export const settings = {
 				name: 'hrswp/button',
 				attributes: {
 					/* translators: example text. */
-					text: __( 'Jane Austen' ),
+					text: __('Jane Austen'),
 				},
 			},
 		],
@@ -47,12 +47,12 @@ export const settings = {
 	styles: [
 		{
 			name: 'default',
-			label: _x( 'Default', 'block style' ),
+			label: _x('Default', 'block style'),
 			isDefault: true,
 		},
-		{ name: 'positive', label: _x( 'Positive', 'block style' ) },
-		{ name: 'caution', label: _x( 'Caution', 'block style' ) },
-		{ name: 'warning', label: _x( 'Warning', 'block style' ) },
+		{ name: 'positive', label: _x('Positive', 'block style') },
+		{ name: 'caution', label: _x('Caution', 'block style') },
+		{ name: 'warning', label: _x('Warning', 'block style') },
 	],
 	attributes,
 	edit,

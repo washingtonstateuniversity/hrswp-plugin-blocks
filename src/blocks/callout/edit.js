@@ -16,19 +16,19 @@ const { InnerBlocks } = wp.blockEditor;
 const TEMPLATE = [
 	[
 		'core/paragraph',
-		{ fontSize: 'large', placeholder: __( 'Callout title…' ) },
+		{ fontSize: 'large', placeholder: __('Callout title…') },
 	],
 	[
 		'core/paragraph',
-		{ placeholder: __( 'Enter the callout message or replace…' ) },
+		{ placeholder: __('Enter the callout message or replace…') },
 	],
 ];
 
-export default function edit( { className } ) {
+export default function edit({ className }) {
 	return (
 		<>
-			<div className={ className }>
-				<InnerBlocks template={ TEMPLATE } />
+			<div className={className}>
+				<InnerBlocks template={TEMPLATE} />
 			</div>
 		</>
 	);

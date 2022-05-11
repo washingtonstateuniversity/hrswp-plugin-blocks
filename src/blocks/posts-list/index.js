@@ -15,11 +15,11 @@ const { name, category, supports } = metadata;
 export { name };
 
 export const settings = {
-	title: __( 'Posts List' ),
+	title: __('Posts List'),
 	icon,
 	category,
-	description: __( 'Display a list of posts.' ),
-	keywords: [ __( 'posts' ), __( 'latest posts' ) ],
+	description: __('Display a list of posts.'),
+	keywords: [__('posts'), __('latest posts')],
 	supports,
 	example: {},
 	edit,
