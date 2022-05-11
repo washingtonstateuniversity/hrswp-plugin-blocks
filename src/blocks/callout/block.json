@@ -1,7 +1,21 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
 	"name": "hrswp/callout",
+	"title": "Callout",
 	"category": "layout",
+	"description": "Display content in a callout module.",
+	"keywords": ["callout", "message"],
+	"textdomain": "default",
 	"supports": {
 		"align": true
-	}
+	},
+	"styles": [
+		{ "name": "default", "label": "Default", "isDefault": true },
+		{ "name": "positive", "label": "Positive" },
+		{ "name": "caution", "label": "Caution" },
+		{ "name": "warning", "label": "Warning" }
+	],
+	"editorStyle": "wp-block-hrswp-button-editor",
+	"style": "wp-block-hrswp-button"
 }
