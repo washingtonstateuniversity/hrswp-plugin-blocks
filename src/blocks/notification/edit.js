@@ -7,11 +7,15 @@ import { dropRight, times } from 'lodash';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { withDispatch } = wp.data;
-const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls, InnerBlocks } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { createBlock } from '@wordpress/blocks';
+import { withDispatch } from '@wordpress/data';
+import { PanelBody, ToggleControl } from '@wordpress/components';
+import {
+	InspectorControls,
+	useBlockProps,
+	useInnerBlocksProps,
+} from '@wordpress/block-editor';
 
 /**
  * The allowed blocks.
@@ -35,8 +39,14 @@ const TEMPLATE = [
 function NotificationEditContainer({ className, attributes, updateBlocks }) {
 	const { showActionButton } = attributes;
 
-	const classes = classnames(className, {
+	const wrapperClasses = classnames(className, {
 		'has-action-button': showActionButton,
+	});
+	const blockProps = useBlockProps({ className: wrapperClasses });
+	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+		allowedBlocks: ALLOWED_BLOCKS,
+		template: TEMPLATE,
+		templateLock: "insert",
 	});
 
 	return (
@@ -57,13 +67,7 @@ function NotificationEditContainer({ className, attributes, updateBlocks }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className={classes}>
-				<InnerBlocks
-					templateLock="insert"
-					allowedBlocks={ALLOWED_BLOCKS}
-					template={TEMPLATE}
-				/>
-			</div>
+			<div {...innerBlocksProps} />
 		</>
 	);
 }
