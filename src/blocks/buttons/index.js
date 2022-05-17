@@ -23,11 +23,11 @@ export const settings = {
 		innerBlocks: [
 			{
 				name: 'hrswp/button',
-				attributes: { text: __( 'Find out more' ) },
+				attributes: { text: __('Find out more') },
 			},
 			{
 				name: 'hrswp/button',
-				attributes: { text: __( 'Contact us' ) },
+				attributes: { text: __('Contact us') },
 			},
 		],
 	},

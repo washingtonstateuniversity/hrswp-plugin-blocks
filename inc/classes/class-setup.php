@@ -59,7 +59,6 @@ class Setup {
 
 			$instance->setup_hooks();
 			$instance->define_blocks();
-			$instance->includes();
 		}
 
 		return $instance;
@@ -83,29 +82,8 @@ class Setup {
 	 */
 	private function setup_hooks() {
 		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'action_register_editor_assets' ) );
 		add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
-	}
-
-	/**
-	 * Includes the required files.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @access private
-	 */
-	private function includes() {
-		/**
-		 * Retrieves the block registration file for each dynamic block.
-		 */
-		$blocks_dir = dirname( __DIR__ ) . '/build/blocks/';
-		foreach ( self::$blocks as $file ) {
-			if ( 0 === $file || ! file_exists( $blocks_dir . $file ) ) {
-				continue;
-			}
-
-			require $blocks_dir . $file;
-		}
 	}
 
 	/**
@@ -165,34 +143,25 @@ class Setup {
 	 * Enqueues the plugin editor scripts.
 	 *
 	 * @since 0.2.0
+	 * @since 3.0.0 Switch from enqueue to register to use `block.json`
+	 * @return void
 	 */
-	public function enqueue_editor_scripts() {
-		$plugin = get_option( self::$slug . '_plugin-status' );
+	public function action_register_editor_assets() {
+		$asset_file = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/index.asset.php';
 
-		wp_enqueue_script(
-			self::$slug . '-script',
-			plugins_url( 'build/index.js', self::$basename ),
-			array(
-				'wp-blocks',
-				'wp-block-editor',
-				'wp-components',
-				'wp-i18n',
-				'wp-data',
-				'wp-element',
-				'wp-compose',
-				'wp-api-fetch',
-				'wp-url',
-				'wp-date',
-			),
-			$plugin['version'],
+		wp_register_script(
+			self::$slug . '_script', // hrswp_blocks_script
+			plugins_url( 'build/index.js', dirname( __DIR__ ) ),
+			$asset_file['dependencies'],
+			$asset_file['version'],
 			true
 		);
 
-		wp_enqueue_style(
-			self::$slug . 'editor-style',
-			plugins_url( 'build/editor.css', self::$basename ),
+		wp_register_style(
+			self::$slug . '_editor_style', // hrswp_blocks_editor_style
+			plugins_url( 'build/index.css', dirname( __DIR__ ) ),
 			array(),
-			$plugin['version']
+			$asset_file['version']
 		);
 	}
 

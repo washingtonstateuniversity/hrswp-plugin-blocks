@@ -1,14 +1,11 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { InnerBlocks } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { useInnerBlocksProps, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * The block template.
- *
- * This is locked so that the search input field is always first, followed
- * by a search filter section to contain the content to be searched.
  *
  * @constant
  * @type {string[]}
@@ -16,20 +13,19 @@ const { InnerBlocks } = wp.blockEditor;
 const TEMPLATE = [
 	[
 		'core/paragraph',
-		{ fontSize: 'large', placeholder: __( 'Callout title…' ) },
+		{ fontSize: 'large', placeholder: __('Callout title…') },
 	],
 	[
 		'core/paragraph',
-		{ placeholder: __( 'Enter the callout message or replace…' ) },
+		{ placeholder: __('Enter the callout message or replace…') },
 	],
 ];
 
-export default function edit( { className } ) {
-	return (
-		<>
-			<div className={ className }>
-				<InnerBlocks template={ TEMPLATE } />
-			</div>
-		</>
-	);
+export default function CalloutEdit() {
+	const blocksProps = useBlockProps();
+	const innerBlocksProps = useInnerBlocksProps(blocksProps, {
+		template: TEMPLATE,
+	});
+
+	return <div {...innerBlocksProps} />;
 }

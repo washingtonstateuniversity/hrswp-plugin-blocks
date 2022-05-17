@@ -1,12 +1,11 @@
 /**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+import { useInnerBlocksProps, useBlockProps } from '@wordpress/block-editor';
 
-export default function save( { className } ) {
-	return (
-		<div className={ className }>
-			<InnerBlocks.Content />
-		</div>
-	);
+export default function save() {
+	const blocksProps = useBlockProps.save();
+	const innerBlocksProps = useInnerBlocksProps.save(blocksProps);
+
+	return <div {...innerBlocksProps} />;
 }

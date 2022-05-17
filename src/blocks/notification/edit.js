@@ -7,11 +7,15 @@ import { dropRight, times } from 'lodash';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { withDispatch } = wp.data;
-const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls, InnerBlocks } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { createBlock } from '@wordpress/blocks';
+import { withDispatch } from '@wordpress/data';
+import { PanelBody, ToggleControl } from '@wordpress/components';
+import {
+	InspectorControls,
+	useBlockProps,
+	useInnerBlocksProps,
+} from '@wordpress/block-editor';
 
 /**
  * The allowed blocks.
@@ -19,7 +23,7 @@ const { InspectorControls, InnerBlocks } = wp.blockEditor;
  * @constant
  * @type {string[]}
  */
-const ALLOWED_BLOCKS = [ 'core/paragraph', 'hrswp/button' ];
+const ALLOWED_BLOCKS = ['core/paragraph', 'hrswp/button'];
 
 /**
  * The block template.
@@ -28,72 +32,72 @@ const ALLOWED_BLOCKS = [ 'core/paragraph', 'hrswp/button' ];
  * @type {string[]}
  */
 const TEMPLATE = [
-	[ 'core/paragraph', { placeholder: __( 'Write message…' ) } ],
-	[ 'hrswp/button' ],
+	['core/paragraph', { placeholder: __('Write message…') }],
+	['hrswp/button'],
 ];
 
-function NotificationEditContainer( { className, attributes, updateBlocks } ) {
+function NotificationEditContainer({ className, attributes, updateBlocks }) {
 	const { showActionButton } = attributes;
 
-	const classes = classnames( className, {
+	const wrapperClasses = classnames(className, {
 		'has-action-button': showActionButton,
-	} );
+	});
+	const blockProps = useBlockProps({ className: wrapperClasses });
+	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+		allowedBlocks: ALLOWED_BLOCKS,
+		template: TEMPLATE,
+		templateLock: "insert",
+	});
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Action Button Settings' ) }>
+				<PanelBody title={__('Action Button Settings')}>
 					<ToggleControl
-						label={ __( 'Show Action Button' ) }
-						checked={ !! showActionButton }
-						onChange={ ( value ) => updateBlocks( value ) }
+						label={__('Show Action Button')}
+						checked={!!showActionButton}
+						onChange={(value) => updateBlocks(value)}
 						help={
 							showActionButton
 								? __(
 										'Use the action button to call users to action.'
 								  )
-								: __( 'Toggle to include an action button.' )
+								: __('Toggle to include an action button.')
 						}
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className={ classes }>
-				<InnerBlocks
-					templateLock="insert"
-					allowedBlocks={ ALLOWED_BLOCKS }
-					template={ TEMPLATE }
-				/>
-			</div>
+			<div {...innerBlocksProps} />
 		</>
 	);
 }
 
-const NotificationEdit = withDispatch( ( dispatch, ownProps, registry ) => ( {
-	updateBlocks( showActionButton ) {
+const NotificationEdit = withDispatch((dispatch, ownProps, registry) => ({
+	updateBlocks(showActionButton) {
 		const { clientId, setAttributes } = ownProps;
-		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
-		const { getBlocks } = registry.select( 'core/block-editor' );
+		const { replaceInnerBlocks } = dispatch('core/block-editor');
+		const { getBlocks } = registry.select('core/block-editor');
 
-		let innerBlocks = getBlocks( clientId );
+		let innerBlocks = getBlocks(clientId);
 
 		// Set the block's own attribute.
-		setAttributes( { showActionButton } );
+		setAttributes({ showActionButton });
 
-		if ( true === showActionButton ) {
+		if (true === showActionButton) {
 			// Add the action button.
 			innerBlocks = [
 				...innerBlocks,
-				...times( 1, () => {
-					return createBlock( 'hrswp/button' );
-				} ),
+				...times(1, () => {
+					return createBlock('hrswp/button');
+				}),
 			];
 		} else {
 			// Remove the action button.
-			innerBlocks = dropRight( innerBlocks, 1 );
+			innerBlocks = dropRight(innerBlocks, 1);
 		}
 
-		replaceInnerBlocks( clientId, innerBlocks, false );
+		replaceInnerBlocks(clientId, innerBlocks, false);
 	},
-} ) )( NotificationEditContainer );
+}))(NotificationEditContainer);
 
 export default NotificationEdit;
