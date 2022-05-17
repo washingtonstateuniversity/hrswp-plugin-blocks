@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param array $attributes The block attributes.
  * @return string Returns a list of posts.
  */
-function render( $attributes ) {
+function render_block_posts_list( $attributes ) {
 	$args = array(
 		'posts_per_page'   => $attributes['postsToShow'],
 		'post_status'      => 'publish',
@@ -264,9 +264,9 @@ add_action(
 	'init',
 	function() {
 		register_block_type_from_metadata(
-			__DIR__ . '/block.json',
+			__DIR__,
 			array(
-				'render_callback' => __NAMESPACE__ . '\render',
+				'render_callback' => 'render_block_posts_list',
 			)
 		);
 	},
