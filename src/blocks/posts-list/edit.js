@@ -38,7 +38,7 @@ import {
 } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { pin, list, grid } from '@wordpress/icons';
-import { store as coreStore } from '@wordpress/code-data';
+import { store as coreStore } from '@wordpress/core-data';
 
 /**
  * Internal dependencies
