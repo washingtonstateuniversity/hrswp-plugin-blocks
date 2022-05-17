@@ -14,67 +14,67 @@ const transforms = {
 	from: [
 		{
 			type: 'block',
-			blocks: [ 'core/buttons' ],
-			transform: ( attributes, innerBlocks ) =>
+			blocks: ['core/buttons'],
+			transform: (attributes, innerBlocks) =>
 				// Creates the buttons block
 				createBlock(
 					name,
 					attributes,
 					// Convert the inner buttons as well
-					innerBlocks.map( ( block ) =>
-						createBlock( 'hrswp/button', block.attributes )
+					innerBlocks.map((block) =>
+						createBlock('hrswp/button', block.attributes)
 					)
 				),
 		},
 		{
 			type: 'block',
 			isMultiBlock: true,
-			blocks: [ 'core/button' ],
-			transform: ( buttons ) =>
+			blocks: ['core/button'],
+			transform: (buttons) =>
 				// Creates the buttons block
 				createBlock(
 					name,
 					{},
 					// Loop the selected buttons
-					buttons.map( ( attributes ) =>
+					buttons.map((attributes) =>
 						// Create singular button in the buttons block
-						createBlock( 'hrswp/button', attributes )
+						createBlock('hrswp/button', attributes)
 					)
 				),
 		},
 		{
 			type: 'block',
 			isMultiBlock: true,
-			blocks: [ 'core/paragraph' ],
-			transform: ( buttons ) =>
+			blocks: ['core/paragraph'],
+			transform: (buttons) =>
 				// Creates the buttons block
 				createBlock(
 					name,
 					{},
 					// Loop the selected buttons
-					buttons.map( ( attributes ) => {
+					buttons.map((attributes) => {
 						// Remove any HTML tags
-						const div = document.createElement( 'div' );
+						const div = document.createElement('div');
 						div.innerHTML = attributes.content;
 						const text = div.innerText || '';
 						// Get first url
-						const link = div.querySelector( 'a' );
-						const url = link?.getAttribute( 'href' );
+						const link = div.querySelector('a');
+						const url = link?.getAttribute('href');
 						// Create singular button in the buttons block
-						return createBlock( 'core/button', {
+						return createBlock('core/button', {
 							text,
 							url,
-						} );
-					} )
+						});
+					})
 				),
-			isMatch: ( paragraphs ) => {
-				return paragraphs.every( ( attributes ) => {
-					const div = document.createElement( 'div' );
+			isMatch: (paragraphs) => {
+				return paragraphs.every((attributes) => {
+					const div = document.createElement('div');
 					div.innerHTML = attributes.content;
 					const text = div.innerText || '';
-					const links = div.querySelectorAll( 'a' );
+					const links = div.querySelectorAll('a');
 					return text.length <= 30 && links.length <= 1;
-				} );
+				});
 			},
 		},
 	],

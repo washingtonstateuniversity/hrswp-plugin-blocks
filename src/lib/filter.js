@@ -16,22 +16,20 @@ class Filter {
 	 * @param {Node}   content A search form block to search and filter within.
 	 * @param {number} ref     A unique numeric reference for each accordion.
 	 */
-	constructor( content, ref ) {
+	constructor(content, ref) {
 		this._parent = content;
 		this._ref = ref;
-		this._content = content.querySelector(
-			'.wp-block-hrswp-filter-section'
-		);
+		this._content = content.querySelector('.wp-block-hrswp-filter-section');
 
 		this._setupSearchField();
 
-		this._searchInput = content.querySelector( '.wp-block-search__input' );
-		this._searchReset = content.querySelector( 'button' );
+		this._searchInput = content.querySelector('.wp-block-search__input');
+		this._searchReset = content.querySelector('button');
 
-		this._markInstance = new Mark( this._content );
+		this._markInstance = new Mark(this._content);
 
-		this.find = this.find.bind( this );
-		this.reset = this.reset.bind( this );
+		this.find = this.find.bind(this);
+		this.reset = this.reset.bind(this);
 
 		this._handleURLSearchParams();
 		this._addEventListeners();
@@ -39,14 +37,14 @@ class Filter {
 
 	_setupSearchField() {
 		const searchFieldInputHtml = `<div class="wp-block-search">
-			<label class="wp-block-search__label screen-reader-text" hrswp-block-search-filter__input-${ this._ref }>Search</label>
+			<label class="wp-block-search__label screen-reader-text" hrswp-block-search-filter__input-${this._ref}>Search</label>
 			<div class="wp-block-search__inside-wrapper">
-				<input id="hrswp-block-search-filter__input-${ this._ref }" class="wp-block-search__input" type="search" name="hrswp-filter-search" value="" placeholder="Search …">
-				<button class="wp-block-search__button" id="hrswp-block-search-filter__reset-${ this._ref }">Reset</button>
+				<input id="hrswp-block-search-filter__input-${this._ref}" class="wp-block-search__input" type="search" name="hrswp-filter-search" value="" placeholder="Search …">
+				<button class="wp-block-search__button" id="hrswp-block-search-filter__reset-${this._ref}">Reset</button>
 			</div>
 		</div>`;
 
-		this._parent.insertAdjacentHTML( 'afterbegin', searchFieldInputHtml );
+		this._parent.insertAdjacentHTML('afterbegin', searchFieldInputHtml);
 	}
 
 	/**
@@ -64,7 +62,7 @@ class Filter {
 		/**
 		 * @type {NodeList} All nodes with the class 'show' assigned by a previous filter.
 		 */
-		const previousMatches = content.querySelectorAll( '.show' );
+		const previousMatches = content.querySelectorAll('.show');
 		const currentMatches = [];
 
 		/**
@@ -80,16 +78,16 @@ class Filter {
 			 * @param {Node}   node The text node that includes the match.
 			 * @param {string} term The term that has been found.
 			 */
-			filter: ( node, term ) => {
+			filter: (node, term) => {
 				/**
 				 * Don't filter content if the search term is shorter than
 				 * two characters in length to prevent overzealous filtering.
 				 */
-				if ( 2 > term.length ) {
-					content.classList.remove( 'filtering-active' );
-					previousMatches.forEach( ( match ) => {
-						match.classList.remove( 'show' );
-					} );
+				if (2 > term.length) {
+					content.classList.remove('filtering-active');
+					previousMatches.forEach((match) => {
+						match.classList.remove('show');
+					});
 
 					return true;
 				}
@@ -106,29 +104,29 @@ class Filter {
 				 * own parent or ancestor nodes.
 				 */
 				let parent = node.parentNode;
-				while ( parent !== content ) {
-					currentMatches.push( parent );
+				while (parent !== content) {
+					currentMatches.push(parent);
 					parent = parent.parentNode;
 				}
 
 				// Trigger hiding non-matching content with 'filtering-active' class.
-				content.classList.add( 'filtering-active' );
+				content.classList.add('filtering-active');
 
 				/**
 				 * Remove the 'show' class from all elements that had it already.
 				 * Without this, the 'show' class will linger for elements that previously
 				 * matched but no longer do.
 				 */
-				previousMatches.forEach( ( match ) => {
-					match.classList.remove( 'show' );
-				} );
+				previousMatches.forEach((match) => {
+					match.classList.remove('show');
+				});
 
 				/**
 				 * Reassign/retain the 'show' class for all current matches.
 				 */
-				currentMatches.forEach( ( match ) => {
-					match.classList.add( 'show' );
-				} );
+				currentMatches.forEach((match) => {
+					match.classList.add('show');
+				});
 
 				return true;
 			},
@@ -139,10 +137,10 @@ class Filter {
 			 * content should remain or become visible.
 			 */
 			noMatch: () => {
-				content.classList.remove( 'filtering-active' );
-				previousMatches.forEach( ( match ) => {
-					match.classList.remove( 'show' );
-				} );
+				content.classList.remove('filtering-active');
+				previousMatches.forEach((match) => {
+					match.classList.remove('show');
+				});
 			},
 		};
 
@@ -151,11 +149,11 @@ class Filter {
 		 * hooks into its `done` callback to re-highlight matching terms with
 		 * the `mark()` method.
 		 */
-		instance.unmark( {
+		instance.unmark({
 			done: () => {
-				instance.mark( keyword, options );
+				instance.mark(keyword, options);
 			},
-		} );
+		});
 	}
 
 	/**
@@ -164,7 +162,7 @@ class Filter {
 	reset() {
 		this._searchInput.value = '';
 		this._markInstance.unmark();
-		this._content.classList.remove( 'filtering-active' );
+		this._content.classList.remove('filtering-active');
 	}
 
 	/*
@@ -172,19 +170,19 @@ class Filter {
 	 */
 	_handleURLSearchParams() {
 		// Check for browser support. Should work in all major browsers other than IE.
-		if ( 'URLSearchParams' in window ) {
-			const params = new URLSearchParams( window.location.search );
-			const filterValue = params.get( 'filter' );
-			if ( null !== filterValue ) {
-				this._searchInput.value = encodeURIComponent( filterValue );
+		if ('URLSearchParams' in window) {
+			const params = new URLSearchParams(window.location.search);
+			const filterValue = params.get('filter');
+			if (null !== filterValue) {
+				this._searchInput.value = encodeURIComponent(filterValue);
 				this.find();
 			}
 		}
 	}
 
 	_addEventListeners() {
-		this._searchInput.addEventListener( 'input', this.find );
-		this._searchReset.addEventListener( 'click', this.reset );
+		this._searchInput.addEventListener('input', this.find);
+		this._searchReset.addEventListener('click', this.reset);
 	}
 }
 
@@ -199,9 +197,9 @@ function init() {
 	);
 
 	let i = 0;
-	searchForms.forEach( ( searchForm ) => {
-		new Filter( searchForm, i );
+	searchForms.forEach((searchForm) => {
+		new Filter(searchForm, i);
 		i++;
-	} );
+	});
 }
 init();
