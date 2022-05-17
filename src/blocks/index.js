@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { registerBlockType } = wp.blocks;
-const { dispatch } = wp.data;
+import { registerBlockType } from '@wordpress/blocks';
+import { dispatch } from '@wordpress/data';
 
 /**
  * Internal dependencies
@@ -50,15 +50,15 @@ const hiddenBlocks = [
  * @param {Object} block The block to be registered.
  *
  */
-const registerBlock = ( block ) => {
-	if ( ! block ) {
+const registerBlock = (block) => {
+	if (!block) {
 		return;
 	}
 	const { metadata, settings, name } = block;
-	registerBlockType( name, {
+	registerBlockType(name, {
 		...metadata,
 		...settings,
-	} );
+	});
 };
 
 /**
@@ -72,9 +72,9 @@ const registerBlock = ( block ) => {
  * ```
  */
 export const registerBlocks = () => {
-	hrsBlocks.forEach( registerBlock );
+	hrsBlocks.forEach(registerBlock);
 };
 
 export const hideBlocks = () => {
-	dispatch( 'core/edit-post' ).hideBlockTypes( hiddenBlocks );
+	dispatch('core/edit-post').hideBlockTypes(hiddenBlocks);
 };
