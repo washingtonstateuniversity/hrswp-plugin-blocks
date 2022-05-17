@@ -65,18 +65,18 @@
 		},
 		"featuredImageAlign": {
 			"type": "string",
-			"enum": [ "left", "center", "right" ]
+			"enum": ["left", "center", "right"]
 		},
 		"featuredImageSizeSlug": {
-			"type"   : "string",
+			"type": "string",
 			"default": "thumbnail"
 		},
 		"featuredImageSizeWidth": {
-			"type"   : "number",
+			"type": "number",
 			"default": null
 		},
 		"featuredImageSizeHeight": {
-			"type"   : "number",
+			"type": "number",
 			"default": null
 		},
 		"addLinkToFeaturedImage": {
@@ -87,5 +87,7 @@
 	"supports": {
 		"align": true,
 		"html": false
-	}
+	},
+	"editorScript": "hrswp_blocks_script",
+	"editorStyle": "hrswp_blocks_editor_style"
 }
