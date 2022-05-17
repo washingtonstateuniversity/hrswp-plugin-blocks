@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { dateI18n, format, __experimentalGetSettings } = wp.date;
+import { __ } from '@wordpress/i18n';
+import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 
 /**
  * Internal dependencies

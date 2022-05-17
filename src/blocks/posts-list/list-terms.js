@@ -6,7 +6,7 @@ import { filter, includes } from 'lodash';
 /**
  * WordPress dependencies
  */
-const { Fragment } = wp.element;
+import { Fragment } from '@wordpress/element';
 
 export const ListTerms = (props) => {
 	const { terms, taxonomySlug, post, prefix } = props;
