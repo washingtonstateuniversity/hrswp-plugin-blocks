@@ -513,23 +513,22 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 								</div>
 							)}
 							<div className="hrswp-block-posts-list__body">
-								<h3 className="hrswp-block-posts-list__heading">
-									<a
-										href={post.link}
-										rel="noreferrer noopener"
-										dangerouslySetInnerHTML={
-											!!titleTrimmed
-												? {
-														__html: titleTrimmed,
-												  }
-												: undefined
-										}
-									>
-										{!titleTrimmed
-											? __('(no title)')
-											: null}
-									</a>
-								</h3>
+                                <a
+                                    className="hrswp-block-posts-list__heading"
+                                    href={post.link}
+                                    rel="noreferrer noopener"
+                                    dangerouslySetInnerHTML={
+                                        !!titleTrimmed
+                                            ? {
+                                                    __html: titleTrimmed,
+                                                }
+                                            : undefined
+                                    }
+                                >
+                                    {!titleTrimmed
+                                        ? __('(no title)')
+                                        : null}
+                                </a>
 								{displayPostContent &&
 									displayPostContentRadio === 'excerpt' && (
 										<p className="hrswp-block-posts-list__post-excerpt">
