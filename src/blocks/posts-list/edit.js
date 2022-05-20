@@ -501,7 +501,6 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 								<div className={imageClasses}>
 									{addLinkToFeaturedImage ? (
 										<a
-											className="hrswp-block-posts-list__post-title"
 											href={post.link}
 											rel="noreferrer noopener"
 										>
@@ -514,7 +513,7 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 							)}
 							<div className="hrswp-block-posts-list__body">
                                 <a
-                                    className="hrswp-block-posts-list__heading"
+                                    className="hrswp-block-posts-list__post-title"
                                     href={post.link}
                                     rel="noreferrer noopener"
                                     dangerouslySetInnerHTML={

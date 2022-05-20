@@ -32,7 +32,7 @@ export const ListTerms = (props) => {
 	);
 
 	return (
-		<p className={`wp-block-hrswp-posts-list--${taxonomySlug}-list`}>
+		<p className={`hrswp-block-posts-list__${taxonomySlug}-list`}>
 			<span>{prefix}</span>
 			{listTerms.map((term, i) => {
 				const sep = i > 0 ? ', ' : '';

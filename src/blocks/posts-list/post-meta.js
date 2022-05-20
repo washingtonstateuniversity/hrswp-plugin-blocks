@@ -36,7 +36,7 @@ export const PostMeta = (props) => {
 	}
 
 	return (
-		<div className="wp-block-hrswp-posts-list--meta">
+		<div className="hrswp-block-posts-list__meta">
 			{hasPostTerms &&
 				taxonomies.map((taxonomy) => {
 					let prefix;
@@ -68,7 +68,7 @@ export const PostMeta = (props) => {
 					);
 				})}
 			{displayPostDate && post.date_gmt && (
-				<p className="wp-block-hrswp-posts-list--post-date">
+				<p className="hrswp-block-posts-list__post-date">
 					{__('Published on ')}
 					<time dateTime={format('c', post.date_gmt)}>
 						{dateI18n(dateFormat, post.date_gmt)}

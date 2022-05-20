@@ -106,8 +106,12 @@ class PostsList {
 		$list_items_markup = '';
 
 		foreach ( $posts as $post ) {
+			$title = get_the_title( $post );
+			if ( ! $title ) {
+				$title = __( '(no title)', 'hrswp-blocks' );
+			}
 
-			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--list-item">';
+			$list_items_markup .= '<li class="hrswp-block-posts-list__list-item">';
 
 			if ( $attributes['displayFeaturedImage'] && has_post_thumbnail( $post ) ) {
 				$image_style = '';
@@ -118,7 +122,7 @@ class PostsList {
 					$image_style .= sprintf( 'max-height:%spx;', $attributes['featuredImageSizeHeight'] );
 				}
 
-				$image_classes = 'wp-block-hrswp-posts-list--featured-image';
+				$image_classes = 'hrswp-block-posts-list__featured-image';
 				if ( isset( $attributes['featuredImageSizeSlug'] ) ) {
 					$image_classes .= ' size-' . $attributes['featuredImageSizeSlug'];
 				}
@@ -127,7 +131,7 @@ class PostsList {
 				}
 
 				$list_items_markup .= sprintf(
-					'<figure class="%1$s">%2$s</figure>',
+					'<div class="%1$s">%2$s</div>',
 					$image_classes,
 					get_the_post_thumbnail(
 						$post,
@@ -139,14 +143,9 @@ class PostsList {
 				);
 			}
 
-			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--body">';
-
-			$title = get_the_title( $post );
-			if ( ! $title ) {
-				$title = __( '(no title)', 'hrswp-blocks' );
-			}
+			$list_items_markup .= '<div class="hrswp-block-posts-list__body">';
 			$list_items_markup .= sprintf(
-				'<h3 class="wp-block-hrswp-posts-list--heading"><a href="%1$s">%2$s</a></h3>',
+				'<a class="hrswp-block-posts-list__post-title" href="%1$s">%2$s</a>',
 				esc_url( get_permalink( $post ) ),
 				$title
 			);
@@ -157,7 +156,7 @@ class PostsList {
 				$trimmed_excerpt = get_the_excerpt( $post );
 
 				$list_items_markup .= sprintf(
-					'<p class="wp-block-hrswp-posts-list--post-excerpt">%1$s</p>',
+					'<p class="hrswp-block-posts-list__post-excerpt">%1$s</p>',
 					$trimmed_excerpt
 				);
 			}
@@ -165,7 +164,7 @@ class PostsList {
 			if ( isset( $attributes['displayPostContent'] ) && $attributes['displayPostContent']
 				&& isset( $attributes['displayPostContentRadio'] ) && 'full_post' === $attributes['displayPostContentRadio'] ) {
 				$list_items_markup .= sprintf(
-					'<div class="wp-block-hrswp-posts-list--post-full-content">%1$s</div>',
+					'<div class="hrswp-block-posts-list__post-full-content">%1$s</div>',
 					wp_kses_post( html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) ) )
 				);
 			}
@@ -192,7 +191,7 @@ class PostsList {
 						$attributes['displayPostCategory']
 					) {
 						$prefix = sprintf(
-							'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
+							'<p class="hrswp-block-posts-list__%1$s-list"><span>%2$s: </span>',
 							esc_attr( $taxonomy_name ),
 							__( 'More on', 'hrswp-blocks' )
 						);
@@ -204,7 +203,7 @@ class PostsList {
 						$attributes['displayPostTag']
 					) {
 						$prefix = sprintf(
-							'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
+							'<p class="hrswp-block-posts-list__%1$s-list"><span>%2$s: </span>',
 							esc_attr( $taxonomy_name ),
 							__( 'Tagged', 'hrswp-blocks' )
 						);
@@ -219,7 +218,7 @@ class PostsList {
 						) {
 							$taxonomy_object = get_taxonomy( $taxonomy_name );
 							$prefix          = sprintf(
-								'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
+								'<p class="hrswp-block-posts-list__%1$s-list"><span>%2$s: </span>',
 								esc_attr( $taxonomy_name ),
 								esc_html( $taxonomy_object->labels->singular_name )
 							);
@@ -231,7 +230,7 @@ class PostsList {
 			}
 			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 				$post_meta_markup .= sprintf(
-					'<p class="wp-block-hrswp-posts-list--post-date">%1$s <time datetime="%2$s">%3$s</time></p>',
+					'<p class="hrswp-block-posts-list__post-date">%1$s <time datetime="%2$s">%3$s</time></p>',
 					__( 'Published on', 'hrswp-blocks' ),
 					esc_attr( get_the_date( 'c', $post ) ),
 					esc_html( get_the_date( '', $post ) )
@@ -240,12 +239,12 @@ class PostsList {
 
 			if ( '' !== $post_meta_markup ) {
 				$list_items_markup .= sprintf(
-					'<div class="wp-block-hrswp-posts-list--meta">%1$s</div>',
+					'<div class="hrswp-block-posts-list__meta">%1$s</div>',
 					$post_meta_markup
 				);
 			}
 
-			$list_items_markup .= "</div></div>\n";
+			$list_items_markup .= "</div></li>\n";
 		}
 
 		remove_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 20 );
@@ -281,7 +280,7 @@ class PostsList {
 		}
 
 		return sprintf(
-			'<div class="%1$s">%2$s</div>',
+			'<ul class="%1$s">%2$s</ul>',
 			esc_attr( implode( ' ', $class ) ),
 			$list_items_markup
 		);
