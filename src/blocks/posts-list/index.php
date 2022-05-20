@@ -106,7 +106,9 @@ class PostsList {
 		$list_items_markup = '';
 
 		foreach ( $posts as $post ) {
-			$title = get_the_title( $post );
+			$post_link = esc_url( get_permalink( $post ) );
+			$title     = get_the_title( $post );
+
 			if ( ! $title ) {
 				$title = __( '(no title)', 'hrswp-blocks' );
 			}
@@ -116,37 +118,43 @@ class PostsList {
 			if ( $attributes['displayFeaturedImage'] && has_post_thumbnail( $post ) ) {
 				$image_style = '';
 				if ( isset( $attributes['featuredImageSizeWidth'] ) ) {
-					$image_style .= sprintf( 'max-width:%spx;', $attributes['featuredImageSizeWidth'] );
+					$image_style .= 'max-width:' . $attributes['featuredImageSizeWidth'] . 'px;';
 				}
 				if ( isset( $attributes['featuredImageSizeHeight'] ) ) {
-					$image_style .= sprintf( 'max-height:%spx;', $attributes['featuredImageSizeHeight'] );
+					$image_style .= 'max-height:' . $attributes['featuredImageSizeHeight'] . 'px;';
 				}
 
 				$image_classes = 'hrswp-block-posts-list__featured-image';
-				if ( isset( $attributes['featuredImageSizeSlug'] ) ) {
-					$image_classes .= ' size-' . $attributes['featuredImageSizeSlug'];
-				}
 				if ( isset( $attributes['featuredImageAlign'] ) ) {
 					$image_classes .= ' align' . $attributes['featuredImageAlign'];
 				}
 
+				$featured_image = get_the_post_thumbnail(
+					$post,
+					$attributes['featuredImageSizeSlug'],
+					array(
+						'style' => esc_attr( $image_style ),
+					)
+				);
+				if ( $attributes['addLinkToFeaturedImage'] ) {
+					$featured_image = sprintf(
+						'<a href="%1$s" aria-label="%2$s">%3$s</a>',
+						esc_url( $post_link ),
+						esc_attr( $title ),
+						$featured_image
+					);
+				}
 				$list_items_markup .= sprintf(
 					'<div class="%1$s">%2$s</div>',
-					$image_classes,
-					get_the_post_thumbnail(
-						$post,
-						$attributes['featuredImageSizeSlug'],
-						array(
-							'style' => $image_style,
-						)
-					)
+					esc_attr( $image_classes ),
+					$featured_image
 				);
 			}
 
 			$list_items_markup .= '<div class="hrswp-block-posts-list__body">';
 			$list_items_markup .= sprintf(
 				'<a class="hrswp-block-posts-list__post-title" href="%1$s">%2$s</a>',
-				esc_url( get_permalink( $post ) ),
+				esc_url( $post_link ),
 				$title
 			);
 
@@ -154,6 +162,10 @@ class PostsList {
 				&& isset( $attributes['displayPostContentRadio'] ) && 'excerpt' === $attributes['displayPostContentRadio'] ) {
 
 				$trimmed_excerpt = get_the_excerpt( $post );
+
+				if ( post_password_required( $post ) ) {
+					$trimmed_excerpt = __( 'This content is password protected.' );
+				}
 
 				$list_items_markup .= sprintf(
 					'<p class="hrswp-block-posts-list__post-excerpt">%1$s</p>',
@@ -163,9 +175,16 @@ class PostsList {
 
 			if ( isset( $attributes['displayPostContent'] ) && $attributes['displayPostContent']
 				&& isset( $attributes['displayPostContentRadio'] ) && 'full_post' === $attributes['displayPostContentRadio'] ) {
+
+				$post_content = html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) );
+
+				if ( post_password_required( $post ) ) {
+					$post_content = __( 'This content is password protected.' );
+				}
+
 				$list_items_markup .= sprintf(
 					'<div class="hrswp-block-posts-list__post-full-content">%1$s</div>',
-					wp_kses_post( html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) ) )
+					wp_kses_post( $post_content )
 				);
 			}
 
@@ -279,9 +298,15 @@ class PostsList {
 			$class[] = 'columns-' . $attributes['columns'];
 		}
 
+		$wrapper_attributes = get_block_wrapper_attributes(
+			array(
+				'class' => esc_attr( implode( ' ', $class ) ),
+			)
+		);
+
 		return sprintf(
 			'<ul class="%1$s">%2$s</ul>',
-			esc_attr( implode( ' ', $class ) ),
+			$wrapper_attributes,
 			$list_items_markup
 		);
 	}
