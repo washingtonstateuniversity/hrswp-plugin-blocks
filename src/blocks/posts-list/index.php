@@ -298,15 +298,9 @@ class PostsList {
 			$class[] = 'columns-' . $attributes['columns'];
 		}
 
-		$wrapper_attributes = get_block_wrapper_attributes(
-			array(
-				'class' => esc_attr( implode( ' ', $class ) ),
-			)
-		);
-
 		return sprintf(
 			'<ul class="%1$s">%2$s</ul>',
-			$wrapper_attributes,
+			esc_attr( implode( ' ', $class ) ),
 			$list_items_markup
 		);
 	}
