@@ -1,5 +1,5 @@
 /* stylelint-disable selector-class-pattern */
-.components-panel__body.wp-block-hrswp-posts-list.taxonomy-filter {
+.components-panel__body.hrswp-block-posts-list.taxonomy-filter {
 
 	& .taxonomy-filter--body {
 		border-top: none;
@@ -9,38 +9,34 @@
 
 .editor-styles-wrapper {
 
-	& .wp-block-hrswp-posts-list {
+	& .hrswp-block-posts-list {
 		font-size: var(--wp--preset--font-size--normal);
 
-		/* & .wp-block-hrswp-posts-list--heading div {
-			display: inline-block;
-		} */
-
-		& .is-grid .wp-block-hrswp-posts-list--heading {
+		& .is-grid .hrswp-block-posts-list__post-title {
 			margin: 1rem 0 0.5rem;
 		}
 
-		& .wp-block-hrswp-posts-list--meta .wp-block-hrswp-posts-list--post-date {
+		& .hrswp-block-posts-list__meta .hrswp-block-posts-list__post-date {
 			margin-bottom: 0;
 		}
 
-		& .wp-block-hrswp-posts-list--post-excerpt,
-		& .wp-block-hrswp-posts-list--meta p,
-		&.is-grid.has-feature-image .wp-block-hrswp-posts-list--featured-image {
+		& .hrswp-block-posts-list__post-excerpt,
+		& .hrswp-block-posts-list__meta p,
+		&.is-grid.has-feature-image .hrswp-block-posts-list__featured-image {
 			line-height: 1.35;
 			margin: 0;
 		}
 
-		& .wp-block-hrswp-posts-list--meta .wp-block-hrswp-posts-list--post-date:not(:first-child) {
+		& .hrswp-block-posts-list__meta .hrswp-block-posts-list__post-date:not(:first-child) {
 			margin-top: 0.5rem;
 		}
 
-		&:not(.has-full-content) .wp-block-hrswp-posts-list--featured-image {
+		&:not(.has-full-content) .hrswp-block-posts-list__featured-image {
 			margin: 0 1rem 0 0;
 		}
 	}
 
-	& .wp-block-hrswp-posts-list--heading {
+	& .hrswp-block-posts-list__post-title {
 		font-size: var(--wp--preset--font-size--medium);
 		line-height: 1.2;
 		margin: 0 0 0.25rem;
@@ -61,7 +57,7 @@
 		}
 	}
 
-	& .wp-block-hrswp-posts-list--meta a:not(.wp-block-button__link) {
+	& .hrswp-block-posts-list__meta a:not(.wp-block-button__link) {
 		color: var(--wp--custom--wsu-color-black--70);
 		font-weight: 400;
 		text-decoration-color: var(--wp--custom--wsu-color-black--50);
