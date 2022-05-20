@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param array $attributes The block attributes.
  * @return string Returns a list of posts.
  */
-function render_block_posts_list( $attributes ) {
+function render( $attributes ) {
 	$args = array(
 		'posts_per_page'   => $attributes['postsToShow'],
 		'post_status'      => 'publish',
@@ -28,7 +28,13 @@ function render_block_posts_list( $attributes ) {
 		'suppress_filters' => false,
 	);
 
-	add_filter( 'excerpt_length', $attributes['excerptLength'], 25 );
+	add_filter(
+		'excerpt_length',
+		function() {
+			return $attributes['excerptLength'] ?? '25';
+		},
+		25
+	);
 
 	// Taxonomy handling.
 	// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_tax_query
@@ -266,7 +272,7 @@ add_action(
 		register_block_type_from_metadata(
 			__DIR__,
 			array(
-				'render_callback' => 'render_block_posts_list',
+				'render_callback' => __NAMESPACE__ . '\render',
 			)
 		);
 	},
