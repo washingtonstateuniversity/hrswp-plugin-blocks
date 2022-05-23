@@ -19,5 +19,6 @@
 		"anchor": true
 	},
 	"editorScript": "hrswp_blocks_script",
-	"editorStyle": "hrswp_blocks_editor_style"
+	"editorStyle": "hrswp_blocks_editor_style",
+	"style": "hrswp_blocks_style"
 }
