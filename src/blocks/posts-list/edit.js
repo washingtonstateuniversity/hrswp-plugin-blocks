@@ -272,6 +272,7 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 							imageWidth={defaultImageWidth}
 							imageHeight={defaultImageHeight}
 							imageSizes={imageSizeOptions}
+							imageSizeOptions={imageSizeOptions}
 							onChangeImage={(value) =>
 								setAttributes({
 									featuredImageSizeSlug: value,
