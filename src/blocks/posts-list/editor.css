@@ -16,8 +16,8 @@
 			margin: 1rem 0 0.5rem;
 		}
 
-		& .hrswp-block-posts-list__meta .hrswp-block-posts-list__post-date {
-			margin-bottom: 0;
+		& .hrswp-block-posts-list__meta p {
+			font-size: var(--wp--preset--font-size--small);
 		}
 
 		& .hrswp-block-posts-list__post-excerpt,
