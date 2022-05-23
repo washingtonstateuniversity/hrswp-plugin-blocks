@@ -82,8 +82,15 @@ class Setup {
 	 */
 	private function setup_hooks() {
 		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
+
+		// Registers scripts and styles to load on the backend only.
 		add_action( 'admin_enqueue_scripts', array( $this, 'action_register_editor_assets' ) );
-		add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
+
+		// Registers scripts and styles to load on the frontend only.
+		add_action( 'wp_enqueue_scripts', array( $this, 'action_register_frontend_assets' ) );
+
+		// Registers scripts and styles to load on both the frontend and backend.
+		add_action( 'enqueue_block_assets', array( $this, 'action_register_assets' ) );
 	}
 
 	/**
@@ -140,7 +147,7 @@ class Setup {
 	}
 
 	/**
-	 * Enqueues the plugin editor scripts.
+	 * Registers the plugin editor scripts and styles.
 	 *
 	 * @since 0.2.0
 	 * @since 3.0.0 Switch from enqueue to register to use `block.json`
@@ -150,7 +157,7 @@ class Setup {
 		$asset_file = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/index.asset.php';
 
 		wp_register_script(
-			self::$slug . '_script', // hrswp_blocks_script
+			self::$slug . '_script',
 			plugins_url( 'build/index.js', dirname( __DIR__ ) ),
 			$asset_file['dependencies'],
 			$asset_file['version'],
@@ -158,7 +165,7 @@ class Setup {
 		);
 
 		wp_register_style(
-			self::$slug . '_editor_style', // hrswp_blocks_editor_style
+			self::$slug . '_editor_style',
 			plugins_url( 'build/index.css', dirname( __DIR__ ) ),
 			array(),
 			$asset_file['version']
@@ -166,33 +173,13 @@ class Setup {
 	}
 
 	/**
-	 * Enqueues the plugin frontend scripts.
+	 * Registers scripts and styles to load on the frontend only.
 	 *
-	 * @since 0.2.0
+	 * @since 3.0.0
+	 * @return void
 	 */
-	public function enqueue_scripts() {
-		// Only load frontend scripts if one of the blocks is active on the page.
-		$has_block = false;
-		foreach ( self::$blocks as $name => $file ) {
-			if ( ! is_singular() || false !== has_block( $name ) ) {
-				$has_block = true;
-				continue;
-			}
-		}
-
-		if ( ! $has_block ) {
-			return;
-		}
-
-		// Get the plugin status option for the version number.
-		$plugin = get_option( self::$slug . '_plugin-status' );
-
-		wp_enqueue_style(
-			self::$slug . '-style',
-			plugins_url( 'build/style.css', self::$basename ),
-			array(),
-			$plugin['version']
-		);
+	public function action_register_frontend_assets() {
+		$asset_file = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/index.asset.php';
 
 		// Only load the filter scripts when they are needed.
 		if ( has_block( 'hrswp/filter' ) ) {
@@ -200,7 +187,7 @@ class Setup {
 				'mark-js',
 				plugins_url( 'build/lib/mark.min.js', self::$basename ),
 				array(),
-				$plugin['version'],
+				$asset_file['version'],
 				true
 			);
 
@@ -208,7 +195,7 @@ class Setup {
 				self::$slug . '-filter',
 				plugins_url( 'build/filter.js', self::$basename ),
 				array( 'mark-js' ),
-				$plugin['version'],
+				$asset_file['version'],
 				true
 			);
 		}
@@ -219,9 +206,27 @@ class Setup {
 				self::$slug . '-accordion',
 				plugins_url( 'build/accordion.js', self::$basename ),
 				array(),
-				$plugin['version'],
+				$asset_file['version'],
 				true
 			);
 		}
+	}
+
+	/**
+	 * Registers scripts and styles to load on both the frontend and backend.
+	 *
+	 * @since 0.2.0
+	 * @since 3.0.0 Switch from enqueue to register to use `block.json`
+	 * @return void
+	 */
+	public function action_register_assets() {
+		$asset_file = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/index.asset.php';
+
+		wp_register_style(
+			self::$slug . '_style',
+			plugins_url( 'build/style-index.css', self::$basename ),
+			array(),
+			$asset_file['version']
+		);
 	}
 }
