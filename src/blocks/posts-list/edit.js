@@ -432,7 +432,7 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 	];
 
 	return (
-		<div>
+		<>
 			{inspectorControls}
 			<BlockControls>
 				<ToolbarGroup controls={layoutControls} />
@@ -563,6 +563,6 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 					);
 				})}
 			</ul>
-		</div>
+		</>
 	);
 }
