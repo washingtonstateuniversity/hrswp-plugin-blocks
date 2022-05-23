@@ -179,37 +179,24 @@ class Setup {
 	 * @return void
 	 */
 	public function action_register_frontend_assets() {
-		$asset_file = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/index.asset.php';
+		$filter_asset_file = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/filter.asset.php';
+		$accordion_asset_file = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/accordion.asset.php';
 
-		// Only load the filter scripts when they are needed.
-		if ( has_block( 'hrswp/filter' ) ) {
-			wp_register_script(
-				'mark-js',
-				plugins_url( 'build/lib/mark.min.js', self::$basename ),
-				array(),
-				$asset_file['version'],
-				true
-			);
+		wp_register_script(
+			self::$slug . '_filter_view',
+			plugins_url( 'build/filter.js', dirname( __DIR__ ) ),
+			$filter_asset_file['dependencies'],
+			$filter_asset_file['version'],
+			true
+		);
 
-			wp_enqueue_script(
-				self::$slug . '-filter',
-				plugins_url( 'build/filter.js', self::$basename ),
-				array( 'mark-js' ),
-				$asset_file['version'],
-				true
-			);
-		}
-
-		// Only load the accordion scripts when they are needed.
-		if ( has_block( 'hrswp/accordions' ) ) {
-			wp_enqueue_script(
-				self::$slug . '-accordion',
-				plugins_url( 'build/accordion.js', self::$basename ),
-				array(),
-				$asset_file['version'],
-				true
-			);
-		}
+		wp_register_script(
+			self::$slug . '_accordion_view',
+			plugins_url( 'build/accordion.js', dirname( __DIR__ ) ),
+			$accordion_asset_file['dependencies'],
+			$accordion_asset_file['version'],
+			true
+		);
 	}
 
 	/**
