@@ -164,7 +164,7 @@ class PostsList {
 				$trimmed_excerpt = get_the_excerpt( $post );
 
 				if ( post_password_required( $post ) ) {
-					$trimmed_excerpt = __( 'This content is password protected.' );
+					$trimmed_excerpt = __( 'This content is password protected.', 'hrswp-blocks' );
 				}
 
 				$list_items_markup .= sprintf(
@@ -179,7 +179,7 @@ class PostsList {
 				$post_content = html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) );
 
 				if ( post_password_required( $post ) ) {
-					$post_content = __( 'This content is password protected.' );
+					$post_content = __( 'This content is password protected.', 'hrswp-blocks' );
 				}
 
 				$list_items_markup .= sprintf(
@@ -315,4 +315,10 @@ class PostsList {
  *
  * @return PostsList An instance of the PostsList class.
  */
-add_action( 'init', function() { return new PostsList(); }, 25 );
+add_action(
+	'init',
+	function() {
+		return new PostsList();
+	},
+	25
+);
