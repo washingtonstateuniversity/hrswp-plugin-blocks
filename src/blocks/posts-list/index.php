@@ -268,18 +268,18 @@ class PostsList {
 
 		remove_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 20 );
 
-		$class = array( 'hrswp-block-posts-list' );
+		$class = 'hrswp-block-posts-list';
 
 		if ( isset( $attributes['postLayout'] ) && 'grid' === $attributes['postLayout'] ) {
-			$class[] = 'is-grid';
+			$class .= ' is-grid';
 		}
 
 		if ( isset( $attributes['displayFeaturedImage'] ) && $attributes['displayFeaturedImage'] ) {
-			$class[] = 'has-feature-image';
+			$class .= ' has-feature-image';
 		}
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-			$class[] = 'has-date';
+			$class .= ' has-date';
 		}
 
 		if (
@@ -288,19 +288,21 @@ class PostsList {
 			&& isset( $attributes['displayPostContentRadio'] )
 		) {
 			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
-				$class[] = 'has-full-content';
+				$class .= ' has-full-content';
 			} elseif ( 'excerpt' === $attributes['displayPostContentRadio'] ) {
-				$class[] = 'has-excerpt';
+				$class .= ' has-excerpt';
 			}
 		}
 
 		if ( isset( $attributes['columns'] ) && 'grid' === $attributes['postLayout'] ) {
-			$class[] = 'columns-' . $attributes['columns'];
+			$class .= ' columns-' . $attributes['columns'];
 		}
 
+		$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $class ) );
+
 		return sprintf(
-			'<ul class="%1$s">%2$s</ul>',
-			esc_attr( implode( ' ', $class ) ),
+			'<ul %1$s>%2$s</ul>',
+			$wrapper_attributes,
 			$list_items_markup
 		);
 	}
