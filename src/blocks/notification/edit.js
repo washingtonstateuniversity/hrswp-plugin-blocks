@@ -46,7 +46,7 @@ function NotificationEditContainer({ className, attributes, updateBlocks }) {
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,
-		templateLock: "insert",
+		templateLock: 'insert',
 	});
 
 	return (
