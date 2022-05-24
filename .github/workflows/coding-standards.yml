@@ -33,11 +33,13 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
       - name: Run eslint
-        run: npm run lint:scripts
+        run: npm run lint:script
       - name: Run stylelint
-        run: npm run lint:styles
+        run: npm run lint:style
       - name: Run npmPkgJsonLint
         run: npm run lint:pkg
+      - name: Run markdownlint
+        run: npm run lint:docs
   phpcs:
     name: PHP Coding Standards
     runs-on: ubuntu-latest
@@ -63,4 +65,4 @@ jobs:
       - name: Log PHPCS debug information
         run: phpcs -i
       - name: Run PHPCS
-        run: phpcs -q -n --report=checkstyle | cs2pr
+        run: phpcs -q -n --report=checkstyle . | cs2pr
