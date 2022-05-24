@@ -33,7 +33,8 @@
 		"mark.js": "^8.11.1",
 		"npm-run-all": "^4.1.5",
 		"postcss-import": "^14.0.2",
-		"postcss-preset-env": "^7.3.1"
+		"postcss-preset-env": "^7.3.1",
+		"prettier": "npm:wp-prettier@^2.6.2-beta-1"
 	},
 	"scripts": {
 		"build": "wp-scripts build src/index.js src/lib/* --webpack-copy-php",
