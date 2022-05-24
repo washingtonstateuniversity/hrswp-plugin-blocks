@@ -15,10 +15,10 @@ const { name } = metadata;
 export { metadata, name };
 
 export const settings = {
-	title: _x('Filter', 'block title'),
+	title: _x( 'Filter', 'block title' ),
 	icon: 'filter',
-	description: __('Search and filter a section of content by full text.'),
-	keywords: [__('filter search')],
+	description: __( 'Search and filter a section of content by full text.' ),
+	keywords: [ __( 'filter search' ) ],
 	example: {
 		innerBlocks: [
 			{

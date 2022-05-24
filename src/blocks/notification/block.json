@@ -5,7 +5,7 @@
 	"title": "Notification",
 	"category": "layout",
 	"description": "Show a brief notification message with optional action button.",
-	"keywords": ["callout", "message", "link"],
+	"keywords": [ "callout", "message", "link" ],
 	"textdomain": "default",
 	"supports": {
 		"align": true

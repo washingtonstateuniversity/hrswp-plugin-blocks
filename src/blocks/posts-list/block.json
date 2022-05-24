@@ -5,7 +5,7 @@
 	"title": "Posts List",
 	"category": "widgets",
 	"description": "Display a list of posts.",
-	"keywords": ["posts", "latest posts"],
+	"keywords": [ "posts", "latest posts" ],
 	"textdomain": "default",
 	"attributes": {
 		"selectedTermLists": {
@@ -65,7 +65,7 @@
 		},
 		"featuredImageAlign": {
 			"type": "string",
-			"enum": ["left", "center", "right"]
+			"enum": [ "left", "center", "right" ]
 		},
 		"featuredImageSizeSlug": {
 			"type": "string",

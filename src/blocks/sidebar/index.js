@@ -17,12 +17,12 @@ const { name } = metadata;
 export { metadata, name };
 
 export const settings = {
-	title: _x('Sidebar', 'block title'),
+	title: _x( 'Sidebar', 'block title' ),
 	icon,
 	description: __(
 		'Display content in a sidebar-style layout (two-thirds and one-third).'
 	),
-	keywords: [__('sidebar'), __('columns')],
+	keywords: [ __( 'sidebar' ), __( 'columns' ) ],
 	example: {
 		innerBlocks: [
 			{
@@ -61,7 +61,7 @@ export const settings = {
 						name: 'core/paragraph',
 						attributes: {
 							/* translators: example text. */
-							content: __('Alice in Wonderland Characters'),
+							content: __( 'Alice in Wonderland Characters' ),
 						},
 					},
 					{
@@ -79,12 +79,12 @@ export const settings = {
 	styles: [
 		{
 			name: 'sidebar-right',
-			label: _x('Sidebar on right', 'block style'),
+			label: _x( 'Sidebar on right', 'block style' ),
 			isDefault: true,
 		},
 		{
 			name: 'sidebar-left',
-			label: _x('Sidebar on left', 'block style'),
+			label: _x( 'Sidebar on left', 'block style' ),
 		},
 	],
 	transforms,

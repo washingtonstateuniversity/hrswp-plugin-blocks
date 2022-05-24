@@ -9,14 +9,14 @@ export const TERMS_LIST_QUERY = { per_page: -1 };
  * @param {Object[]} terms    An array of taxonomy term objects.
  * @param {string}   taxonomy The name of the taxonomy the terms belong to.
  */
-export function taxonomyListToIds(terms, taxonomy) {
-	if (!terms) {
+export function taxonomyListToIds( terms, taxonomy ) {
+	if ( ! terms ) {
 		return null;
 	}
 
 	const ids =
-		terms[taxonomy] && terms[taxonomy].length > 0
-			? terms[taxonomy].map((term) => term.id)
+		terms[ taxonomy ] && terms[ taxonomy ].length > 0
+			? terms[ taxonomy ].map( ( term ) => term.id )
 			: [];
 
 	return ids;

@@ -16,7 +16,7 @@ const { InspectorControls, useInnerBlocksProps, useBlockProps } =
  * @constant
  * @type {string[]}
  */
-const ALLOWED_BLOCKS = ['hrswp/filter-section'];
+const ALLOWED_BLOCKS = [ 'hrswp/filter-section' ];
 
 /**
  * The block template.
@@ -24,42 +24,42 @@ const ALLOWED_BLOCKS = ['hrswp/filter-section'];
  * @constant
  * @type {string[]}
  */
-const TEMPLATE = [['hrswp/filter-section']];
+const TEMPLATE = [ [ 'hrswp/filter-section' ] ];
 
-function SearchFilterEdit({ attributes, setAttributes }) {
+function SearchFilterEdit( { attributes, setAttributes } ) {
 	const { retainHeadings } = attributes;
 	const blockProps = useBlockProps();
-	const innerBlockProps = useInnerBlocksProps(blockProps, {
+	const innerBlockProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,
 		templateLock: 'all',
 		orientation: 'vertical',
 		renderAppender: false,
-	});
+	} );
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Filter Settings')}>
+				<PanelBody title={ __( 'Filter Settings' ) }>
 					<ToggleControl
-						label={__('Retain Headings')}
-						checked={!!retainHeadings}
-						onChange={() =>
-							setAttributes({
-								retainHeadings: !retainHeadings,
-							})
+						label={ __( 'Retain Headings' ) }
+						checked={ !! retainHeadings }
+						onChange={ () =>
+							setAttributes( {
+								retainHeadings: ! retainHeadings,
+							} )
 						}
 						help={
 							retainHeadings
 								? __(
 										'Headings not matching search term will not be hidden.'
 								  )
-								: __('Toggle to always show headings.')
+								: __( 'Toggle to always show headings.' )
 						}
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div {...innerBlockProps} />
+			<div { ...innerBlockProps } />
 		</>
 	);
 }

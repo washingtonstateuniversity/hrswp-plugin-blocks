@@ -13,19 +13,19 @@ import { useInnerBlocksProps, useBlockProps } from '@wordpress/block-editor';
 const TEMPLATE = [
 	[
 		'core/paragraph',
-		{ fontSize: 'large', placeholder: __('Callout title…') },
+		{ fontSize: 'large', placeholder: __( 'Callout title…' ) },
 	],
 	[
 		'core/paragraph',
-		{ placeholder: __('Enter the callout message or replace…') },
+		{ placeholder: __( 'Enter the callout message or replace…' ) },
 	],
 ];
 
 export default function CalloutEdit() {
 	const blocksProps = useBlockProps();
-	const innerBlocksProps = useInnerBlocksProps(blocksProps, {
+	const innerBlocksProps = useInnerBlocksProps( blocksProps, {
 		template: TEMPLATE,
-	});
+	} );
 
-	return <div {...innerBlocksProps} />;
+	return <div { ...innerBlocksProps } />;
 }

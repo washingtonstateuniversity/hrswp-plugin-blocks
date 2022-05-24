@@ -1,9 +1,9 @@
 const isProduction = process.env.NODE_ENV === 'production';
 const plugins = [
-	require('postcss-import')({
+	require( 'postcss-import' )( {
 		path: 'src/',
-	}),
-	require('postcss-preset-env')({
+	} ),
+	require( 'postcss-preset-env' )( {
 		stage: 2,
 		autoprefixer: {
 			grid: true,
@@ -11,16 +11,16 @@ const plugins = [
 		features: {
 			'nesting-rules': true,
 		},
-	}),
+	} ),
 ];
 
 module.exports = {
 	ident: 'postcss',
-	sourceMap: !isProduction,
+	sourceMap: ! isProduction,
 	plugins: isProduction
 		? [
 				...plugins,
-				require('cssnano')({
+				require( 'cssnano' )( {
 					preset: [
 						'default',
 						{
@@ -29,7 +29,7 @@ module.exports = {
 							},
 						},
 					],
-				}),
+				} ),
 		  ]
 		: plugins,
 };
