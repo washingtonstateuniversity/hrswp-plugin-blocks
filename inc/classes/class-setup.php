@@ -179,7 +179,7 @@ class Setup {
 	 * @return void
 	 */
 	public function action_register_frontend_assets() {
-		$filter_asset_file = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/filter.asset.php';
+		$filter_asset_file    = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/filter.asset.php';
 		$accordion_asset_file = include plugin_dir_path( dirname( __DIR__ ) ) . 'build/accordion.asset.php';
 
 		wp_register_script(
