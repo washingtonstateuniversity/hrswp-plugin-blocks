@@ -14,7 +14,7 @@
 			"type": "number"
 		}
 	},
-	"usesContext": ["orientation"],
+	"usesContext": [ "orientation" ],
 	"supports": {
 		"anchor": true
 	},

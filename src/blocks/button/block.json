@@ -3,9 +3,9 @@
 	"name": "hrswp/button",
 	"title": "Button",
 	"category": "design",
-	"parent": ["hrswp/buttons"],
+	"parent": [ "hrswp/buttons" ],
 	"description": "Prompt visitors to take action.",
-	"keywords": ["link"],
+	"keywords": [ "link" ],
 	"textdomain": "default",
 	"attributes": {
 		"url": {

@@ -32,7 +32,7 @@ export const settings = {
 				name: 'hrswp/button',
 				attributes: {
 					/* translators: example text. */
-					text: __('Jane Austen'),
+					text: __( 'Jane Austen' ),
 				},
 			},
 		],

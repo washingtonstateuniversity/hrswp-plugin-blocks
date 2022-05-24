@@ -2,7 +2,7 @@
 	"apiVersion": 2,
 	"name": "hrswp/filter-section",
 	"category": "widgets",
-	"parent": ["hrswp/filter"],
+	"parent": [ "hrswp/filter" ],
 	"supports": {
 		"reusable": false
 	},

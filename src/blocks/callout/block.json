@@ -5,7 +5,7 @@
 	"title": "Callout",
 	"category": "layout",
 	"description": "Display content in a callout module.",
-	"keywords": ["callout", "message"],
+	"keywords": [ "callout", "message" ],
 	"textdomain": "default",
 	"supports": {
 		"align": true

@@ -52,18 +52,18 @@ import {
 	taxonomyListToIds,
 } from './shared';
 
-function getFeaturedImageDetails(post, size) {
-	const image = get(post, ['_embedded', 'wp:featuredmedia', '0']);
+function getFeaturedImageDetails( post, size ) {
+	const image = get( post, [ '_embedded', 'wp:featuredmedia', '0' ] );
 
 	return {
 		url:
-			image?.media_details?.sizes?.[size]?.source_url ??
+			image?.media_details?.sizes?.[ size ]?.source_url ??
 			image?.source_url,
 		alt: image?.alt_text,
 	};
 }
 
-export default function PostsListEdit({ attributes, setAttributes }) {
+export default function PostsListEdit( { attributes, setAttributes } ) {
 	const {
 		addLinkToFeaturedImage,
 		displayFeaturedImage,
@@ -93,9 +93,9 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 		termLists,
 		taxonomies,
 	} = useSelect(
-		(select) => {
-			const { getEntityRecords, getTaxonomies } = select(coreStore);
-			const settings = select(blockEditorStore).getSettings();
+		( select ) => {
+			const { getEntityRecords, getTaxonomies } = select( coreStore );
+			const settings = select( blockEditorStore ).getSettings();
 
 			const postsListQuery = pickBy(
 				{
@@ -104,286 +104,312 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 					per_page: postsToShow,
 					_embed: 'wp:featuredmedia',
 				},
-				(value) => !isUndefined(value)
+				( value ) => ! isUndefined( value )
 			);
 
-			if (!isUndefined(selectedTermLists)) {
-				Object.entries(selectedTermLists).forEach(([slug, terms]) => {
-					postsListQuery[slug] = terms.map((term) => term.id);
-				});
+			if ( ! isUndefined( selectedTermLists ) ) {
+				Object.entries( selectedTermLists ).forEach(
+					( [ slug, terms ] ) => {
+						postsListQuery[ slug ] = terms.map(
+							( term ) => term.id
+						);
+					}
+				);
 			}
 
-			const allTaxonomies = getTaxonomies(TERMS_LIST_QUERY);
-			const taxonomiesList = filter(allTaxonomies, (taxonomy) =>
-				includes(taxonomy.types, 'post')
+			const allTaxonomies = getTaxonomies( TERMS_LIST_QUERY );
+			const taxonomiesList = filter( allTaxonomies, ( taxonomy ) =>
+				includes( taxonomy.types, 'post' )
 			);
 			const terms = {};
-			taxonomiesList.forEach(({ slug }) => {
-				Object.defineProperty(terms, slug, {
-					value: getEntityRecords('taxonomy', slug, TERMS_LIST_QUERY),
-				});
-			});
+			taxonomiesList.forEach( ( { slug } ) => {
+				Object.defineProperty( terms, slug, {
+					value: getEntityRecords(
+						'taxonomy',
+						slug,
+						TERMS_LIST_QUERY
+					),
+				} );
+			} );
 
 			return {
 				defaultImageWidth: get(
 					settings.imageDimensions,
-					[featuredImageSizeSlug, 'width'],
+					[ featuredImageSizeSlug, 'width' ],
 					0
 				),
 				defaultImageHeight: get(
 					settings.imageDimensions,
-					[featuredImageSizeSlug, 'height'],
+					[ featuredImageSizeSlug, 'height' ],
 					0
 				),
 				imageSizes: settings.imageSizes,
-				postsList: getEntityRecords('postType', 'post', postsListQuery),
+				postsList: getEntityRecords(
+					'postType',
+					'post',
+					postsListQuery
+				),
 				taxonomies: taxonomiesList,
 				termLists: terms,
 			};
 		},
-		[featuredImageSizeSlug, postsToShow, order, orderBy, selectedTermLists]
+		[
+			featuredImageSizeSlug,
+			postsToShow,
+			order,
+			orderBy,
+			selectedTermLists,
+		]
 	);
 
 	const imageSizeOptions = imageSizes
-		.filter(({ slug }) => slug !== 'full')
-		.map(({ name, slug }) => ({
+		.filter( ( { slug } ) => slug !== 'full' )
+		.map( ( { name, slug } ) => ( {
 			value: slug,
 			label: name,
-		}));
-	const selectTaxonomyTerms = (taxonomy, term) => {
+		} ) );
+	const selectTaxonomyTerms = ( taxonomy, term ) => {
 		const allTerms = selectedTermLists ?? {};
-		const taxonomyTerms = allTerms[taxonomy] ?? (allTerms[taxonomy] = []);
+		const taxonomyTerms =
+			allTerms[ taxonomy ] ?? ( allTerms[ taxonomy ] = [] );
 		const hasTerm = includes(
-			taxonomyListToIds(allTerms, taxonomy),
+			taxonomyListToIds( allTerms, taxonomy ),
 			term.id
 		);
 
 		const newTerms = hasTerm
-			? remove(taxonomyTerms, (value) => {
+			? remove( taxonomyTerms, ( value ) => {
 					return value.id !== term.id;
-			  })
-			: [...taxonomyTerms, term];
+			  } )
+			: [ ...taxonomyTerms, term ];
 
-		allTerms[taxonomy] = newTerms;
+		allTerms[ taxonomy ] = newTerms;
 
-		setAttributes({ selectedTermLists: allTerms });
+		setAttributes( { selectedTermLists: allTerms } );
 	};
 
-	const hasPosts = !!postsList?.length;
+	const hasPosts = !! postsList?.length;
 	const inspectorControls = (
 		<InspectorControls>
-			<PanelBody title={__('Post content settings')}>
+			<PanelBody title={ __( 'Post content settings' ) }>
 				<ToggleControl
-					label={__('Post content')}
-					checked={displayPostContent}
-					onChange={(value) =>
-						setAttributes({ displayPostContent: value })
+					label={ __( 'Post content' ) }
+					checked={ displayPostContent }
+					onChange={ ( value ) =>
+						setAttributes( { displayPostContent: value } )
 					}
 				/>
-				{displayPostContent && (
+				{ displayPostContent && (
 					<RadioControl
-						label={__('Show:')}
-						selected={displayPostContentRadio}
-						options={[
-							{ label: __('Excerpt'), value: 'excerpt' },
+						label={ __( 'Show:' ) }
+						selected={ displayPostContentRadio }
+						options={ [
+							{ label: __( 'Excerpt' ), value: 'excerpt' },
 							{
-								label: __('Full post'),
+								label: __( 'Full post' ),
 								value: 'full_post',
 							},
-						]}
-						onChange={(value) =>
-							setAttributes({
+						] }
+						onChange={ ( value ) =>
+							setAttributes( {
 								displayPostContentRadio: value,
-							})
+							} )
 						}
 					/>
-				)}
-				{displayPostContent &&
+				) }
+				{ displayPostContent &&
 					displayPostContentRadio === 'excerpt' && (
 						<RangeControl
-							label={__('Max number of words in excerpt')}
-							value={excerptLength}
-							onChange={(value) =>
-								setAttributes({ excerptLength: value })
+							label={ __( 'Max number of words in excerpt' ) }
+							value={ excerptLength }
+							onChange={ ( value ) =>
+								setAttributes( { excerptLength: value } )
 							}
-							min={MIN_EXCERPT_LENGTH}
-							max={MAX_EXCERPT_LENGTH}
+							min={ MIN_EXCERPT_LENGTH }
+							max={ MAX_EXCERPT_LENGTH }
 						/>
-					)}
+					) }
 			</PanelBody>
 
-			<PanelBody title={__('Post meta settings')}>
+			<PanelBody title={ __( 'Post meta settings' ) }>
 				<ToggleControl
-					label={__('Display post date')}
-					checked={displayPostDate}
-					onChange={(value) =>
-						setAttributes({ displayPostDate: value })
+					label={ __( 'Display post date' ) }
+					checked={ displayPostDate }
+					onChange={ ( value ) =>
+						setAttributes( { displayPostDate: value } )
 					}
 				/>
 				<ToggleControl
-					label={__('Display post category')}
-					checked={displayPostCategory}
-					onChange={(value) =>
-						setAttributes({ displayPostCategory: value })
+					label={ __( 'Display post category' ) }
+					checked={ displayPostCategory }
+					onChange={ ( value ) =>
+						setAttributes( { displayPostCategory: value } )
 					}
 				/>
 				<ToggleControl
-					label={__('Display post tag')}
-					checked={displayPostTag}
-					onChange={(value) =>
-						setAttributes({ displayPostTag: value })
+					label={ __( 'Display post tag' ) }
+					checked={ displayPostTag }
+					onChange={ ( value ) =>
+						setAttributes( { displayPostTag: value } )
 					}
 				/>
 				<ToggleControl
-					label={__('Display post taxonomy')}
-					checked={displayPostTaxonomy}
-					onChange={(value) =>
-						setAttributes({ displayPostTaxonomy: value })
+					label={ __( 'Display post taxonomy' ) }
+					checked={ displayPostTaxonomy }
+					onChange={ ( value ) =>
+						setAttributes( { displayPostTaxonomy: value } )
 					}
 				/>
 			</PanelBody>
 
-			<PanelBody title={__('Featured image settings')}>
+			<PanelBody title={ __( 'Featured image settings' ) }>
 				<ToggleControl
-					label={__('Display featured image')}
-					checked={displayFeaturedImage}
-					onChange={(value) =>
-						setAttributes({ displayFeaturedImage: value })
+					label={ __( 'Display featured image' ) }
+					checked={ displayFeaturedImage }
+					onChange={ ( value ) =>
+						setAttributes( { displayFeaturedImage: value } )
 					}
 				/>
-				{displayFeaturedImage && (
+				{ displayFeaturedImage && (
 					<>
 						<ImageSizeControl
-							onChange={(value) => {
+							onChange={ ( value ) => {
 								const newAttrs = {};
-								if (value.hasOwnProperty('width')) {
+								if ( value.hasOwnProperty( 'width' ) ) {
 									newAttrs.featuredImageSizeWidth =
 										value.width;
 								}
-								if (value.hasOwnProperty('height')) {
+								if ( value.hasOwnProperty( 'height' ) ) {
 									newAttrs.featuredImageSizeHeight =
 										value.height;
 								}
-								setAttributes(newAttrs);
-							}}
-							slug={featuredImageSizeSlug}
-							width={featuredImageSizeWidth}
-							height={featuredImageSizeHeight}
-							imageWidth={defaultImageWidth}
-							imageHeight={defaultImageHeight}
-							imageSizes={imageSizeOptions}
-							imageSizeOptions={imageSizeOptions}
-							onChangeImage={(value) =>
-								setAttributes({
+								setAttributes( newAttrs );
+							} }
+							slug={ featuredImageSizeSlug }
+							width={ featuredImageSizeWidth }
+							height={ featuredImageSizeHeight }
+							imageWidth={ defaultImageWidth }
+							imageHeight={ defaultImageHeight }
+							imageSizes={ imageSizeOptions }
+							imageSizeOptions={ imageSizeOptions }
+							onChangeImage={ ( value ) =>
+								setAttributes( {
 									featuredImageSizeSlug: value,
 									featuredImageSizeWidth: undefined,
 									featuredImageSizeHeight: undefined,
-								})
+								} )
 							}
 						/>
 						<BaseControl className="editor-latest-posts-image-alignment-control">
 							<BaseControl.VisualLabel>
-								{__('Image alignment')}
+								{ __( 'Image alignment' ) }
 							</BaseControl.VisualLabel>
 							<BlockAlignmentToolbar
-								value={featuredImageAlign}
-								onChange={(value) =>
-									setAttributes({
+								value={ featuredImageAlign }
+								onChange={ ( value ) =>
+									setAttributes( {
 										featuredImageAlign: value,
-									})
+									} )
 								}
-								controls={['left', 'center', 'right']}
-								isCollapsed={false}
+								controls={ [ 'left', 'center', 'right' ] }
+								isCollapsed={ false }
 							/>
 						</BaseControl>
 						<ToggleControl
-							label={__('Add link to featured image')}
-							checked={addLinkToFeaturedImage}
-							onChange={(value) =>
-								setAttributes({
+							label={ __( 'Add link to featured image' ) }
+							checked={ addLinkToFeaturedImage }
+							onChange={ ( value ) =>
+								setAttributes( {
 									addLinkToFeaturedImage: value,
-								})
+								} )
 							}
 						/>
 					</>
-				)}
+				) }
 			</PanelBody>
 
 			<PanelBody
-				className={'taxonomy-filter'}
-				title={__('Filtering')}
-				initialOpen={false}
+				className={ 'taxonomy-filter' }
+				title={ __( 'Filtering' ) }
+				initialOpen={ false }
 			>
-				{taxonomies.map((taxonomy) => (
+				{ taxonomies.map( ( taxonomy ) => (
 					<PanelBody
-						className={'taxonomy-filter--body'}
-						key={taxonomy.slug}
-						title={taxonomy.name}
-						initialOpen={false}
+						className={ 'taxonomy-filter--body' }
+						key={ taxonomy.slug }
+						title={ taxonomy.name }
+						initialOpen={ false }
 					>
 						<ul className="edit__checklist">
-							{termLists[taxonomy.slug] &&
-								termLists[taxonomy.slug].map((term) => (
+							{ termLists[ taxonomy.slug ] &&
+								termLists[ taxonomy.slug ].map( ( term ) => (
 									<li
-										key={term.id}
+										key={ term.id }
 										className="components-checkbox-control__label"
 									>
 										<CheckboxControl
-											label={term.name}
-											checked={includes(
+											label={ term.name }
+											checked={ includes(
 												taxonomyListToIds(
 													selectedTermLists,
 													taxonomy.rest_base
 												),
 												term.id
-											)}
-											onChange={() => {
+											) }
+											onChange={ () => {
 												selectTaxonomyTerms(
 													taxonomy.rest_base,
 													term
 												);
-											}}
+											} }
 										/>
 									</li>
-								))}
+								) ) }
 						</ul>
 					</PanelBody>
-				))}
+				) ) }
 			</PanelBody>
 
-			<PanelBody title={__('Order and number')} initialOpen={false}>
+			<PanelBody title={ __( 'Order and number' ) } initialOpen={ false }>
 				<QueryControls
-					{...{ order, orderBy }}
-					numberOfItems={postsToShow}
-					onOrderChange={(value) => setAttributes({ order: value })}
-					onOrderByChange={(value) =>
-						setAttributes({ orderBy: value })
+					{ ...{ order, orderBy } }
+					numberOfItems={ postsToShow }
+					onOrderChange={ ( value ) =>
+						setAttributes( { order: value } )
 					}
-					onNumberOfItemsChange={(value) =>
-						setAttributes({ postsToShow: value })
+					onOrderByChange={ ( value ) =>
+						setAttributes( { orderBy: value } )
+					}
+					onNumberOfItemsChange={ ( value ) =>
+						setAttributes( { postsToShow: value } )
 					}
 				/>
 
-				{postLayout === 'grid' && (
+				{ postLayout === 'grid' && (
 					<RangeControl
-						label={__('Columns')}
-						value={columns}
-						onChange={(value) => setAttributes({ columns: value })}
-						min={2}
+						label={ __( 'Columns' ) }
+						value={ columns }
+						onChange={ ( value ) =>
+							setAttributes( { columns: value } )
+						}
+						min={ 2 }
 						max={
-							!hasPosts
+							! hasPosts
 								? MAX_POSTS_COLUMNS
-								: Math.min(MAX_POSTS_COLUMNS, postsList.length)
+								: Math.min(
+										MAX_POSTS_COLUMNS,
+										postsList.length
+								  )
 						}
 						required
 					/>
-				)}
+				) }
 			</PanelBody>
 		</InspectorControls>
 	);
 
-	const blockProps = useBlockProps({
-		className: classnames({
+	const blockProps = useBlockProps( {
+		className: classnames( {
 			'hrswp-block-posts-list': true,
 			'is-grid': postLayout === 'grid',
 			'has-feature-image': displayFeaturedImage,
@@ -392,20 +418,20 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 				displayPostContent && displayPostContentRadio === 'full_post',
 			'has-excerpt':
 				displayPostContent && displayPostContentRadio === 'excerpt',
-			[`columns-${columns}`]: postLayout === 'grid',
-		}),
-	});
+			[ `columns-${ columns }` ]: postLayout === 'grid',
+		} ),
+	} );
 
-	if (!hasPosts) {
+	if ( ! hasPosts ) {
 		return (
-			<div {...blockProps}>
-				{inspectorControls}
-				<Placeholder icon={pin} label={__('Posts')}>
-					{!Array.isArray(postsList) ? (
+			<div { ...blockProps }>
+				{ inspectorControls }
+				<Placeholder icon={ pin } label={ __( 'Posts' ) }>
+					{ ! Array.isArray( postsList ) ? (
 						<Spinner />
 					) : (
-						__('No posts found.')
-					)}
+						__( 'No posts found.' )
+					) }
 				</Placeholder>
 			</div>
 		);
@@ -414,39 +440,39 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 	// Removing posts from display should be instant.
 	const displayPosts =
 		postsList.length > postsToShow
-			? postsList.slice(0, postsToShow)
+			? postsList.slice( 0, postsToShow )
 			: postsList;
 
 	const layoutControls = [
 		{
 			icon: list,
-			title: __('List view'),
-			onClick: () => setAttributes({ postLayout: 'list' }),
+			title: __( 'List view' ),
+			onClick: () => setAttributes( { postLayout: 'list' } ),
 			isActive: postLayout === 'list',
 		},
 		{
 			icon: grid,
-			title: __('Grid view'),
-			onClick: () => setAttributes({ postLayout: 'grid' }),
+			title: __( 'Grid view' ),
+			onClick: () => setAttributes( { postLayout: 'grid' } ),
 			isActive: postLayout === 'grid',
 		},
 	];
 
 	return (
 		<>
-			{inspectorControls}
+			{ inspectorControls }
 			<BlockControls>
-				<ToolbarGroup controls={layoutControls} />
+				<ToolbarGroup controls={ layoutControls } />
 			</BlockControls>
-			<ul {...blockProps}>
-				{displayPosts.map((post, i) => {
-					const titleTrimmed = invoke(post, [
+			<ul { ...blockProps }>
+				{ displayPosts.map( ( post, i ) => {
+					const titleTrimmed = invoke( post, [
 						'title',
 						'rendered',
 						'trim',
-					]);
+					] );
 					let excerpt = post.content.rendered;
-					const excerptElement = document.createElement('div');
+					const excerptElement = document.createElement( 'div' );
 					excerptElement.innerHTML = excerpt;
 
 					excerpt =
@@ -455,21 +481,22 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 						'';
 
 					const { url: imageSourceUrl, alt: featuredImageAlt } =
-						getFeaturedImageDetails(post, featuredImageSizeSlug);
-					const imageClasses = classnames({
+						getFeaturedImageDetails( post, featuredImageSizeSlug );
+					const imageClasses = classnames( {
 						'hrswp-block-posts-list__featured-image': true,
-						[`align${featuredImageAlign}`]: !!featuredImageAlign,
-					});
+						[ `align${ featuredImageAlign }` ]:
+							!! featuredImageAlign,
+					} );
 					const renderFeaturedImage =
 						displayFeaturedImage && imageSourceUrl;
 					const featuredImage = renderFeaturedImage && (
 						<img
-							src={imageSourceUrl}
-							alt={featuredImageAlt}
-							style={{
+							src={ imageSourceUrl }
+							alt={ featuredImageAlt }
+							style={ {
 								maxWidth: featuredImageSizeWidth,
 								maxHeight: featuredImageSizeHeight,
-							}}
+							} }
 						/>
 					);
 
@@ -480,14 +507,17 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 						displayPostTaxonomy;
 
 					const needsReadMore =
-						excerptLength < excerpt.trim().split(' ').length &&
+						excerptLength < excerpt.trim().split( ' ' ).length &&
 						post.excerpt.raw === '';
 
 					const postExcerpt = needsReadMore ? (
 						<>
-							{excerpt.trim().split(' ', excerptLength).join(' ')}
-							{/* translators: excerpt truncation character, default …  */}
-							{__(' … ')}
+							{ excerpt
+								.trim()
+								.split( ' ', excerptLength )
+								.join( ' ' ) }
+							{ /* translators: excerpt truncation character, default …  */ }
+							{ __( ' … ' ) }
 						</>
 					) : (
 						excerpt
@@ -496,71 +526,73 @@ export default function PostsListEdit({ attributes, setAttributes }) {
 					return (
 						<li
 							className="hrswp-block-posts-list__list-item"
-							key={i}
+							key={ i }
 						>
-							{renderFeaturedImage && (
-								<div className={imageClasses}>
-									{addLinkToFeaturedImage ? (
+							{ renderFeaturedImage && (
+								<div className={ imageClasses }>
+									{ addLinkToFeaturedImage ? (
 										<a
-											href={post.link}
+											href={ post.link }
 											rel="noreferrer noopener"
 										>
-											{featuredImage}
+											{ featuredImage }
 										</a>
 									) : (
 										featuredImage
-									)}
+									) }
 								</div>
-							)}
+							) }
 							<div className="hrswp-block-posts-list__body">
 								<a
 									className="hrswp-block-posts-list__post-title"
-									href={post.link}
+									href={ post.link }
 									rel="noreferrer noopener"
 									dangerouslySetInnerHTML={
-										!!titleTrimmed
+										!! titleTrimmed
 											? {
 													__html: titleTrimmed,
 											  }
 											: undefined
 									}
 								>
-									{!titleTrimmed ? __('(no title)') : null}
+									{ ! titleTrimmed
+										? __( '(no title)' )
+										: null }
 								</a>
-								{displayPostContent &&
+								{ displayPostContent &&
 									displayPostContentRadio === 'excerpt' && (
 										<p className="hrswp-block-posts-list__post-excerpt">
-											{postExcerpt}
+											{ postExcerpt }
 										</p>
-									)}
-								{displayPostContent &&
+									) }
+								{ displayPostContent &&
 									displayPostContentRadio === 'full_post' && (
 										<div
 											className="hrswp-block-posts-list__post-full-content"
-											dangerouslySetInnerHTML={{
+											dangerouslySetInnerHTML={ {
 												__html: post.content.raw.trim(),
-											}}
+											} }
 										/>
-									)}
-								{hasPostMeta && (
+									) }
+								{ hasPostMeta && (
 									<PostMeta
 										displayPostCategory={
 											displayPostCategory
 										}
-										displayPostDate={displayPostDate}
-										displayPostTag={displayPostTag}
+										displayPostDate={ displayPostDate }
+										displayPostTag={ displayPostTag }
 										displayPostTaxonomy={
 											displayPostTaxonomy
 										}
-										post={post}
-										taxonomies={taxonomies}
-										termLists={termLists}
+										post={ post }
+										taxonomies={ taxonomies }
+										termLists={ termLists }
 									/>
-								)}
+								) }
 							</div>
 						</li>
 					);
-				})}
+				} ) }
 			</ul>
 		</>
 	);
