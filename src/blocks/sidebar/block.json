@@ -1,10 +1,19 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "hrswp/sidebar",
+	"title": "Sidebar",
 	"category": "layout",
+	"description": "Display content in a sidebar-style layout (two-thirds and one-third).",
+	"keywords": [ "sidebar", "columns" ],
+	"textdomain": "default",
 	"supports": {
 		"align": true
 	},
+	"styles": [
+		{ "name": "sidebar-right", "label": "Right", "isDefault": true },
+		{ "name": "sidebar-left", "label": "Left" }
+	],
 	"editorScript": "hrswp_blocks_script",
 	"editorStyle": "hrswp_blocks_editor_style",
 	"style": "hrswp_blocks_style"

@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { useInnerBlocksProps, useBlockProps } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { useInnerBlocksProps, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * The block template.

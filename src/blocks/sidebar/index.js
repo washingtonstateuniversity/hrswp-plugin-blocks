@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -17,12 +17,7 @@ const { name } = metadata;
 export { metadata, name };
 
 export const settings = {
-	title: _x( 'Sidebar', 'block title' ),
 	icon,
-	description: __(
-		'Display content in a sidebar-style layout (two-thirds and one-third).'
-	),
-	keywords: [ __( 'sidebar' ), __( 'columns' ) ],
 	example: {
 		innerBlocks: [
 			{
@@ -76,17 +71,6 @@ export const settings = {
 			},
 		],
 	},
-	styles: [
-		{
-			name: 'sidebar-right',
-			label: _x( 'Sidebar on right', 'block style' ),
-			isDefault: true,
-		},
-		{
-			name: 'sidebar-left',
-			label: _x( 'Sidebar on left', 'block style' ),
-		},
-	],
 	transforms,
 	edit,
 	save,
