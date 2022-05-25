@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -16,10 +16,7 @@ const { name } = metadata;
 export { metadata, name };
 
 export const settings = {
-	title: _x( 'Accordion Panel', 'block title' ),
-	description: __( 'A single panel of accordion content.' ),
 	icon,
-	keywords: [ __( 'layout' ), __( 'accordion' ) ],
 	example: {
 		attributes: {
 			level: 2,

@@ -6,7 +6,7 @@ import { isEmpty } from 'lodash';
 /**
  * WordPress dependencies
  */
-const { __, _x, sprintf } = wp.i18n;
+import { __, sprintf } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -21,10 +21,6 @@ const { name } = metadata;
 export { metadata, name };
 
 export const settings = {
-	title: _x( 'Accordion Heading', 'block title' ),
-	description: __(
-		'The accordion panel heading that users will select to show or hide the panel content.'
-	),
 	icon,
 	example: {
 		attributes: {

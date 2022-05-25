@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { RichText, useBlockProps } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 function HeadingEdit( { attributes, setAttributes, onReplace, mergedStyle } ) {
 	const { content, level, placeholder } = attributes;
