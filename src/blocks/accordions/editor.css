@@ -10,6 +10,11 @@
 		& > *:not([data-type="hrswp/accordion-heading"]) {
 			padding-left: 1em;
 		}
+
+		& > .block-list-appender {
+			margin-bottom: 1rem;
+			position: relative;
+		}
 	}
 
 	& [data-type="hrswp/accordion-heading"] {
@@ -17,6 +22,7 @@
 		border-left: 5px solid var(--wp--preset--color--secondary-crimson);
 		font-size: var(--wp--preset--font-size--normal);
 		line-height: 1.4;
-		padding: 0.5em 0.75em;
+		margin: 1.5rem 0;
+		padding: 0.5rem 0.75rem;
 	}
 }
