@@ -1,9 +1,11 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "hrswp/accordions",
 	"title": "Accordion",
 	"category": "layout",
 	"description": "Display content in an accordion.",
+	"keywords": [ "layout", "accordion" ],
 	"attributes": {
 		"level": {
 			"type": "number",

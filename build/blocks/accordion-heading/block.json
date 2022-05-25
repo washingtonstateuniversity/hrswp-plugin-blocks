@@ -1,8 +1,11 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "hrswp/accordion-heading",
-	"parent": [ "hrswp/accordion-section" ],
+	"title": "Accordion Heading",
 	"category": "text",
+	"description": "The accordion panel heading that users will select to show or hide the panel content.",
+	"parent": [ "hrswp/accordion-section" ],
 	"attributes": {
 		"content": {
 			"type": "string",
