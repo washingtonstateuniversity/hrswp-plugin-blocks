@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -18,7 +18,6 @@ export { metadata, name };
 
 export const settings = {
 	icon,
-	keywords: [ __( 'layout' ), __( 'accordion' ) ],
 	variations,
 	example: {
 		innerBlocks: [

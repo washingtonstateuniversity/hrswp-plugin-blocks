@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { RichText, useBlockProps } = wp.blockEditor;
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
 	const { content, level } = attributes;

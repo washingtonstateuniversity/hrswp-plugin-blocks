@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-const { Path, SVG } = wp.components;
+import { Path, SVG } from '@wordpress/components';
 
-/** @typedef {WPComponent} WPComponent */
+/** @typedef {import('@wordpress/element').WPComponent} WPComponent */
 
 /**
  * HeadingLevelIcon props.

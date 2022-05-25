@@ -1,8 +1,11 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "hrswp/accordion-section",
 	"title": "Accordion Panel",
 	"category": "layout",
+	"description": "A single panel of accordion content.",
+	"keywords": [ "layout", "accordion" ],
 	"parent": [ "hrswp/accordions" ],
 	"attributes": {
 		"headingContent": {
@@ -12,7 +15,7 @@
 			"default": ""
 		},
 		"elementId": {
-			"type": "int",
+			"type": "integer",
 			"default": 0
 		},
 		"level": {

@@ -6,22 +6,22 @@ import { dropRight, get, times } from 'lodash';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { PanelBody, RangeControl, ToolbarGroup } = wp.components;
-const {
+import { __ } from '@wordpress/i18n';
+import { PanelBody, RangeControl, ToolbarGroup } from '@wordpress/components';
+import {
 	InspectorControls,
 	useInnerBlocksProps,
 	BlockControls,
 	__experimentalBlockVariationPicker,
 	useBlockProps,
-	store: blockEditorStore,
-} = wp.blockEditor;
-const { withDispatch, useDispatch, useSelect } = wp.data;
-const {
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
+import { withDispatch, useDispatch, useSelect } from '@wordpress/data';
+import {
 	createBlock,
 	createBlocksFromInnerBlocksTemplate,
-	store: blocksStore,
-} = wp.blocks;
+	store as blocksStore,
+} from '@wordpress/blocks';
 
 /**
  * Internal dependencies
