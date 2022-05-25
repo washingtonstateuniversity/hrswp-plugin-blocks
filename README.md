@@ -23,7 +23,6 @@ The plugin also replaces the following WP Core blocks:
 
 - Button
 - Buttons
-- Spacer
 
 ## Installation
 

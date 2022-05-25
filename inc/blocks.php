@@ -36,7 +36,6 @@ add_action(
 			'filter-section',
 			'notification',
 			'sidebar',
-			'spacer',
 		);
 		foreach ( $block_folders as $block_folder ) {
 			register_block_type(
