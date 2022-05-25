@@ -8,14 +8,14 @@ import classnames from 'classnames';
  */
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
-export default function save({ attributes, className }) {
+export default function save( { attributes, className } ) {
 	const { showActionButton } = attributes;
-	const wrapperClasses = classnames(className, {
+	const wrapperClasses = classnames( className, {
 		'has-action-button': showActionButton,
-	});
+	} );
 
-	const blockProps = useBlockProps.save({ className: wrapperClasses });
-	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
+	const blockProps = useBlockProps.save( { className: wrapperClasses } );
+	const innerBlocksProps = useInnerBlocksProps.save( blockProps );
 
-	return <div {...innerBlocksProps} />;
+	return <div { ...innerBlocksProps } />;
 }

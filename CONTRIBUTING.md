@@ -28,7 +28,7 @@ Commits should be small, individual items of work. They should focus distinctly 
 
 ### Semantic Versioning & Human-friendly Changelogs
 
-We follow the [Semantic Versioning pattern](https://semver.org/) when assigning version numbers. Each version number must have three digits (including zero) in the <major>.<minor>.<patch> format, where:
+We follow the [Semantic Versioning pattern](https://semver.org/) when assigning version numbers. Each version number must have three digits (including zero) in the `<major>.<minor>.<patch>` format, where:
 
 We follow the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) standard when maintaining changelogs.
 

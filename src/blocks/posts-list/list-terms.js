@@ -6,49 +6,49 @@ import { filter, includes } from 'lodash';
 /**
  * WordPress dependencies
  */
-const { Fragment } = wp.element;
+import { Fragment } from '@wordpress/element';
 
-export const ListTerms = (props) => {
+export const ListTerms = ( props ) => {
 	const { terms, taxonomySlug, post, prefix } = props;
 
 	// Compat check for WP mismatched slugs.
 	let slug;
-	if ('category' === taxonomySlug || 'post_tag' === taxonomySlug) {
+	if ( 'category' === taxonomySlug || 'post_tag' === taxonomySlug ) {
 		slug = 'category' === taxonomySlug ? 'categories' : 'tags';
 	} else {
 		slug = taxonomySlug;
 	}
 
-	const postTerms = post[slug];
+	const postTerms = post[ slug ];
 
-	const hasTerms = Array.isArray(postTerms) && postTerms.length;
+	const hasTerms = Array.isArray( postTerms ) && postTerms.length;
 
-	if (!hasTerms) {
+	if ( ! hasTerms ) {
 		return null;
 	}
 
-	const listTerms = filter(terms[taxonomySlug], (i) =>
-		includes(postTerms, i.id)
+	const listTerms = filter( terms[ taxonomySlug ], ( i ) =>
+		includes( postTerms, i.id )
 	);
 
 	return (
-		<p className={`wp-block-hrswp-posts-list--${taxonomySlug}-list`}>
-			<span>{prefix}</span>
-			{listTerms.map((term, i) => {
+		<p className={ `hrswp-block-posts-list__${ taxonomySlug }-list` }>
+			<span>{ prefix }</span>
+			{ listTerms.map( ( term, i ) => {
 				const sep = i > 0 ? ', ' : '';
 				return (
-					<Fragment key={i}>
-						{sep}
+					<Fragment key={ i }>
+						{ sep }
 						<a
-							href={term.link}
+							href={ term.link }
 							target="_blank"
 							rel="noreferrer noopener"
 						>
-							{term.name}
+							{ term.name }
 						</a>
 					</Fragment>
 				);
-			})}
+			} ) }
 		</p>
 	);
 };

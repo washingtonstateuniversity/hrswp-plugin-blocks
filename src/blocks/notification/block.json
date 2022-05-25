@@ -5,7 +5,7 @@
 	"title": "Notification",
 	"category": "layout",
 	"description": "Show a brief notification message with optional action button.",
-	"keywords": ["callout", "message", "link"],
+	"keywords": [ "callout", "message", "link" ],
 	"textdomain": "default",
 	"supports": {
 		"align": true
@@ -23,5 +23,6 @@
 		{ "name": "warning", "label": "Warning" }
 	],
 	"editorScript": "hrswp_blocks_script",
-	"editorStyle": "hrswp_blocks_editor_style"
+	"editorStyle": "hrswp_blocks_editor_style",
+	"style": "hrswp_blocks_style"
 }

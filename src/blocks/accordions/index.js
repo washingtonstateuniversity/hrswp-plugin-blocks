@@ -18,7 +18,7 @@ export { metadata, name };
 
 export const settings = {
 	icon,
-	keywords: [__('layout'), __('accordion')],
+	keywords: [ __( 'layout' ), __( 'accordion' ) ],
 	variations,
 	example: {
 		innerBlocks: [
@@ -26,7 +26,7 @@ export const settings = {
 				name: 'hrswp/accordion-section',
 				attributes: {
 					/* translators: example text. */
-					panelHeadingContent: __('An accordion panel title'),
+					panelHeadingContent: __( 'An accordion panel title' ),
 					level: 2,
 				},
 				innerBlocks: [
@@ -45,7 +45,7 @@ export const settings = {
 				name: 'hrswp/accordion-section',
 				attributes: {
 					/* translators: example text. */
-					panelHeadingContent: __('Another accordion panel title'),
+					panelHeadingContent: __( 'Another accordion panel title' ),
 					level: 2,
 				},
 				innerBlocks: [

@@ -3,9 +3,9 @@
 	"name": "hrswp/button",
 	"title": "Button",
 	"category": "design",
-	"parent": ["hrswp/buttons"],
+	"parent": [ "hrswp/buttons" ],
 	"description": "Prompt visitors to take action.",
-	"keywords": ["link"],
+	"keywords": [ "link" ],
 	"textdomain": "default",
 	"attributes": {
 		"url": {
@@ -70,5 +70,6 @@
 		{ "name": "text", "label": "Text" }
 	],
 	"editorScript": "hrswp_blocks_script",
-	"editorStyle": "hrswp_blocks_editor_style"
+	"editorStyle": "hrswp_blocks_editor_style",
+	"style": "hrswp_blocks_style"
 }

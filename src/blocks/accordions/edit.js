@@ -28,101 +28,103 @@ const {
  */
 import HeadingLevelDropdown from './heading-level-dropdown';
 
-const ALLOWED_BLOCKS = ['hrswp/accordion-section'];
+const ALLOWED_BLOCKS = [ 'hrswp/accordion-section' ];
 
-function AccordionsEditContainer({
+function AccordionsEditContainer( {
 	attributes,
 	updateHeadingLevel,
 	updateAccordions,
 	clientId,
-}) {
+} ) {
 	const { level } = attributes;
 
 	const { count } = useSelect(
-		(select) => {
+		( select ) => {
 			return {
-				count: select(blockEditorStore).getBlockCount(clientId),
+				count: select( blockEditorStore ).getBlockCount( clientId ),
 			};
 		},
-		[clientId]
+		[ clientId ]
 	);
 
 	const blockProps = useBlockProps();
-	const innerBlockProps = useInnerBlocksProps(blockProps, {
+	const innerBlockProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		orientation: 'vertical',
 		renderAppender: false,
-	});
+	} );
 
 	return (
 		<>
 			<BlockControls>
 				<ToolbarGroup>
 					<HeadingLevelDropdown
-						selectedLevel={level}
-						onChange={updateHeadingLevel}
+						selectedLevel={ level }
+						onChange={ updateHeadingLevel }
 					/>
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
 				<PanelBody>
 					<RangeControl
-						label={__('Panels')}
-						value={count}
-						onChange={(value) => updateAccordions(count, value)}
-						min={1}
-						max={Math.max(75, count)}
+						label={ __( 'Panels' ) }
+						value={ count }
+						onChange={ ( value ) =>
+							updateAccordions( count, value )
+						}
+						min={ 1 }
+						max={ Math.max( 75, count ) }
 					/>
-					<p className={'components-panels-control__help'}>
-						{__(
+					<p className={ 'components-panels-control__help' }>
+						{ __(
 							'Reducing the number of panels will remove them starting at the end. Any existing content in removed panels will be deleted.'
-						)}
+						) }
 					</p>
 				</PanelBody>
 			</InspectorControls>
-			<div {...innerBlockProps} />
+			<div { ...innerBlockProps } />
 		</>
 	);
 }
 
 const AccordionsEditContainerWrapper = withDispatch(
-	(dispatch, ownProps, registry) => ({
+	( dispatch, ownProps, registry ) => ( {
 		/**
 		 * Update all child Accordion blocks with selected heading level.
 		 *
 		 * @param {number} level the heading level as an integer from 1 to 6
 		 */
-		updateHeadingLevel(level) {
+		updateHeadingLevel( level ) {
 			const { clientId, setAttributes } = ownProps;
-			const { updateBlockAttributes } = dispatch(blockEditorStore);
+			const { updateBlockAttributes } = dispatch( blockEditorStore );
 			const { getBlockOrder, getBlockName } =
-				registry.select(blockEditorStore);
+				registry.select( blockEditorStore );
 
 			// Update own heading level.
-			setAttributes({ level });
+			setAttributes( { level } );
 
 			// Drill down to update accordion heading child blocks.
-			const accordionBlockClientIds = getBlockOrder(clientId);
+			const accordionBlockClientIds = getBlockOrder( clientId );
 
-			accordionBlockClientIds.forEach((accordionBlockClientId) => {
-				updateBlockAttributes(accordionBlockClientId, {
+			accordionBlockClientIds.forEach( ( accordionBlockClientId ) => {
+				updateBlockAttributes( accordionBlockClientId, {
 					level,
-				});
+				} );
 
 				const innerBlockClientIds = getBlockOrder(
 					accordionBlockClientId
 				);
 
-				innerBlockClientIds.forEach((innerBlockClientId) => {
-					const innerBlockName = getBlockName(innerBlockClientId);
+				innerBlockClientIds.forEach( ( innerBlockClientId ) => {
+					const innerBlockName = getBlockName( innerBlockClientId );
 
-					if ('hrswp/accordion-heading' === innerBlockName) {
-						updateBlockAttributes(innerBlockClientId, {
+					if ( 'hrswp/accordion-heading' === innerBlockName ) {
+						updateBlockAttributes( innerBlockClientId, {
 							level,
-						});
+						} );
 					}
-				});
-			});
+				} );
+			} );
 		},
 
 		/**
@@ -131,24 +133,24 @@ const AccordionsEditContainerWrapper = withDispatch(
 		 * @param {number} previousPanels Previous column count.
 		 * @param {number} newPanels      New column count.
 		 */
-		updateAccordions(previousPanels, newPanels) {
+		updateAccordions( previousPanels, newPanels ) {
 			const { clientId, attributes } = ownProps;
-			const { replaceInnerBlocks } = dispatch(blockEditorStore);
-			const { getBlocks } = registry.select(blockEditorStore);
+			const { replaceInnerBlocks } = dispatch( blockEditorStore );
+			const { getBlocks } = registry.select( blockEditorStore );
 			const { level } = attributes;
 
-			let innerBlocks = getBlocks(clientId);
+			let innerBlocks = getBlocks( clientId );
 
 			const isAddingPanel = newPanels > previousPanels;
 
-			if (isAddingPanel) {
+			if ( isAddingPanel ) {
 				innerBlocks = [
 					...innerBlocks,
-					...times(newPanels - previousPanels, () => {
-						return createBlock('hrswp/accordion-section', {
+					...times( newPanels - previousPanels, () => {
+						return createBlock( 'hrswp/accordion-section', {
 							level,
-						});
-					}),
+						} );
+					} ),
 				];
 			} else {
 				// Removing a column will always remove the last inner block.
@@ -158,42 +160,42 @@ const AccordionsEditContainerWrapper = withDispatch(
 				);
 			}
 
-			replaceInnerBlocks(clientId, innerBlocks);
+			replaceInnerBlocks( clientId, innerBlocks );
 		},
-	})
-)(AccordionsEditContainer);
+	} )
+)( AccordionsEditContainer );
 
-function Placeholder({ clientId, name, setAttributes }) {
+function Placeholder( { clientId, name, setAttributes } ) {
 	const { blockType, defaultVariation, variations } = useSelect(
-		(select) => {
+		( select ) => {
 			const {
 				getBlockVariations,
 				getBlockType,
 				getDefaultBlockVariation,
-			} = select(blocksStore);
+			} = select( blocksStore );
 
 			return {
-				blockType: getBlockType(name),
-				defaultVariation: getDefaultBlockVariation(name, 'block'),
-				variations: getBlockVariations(name, 'block'),
+				blockType: getBlockType( name ),
+				defaultVariation: getDefaultBlockVariation( name, 'block' ),
+				variations: getBlockVariations( name, 'block' ),
 			};
 		},
-		[name]
+		[ name ]
 	);
-	const { replaceInnerBlocks } = useDispatch(blockEditorStore);
+	const { replaceInnerBlocks } = useDispatch( blockEditorStore );
 	const blockProps = useBlockProps();
 
 	return (
-		<div {...blockProps}>
+		<div { ...blockProps }>
 			<__experimentalBlockVariationPicker
-				icon={get(blockType, ['icon', 'src'])}
-				label={get(blockType, ['title'])}
-				variations={variations}
-				onSelect={(nextVariation = defaultVariation) => {
-					if (nextVariation.attributes) {
-						setAttributes(nextVariation.attributes);
+				icon={ get( blockType, [ 'icon', 'src' ] ) }
+				label={ get( blockType, [ 'title' ] ) }
+				variations={ variations }
+				onSelect={ ( nextVariation = defaultVariation ) => {
+					if ( nextVariation.attributes ) {
+						setAttributes( nextVariation.attributes );
 					}
-					if (nextVariation.innerBlocks) {
+					if ( nextVariation.innerBlocks ) {
 						replaceInnerBlocks(
 							clientId,
 							createBlocksFromInnerBlocksTemplate(
@@ -202,25 +204,26 @@ function Placeholder({ clientId, name, setAttributes }) {
 							true
 						);
 					}
-				}}
+				} }
 				allowSkip
 			/>
 		</div>
 	);
 }
 
-const AccordionsEdit = (props) => {
+const AccordionsEdit = ( props ) => {
 	const { clientId } = props;
 	const hasInnerBlocks = useSelect(
-		(select) => select(blockEditorStore).getBlocks(clientId).length > 0,
-		[clientId]
+		( select ) =>
+			select( blockEditorStore ).getBlocks( clientId ).length > 0,
+		[ clientId ]
 	);
 
 	const Component = hasInnerBlocks
 		? AccordionsEditContainerWrapper
 		: Placeholder;
 
-	return <Component {...props} />;
+	return <Component { ...props } />;
 };
 
 export default AccordionsEdit;

@@ -10,31 +10,31 @@ const {
 	store: blockEditorStore,
 } = wp.blockEditor;
 
-function AccordionEdit({ attributes: { level }, clientId }) {
+function AccordionEdit( { attributes: { level }, clientId } ) {
 	const { accordionsIds, hasChildBlocks } = useSelect(
-		(select) => {
+		( select ) => {
 			const { getBlockOrder, getBlockRootClientId } =
-				select(blockEditorStore);
+				select( blockEditorStore );
 
-			const rootId = getBlockRootClientId(clientId);
+			const rootId = getBlockRootClientId( clientId );
 
 			return {
-				hasChildBlocks: getBlockOrder(clientId).length > 1,
-				accordionsIds: getBlockOrder(rootId),
+				hasChildBlocks: getBlockOrder( clientId ).length > 1,
+				accordionsIds: getBlockOrder( rootId ),
 			};
 		},
-		[clientId]
+		[ clientId ]
 	);
 
 	const blockProps = useBlockProps();
 
 	const panelsCount = accordionsIds.length;
-	const currentPanelPosition = accordionsIds.indexOf(clientId) + 1;
+	const currentPanelPosition = accordionsIds.indexOf( clientId ) + 1;
 
 	const label = sprintf(
 		/* translators: 1: Block label (i.e. "Block: Accordion"), 2: Position of the selected block, 3: Total number of sibling blocks of the same type */
-		__('%1$s (%2$s of %3$s)'),
-		blockProps['aria-label'],
+		__( '%1$s (%2$s of %3$s)' ),
+		blockProps[ 'aria-label' ],
 		currentPanelPosition,
 		panelsCount
 	);
@@ -42,7 +42,7 @@ function AccordionEdit({ attributes: { level }, clientId }) {
 	const innerBlocksProps = useInnerBlocksProps(
 		{ ...blockProps, 'aria-label': label },
 		{
-			template: [['hrswp/accordion-heading', { level }]],
+			template: [ [ 'hrswp/accordion-heading', { level } ] ],
 			templateLock: false,
 			renderAppender: hasChildBlocks
 				? undefined
@@ -52,7 +52,7 @@ function AccordionEdit({ attributes: { level }, clientId }) {
 
 	return (
 		<>
-			<div {...innerBlocksProps} />
+			<div { ...innerBlocksProps } />
 		</>
 	);
 }

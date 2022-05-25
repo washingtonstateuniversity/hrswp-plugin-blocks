@@ -16,14 +16,14 @@ const { name } = metadata;
 export { metadata, name };
 
 export const settings = {
-	title: _x('Accordion Panel', 'block title'),
-	description: __('A single panel of accordion content.'),
+	title: _x( 'Accordion Panel', 'block title' ),
+	description: __( 'A single panel of accordion content.' ),
 	icon,
-	keywords: [__('layout'), __('accordion')],
+	keywords: [ __( 'layout' ), __( 'accordion' ) ],
 	example: {
 		attributes: {
 			level: 2,
-			panelHeadingContent: __('Accordion Panel Heading'),
+			panelHeadingContent: __( 'Accordion Panel Heading' ),
 		},
 	},
 	edit,

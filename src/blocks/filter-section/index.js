@@ -16,8 +16,8 @@ const { name } = metadata;
 export { metadata, name };
 
 export const settings = {
-	title: _x('Filter Section', 'block title'),
-	description: __('A single section of content to search within.'),
+	title: _x( 'Filter Section', 'block title' ),
+	description: __( 'A single section of content to search within.' ),
 	icon,
 	edit,
 	save,
