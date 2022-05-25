@@ -18,7 +18,6 @@ import * as filterSection from './filter-section';
 import * as callout from './callout';
 import * as notification from './notification';
 import * as sidebar from './sidebar';
-import * as spacer from './spacer';
 
 const hrsBlocks = [
 	accordionHeading,
@@ -32,7 +31,6 @@ const hrsBlocks = [
 	callout,
 	notification,
 	sidebar,
-	spacer,
 ];
 
 const hiddenBlocks = [
@@ -40,7 +38,6 @@ const hiddenBlocks = [
 	'core/buttons',
 	'core/code',
 	'core/preformatted',
-	'core/spacer',
 	'core/verse',
 ];
 
