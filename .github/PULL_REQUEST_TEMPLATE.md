@@ -27,4 +27,4 @@
 - [ ] My code follows the WordPress code style. <!-- Check code: `npm run lint`, Guidelines: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/ -->
 - [ ] My code follows the accessibility standards. <!-- Guidelines: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/accessibility/ -->
 - [ ] My code has proper inline documentation. <!-- Guidelines: https://developer.wordpress.org/coding-standards/inline-documentation-standards/ -->
-- [ ] I've included developer documentation if appropria
+- [ ] I've included developer documentation if appropriate
