@@ -1,0 +1,4 @@
+.wp-block-hrswp-callout.alignwide .wp-block,
+.wp-block-hrswp-callout.alignfull .wp-block {
+	max-width: 100%;
+}
