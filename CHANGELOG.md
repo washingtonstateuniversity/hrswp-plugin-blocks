@@ -17,6 +17,46 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 3.0.0-rc.1 (:construction: TBD)
+
+### Breaking changes
+
+- The HRSWP Spacer block has been removed.
+- The project now uses the `@wordpress/scripts` package and build targets have changed.
+
+### Added
+
+- New file, `blocks.php`, to handle server-side block registration instead of in the setup class. (886ccbb)
+- A Markdownlint ignore file to avoid errors in the license or changelog. (886ccbb)
+
+### Changed
+
+- Switch to using the `@wordpress/scripts` package for handling build tools. Update npm scripts, dependencies, and build tool configs. (886ccbb, 6a5f1da, e0158c6, 60b01f6)
+- Correct block.json `editorScript` and `editorStyle` props to use registered assets. (886ccbb)
+- Update classes structure and block registration for better `wp-scripts` compatibility. (886ccbb)
+- Fix #97 Use GitHub forms for issues. (80e27ad)
+- Simplify `.gitignore` file. (886ccbb)
+- Update callout block for WP Block API v2. (8a2f74f)
+- Update notification block for WP Block API v2. (886ccbb)
+- Refactor posts list block to use API v2 and refactor markup. (389911f)
+- Implement Block API v2 script loading with registered assets for frontend and editor. (a0c63db)
+- Prefer import to const for WP deps with WP Scripts pkg. (e712c37, 16b7910)
+- Update PHP linter config to check PHP 7.4+ and be more lean. (16a476c)
+- Replace `phpcompatibility/php-compatibility` with `phpcompatibility/phpcompatibility-wp`. (16a476c)
+- Disable WP experimental APIs ESLint rule in ESLint config. (21a0a51)
+- Upgrade @wordpress/icons from 8.4.0 to 9.0.0. (e695cde)
+- Bump minimist from 1.2.5 to 1.2.6. (2bb788b)
+
+### Removed
+
+- Fix #91 Return to using WP Core spacer block. (32eeee8, d7789a2)
+
+### Fixed
+
+- Fix #94 Sidebar missing column gap in editor. (16b7910)
+- Fix #93 Accordion block appender button positioning. (e712c37)
+- Fix broken heading drowdown in Accordion block. (e712c37)
+
 ## 2.2.1 (2022-03-15)
 
 ### Changed
