@@ -14,3 +14,8 @@
 	height: 50px;
 	width: 100%;
 }
+
+.wp-block-hrswp-filter.alignwide .wp-block,
+.wp-block-hrswp-filter.alignfull .wp-block {
+	max-width: 100%;
+}
