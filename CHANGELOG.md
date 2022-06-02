@@ -31,6 +31,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump WP tested-to to 6.0.0.
 - Switch to using the `@wordpress/scripts` package for handling build tools. Update npm scripts, dependencies, and build tool configs. (886ccbb, 6a5f1da, e0158c6, 60b01f6)
 - Correct block.json `editorScript` and `editorStyle` props to use registered assets. (886ccbb)
 - Update classes structure and block registration for better `wp-scripts` compatibility. (886ccbb)
