@@ -29,12 +29,10 @@ class Accordion {
 		this._setupControls();
 		this._setupHeadingButtons();
 
-		this._expandAllTrigger = this._parent.querySelector(
-			'#open-all-panels'
-		);
-		this._collapseAllTrigger = this._parent.querySelector(
-			'#close-all-panels'
-		);
+		this._expandAllTrigger =
+			this._parent.querySelector( '#open-all-panels' );
+		this._collapseAllTrigger =
+			this._parent.querySelector( '#close-all-panels' );
 		this._triggers = this._parent.querySelectorAll(
 			'.accordion-panel-trigger'
 		);

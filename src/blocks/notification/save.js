@@ -6,18 +6,16 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function save( { attributes, className } ) {
 	const { showActionButton } = attributes;
+	const wrapperClasses = classnames( className, {
+		'has-action-button': showActionButton,
+	} );
 
-	return (
-		<div
-			className={ classnames( className, {
-				'has-action-button': showActionButton,
-			} ) }
-		>
-			<InnerBlocks.Content />
-		</div>
-	);
+	const blockProps = useBlockProps.save( { className: wrapperClasses } );
+	const innerBlocksProps = useInnerBlocksProps.save( blockProps );
+
+	return <div { ...innerBlocksProps } />;
 }

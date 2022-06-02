@@ -1,21 +1,20 @@
 /**
  * WordPress dependencies
  */
-const { sprintf, __ } = wp.i18n;
-const { useSelect } = wp.data;
-const {
+import { sprintf, __ } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
+import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
-	store: blockEditorStore,
-} = wp.blockEditor;
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
 
 function AccordionEdit( { attributes: { level }, clientId } ) {
 	const { accordionsIds, hasChildBlocks } = useSelect(
 		( select ) => {
-			const { getBlockOrder, getBlockRootClientId } = select(
-				blockEditorStore
-			);
+			const { getBlockOrder, getBlockRootClientId } =
+				select( blockEditorStore );
 
 			const rootId = getBlockRootClientId( clientId );
 

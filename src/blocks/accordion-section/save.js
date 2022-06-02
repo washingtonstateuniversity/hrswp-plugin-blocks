@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { InnerBlocks, useBlockProps } = wp.blockEditor;
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function save() {
 	return (

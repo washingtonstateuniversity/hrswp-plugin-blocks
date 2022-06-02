@@ -3,11 +3,8 @@
  */
 const { __ } = wp.i18n;
 const { PanelBody, ToggleControl } = wp.components;
-const {
-	InspectorControls,
-	useInnerBlocksProps,
-	useBlockProps,
-} = wp.blockEditor;
+const { InspectorControls, useInnerBlocksProps, useBlockProps } =
+	wp.blockEditor;
 
 /**
  * The Allowed Blocks.

@@ -13,9 +13,8 @@ const {
 function SearchFilterSectionEdit( { clientId } ) {
 	const { searchSectionIds, hasChildBlocks } = useSelect(
 		( select ) => {
-			const { getBlockOrder, getBlockRootClientId } = select(
-				blockEditorStore
-			);
+			const { getBlockOrder, getBlockRootClientId } =
+				select( blockEditorStore );
 
 			const rootId = getBlockRootClientId( clientId );
 

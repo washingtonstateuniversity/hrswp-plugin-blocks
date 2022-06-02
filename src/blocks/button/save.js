@@ -15,16 +15,8 @@ const {
 } = wp.blockEditor;
 
 export default function save( { attributes, className } ) {
-	const {
-		fontSize,
-		linkTarget,
-		rel,
-		style,
-		text,
-		title,
-		url,
-		width,
-	} = attributes;
+	const { fontSize, linkTarget, rel, style, text, title, url, width } =
+		attributes;
 
 	if ( ! text ) {
 		return null;
