@@ -1,6 +1,6 @@
 <?php
 /**
- * Used to set up all HRSWP ER blocks used with the block editor.
+ * Used to set up all blocks used with the block editor.
  *
  * @package HRSWP_Blocks
  */

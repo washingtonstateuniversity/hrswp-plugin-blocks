@@ -1,6 +1,6 @@
 # HRSWP Blocks
 
-[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest) ![WordPress tested up to version 5.9.2](https://img.shields.io/badge/WordPress-v5.9.2%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/LICENSE.md)
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest) ![WordPress tested up to version 6.0.0](https://img.shields.io/badge/WordPress-v6.0.0%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/LICENSE.md)
 
 ## Overview
 
@@ -44,7 +44,7 @@ This plugin does not store any user information. The only data it saves is an op
 
 ## For Developers
 
-The HRSWP Blocks plugin development environment relies on NPM and Composer. The `package.json` and `composer.json` configuration files manage dependencies for testing and building the production version of the theme. The NPM scripts in `package.json` do most of the heavy lifting. Please follow the development workflow outlined in the [Contributing guide](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/CONTRIBUTING.md).
+The HRSWP Blocks plugin development environment relies on NPM, using the [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) package, and Composer. The `package.json` and `composer.json` configuration files manage dependencies for testing and building the production version of the theme. The NPM scripts in `package.json` do most of the heavy lifting. Please follow the development workflow outlined in the [Contributing guide](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/CONTRIBUTING.md).
 
 ### Initial Setup
 
@@ -61,18 +61,17 @@ git clone https://github.com/washingtonstateuniversity/hrswp-plugin-blocks.git h
 cd hrswp-plugin-blocks
 npm install
 composer install
-npm test -s
+npm run lint
 git checkout -b new-branch-name
 ~~~
 
 ### Build Commands
 
-The following commands will handle basic build functions. (Remove the `-s` flag to show additional debug info.)
+The following commands will handle basic build functions.
 
-- `npm run build -s`: Remove old compiled files such as minified CSS, lint PHP and CSS, and then compile new versions.
-- `npm test -s`: Check all PHP and CSS files for coding standards compliance.
-- `npm run clean -s`: Remove old compiled files such as minified CSS.
-- `npm run build:styles -s`: Compile CSS.
+- `npm run build`: Transforms the code according the configuration so it’s ready for production and optimized for the best performance.
+- `npm run lint`: Check all PHP and CSS files for coding standards compliance.
+- `npm run start`: Transforms your code according the configuration provided so it’s ready for development.
 
 See the scripts section of `package.json` for additional available commands.
 
