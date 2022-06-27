@@ -24,7 +24,7 @@ function action_register_editor_assets() {
 	$asset_file = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/index.asset.php';
 
 	wp_register_script(
-		'hrswp_blocks_script',
+		'hrswp-blocks-script',
 		plugins_url( 'build/index.js', dirname( __FILE__ ) ),
 		$asset_file['dependencies'],
 		$asset_file['version'],
@@ -32,7 +32,7 @@ function action_register_editor_assets() {
 	);
 
 	wp_register_style(
-		'hrswp_blocks_editor_style',
+		'hrswp-blocks-editor-style',
 		plugins_url( 'build/index.css', dirname( __FILE__ ) ),
 		array(),
 		$asset_file['version']
@@ -51,7 +51,7 @@ function action_register_frontend_assets() {
 	$accordion_asset_file = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/accordion.asset.php';
 
 	wp_register_script(
-		'hrswp_blocks_filter_view',
+		'hrswp-blocks-filter-view',
 		plugins_url( 'build/filter.js', dirname( __FILE__ ) ),
 		$filter_asset_file['dependencies'],
 		$filter_asset_file['version'],
@@ -59,7 +59,7 @@ function action_register_frontend_assets() {
 	);
 
 	wp_register_script(
-		'hrswp_blocks_accordion_view',
+		'hrswp-blocks-accordion-view',
 		plugins_url( 'build/accordion.js', dirname( __FILE__ ) ),
 		$accordion_asset_file['dependencies'],
 		$accordion_asset_file['version'],
@@ -79,7 +79,7 @@ function action_register_assets() {
 	$asset_file = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/index.asset.php';
 
 	wp_register_style(
-		'hrswp_blocks_style',
+		'hrswp-blocks-style',
 		plugins_url( 'build/style-index.css', dirname( __FILE__ ) ),
 		array(),
 		$asset_file['version']
