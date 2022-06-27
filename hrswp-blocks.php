@@ -18,8 +18,6 @@
 
 namespace HRSWP\Blocks;
 
-use HRSWP\Blocks\Setup;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
