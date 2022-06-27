@@ -72,8 +72,6 @@ class Setup {
 	 * @access private
 	 */
 	private function setup_hooks() {
-		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
-
 		// Registers scripts and styles to load on the backend only.
 		add_action( 'admin_enqueue_scripts', array( $this, 'action_register_editor_assets' ) );
 
@@ -82,38 +80,6 @@ class Setup {
 
 		// Registers scripts and styles to load on both the frontend and backend.
 		add_action( 'enqueue_block_assets', array( $this, 'action_register_assets' ) );
-	}
-
-	/**
-	 * Manages the plugin status.
-	 *
-	 * Checks on the plugin status to watch for updates and activation and calls
-	 * additional actions as needed.
-	 *
-	 * @since 0.1.0
-	 */
-	public function manage_plugin_status() {
-		if ( ! is_admin() || ! function_exists( 'get_plugin_data' ) ) {
-			return;
-		}
-
-		$status = get_option( self::$slug . '_plugin-status' );
-		$plugin = get_plugin_data( self::$basename );
-
-		// Exit early if either version number is missing.
-		if ( ! isset( $status['version'] ) || ! isset( $plugin['Version'] ) ) {
-			return;
-		}
-
-		// Update the version if just activated or the versions don't match.
-		if ( 'activated' === $status['status'] || $status['version'] !== $plugin['Version'] ) {
-			$status = array(
-				'status'  => 'active',
-				'version' => $plugin['Version'],
-			);
-
-			update_option( self::$slug . '_plugin-status', $status );
-		}
 	}
 
 	/**
