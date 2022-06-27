@@ -17,6 +17,12 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 3.1.0-alpha.1 (:construction: TBD)
+
+### Removed
+
+- Remove plugin status option for tracking version in favor of asset file version.
+
 ## 3.0.0 (2022-06-02)
 
 ### Breaking changes
