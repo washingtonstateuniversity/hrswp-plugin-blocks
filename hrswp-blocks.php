@@ -27,23 +27,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Load blocks.
 require_once dirname( __FILE__ ) . '/inc/blocks.php';
 
-// Load core Setup class.
-require_once dirname( __FILE__ ) . '/inc/classes/class-setup.php';
-
-/**
- * Creates an instance of the Setup class.
- *
- * @since 0.1.0
- *
- * @return Setup An instance of the Setup class.
- */
-add_action(
-	'plugins_loaded',
-	function() {
-		$hrswp_blocks = Setup\Setup::get_instance( __FILE__ );
-		return $hrswp_blocks;
-	}
-);
+// Load the asset loader.
+require_once dirname( __FILE__ ) . '/inc/asset-loader.php';
 
 register_activation_hook( __FILE__, __NAMESPACE__ . '\activate' );
 register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );
