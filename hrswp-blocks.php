@@ -18,52 +18,35 @@
 
 namespace HRSWP\Blocks;
 
-use HRSWP\Blocks\Setup;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
-// Load blocks.
-require_once dirname( __FILE__ ) . '/inc/blocks.php';
-
-// Load core Setup class.
-require_once dirname( __FILE__ ) . '/inc/classes/class-setup.php';
-
-/**
- * Creates an instance of the Setup class.
- *
- * @since 0.1.0
- *
- * @return Setup An instance of the Setup class.
- */
-add_action(
-	'plugins_loaded',
-	function() {
-		$hrswp_blocks = Setup\Setup::get_instance( __FILE__ );
-		return $hrswp_blocks;
-	}
-);
-
-register_activation_hook( __FILE__, __NAMESPACE__ . '\activate' );
-register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );
 
 /**
  * Activates the plugin.
  *
  * @since 0.1.0
  */
-function activate() {
-	// Delete legacy option.
-	delete_option( 'hrswp_blocks_plugin-status' );
-}
+register_activation_hook(
+	__FILE__,
+	function(): void {
+		// Delete legacy option.
+		delete_option( 'hrswp_blocks_plugin-status' );
+	}
+);
+
+// Load blocks.
+require_once dirname( __FILE__ ) . '/inc/blocks.php';
+
+// Load the asset loader.
+require_once dirname( __FILE__ ) . '/inc/asset-loader.php';
 
 /**
  * Uninstalls the plugin.
  *
  * @since 0.1.0
  */
-function uninstall() {
+function uninstall(): void {
 	if ( ! current_user_can( 'activate_plugins' ) ) {
 		return;
 	}
@@ -71,3 +54,4 @@ function uninstall() {
 	// Delete legacy option.
 	delete_option( 'hrswp_blocks_plugin-status' );
 }
+register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );

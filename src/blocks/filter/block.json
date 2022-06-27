@@ -12,8 +12,8 @@
 		"align": true,
 		"html": false
 	},
-	"editorScript": "hrswp_blocks_script",
-	"viewScript": "hrswp_blocks_filter_view",
-	"editorStyle": "hrswp_blocks_editor_style",
-	"style": "hrswp_blocks_style"
+	"editorScript": "hrswp-blocks-script",
+	"viewScript": "hrswp-blocks-filter-view",
+	"editorStyle": "hrswp-blocks-editor-style",
+	"style": "hrswp-blocks-style"
 }
