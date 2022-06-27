@@ -35,14 +35,6 @@ class Setup {
 	public static $basename;
 
 	/**
-	 * The plugin blocks to register.
-	 *
-	 * @since 0.3.0
-	 * @var array Array of blocks to register in the format 'registered/block-name' => 'render-file.php' or 0.
-	 */
-	public static $blocks = array();
-
-	/**
 	 * Instantiates plugin Setup singleton.
 	 *
 	 * @since 0.1.0
@@ -58,7 +50,6 @@ class Setup {
 			self::$basename = $file;
 
 			$instance->setup_hooks();
-			$instance->define_blocks();
 		}
 
 		return $instance;
@@ -91,27 +82,6 @@ class Setup {
 
 		// Registers scripts and styles to load on both the frontend and backend.
 		add_action( 'enqueue_block_assets', array( $this, 'action_register_assets' ) );
-	}
-
-	/**
-	 * Defines an array of blocks to register.
-	 *
-	 * @since 0.3.0
-	 */
-	private function define_blocks() {
-		self::$blocks = array(
-			'hrswp/accordion-heading' => 0,
-			'hrswp/accordion-section' => 0,
-			'hrswp/accordions'        => 0,
-			'hrswp/button'            => 0,
-			'hrswp/buttons'           => 0,
-			'hrswp/posts-list'        => 'posts-list.php',
-			'hrswp/filter'            => 0,
-			'hrswp/filter-section'    => 0,
-			'hrswp/callout'           => 0,
-			'hrswp/notification'      => 0,
-			'hrswp/sidebar'           => 0,
-		);
 	}
 
 	/**
