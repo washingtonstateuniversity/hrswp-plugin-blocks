@@ -46,7 +46,6 @@ add_action(
 );
 
 register_activation_hook( __FILE__, __NAMESPACE__ . '\activate' );
-register_deactivation_hook( __FILE__, __NAMESPACE__ . '\deactivate' );
 register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );
 
 /**
@@ -55,39 +54,8 @@ register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );
  * @since 0.1.0
  */
 function activate() {
-	/**
-	 * Track activation with an option because the activation hook fires
-	 * before the plugin is actually set up, which prevents taking certain
-	 * actions in this method.
-	 *
-	 * @link https://stackoverflow.com/questions/7738953/is-there-a-way-to-determine-if-a-wordpress-plugin-is-just-installed/13927297#13927297
-	 */
-	$options = get_option( 'hrswp_blocks_plugin-status' );
-	if ( ! $options ) {
-		add_option(
-			'hrswp_blocks_plugin-status',
-			array(
-				'status'  => 'activated',
-				'version' => '0.0.0',
-			)
-		);
-	} else {
-		$options['status'] = 'activated';
-		update_option( 'hrswp_blocks_plugin-status', $options );
-	}
-}
-
-/**
- * Deactivates the plugin.
- *
- * @since 0.1.0
- */
-function deactivate() {
-	// Set plugin status to 'deactivated'.
-	$options           = get_option( 'hrswp_blocks_plugin-status' );
-	$options['status'] = 'deactivated';
-
-	update_option( 'hrswp_blocks_plugin-status', $options );
+	// Delete legacy option.
+	delete_option( 'hrswp_blocks_plugin-status' );
 }
 
 /**
@@ -100,6 +68,6 @@ function uninstall() {
 		return;
 	}
 
-	// Delete plugin options.
+	// Delete legacy option.
 	delete_option( 'hrswp_blocks_plugin-status' );
 }
