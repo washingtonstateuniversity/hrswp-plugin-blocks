@@ -1,6 +1,6 @@
 <?php
 /**
- * Loads plugin script and style assets
+ * Loads plugin script and style assets.
  *
  * @package HRSWP_Blocks
  * @since 0.1.0
@@ -18,9 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 0.2.0
  * @since 3.0.0 Switch from enqueue to register to use `block.json`
+ *
  * @return void
  */
-function action_register_editor_assets() {
+function action_register_editor_assets(): void {
 	$asset_file = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/index.asset.php';
 
 	wp_register_script(
@@ -44,9 +45,10 @@ add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\action_register_editor_as
  * Registers scripts and styles to load on the frontend only.
  *
  * @since 3.0.0
+ *
  * @return void
  */
-function action_register_frontend_assets() {
+function action_register_frontend_assets(): void {
 	$filter_asset_file    = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/filter.asset.php';
 	$accordion_asset_file = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/accordion.asset.php';
 
@@ -73,9 +75,10 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\action_register_frontend_ass
  *
  * @since 0.2.0
  * @since 3.0.0 Switch from enqueue to register to use `block.json`
+ *
  * @return void
  */
-function action_register_assets() {
+function action_register_assets(): void {
 	$asset_file = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/index.asset.php';
 
 	wp_register_style(
