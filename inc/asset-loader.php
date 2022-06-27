@@ -1,9 +1,10 @@
 <?php
 /**
- * HRSWP Blocks Setup: Setup class
+ * Loads plugin script and style assets
  *
  * @package HRSWP_Blocks
  * @since 0.1.0
+ * @since 3.1.0 Convert from class to functions.
  */
 
 namespace HRSWP\Blocks\Setup;
