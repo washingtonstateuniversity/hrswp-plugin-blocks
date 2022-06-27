@@ -22,31 +22,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+/**
+ * Activates the plugin.
+ *
+ * @since 0.1.0
+ */
+register_activation_hook(
+	__FILE__,
+	function(): void {
+		// Delete legacy option.
+		delete_option( 'hrswp_blocks_plugin-status' );
+	}
+);
+
 // Load blocks.
 require_once dirname( __FILE__ ) . '/inc/blocks.php';
 
 // Load the asset loader.
 require_once dirname( __FILE__ ) . '/inc/asset-loader.php';
 
-register_activation_hook( __FILE__, __NAMESPACE__ . '\activate' );
-register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );
-
-/**
- * Activates the plugin.
- *
- * @since 0.1.0
- */
-function activate() {
-	// Delete legacy option.
-	delete_option( 'hrswp_blocks_plugin-status' );
-}
-
 /**
  * Uninstalls the plugin.
  *
  * @since 0.1.0
  */
-function uninstall() {
+function uninstall(): void {
 	if ( ! current_user_can( 'activate_plugins' ) ) {
 		return;
 	}
@@ -54,3 +54,4 @@ function uninstall() {
 	// Delete legacy option.
 	delete_option( 'hrswp_blocks_plugin-status' );
 }
+register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );
