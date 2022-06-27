@@ -35,14 +35,6 @@ class Setup {
 	public static $basename;
 
 	/**
-	 * The plugin blocks to register.
-	 *
-	 * @since 0.3.0
-	 * @var array Array of blocks to register in the format 'registered/block-name' => 'render-file.php' or 0.
-	 */
-	public static $blocks = array();
-
-	/**
 	 * Instantiates plugin Setup singleton.
 	 *
 	 * @since 0.1.0
@@ -58,7 +50,6 @@ class Setup {
 			self::$basename = $file;
 
 			$instance->setup_hooks();
-			$instance->define_blocks();
 		}
 
 		return $instance;
@@ -81,8 +72,6 @@ class Setup {
 	 * @access private
 	 */
 	private function setup_hooks() {
-		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
-
 		// Registers scripts and styles to load on the backend only.
 		add_action( 'admin_enqueue_scripts', array( $this, 'action_register_editor_assets' ) );
 
@@ -91,59 +80,6 @@ class Setup {
 
 		// Registers scripts and styles to load on both the frontend and backend.
 		add_action( 'enqueue_block_assets', array( $this, 'action_register_assets' ) );
-	}
-
-	/**
-	 * Defines an array of blocks to register.
-	 *
-	 * @since 0.3.0
-	 */
-	private function define_blocks() {
-		self::$blocks = array(
-			'hrswp/accordion-heading' => 0,
-			'hrswp/accordion-section' => 0,
-			'hrswp/accordions'        => 0,
-			'hrswp/button'            => 0,
-			'hrswp/buttons'           => 0,
-			'hrswp/posts-list'        => 'posts-list.php',
-			'hrswp/filter'            => 0,
-			'hrswp/filter-section'    => 0,
-			'hrswp/callout'           => 0,
-			'hrswp/notification'      => 0,
-			'hrswp/sidebar'           => 0,
-		);
-	}
-
-	/**
-	 * Manages the plugin status.
-	 *
-	 * Checks on the plugin status to watch for updates and activation and calls
-	 * additional actions as needed.
-	 *
-	 * @since 0.1.0
-	 */
-	public function manage_plugin_status() {
-		if ( ! is_admin() || ! function_exists( 'get_plugin_data' ) ) {
-			return;
-		}
-
-		$status = get_option( self::$slug . '_plugin-status' );
-		$plugin = get_plugin_data( self::$basename );
-
-		// Exit early if either version number is missing.
-		if ( ! isset( $status['version'] ) || ! isset( $plugin['Version'] ) ) {
-			return;
-		}
-
-		// Update the version if just activated or the versions don't match.
-		if ( 'activated' === $status['status'] || $status['version'] !== $plugin['Version'] ) {
-			$status = array(
-				'status'  => 'active',
-				'version' => $plugin['Version'],
-			);
-
-			update_option( self::$slug . '_plugin-status', $status );
-		}
 	}
 
 	/**
