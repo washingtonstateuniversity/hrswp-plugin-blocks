@@ -28,6 +28,7 @@ Changelog formatting (http://semver.org/):
 - Hide publication controls from non-admin users for select pages. (df4a90d)
 - Convert setup class to use asset loader functions. (71be3d3)
 - Use for kebab case for class handles in place of snake case. (71be3d3)
+- Update NPM and Composer dev-dependencies. (96cc837)
 
 ### Removed
 
