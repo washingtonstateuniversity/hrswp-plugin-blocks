@@ -17,10 +17,15 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 3.1.0-alpha.2 (:construction: TBD)
+## 3.1.0-alpha.3 (:construction: TBD)
+
+### Added
+
+- Create plugin settings with protected post ID option. (df4a90d)
 
 ### Changed
 
+- Hide publication controls from non-admin users for select pages. (df4a90d)
 - Convert setup class to use asset loader functions. (71be3d3)
 - Use for kebab case for class handles in place of snake case. (71be3d3)
 
