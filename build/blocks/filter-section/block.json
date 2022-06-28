@@ -1,10 +1,12 @@
 {
-	"apiVersion": 2,
-	"name": "hrswp/filter-section",
-	"category": "widgets",
-	"parent": [ "hrswp/filter" ],
-	"supports": {
-		"reusable": false
-	},
-	"style": "hrswp-blocks-style"
+  "apiVersion": 2,
+  "name": "hrswp/filter-section",
+  "category": "widgets",
+  "parent": [
+    "hrswp/filter"
+  ],
+  "supports": {
+    "reusable": false
+  },
+  "style": "hrswp-blocks-style"
 }

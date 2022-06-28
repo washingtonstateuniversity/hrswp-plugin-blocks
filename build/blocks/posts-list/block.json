@@ -1,94 +1,101 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "hrswp/posts-list",
-	"title": "Posts List",
-	"category": "widgets",
-	"description": "Display a list of posts.",
-	"keywords": [ "posts", "latest posts" ],
-	"textdomain": "default",
-	"attributes": {
-		"selectedTermLists": {
-			"type": "object"
-		},
-		"postsToShow": {
-			"type": "number",
-			"default": 10
-		},
-		"displayPostContent": {
-			"type": "boolean",
-			"default": false
-		},
-		"displayPostContentRadio": {
-			"type": "string",
-			"default": "excerpt"
-		},
-		"excerptLength": {
-			"type": "number",
-			"default": 25
-		},
-		"displayPostDate": {
-			"type": "boolean",
-			"default": false
-		},
-		"displayPostCategory": {
-			"type": "boolean",
-			"default": false
-		},
-		"displayPostTag": {
-			"type": "boolean",
-			"default": false
-		},
-		"displayPostTaxonomy": {
-			"type": "boolean",
-			"default": false
-		},
-		"postLayout": {
-			"type": "string",
-			"default": "list"
-		},
-		"columns": {
-			"type": "number",
-			"default": 3
-		},
-		"order": {
-			"type": "string",
-			"default": "desc"
-		},
-		"orderBy": {
-			"type": "string",
-			"default": "date"
-		},
-		"displayFeaturedImage": {
-			"type": "boolean",
-			"default": false
-		},
-		"featuredImageAlign": {
-			"type": "string",
-			"enum": [ "left", "center", "right" ]
-		},
-		"featuredImageSizeSlug": {
-			"type": "string",
-			"default": "thumbnail"
-		},
-		"featuredImageSizeWidth": {
-			"type": "number",
-			"default": null
-		},
-		"featuredImageSizeHeight": {
-			"type": "number",
-			"default": null
-		},
-		"addLinkToFeaturedImage": {
-			"type": "boolean",
-			"default": false
-		}
-	},
-	"supports": {
-		"align": true,
-		"html": false
-	},
-	"editorScript": "hrswp-blocks-script",
-	"editorStyle": "hrswp-blocks-editor-style",
-	"style": "hrswp-blocks-style"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "hrswp/posts-list",
+  "title": "Posts List",
+  "category": "widgets",
+  "description": "Display a list of posts.",
+  "keywords": [
+    "posts",
+    "latest posts"
+  ],
+  "textdomain": "default",
+  "attributes": {
+    "selectedTermLists": {
+      "type": "object"
+    },
+    "postsToShow": {
+      "type": "number",
+      "default": 10
+    },
+    "displayPostContent": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayPostContentRadio": {
+      "type": "string",
+      "default": "excerpt"
+    },
+    "excerptLength": {
+      "type": "number",
+      "default": 25
+    },
+    "displayPostDate": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayPostCategory": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayPostTag": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayPostTaxonomy": {
+      "type": "boolean",
+      "default": false
+    },
+    "postLayout": {
+      "type": "string",
+      "default": "list"
+    },
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "order": {
+      "type": "string",
+      "default": "desc"
+    },
+    "orderBy": {
+      "type": "string",
+      "default": "date"
+    },
+    "displayFeaturedImage": {
+      "type": "boolean",
+      "default": false
+    },
+    "featuredImageAlign": {
+      "type": "string",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
+    },
+    "featuredImageSizeSlug": {
+      "type": "string",
+      "default": "thumbnail"
+    },
+    "featuredImageSizeWidth": {
+      "type": "number",
+      "default": null
+    },
+    "featuredImageSizeHeight": {
+      "type": "number",
+      "default": null
+    },
+    "addLinkToFeaturedImage": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "align": true,
+    "html": false
+  },
+  "editorScript": "hrswp-blocks-script",
+  "editorStyle": "hrswp-blocks-editor-style",
+  "style": "hrswp-blocks-style"
 }

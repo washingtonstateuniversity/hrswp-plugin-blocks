@@ -1,32 +1,37 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "hrswp/accordion-section",
-	"title": "Accordion Panel",
-	"category": "layout",
-	"description": "A single panel of accordion content.",
-	"keywords": [ "layout", "accordion" ],
-	"parent": [ "hrswp/accordions" ],
-	"attributes": {
-		"headingContent": {
-			"type": "string",
-			"source": "html",
-			"selector": "h1,h2,h3,h4,h5,h6",
-			"default": ""
-		},
-		"elementId": {
-			"type": "integer",
-			"default": 0
-		},
-		"level": {
-			"type": "number",
-			"default": 2
-		},
-		"placeholder": {
-			"type": "string"
-		}
-	},
-	"supports": {
-		"reusable": false
-	}
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "hrswp/accordion-section",
+  "title": "Accordion Panel",
+  "category": "layout",
+  "description": "A single panel of accordion content.",
+  "keywords": [
+    "layout",
+    "accordion"
+  ],
+  "parent": [
+    "hrswp/accordions"
+  ],
+  "attributes": {
+    "headingContent": {
+      "type": "string",
+      "source": "html",
+      "selector": "h1,h2,h3,h4,h5,h6",
+      "default": ""
+    },
+    "elementId": {
+      "type": "integer",
+      "default": 0
+    },
+    "level": {
+      "type": "number",
+      "default": 2
+    },
+    "placeholder": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "reusable": false
+  }
 }
