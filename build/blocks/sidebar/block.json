@@ -1,20 +1,30 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "hrswp/sidebar",
-	"title": "Sidebar",
-	"category": "layout",
-	"description": "Display content in a sidebar-style layout (two-thirds and one-third).",
-	"keywords": [ "sidebar", "columns" ],
-	"textdomain": "default",
-	"supports": {
-		"align": true
-	},
-	"styles": [
-		{ "name": "sidebar-right", "label": "Right", "isDefault": true },
-		{ "name": "sidebar-left", "label": "Left" }
-	],
-	"editorScript": "hrswp-blocks-script",
-	"editorStyle": "hrswp-blocks-editor-style",
-	"style": "hrswp-blocks-style"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "hrswp/sidebar",
+  "title": "Sidebar",
+  "category": "layout",
+  "description": "Display content in a sidebar-style layout (two-thirds and one-third).",
+  "keywords": [
+    "sidebar",
+    "columns"
+  ],
+  "textdomain": "default",
+  "supports": {
+    "align": true
+  },
+  "styles": [
+    {
+      "name": "sidebar-right",
+      "label": "Right",
+      "isDefault": true
+    },
+    {
+      "name": "sidebar-left",
+      "label": "Left"
+    }
+  ],
+  "editorScript": "hrswp-blocks-script",
+  "editorStyle": "hrswp-blocks-editor-style",
+  "style": "hrswp-blocks-style"
 }

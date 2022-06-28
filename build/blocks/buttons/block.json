@@ -1,31 +1,39 @@
 {
-	"apiVersion": 2,
-	"name": "hrswp/buttons",
-	"title": "Buttons",
-	"category": "design",
-	"description": "Prompt visitors to take action with one or more buttons.",
-	"keywords": [ "link" ],
-	"textdomain": "default",
-	"supports": {
-		"anchor": true,
-		"align": [ "wide", "full" ],
-		"__experimentalExposeControlsToChildren": true,
-		"spacing": {
-			"blockGap": true,
-			"margin": [ "top", "bottom" ],
-			"__experimentalDefaultControls": {
-				"blockGap": true
-			}
-		},
-		"__experimentalLayout": {
-			"allowSwitching": false,
-			"allowInheriting": false,
-			"default": {
-				"type": "flex"
-			}
-		}
-	},
-	"editorScript": "hrswp-blocks-script",
-	"editorStyle": "hrswp-blocks-editor-style",
-	"style": "hrswp-blocks-style"
+  "apiVersion": 2,
+  "name": "hrswp/buttons",
+  "title": "Buttons",
+  "category": "design",
+  "description": "Prompt visitors to take action with one or more buttons.",
+  "keywords": [
+    "link"
+  ],
+  "textdomain": "default",
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "__experimentalExposeControlsToChildren": true,
+    "spacing": {
+      "blockGap": true,
+      "margin": [
+        "top",
+        "bottom"
+      ],
+      "__experimentalDefaultControls": {
+        "blockGap": true
+      }
+    },
+    "__experimentalLayout": {
+      "allowSwitching": false,
+      "allowInheriting": false,
+      "default": {
+        "type": "flex"
+      }
+    }
+  },
+  "editorScript": "hrswp-blocks-script",
+  "editorStyle": "hrswp-blocks-editor-style",
+  "style": "hrswp-blocks-style"
 }

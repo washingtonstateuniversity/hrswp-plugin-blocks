@@ -1,75 +1,89 @@
 {
-	"apiVersion": 2,
-	"name": "hrswp/button",
-	"title": "Button",
-	"category": "design",
-	"parent": [ "hrswp/buttons" ],
-	"description": "Prompt visitors to take action.",
-	"keywords": [ "link" ],
-	"textdomain": "default",
-	"attributes": {
-		"url": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "a",
-			"attribute": "href"
-		},
-		"title": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "a",
-			"attribute": "title"
-		},
-		"text": {
-			"type": "string",
-			"source": "html",
-			"selector": "a"
-		},
-		"linkTarget": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "a",
-			"attribute": "target"
-		},
-		"rel": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "a",
-			"attribute": "rel"
-		},
-		"placeholder": {
-			"type": "string"
-		},
-		"backgroundColor": {
-			"type": "string"
-		},
-		"textColor": {
-			"type": "string"
-		},
-		"gradient": {
-			"type": "string"
-		},
-		"width": {
-			"type": "number"
-		}
-	},
-	"supports": {
-		"anchor": true,
-		"align": true,
-		"alignWide": false,
-		"color": false,
-		"typography": false,
-		"reusable": false,
-		"spacing": false,
-		"__experimentalBorder": false,
-		"__experimentalSelector": ".wp-block-button__link"
-	},
-	"styles": [
-		{ "name": "fill", "label": "Fill", "isDefault": true },
-		{ "name": "outline", "label": "Outline" },
-		{ "name": "text", "label": "Text" }
-	],
-	"editorScript": "hrswp-blocks-script",
-	"editorStyle": "hrswp-blocks-editor-style",
-	"style": "hrswp-blocks-style"
+  "apiVersion": 2,
+  "name": "hrswp/button",
+  "title": "Button",
+  "category": "design",
+  "parent": [
+    "hrswp/buttons"
+  ],
+  "description": "Prompt visitors to take action.",
+  "keywords": [
+    "link"
+  ],
+  "textdomain": "default",
+  "attributes": {
+    "url": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "href"
+    },
+    "title": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "title"
+    },
+    "text": {
+      "type": "string",
+      "source": "html",
+      "selector": "a"
+    },
+    "linkTarget": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "target"
+    },
+    "rel": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "rel"
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    },
+    "gradient": {
+      "type": "string"
+    },
+    "width": {
+      "type": "number"
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": true,
+    "alignWide": false,
+    "color": false,
+    "typography": false,
+    "reusable": false,
+    "spacing": false,
+    "__experimentalBorder": false,
+    "__experimentalSelector": ".wp-block-button__link"
+  },
+  "styles": [
+    {
+      "name": "fill",
+      "label": "Fill",
+      "isDefault": true
+    },
+    {
+      "name": "outline",
+      "label": "Outline"
+    },
+    {
+      "name": "text",
+      "label": "Text"
+    }
+  ],
+  "editorScript": "hrswp-blocks-script",
+  "editorStyle": "hrswp-blocks-editor-style",
+  "style": "hrswp-blocks-style"
 }

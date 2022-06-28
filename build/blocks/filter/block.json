@@ -1,19 +1,19 @@
 {
-	"apiVersion": 2,
-	"name": "hrswp/filter",
-	"category": "widgets",
-	"attributes": {
-		"retainHeadings": {
-			"type": "boolean",
-			"default": false
-		}
-	},
-	"supports": {
-		"align": true,
-		"html": false
-	},
-	"editorScript": "hrswp-blocks-script",
-	"viewScript": "hrswp-blocks-filter-view",
-	"editorStyle": "hrswp-blocks-editor-style",
-	"style": "hrswp-blocks-style"
+  "apiVersion": 2,
+  "name": "hrswp/filter",
+  "category": "widgets",
+  "attributes": {
+    "retainHeadings": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "align": true,
+    "html": false
+  },
+  "editorScript": "hrswp-blocks-script",
+  "viewScript": "hrswp-blocks-filter-view",
+  "editorStyle": "hrswp-blocks-editor-style",
+  "style": "hrswp-blocks-style"
 }
