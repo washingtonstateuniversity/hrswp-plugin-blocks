@@ -32,6 +32,9 @@ register_activation_hook(
 	function(): void {
 		// Delete legacy option.
 		delete_option( 'hrswp_blocks_plugin-status' );
+
+		// Initialize plugin options.
+		add_option( 'hrswp_plugins_protected_ids' );
 	}
 );
 
@@ -40,6 +43,9 @@ require_once dirname( __FILE__ ) . '/inc/blocks.php';
 
 // Load the asset loader.
 require_once dirname( __FILE__ ) . '/inc/asset-loader.php';
+
+// Load the plugin settings.
+require_once dirname( __FILE__ ) . '/inc/settings.php';
 
 /**
  * Uninstalls the plugin.
@@ -51,7 +57,8 @@ function uninstall(): void {
 		return;
 	}
 
-	// Delete legacy option.
+	// Delete options.
 	delete_option( 'hrswp_blocks_plugin-status' );
+	delete_option( 'hrswp_plugins_protected_ids' );
 }
 register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );

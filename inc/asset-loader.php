@@ -89,3 +89,38 @@ function action_register_assets(): void {
 	);
 }
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\action_register_assets' );
+
+/**
+ * Hides publication controls from non-admin users for select pages.
+ *
+ * This pulls the list of IDs to protect from the plugin settings.
+ *
+ * @since 3.1.0
+ *
+ * @see wp_add_inline_style
+ * @return void
+ */
+function action_hide_publication_controls(): void {
+	global $post;
+
+	if ( 'publish' !== $post->post_status || current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	$protected_page_ids = get_option( 'hrswp_plugins_protected_ids' );
+	if ( ! $protected_page_ids ) {
+		return;
+	}
+
+	$protected_page_ids = explode( "\n", $protected_page_ids );
+	$protected_page_ids = array_map( 'trim', $protected_page_ids );
+	$protected_page_ids = array_map( 'intval', $protected_page_ids );
+
+	if ( in_array( (int) $post->ID, $protected_page_ids, true ) ) {
+		wp_add_inline_style(
+			'hrswp-editor-style',
+			'.editor-post-switch-to-draft{display:none}'
+		);
+	}
+}
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\action_hide_publication_controls', 30 );
