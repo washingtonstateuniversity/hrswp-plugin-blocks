@@ -41,6 +41,9 @@ require_once dirname( __FILE__ ) . '/inc/blocks.php';
 // Load the asset loader.
 require_once dirname( __FILE__ ) . '/inc/asset-loader.php';
 
+// Load the plugin settings.
+require_once dirname( __FILE__ ) . '/inc/settings.php';
+
 /**
  * Uninstalls the plugin.
  *
