@@ -1,23 +1,26 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "hrswp/accordions",
-	"title": "Accordion",
-	"category": "layout",
-	"description": "Display content in an accordion.",
-	"keywords": [ "layout", "accordion" ],
-	"attributes": {
-		"level": {
-			"type": "number",
-			"default": 2
-		}
-	},
-	"supports": {
-		"align": true,
-		"html": false
-	},
-	"editorScript": "hrswp_blocks_script",
-	"viewScript": "hrswp_blocks_accordion_view",
-	"editorStyle": "hrswp_blocks_editor_style",
-	"style": "hrswp_blocks_style"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "hrswp/accordions",
+  "title": "Accordion",
+  "category": "layout",
+  "description": "Display content in an accordion.",
+  "keywords": [
+    "layout",
+    "accordion"
+  ],
+  "attributes": {
+    "level": {
+      "type": "number",
+      "default": 2
+    }
+  },
+  "supports": {
+    "align": true,
+    "html": false
+  },
+  "editorScript": "hrswp-blocks-script",
+  "viewScript": "hrswp-blocks-accordion-view",
+  "editorStyle": "hrswp-blocks-editor-style",
+  "style": "hrswp-blocks-style"
 }

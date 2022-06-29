@@ -8,6 +8,8 @@ The WSU HRS WordPress plugin provides custom blocks tailored for the [WSU Human 
 
 ## Description
 
+### Blocks
+
 This plugin adds several custom blocks. Some provide relatively simple layout blocks and others provide more complex blocks that include front-end JavaScript. It adds the following blocks:
 
 - Accordion
@@ -19,10 +21,14 @@ This plugin adds several custom blocks. Some provide relatively simple layout bl
 
 The Accordion and Filter blocks both include frontend JavaScript that is loaded when one of those blocks is active on a page.
 
-The plugin also replaces the following WP Core blocks:
+The plugin replaces the following WP Core blocks:
 
 - Button
 - Buttons
+
+### Settings
+
+The HRSWP Blocks plugin also includes optional block editor publication status protection. In **Settings > HRSWP Plugins**, the "Protected Posts and Pages" setting allows admins to specify a list of page or post IDs to restrict publication status actions. The "revert to draft" option will be removed from any published page or post in this list for non-admin users.
 
 ## Installation
 
@@ -40,7 +46,7 @@ Please note that this plugin will not update automatically and will not notify o
 
 ### Deactivating and Deleting: Plugin Data
 
-This plugin does not store any user information. The only data it saves is an option in the database to track the plugin status (activation status, version, etc.). Deactivating the plugin through the WordPress plugins screen UI will retain the option. Uninstalling through the WP interface will delete the option entirely. Deleting it directly from the server (not through the plugins screen UI) will circumvent this cleanup action and *will not* delete the plugin data.
+This plugin does not store any user information. The only data it saves is an option in the database to track the protected post/page ID option. Deactivating the plugin through the WordPress plugins screen UI will retain the option. Uninstalling through the WP interface will delete the option entirely. Deleting the plugin directly from the server (not through the plugins screen UI) will circumvent this cleanup action and *will not* delete the plugin data.
 
 ## For Developers
 
