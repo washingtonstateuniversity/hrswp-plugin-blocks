@@ -4,6 +4,7 @@
 
 	/* Responsiveness: Allow wrapping on mobile. */
 	flex-wrap: wrap;
+	gap: 2rem;
 
 	/**
 	 * All Columns Alignment
