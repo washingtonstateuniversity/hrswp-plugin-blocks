@@ -17,7 +17,7 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 3.1.1-rc.1 (:construction:)
+## 3.1.1 (2022-06-30)
 
 ### Fixed
 
