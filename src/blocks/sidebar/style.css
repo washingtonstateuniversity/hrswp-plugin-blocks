@@ -4,6 +4,7 @@
 
 	/* Responsiveness: Allow wrapping on mobile. */
 	flex-wrap: wrap;
+	gap: 2rem;
 
 	/**
 	 * All Columns Alignment
@@ -25,7 +26,6 @@
 
 	.wp-block-hrswp-sidebar {
 		flex-wrap: nowrap;
-		gap: 2rem;
 	}
 
 	/* Have to use !important to override Core columns inline styles. */
