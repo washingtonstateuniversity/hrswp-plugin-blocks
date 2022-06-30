@@ -17,6 +17,12 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 3.1.1-rc.1 (:construction:)
+
+### Fixed
+
+- Fix sidebar block gap missing after core columns change.
+
 ## 3.1.0 (2022-06-29)
 
 ### Added
