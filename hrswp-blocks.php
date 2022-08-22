@@ -38,14 +38,15 @@ register_activation_hook(
 	}
 );
 
-// Load blocks.
+// Load blocks, asset loader, settinsg, and REST API.
 require_once dirname( __FILE__ ) . '/inc/blocks.php';
-
-// Load the asset loader.
 require_once dirname( __FILE__ ) . '/inc/asset-loader.php';
-
-// Load the plugin settings.
 require_once dirname( __FILE__ ) . '/inc/settings.php';
+require_once dirname( __FILE__ ) . '/inc/api.php';
+require_once dirname( __FILE__ ) . '/inc/query.php';
+
+// Load plugin classes.
+require_once dirname( __FILE__ ) . '/inc/classes/class-sideload-image.php';
 
 /**
  * Uninstalls the plugin.
