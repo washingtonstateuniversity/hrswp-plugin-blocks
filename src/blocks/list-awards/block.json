@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "hrswp/list-awards",
+	"title": "HRS Awards",
+	"category": "hrswp-blocks-external",
+	"description": "Display employee recognition awards.",
+	"keywords": [ "awards", "employees", "recognition" ],
+	"textdomain": "default",
+	"attributes": {
+		"align": {
+			"type": "string",
+			"enum": ["left", "center", "right", "wide", "full"]
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"className": {
+			"type": "string"
+		},
+		"imageCrop": {
+			"type": "boolean",
+			"default": false
+		},
+		"queryTable": {
+			"type": "string"
+		}
+	},
+	"styles": [
+		{ "name": "default", "label": "Grid", "isDefault": true },
+		{ "name": "list", "label": "List" }
+	],
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"editorScript": "hrswp-blocks-script",
+	"editorStyle": "hrswp-blocks-editor-style",
+	"style": "hrswp-blocks-style"
+}
