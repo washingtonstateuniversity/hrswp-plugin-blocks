@@ -63,3 +63,35 @@ function uninstall(): void {
 	delete_option( 'hrswp_plugins_protected_ids' );
 }
 register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );
+
+/**
+ * Verifies plugin dependencies.
+ *
+ * @since 3.2.0
+ *
+ * @return bool True if dependencies are met, false if not.
+ */
+function verify_plugin_dependencies(): bool {
+	return in_array(
+		'hrswp-plugin-sqlsrv-db/hrswp-sqlsrv-db.php',
+		apply_filters( 'active_plugins', get_option( 'active_plugins' ) ),
+		true
+	);
+}
+
+add_action(
+	'plugins_loaded',
+	function(): void {
+		if ( ! verify_plugin_dependencies() ) {
+			add_action(
+				'admin_notices',
+				function(): void {
+					printf(
+						'<div class="error"><p>%s</p></div>',
+						esc_html__( 'The HRSWP Blocks plugin requires the HRSWP Sqlsrv DB plugin to function properly. Please install before continuing.', 'hrswp-blocks' )
+					);
+				}
+			);
+		}
+	}
+);

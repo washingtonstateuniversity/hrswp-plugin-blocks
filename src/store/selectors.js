@@ -31,3 +31,14 @@ export function getSalaryData( state ) {
 	const { salaryData } = state;
 	return salaryData;
 }
+
+/**
+ * Returns awards data.
+ *
+ * @param {Object} state Global application state.
+ * @return {Object[]} Array of awards data.
+ */
+export function importAwardsData( state ) {
+	const { awardsData } = state;
+	return awardsData;
+}

@@ -40,7 +40,7 @@ add_action(
 			)
 		);
 
-        // Register a public route to get job classification data.
+		// Register a public route to get job classification data.
 		register_rest_route(
 			$namespace,
 			'/jobclassification/table/(?P<table>[a-z0-9_\-]+)',
@@ -60,7 +60,7 @@ add_action(
 			)
 		);
 
-        // Register a public route to get job classification data.
+		// Register a public route to get job classification data.
 		register_rest_route(
 			$namespace,
 			'/salarydata/table/(?P<table>[a-z0-9_\-]+)',
@@ -71,6 +71,31 @@ add_action(
 					'table' => array(
 						'sanitize_callback' => function( string $param ): string {
 							return sanitize_key( $param );
+						},
+					),
+				),
+				'permission_callback' => function (): bool {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
+
+		// Register a route to import awards data as attachement posts.
+		register_rest_route(
+			$namespace,
+			'/awardsdata/table/(?P<table>[a-z0-9_\-]+)/post/(?P<post>[a-z0-9_\-]+)',
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => 'HRSWP\Blocks\Query\import_awards_data',
+				'args'                => array(
+					'table' => array(
+						'sanitize_callback' => function( string $param ): string {
+							return sanitize_key( $param );
+						},
+					),
+					'post'  => array(
+						'sanitize_callback' => function( string $param ): string {
+							return absint( sanitize_key( $param ) );
 						},
 					),
 				),

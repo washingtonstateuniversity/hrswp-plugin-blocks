@@ -18,6 +18,7 @@ import * as filterSection from './filter-section';
 import * as callout from './callout';
 import * as notification from './notification';
 import * as sidebar from './sidebar';
+import * as listAwards from './list-awards';
 
 const hrsBlocks = [
 	accordionHeading,
@@ -31,6 +32,7 @@ const hrsBlocks = [
 	callout,
 	notification,
 	sidebar,
+	listAwards,
 ];
 
 const hiddenBlocks = [
