@@ -99,17 +99,17 @@ class Sideload_Image {
 		$args = wp_parse_args( $props, $defaults );
 
 		if ( $args['skip_if_exists'] ) {
-			$existing_attachment = $this->get_attachment_by_title( $args['title'] );
+			$existing_attachment = get_page_by_title( $args['title'], OBJECT, 'attachment' );
 
 			// If the attachment already exists, populate the class property and exit early.
-			if ( false !== $existing_attachment ) {
+			if ( $existing_attachment ) {
 				$this->attachment = array(
 					'id'        => $existing_attachment->ID,
 					'title'     => $existing_attachment->post_title,
 					'parent_id' => $existing_attachment->post_parent,
 				);
 
-				return;
+				return $this->attachment;
 			}
 		}
 
@@ -122,7 +122,9 @@ class Sideload_Image {
 		// Sideload the file and create the attachment, then populate the default alt text and award group meta.
 		$this->sideload_file( $args['image_contents'], $args['page_id'] );
 		update_post_meta( $this->attachment['id'], '_wp_attachment_image_alt', $this->fileinfo['description'] );
-		update_post_meta( $this->attachment['id'], '_' . Setup\Setup::$slug . '_award_group', $this->fileinfo['group_year'] );
+		update_post_meta( $this->attachment['id'], '_hrswp_sqlsrv_db_award_group', $this->fileinfo['group_year'] );
+
+		return $this->attachment;
 	}
 
 	/**
@@ -134,10 +136,10 @@ class Sideload_Image {
 	 */
 	private function includes() {
 		// The WordPress Filesystem API: Top-level functionality.
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		require_once ABSPATH . 'wp-admin/includes/file.php';
 
 		// All of the WordPress administration image manipulation functions.
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		require_once ABSPATH . 'wp-admin/includes/image.php';
 	}
 
 	/**
@@ -224,32 +226,5 @@ class Sideload_Image {
 		);
 
 		return $attachment_id;
-	}
-
-	/**
-	 * Retrieves an attachment by its post title value.
-	 *
-	 * If multiple posts match the query only the first is returned.
-	 *
-	 * @since 0.4.0
-	 *
-	 * @param string $title The attachment post title.
-	 * @return WP_Post|false The attachment post object if it exists, false if not.
-	 */
-	private function get_attachment_by_title( $title ) {
-		// Set up the query args.
-		$args = array(
-			'name'        => sanitize_title( $title ),
-			'post_type'   => 'attachment',
-			'post_status' => 'inherit',
-		);
-
-		$attachment = new \WP_Query( $args );
-
-		if ( ! $attachment->have_posts() ) {
-			return false;
-		}
-
-		return $attachment->posts[0];
 	}
 }
