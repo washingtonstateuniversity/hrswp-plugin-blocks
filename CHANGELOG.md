@@ -17,6 +17,15 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 3.2.0-beta.1 (:construction: TBD)
+
+### Added
+
+- Create List Awards block. (1641b53)
+- Add plugin dependency check for required SQLSRV DB plugin. (1641b53)
+- Create HRSWP external content block category. (1641b53)
+- Add REST API store, queries, and sideload image class; update to handle award image data. (b32fa2e, 1641b53)
+
 ## 3.1.1 (2022-06-30)
 
 ### Fixed
