@@ -7,4 +7,5 @@ export const POSITION_DATA_DEFAULTS = {
 	tableNames: {},
 	jobClassificationData: {},
 	salaryData: {},
+	awardsData: {},
 };

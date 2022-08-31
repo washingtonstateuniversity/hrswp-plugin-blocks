@@ -39,3 +39,17 @@ export function* getSalaryData( table ) {
 	const salaryData = yield actions.fetchFromAPI( path );
 	return actions.getSalaryData( salaryData );
 }
+
+/**
+ * Requests the awards data action object.
+ *
+ * @param {string} table The table from which to retrieve awards data.
+ * @param {number} post  The post ID of the originating page/post.
+ *
+ * @return {Object} The awards data action object including the data.
+ */
+export function* importAwardsData( table, post ) {
+	const path = `/hrswp-blocks/v1/awardsdata/table/${ table }/post/${ post }`;
+	const awardsData = yield actions.fetchFromAPI( path );
+	return actions.importAwardsData( awardsData );
+}

@@ -53,3 +53,17 @@ export function getSalaryData( salaryData ) {
 		salaryData,
 	};
 }
+
+/**
+ * Returns an action object of awards data.
+ *
+ * @param {Object[]} awardsData Array of awards data.
+ *
+ * @return {Object} Action object.
+ */
+export function importAwardsData( awardsData ) {
+	return {
+		type: 'IMPORT_AWARDS_DATA',
+		awardsData,
+	};
+}

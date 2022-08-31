@@ -20,6 +20,11 @@ function jobData( state = POSITION_DATA_DEFAULTS, action ) {
 				...state,
 				salaryData: action.salaryData,
 			};
+		case 'IMPORT_AWARDS_DATA':
+			return {
+				...state,
+				awardsData: action.awardsData,
+			};
 	}
 
 	return state;
