@@ -7,8 +7,10 @@
 
 namespace HRSWP\Blocks\Query;
 
-use HRSWP\SQLSRV\Sqlsrv_Query;
+use HRSWP\Blocks;
+use HRSWP\Blocks\Sideload_Image;
 use HRSWP\SQLSRV\Sqlsrv_DB;
+use HRSWP\SQLSRV\Sqlsrv_Query;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -25,16 +27,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 3.2.0
  *
- * @return array|null JSON feed of returned objects, null if no tables are found.
+ * @return \WP_REST_Response||\WP_Error||null JSON feed of returned objects, null if no tables are found.
  */
-function get_tables_list(): ?array {
+function get_tables_list(): ?object {
 	// Check to make sure required plugin is active.
-	if ( ! in_array(
-			'hrswp-plugin-sqlsrv-db/hrswp-sqlsrv-db.php',
-			apply_filters( 'active_plugins', get_option( 'active_plugins' ) ),
-			true
-	) ) {
-		return new \WP_Error( 'missing-plugin', __( 'The HRSWP Sqlsrv DB must be activated.', 'hrswp-blocks' ) );
+	if ( ! Blocks\verify_plugin_dependencies() ) {
+		return new \WP_Error( 'missing-plugin', __( 'The HRSWP Sqlsrv DB plugin must be activated.', 'hrswp-blocks' ) );
 	}
 
 	// Initialize the HRSWP Sqlsrv DB connector.
@@ -69,9 +67,14 @@ function get_tables_list(): ?array {
  * @since 3.2.0
  *
  * @param \WP_REST_Request $request Data from the request passed to the callback.
- * @return array|null JSON feed of returned data, null if no data is found.
+ * @return \WP_REST_Response||\WP_Error JSON feed of returned data, WP Error if missing table.
  */
-function get_job_classification_data( \WP_REST_Request $request ): ?array {
+function get_job_classification_data( \WP_REST_Request $request ): object {
+	// Check to make sure required plugin is active.
+	if ( ! Blocks\verify_plugin_dependencies() ) {
+		return new \WP_Error( 'missing-plugin', __( 'The HRSWP Sqlsrv DB plugin must be activated.', 'hrswp-blocks' ) );
+	}
+
 	if ( ! $request || '' === $request['table'] ) {
 		return new \WP_Error( 'missing-table', __( 'No table specified for query.', 'hrswp-blocks' ) );
 	}
@@ -111,9 +114,14 @@ function get_job_classification_data( \WP_REST_Request $request ): ?array {
  * @since 3.2.0
  *
  * @param \WP_REST_Request $request Data from the request passed to the callback.
- * @return array|null JSON feed of returned data, null if no data is found.
+ * @return \WP_REST_Response||\WP_Error JSON feed of returned data, WP Error if missing table.
  */
-function get_salary_data( \WP_REST_Request $request ): ?array {
+function get_salary_data( \WP_REST_Request $request ): object {
+	// Check to make sure required plugin is active.
+	if ( ! Blocks\verify_plugin_dependencies() ) {
+		return new \WP_Error( 'missing-plugin', __( 'The HRSWP Sqlsrv DB plugin must be activated.', 'hrswp-blocks' ) );
+	}
+
 	if ( ! $request || '' === $request['table'] ) {
 		return new \WP_Error( 'missing-table', __( 'No table specified for query.', 'hrswp-blocks' ) );
 	}
@@ -136,4 +144,82 @@ function get_salary_data( \WP_REST_Request $request ): ?array {
 	}
 
 	return new \WP_REST_Response( array( 'request' => $request['table'] ), 304 );
+}
+
+/**
+ * Imports data from a given Awards data table.
+ *
+ * @since 3.2.0
+ *
+ * @param \WP_REST_Request $request Data from the request passed to the callback.
+ * @return \WP_REST_Response||\WP_Error JSON feed of returned data, WP Error if missing table.
+ */
+function import_awards_data( \WP_REST_Request $request ): object {
+	// Check to make sure required plugin is active.
+	if ( ! Blocks\verify_plugin_dependencies() ) {
+		return new \WP_Error( 'missing-plugin', __( 'The HRSWP Sqlsrv DB plugin must be activated.', 'hrswp-blocks' ) );
+	}
+
+	if ( ! $request || '' === $request['table'] ) {
+		return new \WP_Error( 'missing-table', __( 'No table specified for query.', 'hrswp-blocks' ) );
+	}
+
+	// Get the awards records from the external database.
+	if ( 'undefined' !== $request['table'] ) {
+		$args = array(
+			'dataset' => array(
+				array(
+					'table'  => 'awards',
+					'fields' => array(
+						'BinaryFile',
+						'GroupDescription',
+						'GroupName',
+						'GroupYear',
+					),
+				),
+			),
+			'orderby' => 'GroupYear',
+		);
+
+		$result = new Sqlsrv_Query\Sqlsrv_Query( $args );
+		$awards = $result->records ?? null;
+	}
+
+	if ( ! $awards ) {
+		return new \WP_REST_Response( array( 'request' => $request['table'] ), 304 );
+	}
+
+	// Import the retrieved awards into the media library.
+	foreach ( $awards as $award ) {
+		$image_props = array(
+			// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			'title'          => $award->GroupName,
+			'image_contents' => $award->BinaryFile,
+			'group_year'     => $award->GroupYear,
+			'page_id'        => (int) $request['post'],
+			'description'    => $award->GroupDescription,
+			'skip_if_exists' => true,
+			// phpcs:enable
+		);
+
+		$image = new Sideload_Image\Sideload_Image( $image_props );
+
+		if ( is_wp_error( $image ) ) {
+			return new \WP_REST_Response( array( 'request' => $request['table'] ), 304 );
+		}
+	}
+
+	// Get the imported and existing awards.
+	$attachments = get_children(
+		array(
+			'post_parent'    => (int) $request['post'],
+			'post_type'      => 'attachment',
+			'posts_per_page' => -1,
+			'orderby'        => 'meta_value_num',
+			'meta_key'       => '_hrswp_sqlsrv_db_award_group',
+			'order'          => 'ASC',
+		)
+	);
+
+	return new \WP_REST_Response( $attachments, 200 );
 }
