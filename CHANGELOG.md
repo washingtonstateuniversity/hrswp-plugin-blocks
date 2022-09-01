@@ -21,6 +21,7 @@ Changelog formatting (http://semver.org/):
 
 ### Added
 
+- Create Salary Data block. (b86b44b)
 - Create List Awards block. (1641b53)
 - Add plugin dependency check for required SQLSRV DB plugin. (1641b53)
 - Create HRSWP external content block category. (1641b53)
