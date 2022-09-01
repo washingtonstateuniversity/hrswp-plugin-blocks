@@ -19,6 +19,7 @@ import * as callout from './callout';
 import * as notification from './notification';
 import * as sidebar from './sidebar';
 import * as listAwards from './list-awards';
+import * as salaryData from './salary-data';
 
 const hrsBlocks = [
 	accordionHeading,
@@ -33,6 +34,7 @@ const hrsBlocks = [
 	notification,
 	sidebar,
 	listAwards,
+	salaryData,
 ];
 
 const hiddenBlocks = [

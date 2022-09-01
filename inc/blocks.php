@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Include files required for dynamic block registration.
 require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/posts-list/index.php';
 require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/list-awards/index.php';
+require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/salary-data/index.php';
 
 /**
 * Registers HRSWP blocks.
