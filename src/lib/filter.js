@@ -58,8 +58,8 @@ class Filter {
 	 */
 	find() {
 		const instance = this._markInstance;
-		const keyword = this._searchInput.value;
 		const content = this._content;
+		const inputValue = this._searchInput.value;
 
 		/**
 		 * @type {NodeList} All nodes with the class 'show' assigned by a previous filter.
@@ -67,10 +67,20 @@ class Filter {
 		const previousMatches = content.querySelectorAll( '.show' );
 		const currentMatches = [];
 
+		const exactMatch =
+			decodeURIComponent( inputValue ).startsWith( '"' ) &&
+			decodeURIComponent( inputValue ).endsWith( '"' );
+
+		const keyword = exactMatch
+			? inputValue.replaceAll( '"', '' )
+			: inputValue;
+
 		/**
 		 * @type {Object} Options for the mark.js `mark()` method
 		 */
 		const options = {
+			accuracy: exactMatch ? 'exactly' : 'partially',
+			ignorePunctuation: [ ',' ],
 			/**
 			 * A callback to filter content based on matches.
 			 *
@@ -176,7 +186,9 @@ class Filter {
 			const params = new URLSearchParams( window.location.search );
 			const filterValue = params.get( 'filter' );
 			if ( null !== filterValue ) {
-				this._searchInput.value = encodeURIComponent( filterValue );
+				this._searchInput.value = encodeURIComponent(
+					filterValue
+				).replaceAll( '%22', '"' );
 				this.find();
 			}
 		}
