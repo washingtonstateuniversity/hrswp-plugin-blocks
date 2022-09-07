@@ -3,6 +3,7 @@
 @import "./buttons/editor.css";
 @import "./callout/editor.css";
 @import "./filter/editor.css";
+@import "./job-classifications/editor.css";
 @import "./list-awards/editor.css";
 @import "./notification/editor.css";
 @import "./posts-list/editor.css";
