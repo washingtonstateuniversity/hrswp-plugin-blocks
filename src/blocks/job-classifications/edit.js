@@ -76,7 +76,9 @@ export default function JobClassificationsEdit( {
 			? formatNumber.format( number )
 			: renderJobClassificationName( number );
 	const renderJobClassificationRangeURL = ( rangeURLParam, range ) => {
-		const url = escape( salaryDataUrl + '?filter=' + rangeURLParam );
+		const url = escape(
+			salaryDataUrl + '?filter=%22' + rangeURLParam + '%22'
+		);
 		return (
 			<a href={ url } target="_blank" rel="noreferrer noopener">
 				{ renderJobClassificationName( range ) }
