@@ -22,6 +22,9 @@ class Filter {
 		this._content = content.querySelector(
 			'.wp-block-hrswp-filter-section'
 		);
+		this._hasRetainHeadings = content.className.includes(
+			'has-retain-headings'
+		);
 
 		this._setupSearchField();
 
@@ -80,6 +83,7 @@ class Filter {
 		 */
 		const options = {
 			accuracy: exactMatch ? 'exactly' : 'partially',
+			separateWordSearch: exactMatch ? false : true,
 			ignorePunctuation: [ ',' ],
 			/**
 			 * A callback to filter content based on matches.
@@ -152,6 +156,21 @@ class Filter {
 				content.classList.remove( 'filtering-active' );
 				previousMatches.forEach( ( match ) => {
 					match.classList.remove( 'show' );
+				} );
+			},
+			done: ( totalMarks ) => {
+				if ( ! totalMarks || ! this._hasRetainHeadings ) {
+					return false;
+				}
+				const matchedElements = this._parent.querySelectorAll(
+					'h1, h2, h3, h4, h5, h6'
+				);
+				matchedElements.forEach( ( match ) => {
+					if (
+						match.nextElementSibling.className.includes( 'show' )
+					) {
+						match.classList.add( 'show' );
+					}
 				} );
 			},
 		};

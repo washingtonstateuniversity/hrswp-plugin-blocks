@@ -36,7 +36,7 @@ function render_job_classification_range_url( $salary_data_url, $range_url_param
 	return sprintf(
 		'<a href="%1$s?filter=%2$s">%3$s</a>',
 		esc_url( $salary_data_url ),
-		'%22' . esc_attr( $range_url_param ). '%22',
+		'%22' . esc_attr( $range_url_param ) . '%22',
 		render_job_classification_name( $range )
 	);
 }

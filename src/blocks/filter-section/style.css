@@ -11,16 +11,6 @@
 	display: inline-block;
 }
 
-/* Do not hide headings if 'retainHeadings' attribute is true. */
-.has-retain-headings .wp-block-hrswp-filter-section.filtering-active h1,
-.has-retain-headings .wp-block-hrswp-filter-section.filtering-active h2,
-.has-retain-headings .wp-block-hrswp-filter-section.filtering-active h3,
-.has-retain-headings .wp-block-hrswp-filter-section.filtering-active h4,
-.has-retain-headings .wp-block-hrswp-filter-section.filtering-active h5,
-.has-retain-headings .wp-block-hrswp-filter-section.filtering-active h6 {
-	display: block;
-}
-
 /* Special rules to make table filtering a little more graceful. */
 .wp-block-hrswp-filter-section.filtering-active table.show thead {
 	display: table-header-group;
