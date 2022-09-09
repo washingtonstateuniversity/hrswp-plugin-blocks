@@ -6,13 +6,13 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const {
+import {
 	RichText,
 	useBlockProps,
-	__experimentalGetBorderClassesAndStyles: getBorderClassesAndStyles,
-	__experimentalGetColorClassesAndStyles: getColorClassesAndStyles,
-	__experimentalGetSpacingClassesAndStyles: getSpacingClassesAndStyles,
-} = wp.blockEditor;
+	__experimentalGetBorderClassesAndStyles as getBorderClassesAndStyles,
+	__experimentalGetColorClassesAndStyles as getColorClassesAndStyles,
+	__experimentalGetSpacingClassesAndStyles as getSpacingClassesAndStyles,
+} from '@wordpress/block-editor';
 
 export default function save( { attributes, className } ) {
 	const { fontSize, linkTarget, rel, style, text, title, url, width } =

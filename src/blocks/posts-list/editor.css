@@ -1,4 +1,3 @@
-/* stylelint-disable selector-class-pattern */
 .components-panel__body.hrswp-block-posts-list.taxonomy-filter {
 
 	& .taxonomy-filter--body {
@@ -72,4 +71,3 @@
 	}
 
 }
-/* stylelint-enable selector-class-pattern */

@@ -12,11 +12,9 @@
 	align-items: center;
 }
 
-/* stylelint-disable selector-class-pattern */
 .wp-block-hrswp-buttons.is-vertical > .block-list-appender .block-list-appender__toggle {
 	justify-content: flex-start;
 }
-/* stylelint-enable selector-class-pattern */
 
 .wp-block-hrswp-buttons > .wp-block-hrswp-button:focus {
 	box-shadow: none;

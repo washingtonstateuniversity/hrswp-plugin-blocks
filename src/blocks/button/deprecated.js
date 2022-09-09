@@ -7,16 +7,16 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const {
+import {
 	RichText,
 	getColorClassName,
 	useBlockProps,
 	__experimentalGetGradientClass,
-	__experimentalGetBorderClassesAndStyles: getBorderClassesAndStyles,
-	__experimentalGetColorClassesAndStyles: getColorClassesAndStyles,
-	__experimentalGetSpacingClassesAndStyles: getSpacingClassesAndStyles,
-} = wp.blockEditor;
-const { compose } = wp.compose;
+	__experimentalGetBorderClassesAndStyles as getBorderClassesAndStyles,
+	__experimentalGetColorClassesAndStyles as getColorClassesAndStyles,
+	__experimentalGetSpacingClassesAndStyles as getSpacingClassesAndStyles,
+} from '@wordpress/block-editor';
+import { compose } from '@wordpress/compose';
 
 /**
  * Internal dependencies
