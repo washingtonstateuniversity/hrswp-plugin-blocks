@@ -21,11 +21,31 @@ Changelog formatting (http://semver.org/):
 
 ### Added
 
+- Create Job Classifications block. (14467ac)
 - Create Salary Data block. (b86b44b)
 - Create List Awards block. (1641b53)
 - Add plugin dependency check for required SQLSRV DB plugin. (1641b53)
 - Create HRSWP external content block category. (1641b53)
 - Add REST API store, queries, and sideload image class; update to handle award image data. (b32fa2e, 1641b53)
+
+### Changed
+
+- Clean up: Prefer `import` to `const` for WP dependencies and standardize `block.json`. (acb2694)
+- Wrap Job Classifications block range URL param in quotation marks for exact search. (b45ca5d)
+- Set up `filter.js` class to allow exact match searches and to ignore commas. (f563948)
+- Upgrade postcss-import from 14.0.2 to 15.0.0. (3a2d0b9)
+- Upgrade @wordpress/scripts from 23.0.0 to 24.0.0. (3a2d0b9)
+- Update @wordpress/icons from 9.2.0 to 9.7.0. (3a2d0b9)
+- Update postcss-preset-env from 7.7.2 to 7.8.1. (3a2d0b9)
+- Update Composer dependencies. (7effe5f)
+
+### Fixed
+
+- Fix #3 get Filter block "retain headings" option working. (60c1397)
+
+### Security
+
+- Bump cssnano from 5.1.12 to 5.1.13. (3a2d0b9)
 
 ## 3.1.1 (2022-06-30)
 
