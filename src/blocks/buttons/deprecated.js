@@ -5,7 +5,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { InnerBlocks, useBlockProps } = wp.blockEditor;
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * @param {Object} attributes Block's attributes.

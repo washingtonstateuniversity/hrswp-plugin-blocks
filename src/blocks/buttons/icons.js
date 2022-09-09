@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { Path, SVG } = wp.primitives;
+import { Path, SVG } from '@wordpress/components';
 
 export const buttons = (
 	<SVG viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

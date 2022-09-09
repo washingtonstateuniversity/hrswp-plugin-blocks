@@ -1,14 +1,14 @@
 /**
  * WordPress dependencies
  */
-const { sprintf, __ } = wp.i18n;
-const { useSelect } = wp.data;
-const {
+import { sprintf, __ } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
+import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
-	store: blockEditorStore,
-} = wp.blockEditor;
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
 
 function SearchFilterSectionEdit( { clientId } ) {
 	const { searchSectionIds, hasChildBlocks } = useSelect(

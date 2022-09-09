@@ -6,22 +6,28 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { useCallback, useEffect, useState, useRef } = wp.element;
-const { Button, ButtonGroup, PanelBody, TextControl, ToolbarButton, Popover } =
-	wp.components;
-const {
+import { __ } from '@wordpress/i18n';
+import { useCallback, useEffect, useState, useRef } from '@wordpress/element';
+import {
+	Button,
+	ButtonGroup,
+	PanelBody,
+	TextControl,
+	ToolbarButton,
+	Popover,
+} from '@wordpress/components';
+import {
 	BlockControls,
 	InspectorControls,
 	RichText,
 	useBlockProps,
-	__experimentalUseBorderProps: useBorderProps,
-	__experimentalUseColorProps: useColorProps,
-	__experimentalGetSpacingClassesAndStyles: useSpacingProps,
-	__experimentalLinkControl: LinkControl,
-} = wp.blockEditor;
-const { displayShortcut, isKeyboardEvent } = wp.keycodes;
-const { createBlock } = wp.blocks;
+	__experimentalUseBorderProps as useBorderProps,
+	__experimentalUseColorProps as useColorProps,
+	__experimentalGetSpacingClassesAndStyles as useSpacingProps,
+	__experimentalLinkControl as LinkControl,
+} from '@wordpress/block-editor';
+import { displayShortcut, isKeyboardEvent } from '@wordpress/keycodes';
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Internal dependencies

@@ -1,4 +1,3 @@
-/* stylelint-disable selector-class-pattern */
 .hrswp-block-posts-list__list-item {
 	margin-bottom: 0.7rem;
 	position: relative;
@@ -337,4 +336,3 @@
 	}
 
 }
-/* stylelint-enable selector-class-pattern */
