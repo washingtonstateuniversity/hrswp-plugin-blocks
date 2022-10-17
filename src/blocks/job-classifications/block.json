@@ -1,7 +1,7 @@
 {
-    "apiVersion": 2,
+	"apiVersion": 2,
 	"name": "hrswp/job-classifications",
-    "title": "HRS Job Classifications",
+	"title": "HRS Job Classifications",
 	"category": "hrswp-blocks-external",
 	"description": "Display WSU job classification data.",
 	"textdomain": "default",
@@ -33,5 +33,8 @@
 			"isDefault": true
 		},
 		{ "name": "stripes", "label": "Striped Table" }
-	]
+	],
+	"editorScript": "hrswp-blocks-script",
+	"editorStyle": "hrswp-blocks-editor-style",
+	"style": "hrswp-blocks-style"
 }

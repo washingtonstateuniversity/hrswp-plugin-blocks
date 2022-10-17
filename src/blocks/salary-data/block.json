@@ -21,5 +21,8 @@
 			"isDefault": true
 		},
 		{ "name": "stripes", "label": "Stripes" }
-	]
+	],
+	"editorScript": "hrswp-blocks-script",
+	"editorStyle": "hrswp-blocks-editor-style",
+	"style": "hrswp-blocks-style"
 }
