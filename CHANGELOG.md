@@ -30,6 +30,8 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump required PHP version to 7.4.
+- Move settings page management to HRS theme. (db25950)
 - Clean up: Prefer `import` to `const` for WP dependencies and standardize `block.json`. (acb2694)
 - Wrap Job Classifications block range URL param in quotation marks for exact search. (b45ca5d)
 - Set up `filter.js` class to allow exact match searches and to ignore commas. (f563948)
@@ -46,6 +48,7 @@ Changelog formatting (http://semver.org/):
 ### Security
 
 - Bump cssnano from 5.1.12 to 5.1.13. (3a2d0b9)
+- Bump terser from 5.14.1 to 5.14.2. (ce6fa64)
 
 ## 3.1.1 (2022-06-30)
 
