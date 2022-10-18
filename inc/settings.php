@@ -65,36 +65,6 @@ function sanitize_setting_int_list( string $value ): string {
 }
 
 /**
- * Displays the plugin settings page.
- *
- * @since 3.1.0
- *
- * @see settings_fields
- * @see do_settings_sections
- * @see submit_button
- * @return void
- */
-function settings_page_content(): void {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		return;
-	}
-
-	ob_start();
-	settings_fields( 'hrswp-blocks' );
-	do_settings_sections( 'hrswp-blocks' );
-	submit_button();
-	$fields = ob_get_contents();
-	ob_end_clean();
-
-	printf(
-		'<div class="wrap"><h1>%1$s</h1><form action="options.php" method="post">%2$s</form></div>',
-		esc_html( get_admin_page_title() ),
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		$fields
-	);
-}
-
-/**
  * Registers plugin settings and settings form fields.
  *
  * @since 3.1.0
@@ -106,7 +76,7 @@ function settings_page_content(): void {
 add_action(
 	'admin_init',
 	function(): void {
-		$slug   = 'hrswp-blocks';
+		$slug   = 'hrswp-theme';
 		$option = 'hrswp_plugins_protected_ids';
 
 		register_setting(
@@ -130,26 +100,6 @@ add_action(
 			__NAMESPACE__ . '\settings_field_protected_ids',
 			$slug,
 			$slug . '_section_protected_ids'
-		);
-	}
-);
-
-/**
- * Registers the plugin settings page.
- *
- * @since 3.1.0
- *
- * @see add_options_page
- */
-add_action(
-	'admin_menu',
-	function(): void {
-		add_options_page(
-			esc_html__( 'HRSWP Plugin Settings', 'hrswp-blocks' ),
-			esc_html__( 'HRSWP Plugins', 'hrswp-blocks' ),
-			'manage_options',
-			'hrswp-blocks',
-			__NAMESPACE__ . '\settings_page_content'
 		);
 	}
 );
