@@ -36,7 +36,7 @@ These blocks -- and therefore the plugin -- require the [HRSWP Sqlsrv DB plugin]
 
 ### Settings
 
-The HRSWP Blocks plugin also includes optional block editor publication status protection. In **Settings > HRSWP Plugins**, the "Protected Posts and Pages" setting allows admins to specify a list of page or post IDs to restrict publication status actions. The "revert to draft" option will be removed from any published page or post in this list for non-admin users.
+The HRSWP Blocks plugin also includes optional block editor publication status protection. In **Settings > HRS Settings**, the "Protected IDs" setting allows admins to specify a list of page or post IDs to restrict publication status actions. The "revert to draft" option will be removed from any published page or post in this list for non-admin users.
 
 ## Installation
 
