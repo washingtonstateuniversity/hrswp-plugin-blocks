@@ -30,6 +30,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump WP tested-to to 6.0.3.
 - Bump required PHP version to 7.4.
 - Move settings page management to HRS theme. (db25950)
 - Clean up: Prefer `import` to `const` for WP dependencies and standardize `block.json`. (acb2694)
