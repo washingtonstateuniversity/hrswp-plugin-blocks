@@ -1,0 +1,25 @@
+{
+	"apiVersion": 2,
+	"name": "hrswp/salary-data",
+	"title": "HRS Salary Data",
+	"category": "hrswp-blocks-external",
+	"description": "Display WSU salary data.",
+	"textdomain": "default",
+	"attributes": {
+		"queryTable": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		},
+		{ "name": "stripes", "label": "Stripes" }
+	]
+}

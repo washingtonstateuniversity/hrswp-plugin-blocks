@@ -1,0 +1,9 @@
+.hrswp-list-awards-block .award-item figure {
+	margin-top: 0;
+}
+
+.hrswp-list-awards-block .award-title,
+.hrswp-list-awards-block .award-description,
+.hrswp-list-awards-block .award-meta {
+	margin: 0;
+}

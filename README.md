@@ -1,6 +1,6 @@
 # HRSWP Blocks
 
-[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest) ![WordPress tested up to version 6.0.0](https://img.shields.io/badge/WordPress-v6.0.0%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/LICENSE.md)
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest) ![WordPress tested up to version 6.0.3](https://img.shields.io/badge/WordPress-v6.0.3%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/LICENSE.md)
 
 ## Overview
 
@@ -10,7 +10,7 @@ The WSU HRS WordPress plugin provides custom blocks tailored for the [WSU Human 
 
 ### Blocks
 
-This plugin adds several custom blocks. Some provide relatively simple layout blocks and others provide more complex blocks that include front-end JavaScript. It adds the following blocks:
+This plugin adds several custom blocks. Some provide relatively simple layout blocks and others provide more complex blocks that include front-end JavaScript. It adds the following content blocks:
 
 - Accordion
 - Callout
@@ -26,9 +26,17 @@ The plugin replaces the following WP Core blocks:
 - Button
 - Buttons
 
+The plugin also adds several blocks that handle displaying position data from external data sources. These blocks are:
+
+- Job Classifications
+- Salary Data
+- List Awards
+
+These blocks -- and therefore the plugin -- require the [HRSWP Sqlsrv DB plugin](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db) to function properly.
+
 ### Settings
 
-The HRSWP Blocks plugin also includes optional block editor publication status protection. In **Settings > HRSWP Plugins**, the "Protected Posts and Pages" setting allows admins to specify a list of page or post IDs to restrict publication status actions. The "revert to draft" option will be removed from any published page or post in this list for non-admin users.
+The HRSWP Blocks plugin also includes optional block editor publication status protection. In **Settings > HRS Settings**, the "Protected IDs" setting allows admins to specify a list of page or post IDs to restrict publication status actions. The "revert to draft" option will be removed from any published page or post in this list for non-admin users.
 
 ## Installation
 
@@ -39,6 +47,10 @@ This plugin is not in the WordPress plugins directory. You have to install it ma
 3. Select Plugins > Add New and then select the "Upload Plugin" button.
 4. Select "Browse" and locate the downloaded .zip file for the plugin (it **must** be a file in .zip format) on your computer. Select "Install Now."
 5. You should receive a message that the plugin installed correctly. Select "Activate Plugin" or return to the plugins page to activate later.
+
+### Dependencies
+
+This plugin requires the [HRSWP Sqlsrv DB plugin](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db) to ensure the external content blocks function properly. This plugin must be installed separately.
 
 ### Updates
 

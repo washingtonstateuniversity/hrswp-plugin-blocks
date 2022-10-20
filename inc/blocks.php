@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Include files required for dynamic block registration.
 require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/posts-list/index.php';
+require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/list-awards/index.php';
+require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/salary-data/index.php';
+require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/job-classifications/index.php';
 
 /**
 * Registers HRSWP blocks.
@@ -43,4 +46,29 @@ add_action(
 			);
 		}
 	}
+);
+
+/**
+ * Adds a custom block category for the plugin blocks.
+ *
+ * Callback function for the `block_categories` WP filter hook.
+ *
+ * @since 3.2.0
+ *
+ * @param array $default_categories Array of default block categories.
+ * @return array Array of block categories.
+ */
+add_filter(
+	'block_categories_all',
+	function( array $default_categories ): array {
+		$plugin_categories = array(
+			array(
+				'slug'  => 'hrswp-blocks-external',
+				'title' => __( 'HRS External Content', 'hrswp-blocks' ),
+			),
+		);
+		return wp_parse_args( $plugin_categories, $default_categories );
+	},
+	10,
+	1
 );

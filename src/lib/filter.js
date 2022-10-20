@@ -22,6 +22,9 @@ class Filter {
 		this._content = content.querySelector(
 			'.wp-block-hrswp-filter-section'
 		);
+		this._hasRetainHeadings = content.className.includes(
+			'has-retain-headings'
+		);
 
 		this._setupSearchField();
 
@@ -58,8 +61,8 @@ class Filter {
 	 */
 	find() {
 		const instance = this._markInstance;
-		const keyword = this._searchInput.value;
 		const content = this._content;
+		const inputValue = this._searchInput.value;
 
 		/**
 		 * @type {NodeList} All nodes with the class 'show' assigned by a previous filter.
@@ -67,10 +70,21 @@ class Filter {
 		const previousMatches = content.querySelectorAll( '.show' );
 		const currentMatches = [];
 
+		const exactMatch =
+			decodeURIComponent( inputValue ).startsWith( '"' ) &&
+			decodeURIComponent( inputValue ).endsWith( '"' );
+
+		const keyword = exactMatch
+			? inputValue.replaceAll( '"', '' )
+			: inputValue;
+
 		/**
 		 * @type {Object} Options for the mark.js `mark()` method
 		 */
 		const options = {
+			accuracy: exactMatch ? 'exactly' : 'partially',
+			separateWordSearch: exactMatch ? false : true,
+			ignorePunctuation: [ ',' ],
 			/**
 			 * A callback to filter content based on matches.
 			 *
@@ -144,6 +158,21 @@ class Filter {
 					match.classList.remove( 'show' );
 				} );
 			},
+			done: ( totalMarks ) => {
+				if ( ! totalMarks || ! this._hasRetainHeadings ) {
+					return false;
+				}
+				const matchedElements = this._parent.querySelectorAll(
+					'h1, h2, h3, h4, h5, h6'
+				);
+				matchedElements.forEach( ( match ) => {
+					if (
+						match.nextElementSibling.className.includes( 'show' )
+					) {
+						match.classList.add( 'show' );
+					}
+				} );
+			},
 		};
 
 		/**
@@ -176,7 +205,9 @@ class Filter {
 			const params = new URLSearchParams( window.location.search );
 			const filterValue = params.get( 'filter' );
 			if ( null !== filterValue ) {
-				this._searchInput.value = encodeURIComponent( filterValue );
+				this._searchInput.value = encodeURIComponent(
+					filterValue
+				).replaceAll( '%22', '"' );
 				this.find();
 			}
 		}

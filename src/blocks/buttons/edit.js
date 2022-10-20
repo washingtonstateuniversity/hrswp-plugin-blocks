@@ -6,12 +6,12 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const {
+import {
 	useBlockProps,
 	useInnerBlocksProps,
-	store: blockEditorStore,
-} = wp.blockEditor;
-const { useSelect } = wp.data;
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
 
 /**
  * Internal dependencies

@@ -1,8 +1,12 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "hrswp/filter-section",
+	"title": "Filter Section",
 	"category": "widgets",
+	"description": "A single section of content to search within.",
 	"parent": [ "hrswp/filter" ],
+	"textdomain": "default",
 	"supports": {
 		"reusable": false
 	},

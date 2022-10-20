@@ -1,22 +1,25 @@
 /**
- * WordPress dependencies
+ * External dependencies
  */
-const { __ } = wp.i18n;
-const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls, useInnerBlocksProps, useBlockProps } =
-	wp.blockEditor;
+import classnames from 'classnames';
 
 /**
- * The Allowed Blocks.
- *
- * The allowed blocks constant is passed to InnerBlocks as specified here.
- * The only block allowed in the Search Filter block is the Search Filter
- * Section block (hrswp/filter-section).
- *
- * @constant
- * @type {string[]}
+ * WordPress dependencies
  */
-const ALLOWED_BLOCKS = [ 'hrswp/filter-section' ];
+import { __ } from '@wordpress/i18n';
+import { PanelBody, ToggleControl } from '@wordpress/components';
+import {
+	InspectorControls,
+	useInnerBlocksProps,
+	useBlockProps,
+} from '@wordpress/block-editor';
+
+/**
+ * Internal dependencies
+ */
+import { name as filterSectionName } from '../filter-section';
+
+const ALLOWED_BLOCKS = [ filterSectionName ];
 
 /**
  * The block template.
@@ -24,11 +27,16 @@ const ALLOWED_BLOCKS = [ 'hrswp/filter-section' ];
  * @constant
  * @type {string[]}
  */
-const TEMPLATE = [ [ 'hrswp/filter-section' ] ];
+const TEMPLATE = [ [ filterSectionName ] ];
 
-function SearchFilterEdit( { attributes, setAttributes } ) {
+function SearchFilterEdit( { attributes, setAttributes, className } ) {
 	const { retainHeadings } = attributes;
-	const blockProps = useBlockProps();
+
+	const wrapperClasses = classnames( className, {
+		'has-retain-headings': retainHeadings,
+	} );
+
+	const blockProps = useBlockProps( { className: wrapperClasses } );
 	const innerBlockProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,

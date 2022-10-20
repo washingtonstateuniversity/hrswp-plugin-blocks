@@ -1,7 +1,15 @@
 {
+  "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
   "name": "hrswp/filter",
+  "title": "Filter",
   "category": "widgets",
+  "description": "Search and filter a section of content by full text.",
+  "keywords": [
+    "filter",
+    "search"
+  ],
+  "textdomain": "default",
   "attributes": {
     "retainHeadings": {
       "type": "boolean",

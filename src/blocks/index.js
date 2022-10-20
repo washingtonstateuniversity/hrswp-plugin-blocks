@@ -15,9 +15,12 @@ import * as buttons from './buttons';
 import * as postsList from './posts-list';
 import * as filter from './filter';
 import * as filterSection from './filter-section';
+import * as jobClassifications from './job-classifications';
 import * as callout from './callout';
 import * as notification from './notification';
 import * as sidebar from './sidebar';
+import * as listAwards from './list-awards';
+import * as salaryData from './salary-data';
 
 const hrsBlocks = [
 	accordionHeading,
@@ -28,9 +31,12 @@ const hrsBlocks = [
 	postsList,
 	filter,
 	filterSection,
+	jobClassifications,
 	callout,
 	notification,
 	sidebar,
+	listAwards,
+	salaryData,
 ];
 
 const hiddenBlocks = [
