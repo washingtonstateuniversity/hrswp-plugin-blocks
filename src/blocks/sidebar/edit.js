@@ -58,7 +58,9 @@ function SidebarEditContainer( { attributes, setAttributes } ) {
 		<>
 			<BlockControls>
 				<BlockVerticalAlignmentToolbar
-					onChange={ () => setAttributes( { verticalAlignment } ) }
+					onChange={ ( value ) =>
+						setAttributes( { verticalAlignment: value } )
+					}
 					value={ verticalAlignment }
 				/>
 				<ToolbarButton
