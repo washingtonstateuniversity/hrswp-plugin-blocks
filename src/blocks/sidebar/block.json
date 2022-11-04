@@ -7,13 +7,24 @@
 	"description": "Display content in a sidebar-style layout (two-thirds and one-third).",
 	"keywords": [ "sidebar", "columns" ],
 	"textdomain": "default",
-	"supports": {
-		"align": true
+	"attributes": {
+		"verticalAlignment": {
+			"type": "string"
+		},
+		"isStackedOnMobile": {
+			"type": "boolean",
+			"default": true
+		},
+		"sidebarPosition": {
+			"type": "string",
+			"default": "right"
+		}
 	},
-	"styles": [
-		{ "name": "sidebar-right", "label": "Right", "isDefault": true },
-		{ "name": "sidebar-left", "label": "Left" }
-	],
+	"supports": {
+		"anchor": true,
+		"align": true,
+		"html": false
+	},
 	"editorScript": "hrswp-blocks-script",
 	"editorStyle": "hrswp-blocks-editor-style",
 	"style": "hrswp-blocks-style"
