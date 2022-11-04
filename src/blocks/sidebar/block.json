@@ -7,8 +7,19 @@
 	"description": "Display content in a sidebar-style layout (two-thirds and one-third).",
 	"keywords": [ "sidebar", "columns" ],
 	"textdomain": "default",
+	"attributes": {
+		"verticalAlignment": {
+			"type": "string"
+		},
+		"isStackedOnMobile": {
+			"type": "boolean",
+			"default": true
+		}
+	},
 	"supports": {
-		"align": true
+		"anchor": true,
+		"align": true,
+		"html": false
 	},
 	"styles": [
 		{ "name": "sidebar-right", "label": "Right", "isDefault": true },
