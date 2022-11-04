@@ -20,6 +20,7 @@ const variations = [
 		name: 'sidebar-left',
 		title: __( 'Sidebar left' ),
 		icon: sidebarLeft,
+		attributes: { sidebarPosition: 'left' },
 		innerBlocks: [ [ 'core/column' ], [ 'core/column' ] ],
 		scope: [ 'block' ],
 	},
