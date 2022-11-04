@@ -14,6 +14,10 @@
 		"isStackedOnMobile": {
 			"type": "boolean",
 			"default": true
+		},
+		"sidebarPosition": {
+			"type": "string",
+			"default": "right"
 		}
 	},
 	"supports": {
@@ -21,10 +25,6 @@
 		"align": true,
 		"html": false
 	},
-	"styles": [
-		{ "name": "sidebar-right", "label": "Right", "isDefault": true },
-		{ "name": "sidebar-left", "label": "Left" }
-	],
 	"editorScript": "hrswp-blocks-script",
 	"editorStyle": "hrswp-blocks-editor-style",
 	"style": "hrswp-blocks-style"

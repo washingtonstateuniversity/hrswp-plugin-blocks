@@ -8,7 +8,7 @@ import { get } from 'lodash';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, ToolbarButton } from '@wordpress/components';
 import {
 	InspectorControls,
 	BlockControls,
@@ -22,6 +22,7 @@ import {
 	createBlocksFromInnerBlocksTemplate,
 	store as blocksStore,
 } from '@wordpress/blocks';
+import { pullLeft, pullRight } from '@wordpress/icons';
 import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
@@ -33,9 +34,11 @@ import { useDispatch, useSelect } from '@wordpress/data';
 const ALLOWED_BLOCKS = [];
 
 function SidebarEditContainer( { attributes, setAttributes } ) {
-	const { isStackedOnMobile, verticalAlignment } = attributes;
+	const { isStackedOnMobile, sidebarPosition, verticalAlignment } =
+		attributes;
 
 	const classes = classnames( {
+		[ `has-sidebar-on-the-left` ]: 'left' === sidebarPosition,
 		[ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 		[ `is-not-stacked-on-mobile` ]: ! isStackedOnMobile,
 	} );
@@ -53,6 +56,22 @@ function SidebarEditContainer( { attributes, setAttributes } ) {
 				<BlockVerticalAlignmentToolbar
 					onChange={ () => setAttributes( { verticalAlignment } ) }
 					value={ verticalAlignment }
+				/>
+				<ToolbarButton
+					icon={ pullLeft }
+					title={ __( 'Show sidebar on left' ) }
+					isActive={ sidebarPosition === 'left' }
+					onClick={ () =>
+						setAttributes( { sidebarPosition: 'left' } )
+					}
+				/>
+				<ToolbarButton
+					icon={ pullRight }
+					title={ __( 'Show sidebar on right' ) }
+					isActive={ sidebarPosition === 'right' }
+					onClick={ () =>
+						setAttributes( { sidebarPosition: 'right' } )
+					}
 				/>
 			</BlockControls>
 			<InspectorControls>
