@@ -22,8 +22,12 @@ import {
 	createBlocksFromInnerBlocksTemplate,
 	store as blocksStore,
 } from '@wordpress/blocks';
-import { pullLeft, pullRight } from '@wordpress/icons';
 import { useDispatch, useSelect } from '@wordpress/data';
+
+/**
+ * Internal dependencies
+ */
+import { sidebarRight, sidebarLeft } from './icons';
 
 /**
  * Set allowed blocks to empty array to prevent adding columns.
@@ -58,7 +62,7 @@ function SidebarEditContainer( { attributes, setAttributes } ) {
 					value={ verticalAlignment }
 				/>
 				<ToolbarButton
-					icon={ pullLeft }
+					icon={ sidebarLeft }
 					title={ __( 'Show sidebar on left' ) }
 					isActive={ sidebarPosition === 'left' }
 					onClick={ () =>
@@ -66,7 +70,7 @@ function SidebarEditContainer( { attributes, setAttributes } ) {
 					}
 				/>
 				<ToolbarButton
-					icon={ pullRight }
+					icon={ sidebarRight }
 					title={ __( 'Show sidebar on right' ) }
 					isActive={ sidebarPosition === 'right' }
 					onClick={ () =>
