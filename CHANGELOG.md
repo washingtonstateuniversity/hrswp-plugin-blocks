@@ -19,6 +19,18 @@ Changelog formatting (http://semver.org/):
 
 ## 3.3.0-rc.1 (:construction: TBD)
 
+### Changed
+
+- Switch from block template to variations with a placeholder for Sidebar block. (2da11fe)
+- Add vertical alignment and stacked-on-mobile attributes for Sibebar block. (2da11fe)
+- Switch from block style to attribute for sidebar orientation on Sidebar block. (2da11fe)
+- Update sidebar icons. (2da11fe)
+
+### Fixed
+
+- Remove inner-block locking to fix missing render appender on Sidebar block and set allowed blocks to empty to prevent inserting new columns. (2da11fe)
+- Only show awards when a database table is selected on the Award Viewer block. (158f2ce)
+
 ## 3.2.0 (2022-10-20)
 
 ### Added
