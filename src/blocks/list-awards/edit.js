@@ -95,10 +95,12 @@ export default function ListAwardsEdit( { attributes, setAttributes } ) {
 					) }
 				</Placeholder>
 			) }
-			<ServerSideRender
-				block="hrswp/list-awards"
-				attributes={ attributes }
-			/>
+			{ queryTable && (
+				<ServerSideRender
+					block="hrswp/list-awards"
+					attributes={ attributes }
+				/>
+			) }
 		</div>
 	);
 }
