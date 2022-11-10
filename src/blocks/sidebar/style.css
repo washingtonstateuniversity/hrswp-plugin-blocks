@@ -20,6 +20,14 @@
 	&.are-vertically-aligned-bottom {
 		align-items: flex-end;
 	}
+
+	&:not(.is-not-stacked-on-mobile) > .wp-block-column {
+		flex-basis: 100%;
+	}
+
+	&.is-not-stacked-on-mobile {
+		flex-wrap: nowrap !important;
+	}
 }
 
 @media (min-width: 900px) {
@@ -28,20 +36,27 @@
 		flex-wrap: nowrap;
 	}
 
-	/* Have to use !important to override Core columns inline styles. */
-	.wp-block-hrswp-sidebar:not(.is-style-sidebar-left) > .wp-block-column:first-child {
+	/*
+	 * Have to use !important to override Core columns inline styles.
+	 * Since v3.3.0, .is-style-sidebar-left retained for back compat.
+	 */
+	.wp-block-hrswp-sidebar:not(.is-style-sidebar-left) > .wp-block-column:first-child,
+	.wp-block-hrswp-sidebar:not(.has-sidebar-on-the-left) > .wp-block-column:first-child {
 		flex-basis: 70% !important;
 	}
 
-	.wp-block-hrswp-sidebar:not(.is-style-sidebar-left) > .wp-block-column:last-child {
+	.wp-block-hrswp-sidebar:not(.is-style-sidebar-left) > .wp-block-column:last-child,
+	.wp-block-hrswp-sidebar:not(.has-sidebar-on-the-left) > .wp-block-column:last-child {
 		flex-basis: 30% !important;
 	}
 
-	.wp-block-hrswp-sidebar.is-style-sidebar-left > .wp-block-column:first-child {
+	.wp-block-hrswp-sidebar.is-style-sidebar-left > .wp-block-column:first-child,
+	.wp-block-hrswp-sidebar.has-sidebar-on-the-left > .wp-block-column:first-child {
 		flex-basis: 30% !important;
 	}
 
-	.wp-block-hrswp-sidebar.is-style-sidebar-left > .wp-block-column:last-child {
+	.wp-block-hrswp-sidebar.is-style-sidebar-left > .wp-block-column:last-child,
+	.wp-block-hrswp-sidebar.has-sidebar-on-the-left > .wp-block-column:last-child {
 		flex-basis: 70% !important;
 	}
 

@@ -10,20 +10,24 @@
     "columns"
   ],
   "textdomain": "default",
-  "supports": {
-    "align": true
-  },
-  "styles": [
-    {
-      "name": "sidebar-right",
-      "label": "Right",
-      "isDefault": true
+  "attributes": {
+    "verticalAlignment": {
+      "type": "string"
     },
-    {
-      "name": "sidebar-left",
-      "label": "Left"
+    "isStackedOnMobile": {
+      "type": "boolean",
+      "default": true
+    },
+    "sidebarPosition": {
+      "type": "string",
+      "default": "right"
     }
-  ],
+  },
+  "supports": {
+    "anchor": true,
+    "align": true,
+    "html": false
+  },
   "editorScript": "hrswp-blocks-script",
   "editorStyle": "hrswp-blocks-editor-style",
   "style": "hrswp-blocks-style"
