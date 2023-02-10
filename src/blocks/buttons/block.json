@@ -1,4 +1,5 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "hrswp/buttons",
 	"title": "Buttons",
@@ -6,6 +7,11 @@
 	"description": "Prompt visitors to take action with one or more buttons.",
 	"keywords": [ "link" ],
 	"textdomain": "default",
+	"attributes": {
+		"contentPosition": {
+			"type": "string"
+		}
+	},
 	"supports": {
 		"anchor": true,
 		"align": [ "wide", "full" ],
