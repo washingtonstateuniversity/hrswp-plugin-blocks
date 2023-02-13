@@ -22,19 +22,18 @@ const POSITION_CLASSNAMES = {
 
 export default function save( props ) {
 	const {
-		attributes: { layout = {}, contentPosition },
+		attributes: { layout = {}, contentPosition, supportsPosition },
 		className,
 	} = props;
 	const { orientation, justifyContent } = layout;
 
-	const wrapperClasses = classnames(
-		className,
-		{
-			[ `is-content-justification-${ justifyContent }` ]: justifyContent,
-			[ `is-${ orientation }` ]: orientation,
-		},
-		POSITION_CLASSNAMES[ contentPosition ]
-	);
+	const wrapperClasses = classnames( className, {
+		[ `is-content-justification-${ justifyContent }` ]: justifyContent,
+		[ `is-${ orientation }` ]: orientation,
+		[ `has-position-support` ]: supportsPosition,
+		[ POSITION_CLASSNAMES[ contentPosition ] ??
+		'is-position-bottom-right' ]: supportsPosition,
+	} );
 
 	const blockProps = useBlockProps.save( { className: wrapperClasses } );
 	const innerBlocksProps = useInnerBlocksProps.save( blockProps );

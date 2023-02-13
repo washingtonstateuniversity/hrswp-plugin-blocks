@@ -8,8 +8,13 @@
 	"keywords": [ "link" ],
 	"textdomain": "default",
 	"attributes": {
+		"supportsPosition": {
+			"type": "boolean",
+			"default": false
+		},
 		"contentPosition": {
-			"type": "string"
+			"type": "string",
+			"default": "bottomRight"
 		}
 	},
 	"supports": {

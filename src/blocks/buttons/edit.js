@@ -8,11 +8,13 @@ import classnames from 'classnames';
  */
 import {
 	BlockControls,
+	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
 	__experimentalBlockAlignmentMatrixControl as BlockAlignmentMatrixControl,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
@@ -37,20 +39,19 @@ const POSITION_CLASSNAMES = {
 
 function ButtonsEdit( props ) {
 	const {
-		attributes: { layout = {}, contentPosition },
+		attributes: { layout = {}, contentPosition, supportsPosition },
 		setAttributes,
 		className,
 	} = props;
 	const { orientation, justifyContent } = layout;
 
-	const wrapperClasses = classnames(
-		className,
-		{
-			[ `is-content-justification-${ justifyContent }` ]: justifyContent,
-			[ `is-${ orientation }` ]: orientation,
-		},
-		POSITION_CLASSNAMES[ contentPosition ]
-	);
+	const wrapperClasses = classnames( className, {
+		[ `is-content-justification-${ justifyContent }` ]: justifyContent,
+		[ `is-${ orientation }` ]: orientation,
+		[ `has-position-support` ]: supportsPosition,
+		[ POSITION_CLASSNAMES[ contentPosition ] ??
+		'is-position-bottom-right' ]: supportsPosition,
+	} );
 
 	const blockProps = useBlockProps( { className: wrapperClasses } );
 
@@ -86,6 +87,19 @@ function ButtonsEdit( props ) {
 					}
 				/>
 			</BlockControls>
+			<InspectorControls>
+				<PanelBody title={ __( 'Positioning' ) }>
+					<ToggleControl
+						label={ __( 'Fixed position' ) }
+						checked={ supportsPosition }
+						onChange={ () =>
+							setAttributes( {
+								supportsPosition: ! supportsPosition,
+							} )
+						}
+					/>
+				</PanelBody>
+			</InspectorControls>
 			<div { ...innerBlocksProps } />
 		</>
 	);
