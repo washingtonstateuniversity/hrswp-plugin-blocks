@@ -39,3 +39,46 @@
 .wp-block[data-align="right"] > .wp-block-hrswp-buttons {
 	justify-content: flex-end;
 }
+
+.wp-block-hrswp-buttons.has-position-support {
+
+	&.is-position-top-left,
+	&.is-position-center-left,
+	&.is-position-bottom-left {
+		left: 2rem;
+	}
+
+	&.is-position-bottom-left,
+	&.is-position-bottom-center,
+	&.is-position-bottom-right {
+		margin-bottom: 2rem;
+	}
+
+}
+
+.is-sidebar-opened .wp-block-hrswp-buttons.has-position-support {
+
+	&.is-position-top-center,
+	&.is-position-top-right,
+	&.is-position-center-center,
+	&.is-position-center-right,
+	&.is-position-bottom-center,
+	&.is-position-bottom-right {
+		transform: translateX(-281px);
+	}
+
+}
+
+@media (min-width: 782px) {
+
+	.wp-block-hrswp-buttons.has-position-support {
+
+		&.is-position-top-center,
+		&.is-position-top-left,
+		&.is-position-top-right {
+			top: 5rem;
+		}
+
+	}
+
+}
