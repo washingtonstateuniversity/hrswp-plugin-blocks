@@ -17,6 +17,31 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 3.4.0 (2023-02-15)
+
+### Added
+
+- Create a floating action button option for the button block. (10a204a)
+
+### Changed
+
+- Upgrade @wordpress/scripts from 24.0.0 to 25.3.0. (a980667)
+- Upgrade postcss-preset-env from 7.3.1 to 8.0.1. (db6e421)
+- Upgrade dealerdirect/phpcodesniffer-composer-installer from 0.7.2 to 1.0.0. (8b42085)
+- Update @wordpress/icons from 9.0.0 to 9.17.0. (394aed6)
+- Update postcss-import from 15.0.0 to 15.1.0. (4c9ffb4)
+- Update roave/security-advisories. (ab62a6d)
+
+### Security
+
+- Bump sirbrillig/phpcs-variable-analysis from 2.11.8 to 2.11.10. (bb2ac3f)
+- Bump phpcompatibility tools. (6176d00)
+- Bump classnames from 2.3.1 to 2.3.2. (472f2e7)
+- Bump cssnano from 5.1.13 to 5.1.14. (b910c94)
+- Bump @sideway/formula from 3.0.0 to 3.0.1 (fe0e58e)
+- Bump loader-utils from 2.0.3 to 2.0.4 (7b8d701)
+- Bump json5 from 1.0.1 to 1.0.2. (8b0c5fe)
+
 ## 3.3.0 (2022-11-10)
 
 ### Changed
