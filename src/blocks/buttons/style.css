@@ -52,6 +52,52 @@
 		text-align: center;
 	}
 
+	&.has-position-support {
+		position: fixed;
+		z-index: 800;
+
+		&.is-position-top-left,
+		&.is-position-top-center,
+		&.is-position-top-right {
+			top: 10rem;
+		}
+
+		&.is-position-top-center,
+		&.is-position-bottom-center {
+			left: 50%;
+			transform: translate(-50%, 0);
+		}
+
+		&.is-position-top-right,
+		&.is-position-center-right,
+		&.is-position-bottom-right {
+			right: 1rem;
+		}
+
+		&.is-position-center-left,
+		&.is-position-top-left,
+		&.is-position-bottom-left {
+			transform: translate(-1rem, 0);
+		}
+
+		&.is-position-center-left,
+		&.is-position-center-center,
+		&.is-position-center-right {
+			top: 50%;
+		}
+
+		&.is-position-center-center {
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		&.is-position-bottom-left,
+		&.is-position-bottom-center,
+		&.is-position-bottom-right {
+			bottom: 4rem;
+		}
+	}
+
 }
 
 .wp-block-hrswp-buttons:not(.is-content-justification-space-between, .is-content-justification-right, .is-content-justification-left, .is-content-justification-center) .wp-block-hrswp-button.aligncenter {
@@ -63,4 +109,38 @@
 /* Legacy buttons that did not come in a wrapping container. */
 .wp-block-hrswp-button.aligncenter {
 	text-align: center;
+}
+
+@media (min-width: 34em) and (max-width: 61.875em) {
+
+	.wp-block-hrswp-buttons.has-position-support {
+
+		&.is-position-bottom-left,
+		&.is-position-bottom-center,
+		&.is-position-bottom-right {
+			bottom: 10rem;
+		}
+
+	}
+
+}
+
+@media (min-width: 61.875em) {
+
+	.wp-block-hrswp-buttons.has-position-support {
+
+		&.is-position-top-left,
+		&.is-position-top-center,
+		&.is-position-top-right {
+			top: 8rem;
+		}
+
+		&.is-position-top-right,
+		&.is-position-center-right,
+		&.is-position-bottom-right {
+			right: 2rem;
+		}
+
+	}
+
 }
