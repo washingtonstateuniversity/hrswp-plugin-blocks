@@ -17,6 +17,16 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 3.4.1 (2023-04-11)
+
+### Changed
+
+- Bump WordPress tested-to to 6.2.
+
+### Security
+
+- Bump webpack from 5.75.0 to 5.76.1 (#120)
+
 ## 3.4.0 (2023-02-15)
 
 ### Added
