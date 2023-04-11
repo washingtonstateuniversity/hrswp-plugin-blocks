@@ -19,6 +19,10 @@ Changelog formatting (http://semver.org/):
 
 ## 3.4.1-rc.1 (:construction: TBD)
 
+### Security
+
+- Bump webpack from 5.75.0 to 5.76.1 (#120)
+
 ## 3.4.0 (2023-02-15)
 
 ### Added
