@@ -17,6 +17,8 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 3.4.1-rc.1 (:construction: TBD)
+
 ## 3.4.0 (2023-02-15)
 
 ### Added
