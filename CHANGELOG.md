@@ -19,6 +19,10 @@ Changelog formatting (http://semver.org/):
 
 ## 3.4.1-rc.1 (:construction: TBD)
 
+### Changed
+
+- Bump WordPress tested-to to 6.2.
+
 ### Security
 
 - Bump webpack from 5.75.0 to 5.76.1 (#120)
