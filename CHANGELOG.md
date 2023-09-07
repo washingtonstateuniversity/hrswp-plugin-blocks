@@ -17,6 +17,17 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 3.4.2 (2023-09-07)
+
+### Changed
+
+- Bump WordPress tested-to to 6.3.1.
+
+### Security
+
+- Bump word-wrap from 1.2.3 to 1.2.4 (#123)
+- Bump tough-cookie from 4.1.2 to 4.1.3 (#122)
+
 ## 3.4.1 (2023-04-11)
 
 ### Changed
