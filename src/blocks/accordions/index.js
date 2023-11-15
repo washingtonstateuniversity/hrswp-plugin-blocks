@@ -49,12 +49,16 @@ export const settings = {
 				},
 				innerBlocks: [
 					{
-						name: 'core/list',
-						attributes: {
-							values: __(
-								'<li>Alice.</li><li>The White Rabbit.</li><li>The Cheshire Cat.</li>'
-							),
-						},
+						name: 'core/list-item',
+						attributes: { content: __( 'Alice.' ) },
+					},
+					{
+						name: 'core/list-item',
+						attributes: { content: __( 'The White Rabbit.' ) },
+					},
+					{
+						name: 'core/list-item',
+						attributes: { content: __( 'The Cheshire Cat.' ) },
 					},
 				],
 			},
