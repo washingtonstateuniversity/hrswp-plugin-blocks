@@ -19,6 +19,21 @@ Changelog formatting (http://semver.org/):
 
 ## 3.5.0-rc.1 (:construction: TBD)
 
+### Changed
+
+- Close #128 Bump WP tested-to to 6.4.1. (0593a57)
+- Allow php codesniffer plugins. (5ceaf08)
+
+### Fixed
+
+- Fix #127 Replace `__experimentalGroup` property with `group`. (3bc910b)
+- Fix #129 replace deprecated `anchorRef` with `anchor`. (0c85059)
+- Fix #119 replace deprecated value attribute on example list block. (5ceaf08)
+
+### Security
+
+- Bump @babel/traverse from 7.20.13 to 7.23.2. (#126)
+- Bump postcss from 8.4.21 to 8.4.31. (#125)
 
 ## 3.4.2 (2023-09-07)
 
