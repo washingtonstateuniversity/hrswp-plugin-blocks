@@ -108,6 +108,10 @@ function ButtonEdit( props ) {
 		setAttributes( { text: newText.replace( /<\/?a[^>]*>/g, '' ) } );
 	}
 
+	// Use internal state instead of a ref to make sure that the component
+	// re-renders when the popover's anchor updates.
+	const [ popoverAnchor ] = useState( null );
+
 	function onKeyDown( event ) {
 		if ( isKeyboardEvent.primary( event, 'k' ) ) {
 			startEditing( event );
@@ -218,7 +222,7 @@ function ButtonEdit( props ) {
 						setIsEditingURL( false );
 						richTextRef.current?.focus();
 					} }
-					anchorRef={ ref?.current }
+					anchor={ popoverAnchor }
 					focusOnMount={ isEditingURL ? 'firstElement' : false }
 				>
 					<LinkControl
@@ -249,7 +253,7 @@ function ButtonEdit( props ) {
 					setAttributes={ setAttributes }
 				/>
 			</InspectorControls>
-			<InspectorControls __experimentalGroup="advanced">
+			<InspectorControls group="advanced">
 				<TextControl
 					label={ __( 'Link rel' ) }
 					value={ rel || '' }
