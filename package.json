@@ -26,7 +26,7 @@
 	"main": "build/index.js",
 	"devDependencies": {
 		"@wordpress/icons": "^9.17.0",
-		"@wordpress/scripts": "^25.3.0",
+		"@wordpress/scripts": "^27.2.0",
 		"classnames": "^2.3.1",
 		"cssnano": "^5.0.17",
 		"lodash": "^4.17.21",
