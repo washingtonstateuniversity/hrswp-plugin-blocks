@@ -29,7 +29,7 @@
 	},
 	"main": "build/index.js",
 	"devDependencies": {
-		"@wordpress/icons": "^9.17.0",
+		"@wordpress/icons": "^9.44.0",
 		"@wordpress/scripts": "^27.4.0",
 		"classnames": "^2.3.1",
 		"cssnano": "^5.0.17",
