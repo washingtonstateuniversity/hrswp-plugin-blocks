@@ -23,6 +23,10 @@
 	"bugs": {
 		"url": "https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/issues"
 	},
+	"engines": {
+		"node": ">=16.19.1",
+		"npm": ">=8.19.3 <9"
+	},
 	"main": "build/index.js",
 	"devDependencies": {
 		"@wordpress/icons": "^9.17.0",
