@@ -99,7 +99,12 @@ class Sideload_Image {
 		$args = wp_parse_args( $props, $defaults );
 
 		if ( $args['skip_if_exists'] ) {
-			$existing_attachment = get_page_by_title( $args['title'], OBJECT, 'attachment' );
+			$query_args = array(
+				'post_type'   => 'attachment',
+				'title'       => $args['title'],
+				'numberposts' => 1,
+			);
+			$existing_attachment = get_posts( $query_args );
 
 			// If the attachment already exists, populate the class property and exit early.
 			if ( $existing_attachment ) {
