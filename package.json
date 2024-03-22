@@ -41,7 +41,8 @@
 		"prettier": "npm:wp-prettier@3.0.3"
 	},
 	"scripts": {
-		"build": "wp-scripts build src/index.js src/lib/* --webpack-copy-php",
+		"build": "run-s lint 'build:*'",
+		"build:wp": "wp-scripts build src/index.js src/lib/* --webpack-copy-php",
 		"format": "run-p 'format:*'",
 		"format:wp": "wp-scripts format",
 		"format:php": "composer format",

@@ -17,20 +17,16 @@ import {
 
 export default function ListAwardsEdit( { attributes, setAttributes } ) {
 	const { columns, imageCrop, queryTable } = attributes;
-	const { fetchData, tables, currentPostId } = useSelect(
-		( select ) => {
-			const { importAwardsData, getTableNames } =
-				select( 'hrswp/blocks' );
-			const { getCurrentPostId } = select( 'core/editor' );
+	const { fetchData, tables, currentPostId } = useSelect( ( select ) => {
+		const { importAwardsData, getTableNames } = select( 'hrswp/blocks' );
+		const { getCurrentPostId } = select( 'core/editor' );
 
-			return {
-				fetchData: importAwardsData,
-				tables: getTableNames(),
-				currentPostId: getCurrentPostId(),
-			};
-		},
-		[ queryTable ]
-	);
+		return {
+			fetchData: importAwardsData,
+			tables: getTableNames(),
+			currentPostId: getCurrentPostId(),
+		};
+	}, [] );
 
 	const handleFetchAwards = () => {
 		fetchData( queryTable, currentPostId );
