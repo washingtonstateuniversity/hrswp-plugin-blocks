@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 register_activation_hook(
 	__FILE__,
-	function(): void {
+	function (): void {
 		// Delete legacy option.
 		delete_option( 'hrswp_blocks_plugin-status' );
 
@@ -39,14 +39,14 @@ register_activation_hook(
 );
 
 // Load blocks, asset loader, settinsg, and REST API.
-require_once dirname( __FILE__ ) . '/inc/blocks.php';
-require_once dirname( __FILE__ ) . '/inc/asset-loader.php';
-require_once dirname( __FILE__ ) . '/inc/settings.php';
-require_once dirname( __FILE__ ) . '/inc/api.php';
-require_once dirname( __FILE__ ) . '/inc/query.php';
+require_once __DIR__ . '/inc/blocks.php';
+require_once __DIR__ . '/inc/asset-loader.php';
+require_once __DIR__ . '/inc/settings.php';
+require_once __DIR__ . '/inc/api.php';
+require_once __DIR__ . '/inc/query.php';
 
 // Load plugin classes.
-require_once dirname( __FILE__ ) . '/inc/classes/class-sideload-image.php';
+require_once __DIR__ . '/inc/classes/class-sideload-image.php';
 
 /**
  * Uninstalls the plugin.
@@ -81,11 +81,11 @@ function verify_plugin_dependencies(): bool {
 
 add_action(
 	'plugins_loaded',
-	function(): void {
+	function (): void {
 		if ( ! verify_plugin_dependencies() ) {
 			add_action(
 				'admin_notices',
-				function(): void {
+				function (): void {
 					printf(
 						'<div class="error"><p>%s</p></div>',
 						esc_html__( 'The HRSWP Blocks plugin requires the HRSWP Sqlsrv DB plugin to function properly. Please install before continuing.', 'hrswp-blocks' )

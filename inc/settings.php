@@ -50,7 +50,7 @@ function sanitize_setting_int_list( string $value ): string {
 	$value = array_filter( array_map( 'trim', $value ) );
 	$value = array_filter(
 		array_map(
-			function( string $number ): string {
+			function ( string $number ): string {
 				$number = preg_replace( '/[^\-0-9]/', '', wp_specialchars_decode( $number ) );
 				$number = ! is_numeric( $number ) ? '' : $number;
 				$number = ( 0 > $number ) ? '' : $number;
@@ -75,7 +75,7 @@ function sanitize_setting_int_list( string $value ): string {
  */
 add_action(
 	'admin_init',
-	function(): void {
+	function (): void {
 		$slug   = 'hrswp-theme';
 		$option = 'hrswp_plugins_protected_ids';
 
