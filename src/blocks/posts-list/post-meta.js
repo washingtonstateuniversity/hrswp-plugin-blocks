@@ -18,6 +18,7 @@ export const PostMeta = ( props ) => {
 		post,
 		taxonomies,
 		termLists,
+		instanceId,
 	} = props;
 
 	const dateFormat = getSettings().formats.date;
@@ -64,6 +65,7 @@ export const PostMeta = ( props ) => {
 							terms={ termLists }
 							taxonomySlug={ taxonomy.slug }
 							prefix={ prefix }
+							instanceId={ instanceId }
 						/>
 					);
 				} ) }
