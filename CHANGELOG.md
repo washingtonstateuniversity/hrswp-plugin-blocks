@@ -19,6 +19,34 @@ Changelog formatting (http://semver.org/):
 
 ## 3.6.0-rc.1 (:construction: TBD)
 
+### Changed
+
+- Include linting step in default build process. (9524183)
+- Fix #139 upgrade Node.js to v20 and NPM and use `.nvmrc` to track version. (5110d24, 1709f73)
+- Update phpcs config rules. (e8a3bee)
+- Upgrade @wordpress/scripts from 25.3.0 to 27.4.0. (901afee)
+- Upgrade prettier from wp-prettier@2.6.2-beta-1 to wp-prettier@3.0.3. (139d943)
+- Upgrade cssnano from 5.0.17 to 6.1.1. (f8556e6)
+- Upgrade postcss-import from 15.1.0 to 16.1.0. (541d5fb, 9d2e0f4)
+- Upgrade postcss-preset-env from 8.0.1 to 9.5.2. (dcb6d8f)
+- Update @wordpress/icons from 9.17.0 to 9.44.0. (54cf331)
+- Update classnames from 2.3.1 to 2.5.1. (3dbbeba)
+- Update composer dependencies. (e8a3bee)
+
+### Fixed
+
+- Fix #143 Posts List block: disable links in the editor. (05bf298)
+- Fix #144 replace experimental date settings with production version. (435fd47)
+- Fix #141 use `.nvmrc` in GitHub Action. (11d143a)
+- Fix `__construct` should not return value. (e8a3bee)
+- Fix #140 replace get_page_by_title with get_posts. (e8a3bee)
+- Fix #135 deprecated value attribute on list block. (ef67d84)
+
+### Security
+
+- Bump follow-redirects from 1.15.4 to 1.15.6 (#136)
+- Bump follow-redirects from 1.15.2 to 1.15.4 (#131)
+
 ## 3.5.0 (2023-11-16)
 
 ### Changed
