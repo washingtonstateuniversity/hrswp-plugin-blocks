@@ -27,7 +27,7 @@ require plugin_dir_path( __DIR__ ) . 'build/blocks/job-classifications/index.php
 */
 add_action(
 	'init',
-	function(): void {
+	function (): void {
 		$block_folders = array(
 			'accordion-heading',
 			'accordion-section',
@@ -60,7 +60,7 @@ add_action(
  */
 add_filter(
 	'block_categories_all',
-	function( array $default_categories ): array {
+	function ( array $default_categories ): array {
 		$plugin_categories = array(
 			array(
 				'slug'  => 'hrswp-blocks-external',

@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 register_activation_hook(
 	__FILE__,
-	function(): void {
+	function (): void {
 		// Delete legacy option.
 		delete_option( 'hrswp_blocks_plugin-status' );
 
@@ -81,11 +81,11 @@ function verify_plugin_dependencies(): bool {
 
 add_action(
 	'plugins_loaded',
-	function(): void {
+	function (): void {
 		if ( ! verify_plugin_dependencies() ) {
 			add_action(
 				'admin_notices',
-				function(): void {
+				function (): void {
 					printf(
 						'<div class="error"><p>%s</p></div>',
 						esc_html__( 'The HRSWP Blocks plugin requires the HRSWP Sqlsrv DB plugin to function properly. Please install before continuing.', 'hrswp-blocks' )

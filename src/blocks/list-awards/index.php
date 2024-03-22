@@ -42,7 +42,7 @@ function render( $attributes ) {
 			'post_type'      => 'attachment',
 			'posts_per_page' => -1,
 			'orderby'        => 'meta_value_num',
-			'meta_key'       => '_hrswp_sqlsrv_db_award_group',
+			'meta_key'       => '_hrswp_sqlsrv_db_award_group', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 			'order'          => 'ASC',
 		)
 	);
