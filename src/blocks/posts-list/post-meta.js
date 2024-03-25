@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
+import { dateI18n, format, getSettings } from '@wordpress/date';
 
 /**
  * Internal dependencies
@@ -18,9 +18,10 @@ export const PostMeta = ( props ) => {
 		post,
 		taxonomies,
 		termLists,
+		instanceId,
 	} = props;
 
-	const dateFormat = __experimentalGetSettings().formats.date;
+	const dateFormat = getSettings().formats.date;
 
 	const hasPostTerms =
 		displayPostCategory || displayPostTag || displayPostTaxonomy;
@@ -64,6 +65,7 @@ export const PostMeta = ( props ) => {
 							terms={ termLists }
 							taxonomySlug={ taxonomy.slug }
 							prefix={ prefix }
+							instanceId={ instanceId }
 						/>
 					);
 				} ) }

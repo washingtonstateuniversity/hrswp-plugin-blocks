@@ -96,10 +96,26 @@ class Sideload_Image {
 			'skip_if_exists' => false,
 		);
 
-		$args = wp_parse_args( $props, $defaults );
+		$this->args = wp_parse_args( $props, $defaults );
+		$this->process_image();
+	}
 
-		if ( $args['skip_if_exists'] ) {
-			$existing_attachment = get_page_by_title( $args['title'], OBJECT, 'attachment' );
+	/**
+	 * Sideload the image into the media library.
+	 *
+	 * @since 3.6.0
+	 *
+	 * @access private
+	 */
+	private function process_image() {
+		if ( $this->args['skip_if_exists'] ) {
+			$query_args = array(
+				'post_type'   => 'attachment',
+				'title'       => $this->args['title'],
+				'numberposts' => 1,
+			);
+
+			$existing_attachment = get_posts( $query_args );
 
 			// If the attachment already exists, populate the class property and exit early.
 			if ( $existing_attachment ) {
@@ -117,10 +133,10 @@ class Sideload_Image {
 		$this->includes();
 
 		// Define some useful file attributes of the sideloaded file.
-		$this->set_file_info( $args['image_contents'], $args['title'], $args['description'], $args['group_year'] );
+		$this->set_file_info( $this->args['image_contents'], $this->args['title'], $this->args['description'], $this->args['group_year'] );
 
 		// Sideload the file and create the attachment, then populate the default alt text and award group meta.
-		$this->sideload_file( $args['image_contents'], $args['page_id'] );
+		$this->sideload_file( $this->args['image_contents'], $this->args['page_id'] );
 		update_post_meta( $this->attachment['id'], '_wp_attachment_image_alt', $this->fileinfo['description'] );
 		update_post_meta( $this->attachment['id'], '_hrswp_sqlsrv_db_award_group', $this->fileinfo['group_year'] );
 

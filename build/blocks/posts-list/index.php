@@ -228,22 +228,20 @@ class PostsList {
 						);
 
 						$post_meta_markup .= get_the_term_list( $post->ID, $taxonomy_name, $prefix, ', ', '</p>' );
-					} else {
-						if (
-							'post_tag' !== $taxonomy_name &&
-							'category' !== $taxonomy_name &&
-							isset( $attributes['displayPostTaxonomy'] ) &&
-							$attributes['displayPostTaxonomy']
-						) {
-							$taxonomy_object = get_taxonomy( $taxonomy_name );
-							$prefix          = sprintf(
-								'<p class="hrswp-block-posts-list__%1$s-list"><span>%2$s: </span>',
-								esc_attr( $taxonomy_name ),
-								esc_html( $taxonomy_object->labels->singular_name )
-							);
+					} elseif (
+						'post_tag' !== $taxonomy_name &&
+						'category' !== $taxonomy_name &&
+						isset( $attributes['displayPostTaxonomy'] ) &&
+						$attributes['displayPostTaxonomy']
+					) {
+						$taxonomy_object = get_taxonomy( $taxonomy_name );
+						$prefix          = sprintf(
+							'<p class="hrswp-block-posts-list__%1$s-list"><span>%2$s: </span>',
+							esc_attr( $taxonomy_name ),
+							esc_html( $taxonomy_object->labels->singular_name )
+						);
 
-							$post_meta_markup .= get_the_term_list( $post->ID, $taxonomy_name, $prefix, ', ', '</p>' );
-						}
+						$post_meta_markup .= get_the_term_list( $post->ID, $taxonomy_name, $prefix, ', ', '</p>' );
 					}
 				}
 			}
@@ -317,7 +315,7 @@ class PostsList {
  */
 add_action(
 	'init',
-	function() {
+	function () {
 		return new PostsList();
 	},
 	25
