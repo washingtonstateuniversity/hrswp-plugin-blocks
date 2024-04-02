@@ -17,10 +17,11 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 3.6.0-rc.1 (:construction: TBD)
+## 3.6.0-rc.2 (:construction: TBD)
 
 ### Changed
 
+- Posts List block: Add offset controls. (13578a0)
 - Include linting step in default build process. (9524183)
 - Fix #139 upgrade Node.js to v20 and NPM and use `.nvmrc` to track version. (5110d24, 1709f73)
 - Update phpcs config rules. (e8a3bee)
@@ -40,6 +41,7 @@ Changelog formatting (http://semver.org/):
 - Fix #141 use `.nvmrc` in GitHub Action. (11d143a)
 - Fix `__construct` should not return value. (e8a3bee)
 - Fix #140 replace get_page_by_title with get_posts. (e8a3bee)
+- Fix #146 replace deprecated value attribute with inner blocks. (d80268e)
 - Fix #135 deprecated value attribute on list block. (ef67d84)
 
 ### Security
