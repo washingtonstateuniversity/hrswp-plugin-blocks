@@ -78,6 +78,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 		displayPostTaxonomy,
 		postLayout,
 		columns,
+		offsetPostsNumber,
 		order,
 		orderBy,
 		selectedTermLists,
@@ -105,6 +106,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 					order,
 					orderby: orderBy,
 					per_page: postsToShow,
+					offset: offsetPostsNumber,
 					_embed: 'wp:featuredmedia',
 				},
 				( value ) => ! isUndefined( value )
@@ -161,6 +163,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 			postsToShow,
 			order,
 			orderBy,
+			offsetPostsNumber,
 			selectedTermLists,
 		]
 	);
@@ -402,6 +405,16 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 					}
 				/>
 
+				<RangeControl
+					label={ __( 'The number of items to offset.' ) }
+					value={ offsetPostsNumber }
+					onChange={ ( value ) =>
+						setAttributes( { offsetPostsNumber: value } )
+					}
+					min={ 0 }
+					max={ 100 }
+				/>
+
 				{ postLayout === 'grid' && (
 					<RangeControl
 						label={ __( 'Columns' ) }
@@ -409,7 +422,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 						onChange={ ( value ) =>
 							setAttributes( { columns: value } )
 						}
-						min={ 2 }
+						min={ 1 }
 						max={
 							! hasPosts
 								? MAX_POSTS_COLUMNS

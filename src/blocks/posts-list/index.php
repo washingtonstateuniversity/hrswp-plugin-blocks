@@ -68,6 +68,7 @@ class PostsList {
 			'post_status'      => 'publish',
 			'order'            => $attributes['order'],
 			'orderby'          => $attributes['orderBy'],
+			'offset'           => $attributes['offsetPostsNumber'],
 			'suppress_filters' => false,
 		);
 
