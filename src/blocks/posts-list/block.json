@@ -82,6 +82,10 @@
 		"addLinkToFeaturedImage": {
 			"type": "boolean",
 			"default": false
+		},
+		"offsetPostsNumber": {
+			"type": "integer",
+			"default": 0
 		}
 	},
 	"supports": {

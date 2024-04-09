@@ -36,8 +36,10 @@ import {
 	useBlockProps,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
-import { useSelect } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 import { pin, list, grid } from '@wordpress/icons';
+import { useInstanceId } from '@wordpress/compose';
+import { store as noticeStore } from '@wordpress/notices';
 import { store as coreStore } from '@wordpress/core-data';
 
 /**
@@ -64,6 +66,7 @@ function getFeaturedImageDetails( post, size ) {
 }
 
 export default function PostsListEdit( { attributes, setAttributes } ) {
+	const instanceId = useInstanceId( PostsListEdit );
 	const {
 		addLinkToFeaturedImage,
 		displayFeaturedImage,
@@ -75,6 +78,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 		displayPostTaxonomy,
 		postLayout,
 		columns,
+		offsetPostsNumber,
 		order,
 		orderBy,
 		selectedTermLists,
@@ -102,6 +106,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 					order,
 					orderby: orderBy,
 					per_page: postsToShow,
+					offset: offsetPostsNumber,
 					_embed: 'wp:featuredmedia',
 				},
 				( value ) => ! isUndefined( value )
@@ -158,6 +163,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 			postsToShow,
 			order,
 			orderBy,
+			offsetPostsNumber,
 			selectedTermLists,
 		]
 	);
@@ -186,6 +192,20 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 		allTerms[ taxonomy ] = newTerms;
 
 		setAttributes( { selectedTermLists: allTerms } );
+	};
+
+	// If a user clicks to a link prevent redirection and show a warning.
+	const { createWarningNotice, removeNotice } = useDispatch( noticeStore );
+	let noticeId;
+	const showRedirectionPreventedNotice = ( event ) => {
+		event.preventDefault();
+		// Remove previous warning if any, to show one at a time per block.
+		removeNotice( noticeId );
+		noticeId = `block-library/hrswp-blocks/posts-list/redirection-prevented/${ instanceId }`;
+		createWarningNotice( __( 'Links are disabled in the editor.' ), {
+			id: noticeId,
+			type: 'snackbar',
+		} );
 	};
 
 	const hasPosts = !! postsList?.length;
@@ -385,6 +405,16 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 					}
 				/>
 
+				<RangeControl
+					label={ __( 'The number of items to offset.' ) }
+					value={ offsetPostsNumber }
+					onChange={ ( value ) =>
+						setAttributes( { offsetPostsNumber: value } )
+					}
+					min={ 0 }
+					max={ 100 }
+				/>
+
 				{ postLayout === 'grid' && (
 					<RangeControl
 						label={ __( 'Columns' ) }
@@ -392,7 +422,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 						onChange={ ( value ) =>
 							setAttributes( { columns: value } )
 						}
-						min={ 2 }
+						min={ 1 }
 						max={
 							! hasPosts
 								? MAX_POSTS_COLUMNS
@@ -534,6 +564,9 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 										<a
 											href={ post.link }
 											rel="noreferrer noopener"
+											onClick={
+												showRedirectionPreventedNotice
+											}
 										>
 											{ featuredImage }
 										</a>
@@ -554,6 +587,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 											  }
 											: undefined
 									}
+									onClick={ showRedirectionPreventedNotice }
 								>
 									{ ! titleTrimmed
 										? __( '(no title)' )
@@ -587,6 +621,7 @@ export default function PostsListEdit( { attributes, setAttributes } ) {
 										post={ post }
 										taxonomies={ taxonomies }
 										termLists={ termLists }
+										instanceId={ instanceId }
 									/>
 								) }
 							</div>

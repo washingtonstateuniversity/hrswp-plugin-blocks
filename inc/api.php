@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 add_action(
 	'rest_api_init',
-	function(): void {
+	function (): void {
 		$namespace = 'hrswp-blocks/v1';
 
 		// Register a gated route to access available tables.
@@ -49,7 +49,7 @@ add_action(
 				'callback'            => 'HRSWP\Blocks\Query\get_job_classification_data',
 				'args'                => array(
 					'table' => array(
-						'sanitize_callback' => function( string $param ): string {
+						'sanitize_callback' => function ( string $param ): string {
 							return sanitize_key( $param );
 						},
 					),
@@ -69,7 +69,7 @@ add_action(
 				'callback'            => 'HRSWP\Blocks\Query\get_salary_data',
 				'args'                => array(
 					'table' => array(
-						'sanitize_callback' => function( string $param ): string {
+						'sanitize_callback' => function ( string $param ): string {
 							return sanitize_key( $param );
 						},
 					),
@@ -89,12 +89,12 @@ add_action(
 				'callback'            => 'HRSWP\Blocks\Query\import_awards_data',
 				'args'                => array(
 					'table' => array(
-						'sanitize_callback' => function( string $param ): string {
+						'sanitize_callback' => function ( string $param ): string {
 							return sanitize_key( $param );
 						},
 					),
 					'post'  => array(
-						'sanitize_callback' => function( string $param ): string {
+						'sanitize_callback' => function ( string $param ): string {
 							return absint( sanitize_key( $param ) );
 						},
 					),

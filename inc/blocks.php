@@ -12,10 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Include files required for dynamic block registration.
-require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/posts-list/index.php';
-require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/list-awards/index.php';
-require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/salary-data/index.php';
-require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/job-classifications/index.php';
+require plugin_dir_path( __DIR__ ) . 'build/blocks/posts-list/index.php';
+require plugin_dir_path( __DIR__ ) . 'build/blocks/list-awards/index.php';
+require plugin_dir_path( __DIR__ ) . 'build/blocks/salary-data/index.php';
+require plugin_dir_path( __DIR__ ) . 'build/blocks/job-classifications/index.php';
 
 /**
 * Registers HRSWP blocks.
@@ -27,7 +27,7 @@ require plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/job-classificatio
 */
 add_action(
 	'init',
-	function(): void {
+	function (): void {
 		$block_folders = array(
 			'accordion-heading',
 			'accordion-section',
@@ -42,7 +42,7 @@ add_action(
 		);
 		foreach ( $block_folders as $block_folder ) {
 			register_block_type(
-				plugin_dir_path( dirname( __FILE__ ) ) . 'build/blocks/' . $block_folder
+				plugin_dir_path( __DIR__ ) . 'build/blocks/' . $block_folder
 			);
 		}
 	}
@@ -60,7 +60,7 @@ add_action(
  */
 add_filter(
 	'block_categories_all',
-	function( array $default_categories ): array {
+	function ( array $default_categories ): array {
 		$plugin_categories = array(
 			array(
 				'slug'  => 'hrswp-blocks-external',

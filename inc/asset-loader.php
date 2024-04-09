@@ -22,11 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function action_register_editor_assets(): void {
-	$asset_file = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/index.asset.php';
+	$asset_file = include plugin_dir_path( __DIR__ ) . 'build/index.asset.php';
 
 	wp_register_script(
 		'hrswp-blocks-script',
-		plugins_url( 'build/index.js', dirname( __FILE__ ) ),
+		plugins_url( 'build/index.js', __DIR__ ),
 		$asset_file['dependencies'],
 		$asset_file['version'],
 		true
@@ -34,7 +34,7 @@ function action_register_editor_assets(): void {
 
 	wp_register_style(
 		'hrswp-blocks-editor-style',
-		plugins_url( 'build/index.css', dirname( __FILE__ ) ),
+		plugins_url( 'build/index.css', __DIR__ ),
 		array(),
 		$asset_file['version']
 	);
@@ -49,12 +49,12 @@ add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\action_register_editor_as
  * @return void
  */
 function action_register_frontend_assets(): void {
-	$filter_asset_file    = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/filter.asset.php';
-	$accordion_asset_file = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/accordion.asset.php';
+	$filter_asset_file    = include plugin_dir_path( __DIR__ ) . 'build/filter.asset.php';
+	$accordion_asset_file = include plugin_dir_path( __DIR__ ) . 'build/accordion.asset.php';
 
 	wp_register_script(
 		'hrswp-blocks-filter-view',
-		plugins_url( 'build/filter.js', dirname( __FILE__ ) ),
+		plugins_url( 'build/filter.js', __DIR__ ),
 		$filter_asset_file['dependencies'],
 		$filter_asset_file['version'],
 		true
@@ -62,7 +62,7 @@ function action_register_frontend_assets(): void {
 
 	wp_register_script(
 		'hrswp-blocks-accordion-view',
-		plugins_url( 'build/accordion.js', dirname( __FILE__ ) ),
+		plugins_url( 'build/accordion.js', __DIR__ ),
 		$accordion_asset_file['dependencies'],
 		$accordion_asset_file['version'],
 		true
@@ -79,11 +79,11 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\action_register_frontend_ass
  * @return void
  */
 function action_register_assets(): void {
-	$asset_file = include plugin_dir_path( dirname( __FILE__ ) ) . 'build/index.asset.php';
+	$asset_file = include plugin_dir_path( __DIR__ ) . 'build/index.asset.php';
 
 	wp_register_style(
 		'hrswp-blocks-style',
-		plugins_url( 'build/style-index.css', dirname( __FILE__ ) ),
+		plugins_url( 'build/style-index.css', __DIR__ ),
 		array(),
 		$asset_file['version']
 	);
