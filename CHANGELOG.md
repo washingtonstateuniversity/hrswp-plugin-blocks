@@ -17,10 +17,11 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 3.6.0-rc.2 (:construction: TBD)
+## 3.6.0 (2024-04-09)
 
 ### Changed
 
+- Bump WP tested-to to 6.5.0 to close #138.
 - Posts List block: Add offset controls. (13578a0)
 - Include linting step in default build process. (9524183)
 - Fix #139 upgrade Node.js to v20 and NPM and use `.nvmrc` to track version. (5110d24, 1709f73)
