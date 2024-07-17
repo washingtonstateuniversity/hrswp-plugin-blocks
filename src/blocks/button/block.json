@@ -1,5 +1,6 @@
 {
-	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
 	"name": "hrswp/button",
 	"title": "Button",
 	"category": "design",
@@ -55,14 +56,23 @@
 	},
 	"supports": {
 		"anchor": true,
+		"splitting": true,
 		"align": true,
 		"alignWide": false,
-		"color": false,
-		"typography": false,
+		"color": {
+			"gradients": false,
+			"background": false,
+			"text": false
+		},
+		"typography": {
+			"fontSize": false,
+			"lineHeight": false,
+			"textAlign": false
+		},
 		"reusable": false,
-		"spacing": false,
+		"spacing": {},
 		"__experimentalBorder": false,
-		"__experimentalSelector": ".wp-block-button__link"
+		"__experimentalSelector": ".wp-block-button .wp-block-button__link"
 	},
 	"styles": [
 		{ "name": "fill", "label": "Fill", "isDefault": true },
