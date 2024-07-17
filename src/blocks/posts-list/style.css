@@ -9,6 +9,11 @@
 	overflow: hidden;
 }
 
+.hrswp-block-posts-list__featured-image img {
+	aspect-ratio: 4/3;
+	object-fit: cover;
+}
+
 .hrswp-block-posts-list__post-title {
 	font-size: var(--wp--preset--font-size--medium);
 	line-height: 1.2;
@@ -133,19 +138,19 @@
 
 .hrswp-block-posts-list:not(.is-grid) .hrswp-block-posts-list__featured-image {
 
-	&.size-thumbnail {
+	.size-thumbnail {
 		width: 68px;
 	}
 
-	&.size-small {
+	.size-small {
 		width: 91px;
 	}
 
-	&.size-medium {
+	.size-medium {
 		width: 180px;
 	}
 
-	&.size-large {
+	.size-large {
 		width: 60%;
 	}
 
