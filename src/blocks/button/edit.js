@@ -27,7 +27,6 @@ import {
 	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
 import { displayShortcut, isKeyboardEvent } from '@wordpress/keycodes';
-import { createBlock } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
@@ -183,12 +182,6 @@ function ButtonEdit( props ) {
 						...colorProps.style,
 						...spacingProps.style,
 					} }
-					onSplit={ ( value ) =>
-						createBlock( 'hrswp/button', {
-							...attributes,
-							text: value,
-						} )
-					}
 					onReplace={ onReplace }
 					onMerge={ mergeBlocks }
 					identifier="text"
