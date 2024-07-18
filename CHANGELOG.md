@@ -17,11 +17,16 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## TBD
+## 3.7.0 (2024-07-18)
 
 ### Changed
 
 - Bump WordPress tested-to to 6.6.1.
+- Archive project.
+
+### Removed
+
+- Remove all SQL Server connector tools and blocks.
 
 ## 3.6.1 (2024-04-10)
 
