@@ -1,8 +1,11 @@
 # HRSWP Blocks
 
-[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest) ![WordPress tested up to version 6.5.2](https://img.shields.io/badge/WordPress-v6.5.2%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/LICENSE.md)
+[![Support Level](https://img.shields.io/badge/support-archived-red.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/releases/latest) ![WordPress tested up to version 6.5.2](https://img.shields.io/badge/WordPress-v6.5.2%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-blocks)](https://github.com/washingtonstateuniversity/hrswp-plugin-blocks/blob/develop/LICENSE.md)
 
 ## Overview
+
+> [!CAUTION]
+> As of 26 July 2024, this project is archived and no longer being actively maintained.
 
 The WSU HRS WordPress plugin provides custom blocks tailored for the [WSU Human Resource Services Theme](https://github.com/washingtonstateuniversity/hrs.wsu.edu). It also replaces some WP Core blocks, such as the Buttons block, that offer options that are not appropriate under the HRS style guide.
 
@@ -95,7 +98,7 @@ See the scripts section of `package.json` for additional available commands.
 
 ## Support Level
 
-**Active:** WSU HRS actively works on this plugin. We plant to continue work for the foreseeable future, adding new features, enhancing existing ones, and maintaining compatability with the latest version of WordPress. Bug reports, feature requests, questions, and pull requests are welcome.
+**Archived:** WSU HRS no longer maintains this plugin.
 
 ## Changelog
 
