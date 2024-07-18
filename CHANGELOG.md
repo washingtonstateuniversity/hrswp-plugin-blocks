@@ -17,6 +17,12 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## TBD
+
+### Changed
+
+- Bump WordPress tested-to to 6.6.1.
+
 ## 3.6.1 (2024-04-10)
 
 ### Changed
